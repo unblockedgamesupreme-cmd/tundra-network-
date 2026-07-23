@@ -23,24 +23,26 @@ export default function App() {
   // Load games from JSON / public / local storage
   useEffect(() => {
     const loadGamesCatalog = async () => {
+      let catalog = initialGamesData || [];
       try {
-        const response = await fetch('/games.json');
+        const response = await fetch('./games.json');
         if (response.ok) {
           const jsonGames = await response.json();
-          // Combine with any user custom added games saved in localStorage
-          const savedCustom = localStorage.getItem('frost_custom_games');
-          const customGames = savedCustom ? JSON.parse(savedCustom) : [];
-          setGames([...jsonGames, ...customGames]);
-          return;
+          if (Array.isArray(jsonGames) && jsonGames.length > 0) {
+            catalog = jsonGames;
+          }
         }
       } catch (err) {
         console.warn('Fallback to local initial JSON catalog:', err);
       }
 
-      // Fallback
-      const savedCustom = localStorage.getItem('frost_custom_games');
-      const customGames = savedCustom ? JSON.parse(savedCustom) : [];
-      setGames([...initialGamesData, ...customGames]);
+      try {
+        const savedCustom = localStorage.getItem('frost_custom_games');
+        const customGames = savedCustom ? JSON.parse(savedCustom) : [];
+        setGames([...catalog, ...(Array.isArray(customGames) ? customGames : [])]);
+      } catch (e) {
+        setGames(catalog);
+      }
     };
 
     loadGamesCatalog();
@@ -49,7 +51,10 @@ export default function App() {
     const savedFavs = localStorage.getItem('frost_favorites');
     if (savedFavs) {
       try {
-        setFavorites(JSON.parse(savedFavs));
+        const parsed = JSON.parse(savedFavs);
+        if (Array.isArray(parsed)) {
+          setFavorites(parsed);
+        }
       } catch (e) {
         console.error(e);
       }
@@ -104,10 +109,10 @@ export default function App() {
       const q = searchQuery.toLowerCase().trim();
       result = result.filter(
         (g) =>
-          g.title.toLowerCase().includes(q) ||
-          g.category.toLowerCase().includes(q) ||
-          g.description.toLowerCase().includes(q) ||
-          g.tags.some((t) => t.toLowerCase().includes(q))
+          g?.title?.toLowerCase().includes(q) ||
+          g?.category?.toLowerCase().includes(q) ||
+          g?.description?.toLowerCase().includes(q) ||
+          (Array.isArray(g?.tags) && g.tags.some((t) => t?.toLowerCase().includes(q)))
       );
     }
 
