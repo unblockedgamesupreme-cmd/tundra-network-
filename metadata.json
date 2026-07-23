@@ -1,0 +1,6 @@
+{
+  "name": "Tundra Network Games",
+  "description": "A tundra-themed unblocked games portal with a light blue background, categorized iframe game catalog in JSON, search, and full-screen player.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
