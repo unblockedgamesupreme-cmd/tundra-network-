@@ -9,56 +9,62 @@ import { PanicScreen } from './components/PanicScreen.jsx';
 import { Snowfall } from './components/Snowfall.jsx';
 import { Snowflake, Shield, Sparkles, Gamepad2 } from 'lucide-react';
 
+const getInitialGames = () => {
+  let catalog = Array.isArray(initialGamesData) ? initialGamesData : [];
+  try {
+    const savedCustom = localStorage.getItem('frost_custom_games');
+    const customGames = savedCustom ? JSON.parse(savedCustom) : [];
+    if (Array.isArray(customGames) && customGames.length > 0) {
+      return [...catalog, ...customGames];
+    }
+  } catch (e) {
+    console.error('Error loading custom games from storage:', e);
+  }
+  return catalog;
+};
+
 export default function App() {
-  const [games, setGames] = useState([]);
+  const [games, setGames] = useState(getInitialGames);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [sortBy, setSortBy] = useState('popular');
-  const [favorites, setFavorites] = useState([]);
+  const [favorites, setFavorites] = useState(() => {
+    try {
+      const savedFavs = localStorage.getItem('frost_favorites');
+      if (savedFavs) {
+        const parsed = JSON.parse(savedFavs);
+        if (Array.isArray(parsed)) return parsed;
+      }
+    } catch (e) {
+      console.error(e);
+    }
+    return [];
+  });
   const [snowEnabled, setSnowEnabled] = useState(true);
   const [selectedGame, setSelectedGame] = useState(null);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isPanicActive, setIsPanicActive] = useState(false);
 
-  // Load games from JSON / public / local storage
+  // Optional extra catalog sync from public/games.json if available
   useEffect(() => {
-    const loadGamesCatalog = async () => {
-      let catalog = initialGamesData || [];
+    const syncCatalog = async () => {
       try {
         const response = await fetch('./games.json');
         if (response.ok) {
           const jsonGames = await response.json();
           if (Array.isArray(jsonGames) && jsonGames.length > 0) {
-            catalog = jsonGames;
+            setGames((prev) => {
+              const customOnly = prev.filter((g) => g.isCustom);
+              return [...jsonGames, ...customOnly];
+            });
           }
         }
       } catch (err) {
-        console.warn('Fallback to local initial JSON catalog:', err);
-      }
-
-      try {
-        const savedCustom = localStorage.getItem('frost_custom_games');
-        const customGames = savedCustom ? JSON.parse(savedCustom) : [];
-        setGames([...catalog, ...(Array.isArray(customGames) ? customGames : [])]);
-      } catch (e) {
-        setGames(catalog);
+        // Silently keep imported catalog if fetch is not available in static host
       }
     };
 
-    loadGamesCatalog();
-
-    // Load local favorites
-    const savedFavs = localStorage.getItem('frost_favorites');
-    if (savedFavs) {
-      try {
-        const parsed = JSON.parse(savedFavs);
-        if (Array.isArray(parsed)) {
-          setFavorites(parsed);
-        }
-      } catch (e) {
-        console.error(e);
-      }
-    }
+    syncCatalog();
   }, []);
 
   // Save favorites to localStorage
