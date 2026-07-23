@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import initialGamesData from './data/games.json';
+import { initialGamesData } from './data/gamesData.js';
 import { Navbar } from './components/Navbar.jsx';
 import { HeroBanner } from './components/HeroBanner.jsx';
 import { GameGrid } from './components/GameGrid.jsx';
