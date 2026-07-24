@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { BuiltInGamesEngine } from './BuiltInGamesEngine.jsx';
 import {
   X,
   Maximize2,
@@ -11,6 +12,8 @@ import {
   Gamepad2,
   Info,
   Check,
+  Monitor,
+  Zap,
 } from 'lucide-react';
 
 export const GamePlayerModal = ({
@@ -27,6 +30,7 @@ export const GamePlayerModal = ({
   const [isCopied, setIsCopied] = useState(false);
   const [isLoadingIframe, setIsLoadingIframe] = useState(true);
   const [iframeKey, setIframeKey] = useState(0);
+  const [playerMode, setPlayerMode] = useState('iframe'); // 'builtin' or 'iframe'
 
   const containerRef = useRef(null);
 
@@ -36,6 +40,14 @@ export const GamePlayerModal = ({
       const baseLikes = Math.floor((game.title.length * 47) % 300) + 85;
       setLikes(baseLikes);
       setHasLiked(false);
+
+      // Default to built-in interactive engine only for games with custom JS engines
+      const builtinSupportedGames = ['color-puzzles', 'chroma-incident', '2048-frost', 'retro-snake', 'flappy-bird', 'slope-game'];
+      if (builtinSupportedGames.includes(game.id) || game.hasBuiltInEngine) {
+        setPlayerMode('builtin');
+      } else {
+        setPlayerMode('iframe');
+      }
     }
   }, [game]);
 
@@ -81,7 +93,7 @@ export const GamePlayerModal = ({
 
   // Find similar games in same category
   const similarGames = allGames
-    .filter((g) => g.id !== game.id && (g.category === game.category || g.tags.some((t) => game.tags.includes(t))))
+    .filter((g) => g.id !== game.id && (g.category === game.category || (Array.isArray(g.tags) && Array.isArray(game.tags) && g.tags.some((t) => game.tags.includes(t)))))
     .slice(0, 4);
 
   return (
@@ -91,7 +103,7 @@ export const GamePlayerModal = ({
         className="w-full max-w-5xl frost-glass rounded-3xl shadow-2xl border border-sky-500/30 overflow-hidden text-sky-100 my-auto flex flex-col max-h-[95vh]"
       >
         {/* Top Header Bar */}
-        <div className="bg-slate-900/95 border-b border-sky-500/30 px-4 sm:px-6 py-3 flex items-center justify-between shrink-0">
+        <div className="bg-slate-900/95 border-b border-sky-500/30 px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-2 shrink-0">
           <div className="flex items-center space-x-3 truncate">
             <div className="p-2 bg-sky-500 text-white rounded-xl shadow-md shrink-0">
               <Gamepad2 className="w-5 h-5" />
@@ -103,20 +115,48 @@ export const GamePlayerModal = ({
                   {game.category}
                 </span>
               </h2>
-              <p className="text-[11px] text-sky-300 hidden sm:block">Iframe Player &bull; Unblocked Portal</p>
+              <p className="text-[11px] text-sky-300 hidden sm:block">Unblocked Game Portal &bull; Tundra Network</p>
             </div>
           </div>
 
-          {/* Player Toolbar Controls */}
+          {/* Mode Switcher & Controls */}
           <div className="flex items-center space-x-2 shrink-0">
+            {/* Mode Switcher */}
+            <div className="flex items-center p-1 bg-slate-800/90 rounded-xl border border-sky-500/30 text-xs font-bold">
+              <button
+                onClick={() => setPlayerMode('builtin')}
+                className={`px-2.5 py-1 rounded-lg flex items-center gap-1 transition-all ${
+                  playerMode === 'builtin'
+                    ? 'bg-sky-500 text-white shadow-md'
+                    : 'text-sky-300 hover:text-white'
+                }`}
+              >
+                <Zap className="w-3.5 h-3.5" />
+                HTML5 Engine
+              </button>
+              <button
+                onClick={() => setPlayerMode('iframe')}
+                className={`px-2.5 py-1 rounded-lg flex items-center gap-1 transition-all ${
+                  playerMode === 'iframe'
+                    ? 'bg-sky-500 text-white shadow-md'
+                    : 'text-sky-300 hover:text-white'
+                }`}
+              >
+                <Monitor className="w-3.5 h-3.5" />
+                Web Embed
+              </button>
+            </div>
+
             {/* Refresh iframe button */}
-            <button
-              onClick={handleRefreshIframe}
-              className="p-2 rounded-xl text-sky-300 hover:bg-slate-800 hover:text-white transition-colors"
-              title="Reload Iframe Game"
-            >
-              <RotateCw className="w-4 h-4" />
-            </button>
+            {playerMode === 'iframe' && (
+              <button
+                onClick={handleRefreshIframe}
+                className="p-2 rounded-xl text-sky-300 hover:bg-slate-800 hover:text-white transition-colors"
+                title="Reload Iframe Game"
+              >
+                <RotateCw className="w-4 h-4" />
+              </button>
+            )}
 
             {/* Favorite Star */}
             <button
@@ -137,7 +177,7 @@ export const GamePlayerModal = ({
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 rounded-xl text-sky-300 hover:bg-slate-800 hover:text-white transition-colors"
-              title="Open direct iframe link in new tab"
+              title="Open direct game link in new tab"
             >
               <ExternalLink className="w-4 h-4" />
             </a>
@@ -162,25 +202,33 @@ export const GamePlayerModal = ({
           </div>
         </div>
 
-        {/* Game Iframe Viewport */}
-        <div className="relative bg-black aspect-video w-full flex-1 min-h-[350px] sm:min-h-[480px]">
-          {isLoadingIframe && (
-            <div className="absolute inset-0 z-10 bg-slate-950/90 backdrop-blur-sm flex flex-col items-center justify-center text-white space-y-3">
-              <div className="w-10 h-10 border-4 border-sky-400 border-t-transparent rounded-full animate-spin" />
-              <p className="text-sm font-semibold text-sky-200">Loading {game.title} Iframe...</p>
-              <p className="text-xs text-sky-400">Connecting to unblocked web host</p>
+        {/* Game Viewport Container */}
+        <div className="relative bg-black aspect-video w-full flex-1 min-h-[350px] sm:min-h-[480px] overflow-hidden flex items-center justify-center">
+          {playerMode === 'builtin' ? (
+            <div className="w-full h-full flex items-center justify-center p-2">
+              <BuiltInGamesEngine gameId={game.id} />
             </div>
-          )}
+          ) : (
+            <>
+              {isLoadingIframe && (
+                <div className="absolute inset-0 z-10 bg-slate-950/90 backdrop-blur-sm flex flex-col items-center justify-center text-white space-y-3">
+                  <div className="w-10 h-10 border-4 border-sky-400 border-t-transparent rounded-full animate-spin" />
+                  <p className="text-sm font-semibold text-sky-200">Loading {game.title} Iframe...</p>
+                  <p className="text-xs text-sky-400">Connecting to unblocked web host</p>
+                </div>
+              )}
 
-          <iframe
-            key={iframeKey}
-            src={game.iframeUrl}
-            title={game.title}
-            onLoad={() => setIsLoadingIframe(false)}
-            className="w-full h-full border-0 rounded-none shadow-inner"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; gamepad"
-            allowFullScreen
-          />
+              <iframe
+                key={iframeKey}
+                src={game.iframeUrl}
+                title={game.title}
+                onLoad={() => setIsLoadingIframe(false)}
+                className="w-full h-full border-0 rounded-none shadow-inner"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; gamepad"
+                allowFullScreen
+              />
+            </>
+          )}
         </div>
 
         {/* Bottom Details & Similar Games Section */}

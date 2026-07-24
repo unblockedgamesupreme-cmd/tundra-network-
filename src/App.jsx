@@ -7,7 +7,9 @@ import { GamePlayerModal } from './components/GamePlayerModal.jsx';
 import { AddGameModal } from './components/AddGameModal.jsx';
 import { PanicScreen } from './components/PanicScreen.jsx';
 import { Snowfall } from './components/Snowfall.jsx';
-import { Snowflake, Shield, Sparkles, Gamepad2 } from 'lucide-react';
+import { Sidebar } from './components/Sidebar.jsx';
+import { UltravioletProxy } from './components/UltravioletProxy.jsx';
+import { Snowflake, Shield, Sparkles, Gamepad2, Zap } from 'lucide-react';
 
 const getInitialGames = () => {
   let catalog = Array.isArray(initialGamesData) ? initialGamesData : [];
@@ -24,6 +26,7 @@ const getInitialGames = () => {
 };
 
 export default function App() {
+  const [activeTab, setActiveTab] = useState('games'); // 'games' | 'proxy'
   const [games, setGames] = useState(getInitialGames);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -157,66 +160,81 @@ export default function App() {
         onSearchChange={setSearchQuery}
         favoritesCount={favorites.length}
         showOnlyFavorites={selectedCategory === 'Favorites'}
-        onToggleFavoritesFilter={() =>
-          setSelectedCategory((prev) => (prev === 'Favorites' ? 'All' : 'Favorites'))
-        }
+        onToggleFavoritesFilter={() => {
+          if (activeTab !== 'games') setActiveTab('games');
+          setSelectedCategory((prev) => (prev === 'Favorites' ? 'All' : 'Favorites'));
+        }}
         onOpenAddModal={() => setIsAddModalOpen(true)}
         onTriggerPanic={() => setIsPanicActive(true)}
         snowEnabled={snowEnabled}
         onToggleSnow={() => setSnowEnabled((prev) => !prev)}
       />
 
-      {/* Main Content Area */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-4 relative z-10">
-        {/* Featured Banner (only show when not actively searching) */}
-        {!searchQuery && selectedCategory === 'All' && (
-          <HeroBanner
-            featuredGame={featuredGame}
-            onPlayGame={setSelectedGame}
-            totalGames={games.length}
-          />
-        )}
+      {/* Main Container with Left Sidebar */}
+      <div className="flex-1 flex flex-col md:flex-row w-full relative z-10">
+        {/* Left Navigation Sidebar Bar */}
+        <Sidebar activeTab={activeTab} onSelectTab={setActiveTab} />
 
-        {/* Main Game Catalog Grid */}
-        <GameGrid
-          games={filteredAndSortedGames}
-          selectedCategory={selectedCategory}
-          onSelectCategory={setSelectedCategory}
-          sortBy={sortBy}
-          onChangeSort={setSortBy}
-          favorites={favorites}
-          onToggleFavorite={handleToggleFavorite}
-          onSelectGame={setSelectedGame}
-          onOpenAddModal={() => setIsAddModalOpen(true)}
-          searchQuery={searchQuery}
-        />
-      </main>
+        {/* Content Area */}
+        <div className="flex-1 flex flex-col min-w-0">
+          {activeTab === 'games' ? (
+            <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-4 relative z-10">
+              {/* Featured Banner (only show when not actively searching) */}
+              {!searchQuery && selectedCategory === 'All' && (
+                <HeroBanner
+                  featuredGame={featuredGame}
+                  onPlayGame={setSelectedGame}
+                  totalGames={games.length}
+                />
+              )}
 
-      {/* Footer */}
-      <footer className="frost-glass border-t border-sky-500/20 mt-12 py-8 relative z-10 text-xs text-sky-300">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center space-x-2">
-            <Snowflake className="w-4 h-4 text-sky-400" />
-            <span className="font-bold text-sky-100">Tundra Network Games</span>
-            <span>&bull; Stored in JSON Catalog</span>
-          </div>
+              {/* Main Game Catalog Grid */}
+              <GameGrid
+                games={filteredAndSortedGames}
+                selectedCategory={selectedCategory}
+                onSelectCategory={setSelectedCategory}
+                sortBy={sortBy}
+                onChangeSort={setSortBy}
+                favorites={favorites}
+                onToggleFavorite={handleToggleFavorite}
+                onSelectGame={setSelectedGame}
+                onOpenAddModal={() => setIsAddModalOpen(true)}
+                searchQuery={searchQuery}
+              />
+            </main>
+          ) : (
+            <main className="flex-1 w-full mx-auto relative z-10">
+              <UltravioletProxy />
+            </main>
+          )}
 
-          <div className="flex items-center space-x-4 text-sky-300">
-            <span className="flex items-center gap-1">
-              <Shield className="w-3.5 h-3.5 text-sky-400" />
-              School-Friendly
-            </span>
-            <span className="flex items-center gap-1">
-              <Gamepad2 className="w-3.5 h-3.5 text-sky-400" />
-              {games.length} Unblocked Games
-            </span>
-            <span className="flex items-center gap-1">
-              <Sparkles className="w-3.5 h-3.5 text-sky-400" />
-              Radiant Dark Theme
-            </span>
-          </div>
+          {/* Footer */}
+          <footer className="frost-glass border-t border-sky-500/20 mt-12 py-8 relative z-10 text-xs text-sky-300">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="flex items-center space-x-2">
+                <Snowflake className="w-4 h-4 text-sky-400" />
+                <span className="font-bold text-sky-100">Tundra Network</span>
+                <span>&bull; Game Portal & Ultraviolet Proxy</span>
+              </div>
+
+              <div className="flex items-center space-x-4 text-sky-300">
+                <span className="flex items-center gap-1">
+                  <Shield className="w-3.5 h-3.5 text-sky-400" />
+                  School-Friendly
+                </span>
+                <span className="flex items-center gap-1">
+                  <Gamepad2 className="w-3.5 h-3.5 text-sky-400" />
+                  {games.length} Unblocked Games
+                </span>
+                <span className="flex items-center gap-1">
+                  <Zap className="w-3.5 h-3.5 text-purple-400" />
+                  Ultraviolet TN Engine
+                </span>
+              </div>
+            </div>
+          </footer>
         </div>
-      </footer>
+      </div>
 
       {/* Active Game Iframe Modal */}
       <GamePlayerModal
@@ -237,3 +255,4 @@ export default function App() {
     </div>
   );
 }
+

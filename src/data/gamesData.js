@@ -1,5 +1,26 @@
 export const initialGamesData = [
   {
+    "id": "color-puzzles",
+    "title": "Color Puzzles",
+    "category": "Puzzle",
+    "description": "Control a light-frequency subject capable of shifting colors to pass through energy barriers, activate light bridges, and solve mind-bending puzzle chambers.",
+    "iframeUrl": "https://itch.io/embed-game/123456",
+    "thumbnail": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&auto=format&fit=crop&q=80",
+    "rating": 5.0,
+    "plays": "620K",
+    "controls": [
+      "A / D or Left / Right Arrows to Move",
+      "W, Up Arrow, or Spacebar to Jump",
+      "1, 2, 3 or C / Shift to Switch Color Frequency (Red, Blue, Green)",
+      "Match your color to pass matching barriers and activate light bridges"
+    ],
+    "featured": true,
+    "popular": true,
+    "tags": ["chroma", "puzzle", "color shift", "sci-fi", "platformer", "physics"],
+    "author": "Chroma Labs Studio",
+    "hasBuiltInEngine": true
+  },
+  {
     "id": "2048-frost",
     "title": "2048 Frost Edition",
     "category": "Puzzle",
@@ -12,22 +33,56 @@ export const initialGamesData = [
     "featured": true,
     "popular": true,
     "tags": ["2048", "puzzle", "numbers", "math", "relaxing"],
-    "author": "Gabriele Cirulli"
+    "author": "Gabriele Cirulli",
+    "hasBuiltInEngine": true
   },
   {
     "id": "slope-game",
     "title": "Slope 3D",
     "category": "Arcade",
-    "description": "Drive a ball down a steep 3D slope course filled with red obstacles and deadly gaps. How far can you survive?",
-    "iframeUrl": "https://krunker.io/",
+    "description": "Drive a ball down a steep neon 3D obstacle course at breakneck speeds. Dodge red blocks, jump ramps, and set new high scores!",
+    "iframeUrl": "https://y8.com/embed/slope",
     "thumbnail": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&auto=format&fit=crop&q=80",
     "rating": 4.8,
     "plays": "500K",
     "controls": ["A / D or Left / Right Arrows to Steer", "Avoid red obstacles", "Reach maximum speed down the slope"],
-    "featured": false,
+    "featured": true,
     "popular": true,
     "tags": ["slope", "3d", "speed", "runner", "arcade"],
-    "author": "RobKayS"
+    "author": "Y8 Games",
+    "hasBuiltInEngine": true
+  },
+  {
+    "id": "flappy-bird",
+    "title": "Flappy Frost Bird",
+    "category": "Skill",
+    "description": "Guide the frosty bird through dangerous icy pipe gaps. Simple one-button controls, high difficulty, endless fun!",
+    "iframeUrl": "https://flappybird.io/",
+    "thumbnail": "https://images.unsplash.com/photo-1517849845537-4d257902454a?w=600&auto=format&fit=crop&q=80",
+    "rating": 4.7,
+    "plays": "180K",
+    "controls": ["Tap Space or Click Mouse to flap wings", "Pass through green pipe gaps", "Don't crash into the ground or pipes"],
+    "featured": false,
+    "popular": true,
+    "tags": ["flappy", "arcade", "one button", "retro", "skill"],
+    "author": "Dong Nguyen",
+    "hasBuiltInEngine": true
+  },
+  {
+    "id": "retro-snake",
+    "title": "Icy Snake Classic",
+    "category": "Arcade",
+    "description": "Eat frosty apples, grow longer, and don't hit your own tail or the ice walls. Classic retro gameplay reinvented.",
+    "iframeUrl": "https://playsnake.org/",
+    "thumbnail": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&auto=format&fit=crop&q=80",
+    "rating": 4.8,
+    "plays": "195K",
+    "controls": ["Arrow keys or WASD to navigate", "Eat glowing ice apples to gain points", "Avoid crashing into snake body"],
+    "featured": true,
+    "popular": true,
+    "tags": ["snake", "classic", "retro", "arcade"],
+    "author": "Retro Arcade",
+    "hasBuiltInEngine": true
   },
   {
     "id": "paper-io-2",
@@ -35,59 +90,31 @@ export const initialGamesData = [
     "category": "Strategy",
     "description": "Claim as much territory as possible! Bite other players' tails to eliminate them, but watch out for your own territory tail.",
     "iframeUrl": "https://paper-io.com/",
-    "thumbnail": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&auto=format&fit=crop&q=80",
+    "thumbnail": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600&auto=format&fit=crop&q=80",
     "rating": 4.7,
     "plays": "320K",
     "controls": ["Mouse or Arrow Keys to navigate", "Enclose space to claim land", "Eliminate opponents by cutting their tail"],
     "featured": false,
     "popular": true,
     "tags": ["io", "paper", "territory", "multiplayer", "strategy"],
-    "author": "Voodoo"
+    "author": "Voodoo",
+    "hasBuiltInEngine": false
   },
   {
-    "id": "retro-tetris",
-    "title": "Retro Tetris Unblocked",
-    "category": "Retro",
-    "description": "Classic arcade block-stacking action. Clear horizontal lines and challenge your high score in this timeless puzzle legend.",
+    "id": "tetris-frost",
+    "title": "Tetris Ice Blocks",
+    "category": "Puzzle",
+    "description": "Clear full horizontal lines by rotating falling polyomino ice blocks. Fast-paced spatial puzzle action.",
     "iframeUrl": "https://tetris.com/play-tetris",
     "thumbnail": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&auto=format&fit=crop&q=80",
     "rating": 4.9,
-    "plays": "180K",
-    "controls": ["Left / Right Arrows to move block", "Up Arrow to rotate block", "Down Arrow to soft drop", "Spacebar to hard drop"],
+    "plays": "320K",
+    "controls": ["Left / Right Arrows to move block", "Up Arrow to rotate piece", "Down Arrow to drop faster", "Spacebar to hard drop"],
     "featured": false,
     "popular": true,
-    "tags": ["tetris", "retro", "blocks", "classic", "puzzle"],
-    "author": "Tetris Holding"
-  },
-  {
-    "id": "subway-surfers-frost",
-    "title": "Subway Runners",
-    "category": "Action",
-    "description": "Dodge oncoming subway trains and obstacles while grabbing coins and power-ups across icy tracks.",
-    "iframeUrl": "https://poki.com/",
-    "thumbnail": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&auto=format&fit=crop&q=80",
-    "rating": 4.8,
-    "plays": "410K",
-    "controls": ["Left / Right Arrows to change lanes", "Up Arrow to jump", "Down Arrow to roll"],
-    "featured": false,
-    "popular": true,
-    "tags": ["runner", "subway", "action", "dodge", "coins"],
-    "author": "SYBO Games"
-  },
-  {
-    "id": "moto-x3m",
-    "title": "Moto X3M Bike Race",
-    "category": "Racing",
-    "description": "Awesome motocross stunt racing with 25 intense levels! Perform backflips and frontflips to shave seconds off your time.",
-    "iframeUrl": "https://motox3m.co/",
-    "thumbnail": "https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=600&auto=format&fit=crop&q=80",
-    "rating": 4.9,
-    "plays": "600K",
-    "controls": ["Up Arrow to Accelerate", "Down Arrow to Brake", "Left / Right Arrows to tilt bike"],
-    "featured": false,
-    "popular": true,
-    "tags": ["bike", "racing", "stunts", "moto", "x3m"],
-    "author": "MadPuffers"
+    "tags": ["tetris", "puzzle", "blocks", "retro"],
+    "author": "Alexey Pajitnov",
+    "hasBuiltInEngine": false
   },
   {
     "id": "cookie-clicker",
@@ -102,7 +129,24 @@ export const initialGamesData = [
     "featured": false,
     "popular": true,
     "tags": ["clicker", "idle", "cookie", "casual", "upgrades"],
-    "author": "Orteil"
+    "author": "Orteil",
+    "hasBuiltInEngine": false
+  },
+  {
+    "id": "moto-x3m",
+    "title": "Moto X3M Bike Race",
+    "category": "Racing",
+    "description": "Awesome motocross stunt racing with 25 intense levels! Perform backflips and frontflips to shave seconds off your time.",
+    "iframeUrl": "https://motox3m.co/",
+    "thumbnail": "https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=600&auto=format&fit=crop&q=80",
+    "rating": 4.9,
+    "plays": "600K",
+    "controls": ["Up Arrow to Accelerate", "Down Arrow to Brake", "Left / Right Arrows to tilt bike"],
+    "featured": false,
+    "popular": true,
+    "tags": ["bike", "racing", "stunts", "moto", "x3m"],
+    "author": "MadPuffers",
+    "hasBuiltInEngine": false
   },
   {
     "id": "chess-classic",
@@ -117,37 +161,8 @@ export const initialGamesData = [
     "featured": false,
     "popular": false,
     "tags": ["chess", "strategy", "board", "mind", "2player"],
-    "author": "Chess Community"
-  },
-  {
-    "id": "crossy-road",
-    "title": "Crossy Road",
-    "category": "Arcade",
-    "description": "Why did the chicken cross the road? Hop across busy highways, rushing rivers, and train tracks in this blocky adventure.",
-    "iframeUrl": "https://www.crossyroad.com/",
-    "thumbnail": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&auto=format&fit=crop&q=80",
-    "rating": 4.7,
-    "plays": "310K",
-    "controls": ["Arrow Keys to hop forward/sideways", "Avoid cars, trucks, and trains", "Don't fall into water!"],
-    "featured": false,
-    "popular": true,
-    "tags": ["crossy", "road", "arcade", "chicken", "hop"],
-    "author": "Hipster Whale"
-  },
-  {
-    "id": "basket-bros",
-    "title": "Basket Random",
-    "category": "Sports",
-    "description": "Funny physics-based basketball madness! Hop around with quirky ragdoll physics and score hilarious 2-pointer dunks.",
-    "iframeUrl": "https://basketrandom.com/",
-    "thumbnail": "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&auto=format&fit=crop&q=80",
-    "rating": 4.6,
-    "plays": "220K",
-    "controls": ["Up Arrow or W to jump and throw ball", "Score 5 points to win match"],
-    "featured": false,
-    "popular": false,
-    "tags": ["basketball", "sports", "physics", "funny", "2player"],
-    "author": "RHM Interactive"
+    "author": "Chess Community",
+    "hasBuiltInEngine": false
   },
   {
     "id": "drift-hunters",
@@ -162,22 +177,8 @@ export const initialGamesData = [
     "featured": false,
     "popular": true,
     "tags": ["drift", "cars", "racing", "3d", "simulator"],
-    "author": "Studiorum"
-  },
-  {
-    "id": "wordle-unblocked",
-    "title": "Wordle Unblocked",
-    "category": "Puzzle",
-    "description": "Guess the hidden 5-letter word in 6 tries or less! Green, yellow, and gray tile hints guide your vocabulary deduction.",
-    "iframeUrl": "https://www.nytimes.com/games/wordle/index.html",
-    "thumbnail": "https://images.unsplash.com/photo-1632501641765-e568d28b0015?w=600&auto=format&fit=crop&q=80",
-    "rating": 4.8,
-    "plays": "390K",
-    "controls": ["Type 5-letter word on keyboard", "Press ENTER to submit guess", "Use tile colors as hints"],
-    "featured": false,
-    "popular": false,
-    "tags": ["wordle", "word", "puzzle", "brain", "daily"],
-    "author": "Josh Wardle"
+    "author": "Studiorum",
+    "hasBuiltInEngine": false
   }
 ];
 
