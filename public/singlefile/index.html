@@ -3,21 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tundra Network Games - Standalone Edition</title>
+    <title>Tundra Network | Unblocked Games & Ultraviolet Proxy</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Press+Start+2P&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-primary: #0b1329;
             --bg-secondary: #132247;
+            --bg-darker: #070d1b;
             --accent-cyan: #38bdf8;
             --accent-indigo: #6366f1;
+            --accent-purple: #a855f7;
             --accent-emerald: #10b981;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --card-bg: rgba(19, 34, 71, 0.7);
             --border-color: rgba(56, 189, 248, 0.2);
+            --purple-border: rgba(168, 85, 247, 0.3);
+            --glass-bg: rgba(11, 19, 41, 0.85);
         }
 
         * {
@@ -25,6 +29,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Plus Jakarta Sans', sans-serif;
+            user-select: none;
         }
 
         body {
@@ -34,144 +39,339 @@
             display: flex;
             flex-direction: column;
             overflow-x: hidden;
+            position: relative;
         }
 
+        /* Canvas Snowfall Background */
+        #snowCanvas {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.6;
+        }
+
+        /* Top Navbar */
         header {
-            background: rgba(11, 19, 41, 0.85);
-            backdrop-filter: blur(12px);
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
             z-index: 50;
-            padding: 1rem 2rem;
+            padding: 0.85rem 1.5rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 1rem;
         }
 
-        .logo {
+        .brand-logo {
             display: flex;
             align-items: center;
             gap: 0.75rem;
-            font-weight: 800;
-            font-size: 1.25rem;
-            color: var(--text-main);
             text-decoration: none;
+            color: var(--text-main);
+            cursor: pointer;
         }
 
         .logo-icon {
-            width: 38px;
-            height: 38px;
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-indigo));
-            border-radius: 10px;
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-indigo), var(--accent-purple));
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+            font-size: 1.3rem;
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.35);
         }
 
-        .search-bar {
-            flex: 1;
-            max-width: 480px;
-            position: relative;
+        .logo-text {
+            display: flex;
+            flex-direction: column;
         }
 
-        .search-bar input {
-            width: 100%;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 9999px;
-            padding: 0.65rem 1.25rem 0.65rem 2.75rem;
-            color: var(--text-main);
-            font-size: 0.9rem;
-            outline: none;
-            transition: all 0.2s ease;
-        }
-
-        .search-bar input:focus {
-            border-color: var(--accent-cyan);
-            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
-        }
-
-        .search-icon {
-            position: absolute;
-            left: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-muted);
-            pointer-events: none;
-        }
-
-        main {
-            flex: 1;
-            max-width: 1280px;
-            width: 100%;
-            margin: 0 auto;
-            padding: 2rem 1.5rem;
-        }
-
-        .hero {
-            background: linear-gradient(135deg, rgba(30, 58, 138, 0.4), rgba(15, 23, 42, 0.6));
-            border: 1px solid var(--border-color);
-            border-radius: 1.5rem;
-            padding: 2.5rem;
-            margin-bottom: 2.5rem;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
-        }
-
-        .hero h1 {
-            font-size: 2.25rem;
-            font-weight: 800;
-            margin-bottom: 0.75rem;
+        .logo-title {
+            font-weight: 900;
+            font-size: 1.15rem;
+            letter-spacing: -0.02em;
             background: linear-gradient(to right, #ffffff, var(--accent-cyan));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .hero p {
-            color: var(--text-muted);
-            max-width: 600px;
-            font-size: 1rem;
-            line-height: 1.6;
+        .logo-sub {
+            font-size: 0.65rem;
+            font-weight: 800;
+            color: var(--accent-cyan);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
         }
 
-        .categories {
+        .search-container {
+            flex: 1;
+            max-width: 460px;
+            position: relative;
+        }
+
+        .search-container input {
+            width: 100%;
+            background: rgba(19, 34, 71, 0.8);
+            border: 1px solid var(--border-color);
+            border-radius: 9999px;
+            padding: 0.6rem 1.25rem 0.6rem 2.6rem;
+            color: var(--text-main);
+            font-size: 0.875rem;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .search-container input:focus {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+            background: rgba(19, 34, 71, 1);
+        }
+
+        .search-icon-svg {
+            position: absolute;
+            left: 0.9rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            pointer-events: none;
+            font-size: 0.9rem;
+        }
+
+        .nav-actions {
             display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .btn-action {
+            background: rgba(19, 34, 71, 0.8);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 0.5rem 0.85rem;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-action:hover {
+            background: var(--accent-cyan);
+            color: #000;
+            border-color: var(--accent-cyan);
+        }
+
+        .btn-panic {
+            background: rgba(239, 68, 68, 0.2);
+            border-color: rgba(239, 68, 68, 0.4);
+            color: #fca5a5;
+        }
+
+        .btn-panic:hover {
+            background: #ef4444;
+            color: #fff;
+            border-color: #ef4444;
+        }
+
+        /* Layout with Sidebar */
+        .app-body {
+            display: flex;
+            flex: 1;
+            position: relative;
+            z-index: 10;
+        }
+
+        sidebar {
+            width: 220px;
+            background: rgba(7, 13, 27, 0.95);
+            border-right: 1px solid var(--border-color);
+            padding: 1.25rem 0.85rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 1.5rem;
+        }
+
+        .nav-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .sidebar-btn {
+            display: flex;
+            align-items: center;
             gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            border-radius: 12px;
+            background: transparent;
+            border: 1px solid transparent;
+            color: var(--text-muted);
+            font-weight: 700;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+            width: 100%;
+        }
+
+        .sidebar-btn:hover {
+            background: rgba(19, 34, 71, 0.6);
+            color: var(--text-main);
+        }
+
+        .sidebar-btn.active-games {
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--accent-cyan);
+            border-color: rgba(56, 189, 248, 0.4);
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.15);
+        }
+
+        .sidebar-btn.active-proxy {
+            background: rgba(168, 85, 247, 0.15);
+            color: var(--accent-purple);
+            border-color: var(--purple-border);
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.15);
+        }
+
+        .sidebar-status {
+            padding: 0.85rem;
+            background: rgba(19, 34, 71, 0.5);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            font-size: 0.75rem;
+            color: var(--accent-cyan);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 1.5rem 2rem;
+            max-width: 1280px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Hero Spotlight Banner */
+        .hero-banner {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.5), rgba(88, 28, 135, 0.5));
+            border: 1px solid var(--border-color);
+            border-radius: 1.5rem;
+            padding: 2.25rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-left {
+            max-width: 600px;
+            z-index: 2;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.2);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero-title {
+            font-size: 2.2rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
+            background: linear-gradient(to right, #ffffff, #a5f3fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1.25rem;
+        }
+
+        .btn-play-hero {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-indigo));
+            color: #000;
+            font-weight: 900;
+            padding: 0.75rem 1.75rem;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-play-hero:hover {
+            transform: scale(1.04);
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.6);
+        }
+
+        /* Categories Bar */
+        .categories-bar {
+            display: flex;
+            gap: 0.6rem;
             overflow-x: auto;
             padding-bottom: 0.5rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             scrollbar-width: thin;
         }
 
-        .cat-btn {
+        .cat-chip {
             background: var(--bg-secondary);
             border: 1px solid var(--border-color);
             color: var(--text-muted);
-            padding: 0.5rem 1.25rem;
+            padding: 0.45rem 1.1rem;
             border-radius: 9999px;
-            font-size: 0.875rem;
-            font-weight: 600;
+            font-size: 0.85rem;
+            font-weight: 700;
             cursor: pointer;
             white-space: nowrap;
             transition: all 0.2s ease;
         }
 
-        .cat-btn:hover, .cat-btn.active {
+        .cat-chip:hover, .cat-chip.active {
             background: var(--accent-cyan);
             color: #000;
             border-color: var(--accent-cyan);
-            box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+            box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
         }
 
+        /* Game Cards Grid */
         .games-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: 1.5rem;
+            gap: 1.25rem;
+            margin-bottom: 3rem;
         }
 
         .game-card {
@@ -183,22 +383,60 @@
             transition: all 0.25s ease;
             display: flex;
             flex-direction: column;
+            position: relative;
         }
 
         .game-card:hover {
             transform: translateY(-6px);
             border-color: var(--accent-cyan);
-            box-shadow: 0 12px 24px -10px rgba(56, 189, 248, 0.3);
+            box-shadow: 0 12px 25px -8px rgba(56, 189, 248, 0.35);
         }
 
-        .card-thumb {
+        .card-img-wrapper {
+            position: relative;
             width: 100%;
             height: 150px;
-            object-fit: cover;
+            overflow: hidden;
             background: #1e293b;
         }
 
-        .card-body {
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .game-card:hover .card-img {
+            transform: scale(1.08);
+        }
+
+        .fav-btn {
+            position: absolute;
+            top: 0.6rem;
+            right: 0.6rem;
+            background: rgba(11, 19, 41, 0.85);
+            border: 1px solid var(--border-color);
+            color: #e2e8f0;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            z-index: 5;
+        }
+
+        .fav-btn.favorited {
+            color: #facc15;
+            background: rgba(250, 204, 21, 0.2);
+            border-color: #facc15;
+        }
+
+        .card-content {
             padding: 1rem;
             display: flex;
             flex-direction: column;
@@ -206,13 +444,13 @@
         }
 
         .card-title {
-            font-weight: 700;
+            font-weight: 800;
             font-size: 1.05rem;
-            margin-bottom: 0.35rem;
             color: var(--text-main);
+            margin-bottom: 0.35rem;
         }
 
-        .card-meta {
+        .card-info {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -222,83 +460,307 @@
             padding-top: 0.75rem;
         }
 
-        .badge {
+        .badge-cat {
             background: rgba(56, 189, 248, 0.15);
             color: var(--accent-cyan);
-            padding: 0.2rem 0.6rem;
+            padding: 0.2rem 0.55rem;
             border-radius: 6px;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 0.75rem;
         }
 
-        /* Player Modal */
-        .modal {
+        /* Ultraviolet Proxy Tab View */
+        .proxy-view {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .proxy-view.active {
+            display: flex;
+        }
+
+        .proxy-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .proxy-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.3rem 0.85rem;
+            background: rgba(168, 85, 247, 0.2);
+            border: 1px solid var(--purple-border);
+            color: var(--accent-purple);
+            border-radius: 9999px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        .proxy-title {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+        }
+
+        .proxy-sub {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            max-width: 600px;
+        }
+
+        .proxy-search-form {
+            width: 100%;
+            background: rgba(19, 34, 71, 0.8);
+            border: 1px solid var(--purple-border);
+            border-radius: 1.25rem;
+            padding: 0.5rem;
+            display: flex;
+            gap: 0.5rem;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            margin-bottom: 2rem;
+        }
+
+        .proxy-engine-select {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            color: var(--accent-cyan);
+            padding: 0.6rem 0.85rem;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .proxy-input {
+            flex: 1;
+            background: var(--bg-darker);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 0.6rem 1rem;
+            color: var(--text-main);
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .proxy-input:focus {
+            border-color: var(--accent-purple);
+        }
+
+        .btn-unblock {
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-indigo));
+            color: #fff;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 0.9rem;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+        }
+
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1rem;
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+
+        .link-card {
+            background: rgba(19, 34, 71, 0.6);
+            border: 1px solid var(--border-color);
+            padding: 1rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .link-card:hover {
+            border-color: var(--accent-purple);
+            background: rgba(168, 85, 247, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .link-icon {
+            font-size: 1.5rem;
+        }
+
+        .link-name {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+
+        .link-desc {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* Proxy Browser Frame Container */
+        .proxy-frame-box {
+            width: 100%;
+            background: var(--bg-darker);
+            border: 1px solid var(--purple-border);
+            border-radius: 1rem;
+            overflow: hidden;
+            display: none;
+            flex-direction: column;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            margin-bottom: 2rem;
+        }
+
+        .proxy-frame-box.active {
+            display: flex;
+        }
+
+        .proxy-nav-bar {
+            background: rgba(11, 19, 41, 0.9);
+            padding: 0.6rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .proxy-url-display {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0.35rem 0.75rem;
+            font-size: 0.8rem;
+            color: var(--accent-cyan);
+            font-family: 'JetBrains Mono', monospace;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* Game Modal */
+        .modal-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(11, 19, 41, 0.95);
+            background: rgba(7, 13, 27, 0.95);
             backdrop-filter: blur(12px);
             z-index: 100;
             display: none;
             flex-direction: column;
         }
 
-        .modal.active {
+        .modal-overlay.active {
             display: flex;
         }
 
-        .modal-header {
+        .modal-top {
             padding: 1rem 1.5rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
             border-bottom: 1px solid var(--border-color);
+            background: rgba(11, 19, 41, 0.9);
         }
 
-        .modal-title {
-            font-weight: 800;
-            font-size: 1.2rem;
+        .modal-title-text {
+            font-weight: 900;
+            font-size: 1.25rem;
             color: var(--text-main);
         }
 
-        .close-btn {
+        .btn-close {
             background: rgba(239, 68, 68, 0.2);
             color: #ef4444;
-            border: 1px solid rgba(239, 68, 68, 0.3);
+            border: 1px solid rgba(239, 68, 68, 0.4);
             border-radius: 50%;
-            width: 36px;
-            height: 36px;
+            width: 38px;
+            height: 38px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             font-weight: bold;
-            transition: all 0.2s ease;
+            font-size: 1.1rem;
         }
 
-        .close-btn:hover {
+        .btn-close:hover {
             background: #ef4444;
             color: white;
         }
 
-        .modal-body {
+        .modal-viewport {
             flex: 1;
-            width: 100%;
-            height: 100%;
-            padding: 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-        iframe {
+            padding: 1rem;
             width: 100%;
             height: 100%;
-            max-width: 1200px;
-            max-height: 800px;
+        }
+
+        .game-iframe {
+            width: 100%;
+            height: 100%;
+            max-width: 1100px;
+            max-height: 750px;
             border: 1px solid var(--border-color);
             border-radius: 12px;
             background: #000;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Panic Screen Overlay */
+        .panic-screen {
+            position: fixed;
+            inset: 0;
+            background: #ffffff;
+            color: #000000;
+            z-index: 999;
+            display: none;
+            flex-direction: column;
+            padding: 2rem;
+            font-family: Arial, sans-serif;
+            overflow-y: auto;
+        }
+
+        .panic-screen.active {
+            display: flex;
+        }
+
+        .panic-doc-header {
+            border-bottom: 1px solid #dadce0;
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .panic-doc-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #202124;
+            margin-bottom: 0.25rem;
+        }
+
+        .panic-doc-meta {
+            font-size: 0.85rem;
+            color: #5f6368;
+        }
+
+        .panic-doc-content {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #3c4043;
+            max-width: 800px;
         }
 
         footer {
@@ -307,88 +769,253 @@
             text-align: center;
             color: var(--text-muted);
             font-size: 0.85rem;
+            margin-top: auto;
         }
     </style>
 </head>
 <body>
+    <canvas id="snowCanvas"></canvas>
+
+    <!-- Header Navbar -->
     <header>
-        <a href="#" class="logo">
+        <div class="brand-logo" onclick="switchTab('games')">
             <div class="logo-icon">❄️</div>
-            <span>Tundra Network Games</span>
-        </a>
-        <div class="search-bar">
-            <span class="search-icon">🔍</span>
-            <input type="text" id="searchInput" placeholder="Search unblocked games..." oninput="filterGames()">
+            <div class="logo-text">
+                <span class="logo-title">Tundra Network</span>
+                <span class="logo-sub">UNBLOCKED ARCADE</span>
+            </div>
+        </div>
+
+        <div class="search-container">
+            <span class="search-icon-svg">🔍</span>
+            <input type="text" id="searchInput" placeholder="Search unblocked games..." oninput="onSearchInput()">
+        </div>
+
+        <div class="nav-actions">
+            <button class="btn-action" onclick="toggleFavoritesOnly()">
+                <span>★</span>
+                <span id="favBtnLabel">Favorites (0)</span>
+            </button>
+            <button class="btn-action btn-panic" onclick="togglePanic()">
+                <span>🚨</span>
+                <span>PANIC (ESC)</span>
+            </button>
         </div>
     </header>
 
-    <main>
-        <div class="hero">
-            <h1>Unblocked Web Arcade</h1>
-            <p>Fast, lightweight, and single-file executable unblocked games portal for school, home, or work environments.</p>
-        </div>
+    <!-- App Body with Sidebar -->
+    <div class="app-body">
+        <sidebar>
+            <div class="nav-group">
+                <button id="navBtnGames" class="sidebar-btn active-games" onclick="switchTab('games')">
+                    <span>🎮</span>
+                    <span>Game Portal</span>
+                </button>
+                <button id="navBtnProxy" class="sidebar-btn" onclick="switchTab('proxy')">
+                    <span>⚡</span>
+                    <span>Ultraviolet Proxy</span>
+                </button>
+            </div>
 
-        <div class="categories" id="categoryContainer">
-            <button class="cat-btn active" onclick="setCategory('All')">All Games</button>
-            <button class="cat-btn" onclick="setCategory('Action')">Action</button>
-            <button class="cat-btn" onclick="setCategory('Arcade')">Arcade</button>
-            <button class="cat-btn" onclick="setCategory('Puzzle')">Puzzle</button>
-            <button class="cat-btn" onclick="setCategory('RPG')">RPG</button>
-            <button class="cat-btn" onclick="setCategory('Racing')">Racing</button>
-        </div>
+            <div class="sidebar-status">
+                <span>🛡️</span>
+                <span>Protected &bull; v2.4</span>
+            </div>
+        </sidebar>
 
-        <div class="games-grid" id="gamesGrid"></div>
-    </main>
+        <div class="main-content">
+            <!-- GAME PORTAL TAB -->
+            <div id="gamesTabView">
+                <!-- Spotlight Hero Banner -->
+                <div class="hero-banner" id="heroBanner">
+                    <div class="hero-left">
+                        <span class="hero-tag">🔥 SPOTLIGHT GAME</span>
+                        <h1 class="hero-title" id="heroTitle">Super Smash Bros N64</h1>
+                        <p class="hero-desc" id="heroDesc">The classic Nintendo 64 crossover brawler! Fight as Mario, Link, Pikachu, and Donkey Kong.</p>
+                        <button class="btn-play-hero" onclick="playHeroGame()">
+                            <span>▶ PLAY NOW</span>
+                        </button>
+                    </div>
+                </div>
 
-    <div class="modal" id="gameModal">
-        <div class="modal-header">
-            <div class="modal-title" id="modalGameTitle">Game Title</div>
-            <button class="close-btn" onclick="closeGame()">✕</button>
+                <!-- Category Pills -->
+                <div class="categories-bar" id="categoryBar">
+                    <button class="cat-chip active" onclick="setCategory('All', this)">All Games</button>
+                    <button class="cat-chip" onclick="setCategory('Favorites', this)">★ Favorites</button>
+                    <button class="cat-chip" onclick="setCategory('Action', this)">Action</button>
+                    <button class="cat-chip" onclick="setCategory('Arcade', this)">Arcade</button>
+                    <button class="cat-chip" onclick="setCategory('Puzzle', this)">Puzzle</button>
+                    <button class="cat-chip" onclick="setCategory('RPG', this)">RPG</button>
+                    <button class="cat-chip" onclick="setCategory('Racing', this)">Racing</button>
+                    <button class="cat-chip" onclick="setCategory('Skill', this)">Skill</button>
+                    <button class="cat-chip" onclick="setCategory('Strategy', this)">Strategy</button>
+                </div>
+
+                <!-- Game Cards Grid -->
+                <div class="games-grid" id="gamesGrid"></div>
+            </div>
+
+            <!-- ULTRAVIOLET PROXY TAB -->
+            <div id="proxyTabView" class="proxy-view">
+                <div class="proxy-header">
+                    <div class="proxy-badge">⚡ ULTRAVIOLET PROXY ENGINE</div>
+                    <h1 class="proxy-title">Unblocked Web Proxy</h1>
+                    <p class="proxy-sub">Navigate the web freely in a secure, controlled sandbox environment.</p>
+                </div>
+
+                <form class="proxy-search-form" onsubmit="handleProxySubmit(event)">
+                    <select id="proxyEngine" class="proxy-engine-select">
+                        <option value="google">Google</option>
+                        <option value="duckduckgo">DuckDuckGo</option>
+                        <option value="bing">Bing</option>
+                    </select>
+                    <input type="text" id="proxyInput" class="proxy-input" placeholder="Search the web or enter URL (e.g. wikipedia.org)...">
+                    <button type="submit" class="btn-unblock">Unblock</button>
+                </form>
+
+                <div class="quick-links" id="quickLinksGrid">
+                    <div class="link-card" onclick="navigateProxy('https://www.google.com')">
+                        <span class="link-icon">🔍</span>
+                        <div>
+                            <div class="link-name">Google</div>
+                            <div class="link-desc">Web Search Engine</div>
+                        </div>
+                    </div>
+                    <div class="link-card" onclick="navigateProxy('https://duckduckgo.com')">
+                        <span class="link-icon">🦆</span>
+                        <div>
+                            <div class="link-name">DuckDuckGo</div>
+                            <div class="link-desc">Privacy Search</div>
+                        </div>
+                    </div>
+                    <div class="link-card" onclick="navigateProxy('https://www.wikipedia.org')">
+                        <span class="link-icon">🌐</span>
+                        <div>
+                            <div class="link-name">Wikipedia</div>
+                            <div class="link-desc">Free Encyclopedia</div>
+                        </div>
+                    </div>
+                    <div class="link-card" onclick="navigateProxy('https://archive.org')">
+                        <span class="link-icon">🏛️</span>
+                        <div>
+                            <div class="link-name">Archive.org</div>
+                            <div class="link-desc">Internet Archive</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Active Proxy Frame Box -->
+                <div class="proxy-frame-box" id="proxyFrameBox">
+                    <div class="proxy-nav-bar">
+                        <span style="color:var(--accent-emerald);">🔒 Secure Proxy Stream</span>
+                        <div class="proxy-url-display" id="proxyUrlDisplay">https://www.google.com</div>
+                        <button class="btn-action" onclick="closeProxyFrame()">✕ Close View</button>
+                    </div>
+                    <iframe id="proxyIframe" style="width:100%; height:550px; border:none; background:#fff;"></iframe>
+                </div>
+            </div>
         </div>
-        <div class="modal-body">
-            <iframe id="gameIframe" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; gamepad" allowfullscreen></iframe>
+    </div>
+
+    <!-- Game Player Modal -->
+    <div class="modal-overlay" id="gameModal">
+        <div class="modal-top">
+            <span class="modal-title-text" id="modalGameTitle">Super Smash Bros N64</span>
+            <button class="btn-close" onclick="closeModal()">✕</button>
+        </div>
+        <div class="modal-viewport">
+            <iframe id="gameIframe" class="game-iframe" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; gamepad" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <!-- Panic Mode Screen -->
+    <div class="panic-screen" id="panicScreen">
+        <div class="panic-doc-header">
+            <div class="panic-doc-title">Classroom Assignment Notes - Q1 Biology Essay</div>
+            <div class="panic-doc-meta">File Edit View Insert Format Tools Extensions Help &bull; Last edited 2 minutes ago</div>
+        </div>
+        <div class="panic-doc-content">
+            <p><strong>Topic: Cellular Respiration and Photosynthesis Pathways</strong></p>
+            <br>
+            <p>Cellular respiration is a set of metabolic reactions and processes that take place in the cells of organisms to convert chemical energy from oxygen molecules or nutrients into adenosine triphosphate (ATP), and then release waste products.</p>
+            <br>
+            <p>1. Glycolysis takes place in the cytoplasm and converts glucose into pyruvate.<br>
+               2. The Krebs Cycle occurs in the mitochondrial matrix.<br>
+               3. The Electron Transport Chain produces the majority of ATP inside the inner mitochondrial membrane.</p>
+            <br>
+            <p><em>[Press ESC again to return to previous tab]</em></p>
         </div>
     </div>
 
     <footer>
-        <p>Tundra Network Games • Standalone jsDelivr Edition</p>
+        <p>Tundra Network &bull; Unblocked Web Arcade & Ultraviolet Proxy &bull; Singlefile Standalone Edition</p>
     </footer>
 
     <script>
-        const games = [
+        // Full Games Data
+        const gamesList = [
             {
                 id: "super-smash-bros",
                 title: "Super Smash Bros N64",
                 category: "Action",
-                description: "The classic Nintendo 64 crossover brawler!",
-                iframeUrl: "https://cdn.jsdelivr.net/gh/a456pur/seraph@ae2fcc6d6a9cd051654fcc0519080db1f79cf2a7/games/supersmashbros/supersmashbros.zip",
+                description: "The classic Nintendo 64 crossover brawler! Fight as Mario, Link, Pikachu, and Donkey Kong.",
+                type: "nes_n64_emulator",
+                emulatorType: "n64",
+                romUrl: "https://cdn.jsdelivr.net/gh/a456pur/seraph@ae2fcc6d6a9cd051654fcc0519080db1f79cf2a7/games/supersmashbros/supersmashbros.zip",
                 thumbnail: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&auto=format&fit=crop&q=80",
-                rating: 5.0
+                rating: 5.0,
+                featured: true
             },
             {
                 id: "crossy-road",
-                title: "Crossy Road",
+                title: "Crossy Road 3D",
                 category: "Arcade",
-                description: "Cross busy roads, train tracks, and rivers in 3D!",
-                iframeUrl: "https://cdn.jsdelivr.net/gh/bubbls/UGS-Assets@eb0836289452ca93a6c2749f95b2c8a01562d1bb/crossyroad/index.html",
+                description: "Cross endless busy roads, train tracks, and rivers in voxel 3D!",
+                type: "url",
+                url: "https://cdn.jsdelivr.net/gh/bubbls/UGS-Assets@eb0836289452ca93a6c2749f95b2c8a01562d1bb/crossyroad/index.html",
                 thumbnail: "https://images.unsplash.com/photo-1579373903781-fd5c0c30c4cd?w=600&auto=format&fit=crop&q=80",
-                rating: 4.9
+                rating: 4.9,
+                featured: true
             },
             {
                 id: "final-fantasy",
                 title: "Final Fantasy NES",
                 category: "RPG",
-                description: "Embark on the original Warriors of Light quest!",
-                iframeUrl: "https://cdn.jsdelivr.net/gh/bubbls/UGS-file-encryption@c99c02b28ea1531fb40611092887d0aa9db97712/Final%20Fantasy%20(USA).zip",
+                description: "Embark on the epic classic NES Warriors of Light RPG quest!",
+                type: "nes_n64_emulator",
+                emulatorType: "nes",
+                romUrl: "https://cdn.jsdelivr.net/gh/bubbls/UGS-file-encryption@c99c02b28ea1531fb40611092887d0aa9db97712/Final%20Fantasy%20(USA).zip",
                 thumbnail: "https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?w=600&auto=format&fit=crop&q=80",
-                rating: 5.0
+                rating: 5.0,
+                featured: true
+            },
+            {
+                id: "jetpack-joyride",
+                title: "Jetpack Joyride",
+                category: "Arcade",
+                description: "Fly with bullet-powered jetpacks as Barry Steakfries!",
+                type: "url",
+                url: "https://cdn.jsdelivr.net/gh/genizy/jride@475e65ec2f642cf50bb80f09f4f4188cf8c26faa/index.html",
+                thumbnail: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&auto=format&fit=crop&q=80",
+                rating: 4.9
+            },
+            {
+                id: "slope-game",
+                title: "Slope 3",
+                category: "Arcade",
+                description: "Drive a ball down a steep neon 3D obstacle course at breakneck speed!",
+                type: "url",
+                url: "https://y8.com/embed/slope",
+                thumbnail: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&auto=format&fit=crop&q=80",
+                rating: 4.8
             },
             {
                 id: "chroma-incident",
                 title: "Chroma Incident",
                 category: "Puzzle",
-                description: "Master light spectrum shifting and laser reflections.",
-                iframeUrl: "about:blank",
+                description: "Shift color frequencies to pass energy barriers and solve light chambers.",
+                type: "url",
+                url: "https://itch.io/embed-game/123456",
                 thumbnail: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600&auto=format&fit=crop&q=80",
                 rating: 4.8
             },
@@ -396,77 +1023,247 @@
                 id: "2048-frost",
                 title: "2048 Frost Edition",
                 category: "Puzzle",
-                description: "Slide and merge icy tiles to reach the legendary 2048 frost tile.",
-                iframeUrl: "about:blank",
-                thumbnail: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&auto=format&fit=crop&q=80",
+                description: "Slide and merge matching ice tiles to reach the 2048 tile!",
+                type: "url",
+                url: "https://play2048.co/",
+                thumbnail: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&auto=format&fit=crop&q=80",
                 rating: 4.9
             },
             {
                 id: "retro-snake",
-                title: "Retro Cyber Snake",
+                title: "Icy Snake Classic",
                 category: "Arcade",
-                description: "Guide your synthwave neon snake across the grid.",
-                iframeUrl: "about:blank",
-                thumbnail: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&auto=format&fit=crop&q=80",
+                description: "Eat glowing ice apples, grow longer, and don't hit your tail!",
+                type: "url",
+                url: "https://playsnake.org/",
+                thumbnail: "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&auto=format&fit=crop&q=80",
+                rating: 4.8
+            },
+            {
+                id: "paper-io-2",
+                title: "Paper.io 2",
+                category: "Strategy",
+                description: "Claim as much territory as possible and bite opponents' tails!",
+                type: "url",
+                url: "https://paper-io.com/",
+                thumbnail: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600&auto=format&fit=crop&q=80",
                 rating: 4.7
+            },
+            {
+                id: "moto-x3m",
+                title: "Moto X3M Bike Race",
+                category: "Racing",
+                description: "Awesome motocross stunt racing with 25 intense levels!",
+                type: "url",
+                url: "https://motox3m.co/",
+                thumbnail: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=600&auto=format&fit=crop&q=80",
+                rating: 4.9
+            },
+            {
+                id: "drift-hunters",
+                title: "Drift Hunters",
+                category: "Racing",
+                description: "Ultimate 3D car drifting simulator with realistic physics and track maps.",
+                type: "url",
+                url: "https://drift-hunters.co/",
+                thumbnail: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&auto=format&fit=crop&q=80",
+                rating: 4.9
             }
         ];
 
         let activeCategory = 'All';
+        let searchQuery = '';
+        let favorites = JSON.parse(localStorage.getItem('frost_favorites') || '[]');
+        let activeHeroGame = gamesList[0];
 
-        function renderGames(filtered) {
+        // Render Cards
+        function renderGames() {
             const grid = document.getElementById('gamesGrid');
             grid.innerHTML = '';
+
+            const filtered = gamesList.filter(g => {
+                const matchCat = activeCategory === 'All' || 
+                                (activeCategory === 'Favorites' && favorites.includes(g.id)) || 
+                                g.category === activeCategory;
+                const matchQuery = g.title.toLowerCase().includes(searchQuery) || g.description.toLowerCase().includes(searchQuery);
+                return matchCat && matchQuery;
+            });
+
             filtered.forEach(game => {
                 const card = document.createElement('div');
                 card.className = 'game-card';
                 card.onclick = () => openGame(game);
+
+                const isFav = favorites.includes(game.id);
+
                 card.innerHTML = `
-                    <img src="${game.thumbnail}" class="card-thumb" alt="${game.title}" loading="lazy">
-                    <div class="card-body">
+                    <div class="card-img-wrapper">
+                        <img src="${game.thumbnail}" class="card-img" alt="${game.title}" loading="lazy">
+                        <button class="fav-btn ${isFav ? 'favorited' : ''}" onclick="toggleFav(event, '${game.id}')">★</button>
+                    </div>
+                    <div class="card-content">
                         <div class="card-title">${game.title}</div>
-                        <div class="card-meta">
-                            <span class="badge">${game.category}</span>
+                        <div class="card-info">
+                            <span class="badge-cat">${game.category}</span>
                             <span>★ ${game.rating}</span>
                         </div>
                     </div>
                 `;
                 grid.appendChild(card);
             });
+
+            document.getElementById('favBtnLabel').innerText = `Favorites (${favorites.length})`;
         }
 
-        function setCategory(cat) {
+        function setCategory(cat, btnElem) {
             activeCategory = cat;
-            document.querySelectorAll('.cat-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.innerText.includes(cat) || (cat === 'All' && btn.innerText.includes('All')));
-            });
-            filterGames();
+            document.querySelectorAll('.cat-chip').forEach(b => b.classList.remove('active'));
+            btnElem.classList.add('active');
+            renderGames();
         }
 
-        function filterGames() {
-            const query = document.getElementById('searchInput').value.toLowerCase();
-            const filtered = games.filter(g => {
-                const matchesCat = activeCategory === 'All' || g.category === activeCategory;
-                const matchesQuery = g.title.toLowerCase().includes(query) || g.description.toLowerCase().includes(query);
-                return matchesCat && matchesQuery;
-            });
-            renderGames(filtered);
+        function onSearchInput() {
+            searchQuery = document.getElementById('searchInput').value.toLowerCase().trim();
+            renderGames();
+        }
+
+        function toggleFav(e, gameId) {
+            e.stopPropagation();
+            if (favorites.includes(gameId)) {
+                favorites = favorites.filter(id => id !== gameId);
+            } else {
+                favorites.push(gameId);
+            }
+            localStorage.setItem('frost_favorites', JSON.stringify(favorites));
+            renderGames();
+        }
+
+        function toggleFavoritesOnly() {
+            const favChip = Array.from(document.querySelectorAll('.cat-chip')).find(c => c.innerText.includes('Favorites'));
+            if (favChip) {
+                setCategory('Favorites', favChip);
+            }
+        }
+
+        function switchTab(tab) {
+            document.getElementById('gamesTabView').style.display = tab === 'games' ? 'block' : 'none';
+            document.getElementById('proxyTabView').classList.toggle('active', tab === 'proxy');
+
+            document.getElementById('navBtnGames').className = `sidebar-btn ${tab === 'games' ? 'active-games' : ''}`;
+            document.getElementById('navBtnProxy').className = `sidebar-btn ${tab === 'proxy' ? 'active-proxy' : ''}`;
+        }
+
+        function playHeroGame() {
+            openGame(activeHeroGame);
         }
 
         function openGame(game) {
             document.getElementById('modalGameTitle').innerText = game.title;
             const iframe = document.getElementById('gameIframe');
-            iframe.src = game.iframeUrl;
+
+            if (game.type === 'nes_n64_emulator') {
+                const core = game.emulatorType === 'n64' ? 'n64' : 'nes';
+                const emulatorHtml = `<!DOCTYPE html><html><head><meta charset="utf-8"/><style>body{margin:0;background:#000;color:#fff;display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;}#startButton{padding:12px 24px;font-size:16px;background:#4CAF50;color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:bold;}</style></head><body><div id="game" style="width:100vw;height:100vh;display:none;"></div><button id="startButton" onclick="start()">PLAY ${game.title.toUpperCase()}</button><script>function start(){document.getElementById('startButton').style.display='none';document.getElementById('game').style.display='block';window.EJS_player='#game';window.EJS_core='${core}';window.EJS_color='#000';window.EJS_startOnLoaded=true;window.EJS_pathtodata='https://cdn.jsdelivr.net/gh/a456pur/seraph@81f551ca0aa8e3d6018d32d8ac5904ac9bc78f76/storage/emulatorjs/data';window.EJS_gameUrl='${game.romUrl}';var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/gh/a456pur/seraph@81f551ca0aa8e3d6018d32d8ac5904ac9bc78f76/storage/emulatorjs/data/loader.js';document.body.appendChild(s);}<\/script></body></html>`;
+                iframe.srcdoc = emulatorHtml;
+            } else {
+                iframe.removeAttribute('srcdoc');
+                iframe.src = game.url;
+            }
+
             document.getElementById('gameModal').classList.add('active');
         }
 
-        function closeGame() {
+        function closeModal() {
             const iframe = document.getElementById('gameIframe');
             iframe.src = 'about:blank';
+            iframe.removeAttribute('srcdoc');
             document.getElementById('gameModal').classList.remove('active');
         }
 
-        renderGames(games);
+        // Proxy Functions
+        function handleProxySubmit(e) {
+            e.preventDefault();
+            const input = document.getElementById('proxyInput').value.trim();
+            if (!input) return;
+
+            let url = input;
+            if (!/^https?:\/\//i.test(url)) {
+                if (url.includes('.') && !url.includes(' ')) {
+                    url = 'https://' + url;
+                } else {
+                    const engine = document.getElementById('proxyEngine').value;
+                    if (engine === 'duckduckgo') url = 'https://duckduckgo.com/?q=' + encodeURIComponent(input);
+                    else if (engine === 'bing') url = 'https://www.bing.com/search?q=' + encodeURIComponent(input);
+                    else url = 'https://www.google.com/search?q=' + encodeURIComponent(input);
+                }
+            }
+            navigateProxy(url);
+        }
+
+        function navigateProxy(url) {
+            document.getElementById('proxyUrlDisplay').innerText = url;
+            document.getElementById('proxyIframe').src = url;
+            document.getElementById('proxyFrameBox').classList.add('active');
+        }
+
+        function closeProxyFrame() {
+            document.getElementById('proxyIframe').src = 'about:blank';
+            document.getElementById('proxyFrameBox').classList.remove('active');
+        }
+
+        // Panic Mode
+        function togglePanic() {
+            document.getElementById('panicScreen').classList.toggle('active');
+        }
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                togglePanic();
+            }
+        });
+
+        // Snowfall Effect
+        const canvas = document.getElementById('snowCanvas');
+        const ctx = canvas.getContext('2d');
+        let flakes = [];
+
+        function initSnow() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            flakes = [];
+            for (let i = 0; i < 60; i++) {
+                flakes.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    r: Math.random() * 2 + 1,
+                    d: Math.random() * 1 + 0.5
+                });
+            }
+        }
+
+        function drawSnow() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#ffffff';
+            ctx.beginPath();
+            for (let f of flakes) {
+                ctx.moveTo(f.x, f.y);
+                ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2, true);
+                f.y += f.d;
+                if (f.y > canvas.height) {
+                    f.y = 0;
+                    f.x = Math.random() * canvas.width;
+                }
+            }
+            ctx.fill();
+            requestAnimationFrame(drawSnow);
+        }
+
+        window.addEventListener('resize', initSnow);
+        initSnow();
+        drawSnow();
+
+        // Initial load
+        renderGames();
     </script>
 </body>
 </html>
