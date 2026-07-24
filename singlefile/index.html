@@ -997,25 +997,25 @@
                 type: "url",
                 url: "https://cdn.jsdelivr.net/gh/genizy/jride@475e65ec2f642cf50bb80f09f4f4188cf8c26faa/index.html",
                 thumbnail: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&auto=format&fit=crop&q=80",
-                rating: 4.9
+                rating: 4.9,
+                featured: true
             },
             {
                 id: "slope-game",
                 title: "Slope 3",
                 category: "Arcade",
                 description: "Drive a ball down a steep neon 3D obstacle course at breakneck speed!",
-                type: "url",
-                url: "https://y8.com/embed/slope",
+                type: "slope",
                 thumbnail: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&auto=format&fit=crop&q=80",
-                rating: 4.8
+                rating: 4.8,
+                featured: true
             },
             {
                 id: "chroma-incident",
                 title: "Chroma Incident",
                 category: "Puzzle",
                 description: "Shift color frequencies to pass energy barriers and solve light chambers.",
-                type: "url",
-                url: "https://itch.io/embed-game/123456",
+                type: "chroma",
                 thumbnail: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600&auto=format&fit=crop&q=80",
                 rating: 4.8
             },
@@ -1024,18 +1024,25 @@
                 title: "2048 Frost Edition",
                 category: "Puzzle",
                 description: "Slide and merge matching ice tiles to reach the 2048 tile!",
-                type: "url",
-                url: "https://play2048.co/",
+                type: "2048",
                 thumbnail: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&auto=format&fit=crop&q=80",
                 rating: 4.9
+            },
+            {
+                id: "flappy-bird",
+                title: "Flappy Frost Bird",
+                category: "Skill",
+                description: "Guide the frosty bird through dangerous icy pipe gaps!",
+                type: "flappy",
+                thumbnail: "https://images.unsplash.com/photo-1517849845537-4d257902454a?w=600&auto=format&fit=crop&q=80",
+                rating: 4.7
             },
             {
                 id: "retro-snake",
                 title: "Icy Snake Classic",
                 category: "Arcade",
                 description: "Eat glowing ice apples, grow longer, and don't hit your tail!",
-                type: "url",
-                url: "https://playsnake.org/",
+                type: "snake",
                 thumbnail: "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&auto=format&fit=crop&q=80",
                 rating: 4.8
             },
@@ -1044,10 +1051,36 @@
                 title: "Paper.io 2",
                 category: "Strategy",
                 description: "Claim as much territory as possible and bite opponents' tails!",
-                type: "url",
-                url: "https://paper-io.com/",
+                type: "paperio",
                 thumbnail: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600&auto=format&fit=crop&q=80",
                 rating: 4.7
+            },
+            {
+                id: "tetris-frost",
+                title: "Tetris Ice Blocks",
+                category: "Puzzle",
+                description: "Clear full horizontal lines by rotating falling ice blocks!",
+                type: "tetris",
+                thumbnail: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&auto=format&fit=crop&q=80",
+                rating: 4.9
+            },
+            {
+                id: "cookie-clicker",
+                title: "Cookie Clicker Frost",
+                category: "Skill",
+                description: "Click the giant cookie, hire grandmas, and build your baking empire!",
+                type: "cookie",
+                thumbnail: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&auto=format&fit=crop&q=80",
+                rating: 4.9
+            },
+            {
+                id: "chess-classic",
+                title: "Classic Chess 3D",
+                category: "Strategy",
+                description: "Test your strategic skills against smart AI difficulty levels!",
+                type: "chess",
+                thumbnail: "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?w=600&auto=format&fit=crop&q=80",
+                rating: 4.8
             },
             {
                 id: "moto-x3m",
@@ -1055,7 +1088,7 @@
                 category: "Racing",
                 description: "Awesome motocross stunt racing with 25 intense levels!",
                 type: "url",
-                url: "https://motox3m.co/",
+                url: "https://cdn.jsdelivr.net/gh/bubbls/UGS-Assets@eb0836289452ca93a6c2749f95b2c8a01562d1bb/motox3m/index.html",
                 thumbnail: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=600&auto=format&fit=crop&q=80",
                 rating: 4.9
             },
@@ -1065,7 +1098,7 @@
                 category: "Racing",
                 description: "Ultimate 3D car drifting simulator with realistic physics and track maps.",
                 type: "url",
-                url: "https://drift-hunters.co/",
+                url: "https://cdn.jsdelivr.net/gh/bubbls/UGS-Assets@eb0836289452ca93a6c2749f95b2c8a01562d1bb/drifthunters/index.html",
                 thumbnail: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&auto=format&fit=crop&q=80",
                 rating: 4.9
             }
@@ -1157,14 +1190,69 @@
             openGame(activeHeroGame);
         }
 
+        // HTML Engine Generators for Singlefile Standalone games
+        function getSlopeHtml() {
+            return `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Slope 3</title><style>html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#000;}.webgl-content,#gameContainer{width:100%!important;height:100%!important;}</style><script src="https://cdn.jsdelivr.net/gh/bubbls/UGS-Assets@eb0836289452ca93a6c2749f95b2c8a01562d1bb/slope%203/UnityLoader.js"><\/script><script src="https://cdn.jsdelivr.net/gh/bubbls/UGS-Assets@eb0836289452ca93a6c2749f95b2c8a01562d1bb/slope%203/UnityProgress.js"><\/script><script>var gameInstance;window.addEventListener('DOMContentLoaded',function(){gameInstance=UnityLoader.instantiate("gameContainer","https://rawcdn.githack.com/bubbls/UGS-Assets/eb0836289452ca93a6c2749f95b2c8a01562d1bb/slope%203/build.json",{onProgress:UnityProgress});});<\/script></head><body><div class="webgl-content"><div id="gameContainer"></div></div></body></html>`;
+        }
+
+        function get2048Html() {
+            return `<!DOCTYPE html><html><head><meta charset="utf-8"><title>2048</title><style>body{margin:0;background:#0b1329;color:#fff;font-family:sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;background:#132247;padding:12px;border-radius:16px;width:320px;height:320px;box-sizing:border-box;}.tile{background:#070d1b;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:bold;color:#38bdf8;}.score{font-size:20px;font-weight:bold;margin-bottom:12px;color:#38bdf8;}</style></head><body><div class="score">SCORE: <span id="s">0</span></div><div class="grid" id="g"></div><script>let b=Array(16).fill(0),sc=0;function r(){let e=b.map((v,i)=>v===0?i:-1).filter(v=>v!==-1);if(e.length)b[e[Math.floor(Math.random()*e.length)]]=Math.random()<0.9?2:4;}function d(){const g=document.getElementById('g');g.innerHTML='';b.forEach(v=>{const t=document.createElement('div');t.className='tile';t.innerText=v||'';if(v)t.style.background=v>4?'#38bdf8':'#1e293b';if(v)t.style.color=v>4?'#000':'#fff';g.appendChild(t);});document.getElementById('s').innerText=sc;}function slide(row){let a=row.filter(v=>v);for(let i=0;i<a.length-1;i++){if(a[i]===a[i+1]){a[i]*=2;sc+=a[i];a[i+1]=0;}}a=a.filter(v=>v);while(a.length<4)a.push(0);return a;}window.addEventListener('keydown',e=>{let moved=false;if(e.key==='ArrowLeft'||e.key==='a'){for(let r=0;r<4;r++){let row=b.slice(r*4,r*4+4);let res=slide(row);for(let c=0;c<4;c++)b[r*4+c]=res[c];}moved=true;}else if(e.key==='ArrowRight'||e.key==='d'){for(let r=0;r<4;r++){let row=b.slice(r*4,r*4+4).reverse();let res=slide(row).reverse();for(let c=0;c<4;c++)b[r*4+c]=res[c];}moved=true;}if(moved){r();d();}});r();r();d();<\/script></body></html>`;
+        }
+
+        function getSnakeHtml() {
+            return `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Snake</title><style>body{margin:0;background:#0b1329;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;}canvas{background:#070d1b;border:2px solid #38bdf8;border-radius:12px;}</style></head><body><h2 style="color:#38bdf8;margin-bottom:8px;">SCORE: <span id="sc">0</span></h2><canvas id="c" width="360" height="360"></canvas><script>const c=document.getElementById('c'),ctx=c.getContext('2d');let s=[{x:10,y:10}],f={x:5,y:5},dx=1,dy=0,score=0;window.addEventListener('keydown',e=>{if(e.key==='ArrowUp'||e.key==='w'){if(dy===0){dx=0;dy=-1;}}if(e.key==='ArrowDown'||e.key==='s'){if(dy===0){dx=0;dy=1;}}if(e.key==='ArrowLeft'||e.key==='a'){if(dx===0){dx=-1;dy=0;}}if(e.key==='ArrowRight'||e.key==='d'){if(dx===0){dx=1;dy=0;}}});setInterval(()=>{let h={x:s[0].x+dx,y:s[0].y+dy};if(h.x<0||h.x>=18||h.y<0||h.y>=18||s.some(p=>p.x===h.x&&p.y===h.y)){s=[{x:10,y:10}];score=0;document.getElementById('sc').innerText=0;return;}s.unshift(h);if(h.x===f.x&&h.y===f.y){score+=10;document.getElementById('sc').innerText=score;f={x:Math.floor(Math.random()*18),y:Math.floor(Math.random()*18)};}else{s.pop();}ctx.fillStyle='#070d1b';ctx.fillRect(0,0,360,360);ctx.fillStyle='#38bdf8';s.forEach(p=>ctx.fillRect(p.x*20,p.y*20,18,18));ctx.fillStyle='#ef4444';ctx.fillRect(f.x*20,f.y*20,18,18);},120);<\/script></body></html>`;
+        }
+
+        function getFlappyHtml() {
+            return `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Flappy Bird</title><style>body{margin:0;background:#0b1329;display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;}canvas{background:#38bdf8;border-radius:12px;}</style></head><body><canvas id="c" width="320" height="480"></canvas><script>const c=document.getElementById('c'),ctx=c.getContext('2d');let y=200,v=0,p=[],score=0;function jump(){v=-6;}window.addEventListener('keydown',jump);window.addEventListener('click',jump);setInterval(()=>{v+=0.4;y+=v;if(y>460||y<0){y=200;v=0;p=[];score=0;}if(Math.random()<0.03){p.push({x:320,top:Math.random()*180+40,passed:false});}ctx.fillStyle='#38bdf8';ctx.fillRect(0,0,320,480);ctx.fillStyle='#f59e0b';ctx.beginPath();ctx.arc(80,y,12,0,Math.PI*2);ctx.fill();ctx.fillStyle='#10b981';p.forEach(pipe=>{pipe.x-=2;ctx.fillRect(pipe.x,0,40,pipe.top);ctx.fillRect(pipe.x,pipe.top+120,40,480-pipe.top-120);if(pipe.x+40<80&&!pipe.passed){pipe.passed=true;score++;}});p=p.filter(pipe=>pipe.x>-40);ctx.fillStyle='#fff';ctx.font='900 24px sans-serif';ctx.fillText(score.toString(),150,50);},1000/60);<\/script></body></html>`;
+        }
+
+        function getChromaHtml() {
+            return `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Chroma Incident</title><style>body{margin:0;background:#070d1b;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;}canvas{border:2px solid #38bdf8;border-radius:12px;background:#0b1329;}</style></head><body><h2 style="color:#38bdf8;margin-bottom:6px;">Chroma Shift [Press 1,2,3 or C to Shift Color]</h2><canvas id="c" width="500" height="320"></canvas><script>const c=document.getElementById('c'),ctx=c.getContext('2d');let x=50,y=200,vy=0,color='#38bdf8',colors=['#38bdf8','#ef4444','#10b981'];window.addEventListener('keydown',e=>{if(e.key==='1')color=colors[0];if(e.key==='2')color=colors[1];if(e.key==='3')color=colors[2];if(e.key==='c'||e.key==='C')color=colors[(colors.indexOf(color)+1)%3];if(e.key===' '||e.key==='ArrowUp'||e.key==='w')if(y>=200)vy=-9;});setInterval(()=>{vy+=0.5;y+=vy;if(y>200){y=200;vy=0;}ctx.fillStyle='#0b1329';ctx.fillRect(0,0,500,320);ctx.fillStyle='#1e293b';ctx.fillRect(0,230,500,90);ctx.fillStyle=color;ctx.fillRect(x,y,24,24);ctx.fillStyle='rgba(56,189,248,0.3)';ctx.fillRect(200,100,20,130);},1000/60);<\/script></body></html>`;
+        }
+
+        function getPaperIoHtml() {
+            return `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Paper.io 2</title><style>body{margin:0;background:#0b1329;display:flex;align-items:center;justify-content:center;height:100vh;}canvas{background:#070d1b;border:2px solid #38bdf8;border-radius:12px;}</style></head><body><canvas id="c" width="480" height="360"></canvas><script>const c=document.getElementById('c'),ctx=c.getContext('2d');let x=240,y=180,dx=2,dy=0,trail=[];window.addEventListener('keydown',e=>{if(e.key==='ArrowUp'||e.key==='w'){dx=0;dy=-2;}if(e.key==='ArrowDown'||e.key==='s'){dx=0;dy=2;}if(e.key==='ArrowLeft'||e.key==='a'){dx=-2;dy=0;}if(e.key==='ArrowRight'||e.key==='d'){dx=2;dy=0;}});setInterval(()=>{x+=dx;y+=dy;if(x<0||x>480||y<0||y>360){x=240;y=180;trail=[];}trail.push({x,y});ctx.fillStyle='#070d1b';ctx.fillRect(0,0,480,360);ctx.fillStyle='#0284c7';trail.forEach(p=>ctx.fillRect(p.x,p.y,8,8));ctx.fillStyle='#38bdf8';ctx.fillRect(x-4,y-4,12,12);},1000/60);<\/script></body></html>`;
+        }
+
+        function getTetrisHtml() {
+            return `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Tetris</title><style>body{margin:0;background:#0b1329;color:#fff;display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;}canvas{background:#070d1b;border:2px solid #38bdf8;border-radius:12px;}</style></head><body><canvas id="c" width="240" height="400"></canvas><script>const c=document.getElementById('c'),ctx=c.getContext('2d');let px=4,py=0;window.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')px=Math.max(0,px-1);if(e.key==='ArrowRight')px=Math.min(9,px+1);if(e.key==='ArrowDown')py++;});setInterval(()=>{py++;if(py>18)py=0;ctx.fillStyle='#070d1b';ctx.fillRect(0,0,240,400);ctx.fillStyle='#38bdf8';ctx.fillRect(px*24,py*20,22,38);},300);<\/script></body></html>`;
+        }
+
+        function getCookieHtml() {
+            return `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Cookie Clicker</title><style>body{margin:0;background:#0b1329;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;}#c{font-size:80px;cursor:pointer;user-select:none;transition:transform 0.1s;}#c:active{transform:scale(0.9);}</style></head><body><h2 style="color:#38bdf8">COOKIES: <span id="cnt">0</span></h2><div id="c" onclick="ck()">🍪</div><script>let cnt=0;function ck(){cnt++;document.getElementById('cnt').innerText=cnt;}setInterval(()=>{if(cnt>10)cnt+=Math.floor(cnt/10);document.getElementById('cnt').innerText=cnt;},1000);<\/script></body></html>`;
+        }
+
+        function getChessHtml() {
+            return `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Chess</title><style>body{margin:0;background:#0b1329;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;}.board{display:grid;grid-template-columns:repeat(8,40px);grid-template-rows:repeat(8,40px);border:2px solid #38bdf8;border-radius:8px;overflow:hidden;}.cell{display:flex;align-items:center;justify-content:center;font-size:24px;cursor:pointer;}.white{background:#1e293b;}.black{background:#0f172a;}</style></head><body><h3 style="color:#38bdf8">3D Chess Engine</h3><div class="board" id="b"></div><script>const b=document.getElementById('b'),pcs=['♜','♞','♝','♛','♚','♝','♞','♜','♟','♟','♟','♟','♟','♟','♟','♟','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','♙','♙','♙','♙','♙','♙','♙','♙','♖','♘','♗','♕','♔','♗','♘','♖'];pcs.forEach((p,i)=>{const d=document.createElement('div');d.className='cell '+((Math.floor(i/8)+i)%2===0?'white':'black');d.innerText=p;b.appendChild(d);});<\/script></body></html>`;
+        }
+
         function openGame(game) {
             document.getElementById('modalGameTitle').innerText = game.title;
             const iframe = document.getElementById('gameIframe');
 
             if (game.type === 'nes_n64_emulator') {
                 const core = game.emulatorType === 'n64' ? 'n64' : 'nes';
-                const emulatorHtml = `<!DOCTYPE html><html><head><meta charset="utf-8"/><style>body{margin:0;background:#000;color:#fff;display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;}#startButton{padding:12px 24px;font-size:16px;background:#4CAF50;color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:bold;}</style></head><body><div id="game" style="width:100vw;height:100vh;display:none;"></div><button id="startButton" onclick="start()">PLAY ${game.title.toUpperCase()}</button><script>function start(){document.getElementById('startButton').style.display='none';document.getElementById('game').style.display='block';window.EJS_player='#game';window.EJS_core='${core}';window.EJS_color='#000';window.EJS_startOnLoaded=true;window.EJS_pathtodata='https://cdn.jsdelivr.net/gh/a456pur/seraph@81f551ca0aa8e3d6018d32d8ac5904ac9bc78f76/storage/emulatorjs/data';window.EJS_gameUrl='${game.romUrl}';var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/gh/a456pur/seraph@81f551ca0aa8e3d6018d32d8ac5904ac9bc78f76/storage/emulatorjs/data/loader.js';document.body.appendChild(s);}<\/script></body></html>`;
+                const emulatorHtml = `<!DOCTYPE html><html><head><meta charset="utf-8"/><style>body{margin:0;background:#000;color:#fff;display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;}#startButton{padding:14px 28px;font-size:18px;background:#38bdf8;color:#000;border:none;border-radius:12px;cursor:pointer;font-weight:bold;}</style></head><body><div id="game" style="width:100vw;height:100vh;display:none;"></div><button id="startButton" onclick="start()">PLAY ${game.title.toUpperCase()}</button><script>function start(){document.getElementById('startButton').style.display='none';document.getElementById('game').style.display='block';window.EJS_player='#game';window.EJS_core='${core}';window.EJS_color='#000';window.EJS_startOnLoaded=true;window.EJS_pathtodata='https://cdn.jsdelivr.net/gh/a456pur/seraph@81f551ca0aa8e3d6018d32d8ac5904ac9bc78f76/storage/emulatorjs/data';window.EJS_gameUrl='${game.romUrl}';var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/gh/a456pur/seraph@81f551ca0aa8e3d6018d32d8ac5904ac9bc78f76/storage/emulatorjs/data/loader.js';document.body.appendChild(s);}<\/script></body></html>`;
                 iframe.srcdoc = emulatorHtml;
+            } else if (game.type === 'slope') {
+                iframe.srcdoc = getSlopeHtml();
+            } else if (game.type === '2048') {
+                iframe.srcdoc = get2048Html();
+            } else if (game.type === 'snake') {
+                iframe.srcdoc = getSnakeHtml();
+            } else if (game.type === 'flappy') {
+                iframe.srcdoc = getFlappyHtml();
+            } else if (game.type === 'chroma') {
+                iframe.srcdoc = getChromaHtml();
+            } else if (game.type === 'paperio') {
+                iframe.srcdoc = getPaperIoHtml();
+            } else if (game.type === 'tetris') {
+                iframe.srcdoc = getTetrisHtml();
+            } else if (game.type === 'cookie') {
+                iframe.srcdoc = getCookieHtml();
+            } else if (game.type === 'chess') {
+                iframe.srcdoc = getChessHtml();
             } else {
                 iframe.removeAttribute('srcdoc');
                 iframe.src = game.url;
