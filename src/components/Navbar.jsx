@@ -5,6 +5,7 @@ import {
   Bookmark,
   Shield,
   PlusCircle,
+  HardDrive,
   X,
 } from 'lucide-react';
 
@@ -15,6 +16,7 @@ export const Navbar = ({
   showOnlyFavorites,
   onToggleFavoritesFilter,
   onOpenAddModal,
+  onOpenDriveModal,
   onTriggerPanic,
   snowEnabled,
   onToggleSnow,
@@ -108,6 +110,16 @@ export const Navbar = ({
             >
               <PlusCircle className="w-4 h-4 text-sky-400" />
               <span className="hidden lg:inline">Add Game</span>
+            </button>
+
+            {/* Google Drive Integration */}
+            <button
+              onClick={onOpenDriveModal}
+              className="px-3 py-2 rounded-xl text-xs font-bold text-sky-100 bg-gradient-to-r from-sky-600/30 to-indigo-600/30 hover:from-sky-500/40 hover:to-indigo-500/40 border border-sky-400/40 transition-all flex items-center gap-1.5 shadow-sm"
+              title="Google Drive Cloud Storage & Sync"
+            >
+              <HardDrive className="w-4 h-4 text-sky-400" />
+              <span className="hidden sm:inline">Google Drive</span>
             </button>
 
             {/* Panic Mode / Classroom Mask */}

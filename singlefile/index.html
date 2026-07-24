@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tundra Network Games - Standalone Edition</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b1329;
+            --bg-secondary: #132247;
+            --accent-cyan: #38bdf8;
+            --accent-indigo: #6366f1;
+            --accent-emerald: #10b981;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --card-bg: rgba(19, 34, 71, 0.7);
+            --border-color: rgba(56, 189, 248, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: rgba(11, 19, 41, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 38px;
+            height: 38px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-indigo));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+        }
+
+        .search-bar {
+            flex: 1;
+            max-width: 480px;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 9999px;
+            padding: 0.65rem 1.25rem 0.65rem 2.75rem;
+            color: var(--text-main);
+            font-size: 0.9rem;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .search-bar input:focus {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            pointer-events: none;
+        }
+
+        main {
+            flex: 1;
+            max-width: 1280px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.4), rgba(15, 23, 42, 0.6));
+            border: 1px solid var(--border-color);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero h1 {
+            font-size: 2.25rem;
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+            background: linear-gradient(to right, #ffffff, var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            max-width: 600px;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .categories {
+            display: flex;
+            gap: 0.75rem;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+            scrollbar-width: thin;
+        }
+
+        .cat-btn {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 0.5rem 1.25rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+
+        .cat-btn:hover, .cat-btn.active {
+            background: var(--accent-cyan);
+            color: #000;
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .game-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 12px 24px -10px rgba(56, 189, 248, 0.3);
+        }
+
+        .card-thumb {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            background: #1e293b;
+        }
+
+        .card-body {
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .card-title {
+            font-weight: 700;
+            font-size: 1.05rem;
+            margin-bottom: 0.35rem;
+            color: var(--text-main);
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: auto;
+            padding-top: 0.75rem;
+        }
+
+        .badge {
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--accent-cyan);
+            padding: 0.2rem 0.6rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.75rem;
+        }
+
+        /* Player Modal */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(11, 19, 41, 0.95);
+            backdrop-filter: blur(12px);
+            z-index: 100;
+            display: none;
+            flex-direction: column;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-header {
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .modal-title {
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--text-main);
+        }
+
+        .close-btn {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s ease;
+        }
+
+        .close-btn:hover {
+            background: #ef4444;
+            color: white;
+        }
+
+        .modal-body {
+            flex: 1;
+            width: 100%;
+            height: 100%;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            max-width: 1200px;
+            max-height: 800px;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            background: #000;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 1.5rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">
+            <div class="logo-icon">❄️</div>
+            <span>Tundra Network Games</span>
+        </a>
+        <div class="search-bar">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="searchInput" placeholder="Search unblocked games..." oninput="filterGames()">
+        </div>
+    </header>
+
+    <main>
+        <div class="hero">
+            <h1>Unblocked Web Arcade</h1>
+            <p>Fast, lightweight, and single-file executable unblocked games portal for school, home, or work environments.</p>
+        </div>
+
+        <div class="categories" id="categoryContainer">
+            <button class="cat-btn active" onclick="setCategory('All')">All Games</button>
+            <button class="cat-btn" onclick="setCategory('Action')">Action</button>
+            <button class="cat-btn" onclick="setCategory('Arcade')">Arcade</button>
+            <button class="cat-btn" onclick="setCategory('Puzzle')">Puzzle</button>
+            <button class="cat-btn" onclick="setCategory('RPG')">RPG</button>
+            <button class="cat-btn" onclick="setCategory('Racing')">Racing</button>
+        </div>
+
+        <div class="games-grid" id="gamesGrid"></div>
+    </main>
+
+    <div class="modal" id="gameModal">
+        <div class="modal-header">
+            <div class="modal-title" id="modalGameTitle">Game Title</div>
+            <button class="close-btn" onclick="closeGame()">✕</button>
+        </div>
+        <div class="modal-body">
+            <iframe id="gameIframe" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; gamepad" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <footer>
+        <p>Tundra Network Games • Standalone jsDelivr Edition</p>
+    </footer>
+
+    <script>
+        const games = [
+            {
+                id: "super-smash-bros",
+                title: "Super Smash Bros N64",
+                category: "Action",
+                description: "The classic Nintendo 64 crossover brawler!",
+                iframeUrl: "https://cdn.jsdelivr.net/gh/a456pur/seraph@ae2fcc6d6a9cd051654fcc0519080db1f79cf2a7/games/supersmashbros/supersmashbros.zip",
+                thumbnail: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&auto=format&fit=crop&q=80",
+                rating: 5.0
+            },
+            {
+                id: "crossy-road",
+                title: "Crossy Road",
+                category: "Arcade",
+                description: "Cross busy roads, train tracks, and rivers in 3D!",
+                iframeUrl: "https://cdn.jsdelivr.net/gh/bubbls/UGS-Assets@eb0836289452ca93a6c2749f95b2c8a01562d1bb/crossyroad/index.html",
+                thumbnail: "https://images.unsplash.com/photo-1579373903781-fd5c0c30c4cd?w=600&auto=format&fit=crop&q=80",
+                rating: 4.9
+            },
+            {
+                id: "final-fantasy",
+                title: "Final Fantasy NES",
+                category: "RPG",
+                description: "Embark on the original Warriors of Light quest!",
+                iframeUrl: "https://cdn.jsdelivr.net/gh/bubbls/UGS-file-encryption@c99c02b28ea1531fb40611092887d0aa9db97712/Final%20Fantasy%20(USA).zip",
+                thumbnail: "https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?w=600&auto=format&fit=crop&q=80",
+                rating: 5.0
+            },
+            {
+                id: "chroma-incident",
+                title: "Chroma Incident",
+                category: "Puzzle",
+                description: "Master light spectrum shifting and laser reflections.",
+                iframeUrl: "about:blank",
+                thumbnail: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600&auto=format&fit=crop&q=80",
+                rating: 4.8
+            },
+            {
+                id: "2048-frost",
+                title: "2048 Frost Edition",
+                category: "Puzzle",
+                description: "Slide and merge icy tiles to reach the legendary 2048 frost tile.",
+                iframeUrl: "about:blank",
+                thumbnail: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&auto=format&fit=crop&q=80",
+                rating: 4.9
+            },
+            {
+                id: "retro-snake",
+                title: "Retro Cyber Snake",
+                category: "Arcade",
+                description: "Guide your synthwave neon snake across the grid.",
+                iframeUrl: "about:blank",
+                thumbnail: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&auto=format&fit=crop&q=80",
+                rating: 4.7
+            }
+        ];
+
+        let activeCategory = 'All';
+
+        function renderGames(filtered) {
+            const grid = document.getElementById('gamesGrid');
+            grid.innerHTML = '';
+            filtered.forEach(game => {
+                const card = document.createElement('div');
+                card.className = 'game-card';
+                card.onclick = () => openGame(game);
+                card.innerHTML = `
+                    <img src="${game.thumbnail}" class="card-thumb" alt="${game.title}" loading="lazy">
+                    <div class="card-body">
+                        <div class="card-title">${game.title}</div>
+                        <div class="card-meta">
+                            <span class="badge">${game.category}</span>
+                            <span>★ ${game.rating}</span>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function setCategory(cat) {
+            activeCategory = cat;
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.innerText.includes(cat) || (cat === 'All' && btn.innerText.includes('All')));
+            });
+            filterGames();
+        }
+
+        function filterGames() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = games.filter(g => {
+                const matchesCat = activeCategory === 'All' || g.category === activeCategory;
+                const matchesQuery = g.title.toLowerCase().includes(query) || g.description.toLowerCase().includes(query);
+                return matchesCat && matchesQuery;
+            });
+            renderGames(filtered);
+        }
+
+        function openGame(game) {
+            document.getElementById('modalGameTitle').innerText = game.title;
+            const iframe = document.getElementById('gameIframe');
+            iframe.src = game.iframeUrl;
+            document.getElementById('gameModal').classList.add('active');
+        }
+
+        function closeGame() {
+            const iframe = document.getElementById('gameIframe');
+            iframe.src = 'about:blank';
+            document.getElementById('gameModal').classList.remove('active');
+        }
+
+        renderGames(games);
+    </script>
+</body>
+</html>

@@ -718,8 +718,262 @@ const EngineFlappy = () => {
   );
 };
 
-// 3D Neon Slope Game Canvas Engine
+// Slope 3 WebGL Unity Engine
 const EngineSlope = () => {
+  const iframeRef = useRef(null);
+
+  const slopeHtml = `<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Slope 3</title>
+    <link rel="shortcut icon" href="style/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bubbls/UGS-Assets@eb0836289452ca93a6c2749f95b2c8a01562d1bb/slope%203/style/style.css">
+    <script src="https://cdn.jsdelivr.net/gh/bubbls/UGS-Assets@eb0836289452ca93a6c2749f95b2c8a01562d1bb/slope%203/UnityLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/bubbls/UGS-Assets@eb0836289452ca93a6c2749f95b2c8a01562d1bb/slope%203/UnityProgress.js"></script>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #000;
+            user-select: none;
+        }
+        .webgl-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #gameContainer {
+            width: 100% !important;
+            height: 100% !important;
+            outline: none;
+        }
+        #gameContainer canvas {
+            width: 100% !important;
+            height: 100% !important;
+            outline: none;
+        }
+    </style>
+    <script>
+        var gameInstance;
+        window.addEventListener('DOMContentLoaded', function() {
+            gameInstance = UnityLoader.instantiate("gameContainer", "https://rawcdn.githack.com/bubbls/UGS-Assets/eb0836289452ca93a6c2749f95b2c8a01562d1bb/slope%203/build.json", {
+                onProgress: UnityProgress,
+                Module: {
+                    onRuntimeInitialized: function() {
+                        UnityProgress(gameInstance, "complete");
+                        focusGame();
+                    }
+                }
+            });
+        });
+
+        function focusGame() {
+            window.focus();
+            if (document.body) document.body.focus();
+            var container = document.getElementById('gameContainer');
+            if (container) container.focus();
+            var canvas = document.querySelector('canvas');
+            if (canvas) canvas.focus();
+        }
+
+        window.addEventListener('load', function() {
+            focusGame();
+            setInterval(focusGame, 1000);
+        });
+
+        window.addEventListener('click', focusGame);
+        window.addEventListener('pointerdown', focusGame);
+
+        // Prevent browser scrolling on control keys
+        window.addEventListener('keydown', function(e) {
+            if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', ' ', 'a', 'A', 'd', 'D', 'w', 'W', 's', 'S'].indexOf(e.key) >= 0) {
+                if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', ' '].indexOf(e.key) >= 0) {
+                    e.preventDefault();
+                }
+            }
+        });
+
+        // Listen to simulated key events sent from parent window
+        window.addEventListener('message', function(event) {
+            if (event.data && event.data.type === 'SIMULATE_KEY') {
+                var action = event.data.action;
+                var key = event.data.key;
+                var code = event.data.code || (key === 'ArrowLeft' || key === 'a' || key === 'A' ? 'KeyA' : 'KeyD');
+                var keyCode = event.data.keyCode || (key === 'ArrowLeft' ? 37 : key === 'ArrowRight' ? 39 : key === 'a' ? 65 : 68);
+
+                var eventObj = new KeyboardEvent(action, {
+                    key: key,
+                    code: code,
+                    keyCode: keyCode,
+                    which: keyCode,
+                    bubbles: true,
+                    cancelable: true,
+                    view: window
+                });
+
+                window.dispatchEvent(eventObj);
+                document.dispatchEvent(eventObj);
+                var canvas = document.querySelector('canvas');
+                if (canvas) canvas.dispatchEvent(eventObj);
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="webgl-content" onclick="focusGame()">
+        <div id="gameContainer" tabindex="0"></div>
+    </div>
+    <script>
+        function UnityCallJs() { console.log("unity call!"); }
+        function UnityCallPlayJs() { console.log("unity call Play game"); }
+        function UnityCallLeaderboardJs() { console.log("unity call On Leaderboard"); }
+        function UnityCallAgainJs() { console.log("unity call Again"); }
+        function UnityCallEndgameJs() { console.log("unity call end game"); }
+        function UnityCallBackHomeJs() { console.log("unity call backHome"); }
+        function UnityCallChangeDayLeaderboardJs() { console.log("unity call change day leaderboard"); }
+        function UnityCallCloseLeaderboardJs() { console.log("unity call close leaderboard"); }
+    </script>
+</body>
+</html>`;
+
+  // Focus iframe and send keyboard events from parent React app
+  const sendKeyToIframe = (action, key, code, keyCode) => {
+    if (!iframeRef.current) return;
+    try {
+      // 1. Ensure iframe focus
+      iframeRef.current.contentWindow?.focus();
+
+      // 2. PostMessage cross-origin/iframe safe event dispatch
+      iframeRef.current.contentWindow?.postMessage({
+        type: 'SIMULATE_KEY',
+        action,
+        key,
+        code,
+        keyCode
+      }, '*');
+
+      // 3. Direct DOM dispatch inside same-origin iframe
+      const win = iframeRef.current.contentWindow;
+      const doc = iframeRef.current.contentDocument;
+      if (win && doc) {
+        const evt = new win.KeyboardEvent(action, {
+          key,
+          code: code || (key === 'ArrowLeft' || key === 'a' || key === 'A' ? 'KeyA' : 'KeyD'),
+          keyCode: keyCode || (key === 'ArrowLeft' ? 37 : key === 'ArrowRight' ? 39 : key === 'a' ? 65 : 68),
+          which: keyCode || (key === 'ArrowLeft' ? 37 : key === 'ArrowRight' ? 39 : key === 'a' ? 65 : 68),
+          bubbles: true,
+          cancelable: true,
+          view: win
+        });
+        win.dispatchEvent(evt);
+        doc.dispatchEvent(evt);
+        const canvas = doc.querySelector('canvas');
+        if (canvas) canvas.dispatchEvent(evt);
+      }
+    } catch (e) {
+      // Ignore cross-origin error if any
+    }
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      const activeElement = document.activeElement;
+      // Ignore if user is typing in an input/textarea
+      if (activeElement && (activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA')) {
+        return;
+      }
+
+      const moveKeys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'a', 'A', 'd', 'D', 'w', 'W', 's', 'S', ' '];
+      if (moveKeys.includes(e.key)) {
+        if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', ' '].includes(e.key)) {
+          e.preventDefault();
+        }
+        sendKeyToIframe('keydown', e.key, e.code, e.keyCode);
+      }
+    };
+
+    const handleKeyUp = (e) => {
+      const activeElement = document.activeElement;
+      if (activeElement && (activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA')) {
+        return;
+      }
+
+      const moveKeys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'a', 'A', 'd', 'D', 'w', 'W', 's', 'S', ' '];
+      if (moveKeys.includes(e.key)) {
+        sendKeyToIframe('keyup', e.key, e.code, e.keyCode);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('keyup', handleKeyUp);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('keyup', handleKeyUp);
+    };
+  }, []);
+
+  const focusIframe = () => {
+    if (iframeRef.current && iframeRef.current.contentWindow) {
+      iframeRef.current.contentWindow.focus();
+    }
+  };
+
+  return (
+    <div
+      className="w-full h-full min-h-[480px] bg-black rounded-xl overflow-hidden flex flex-col items-center justify-center relative group"
+      onClick={focusIframe}
+      onMouseEnter={focusIframe}
+    >
+      <iframe
+        ref={iframeRef}
+        srcDoc={slopeHtml}
+        title="Slope 3"
+        style={{ width: '100%', height: '100%', border: 0, margin: 0, padding: 0 }}
+        className="w-full h-full border-0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; gamepad"
+        allowFullScreen
+        onLoad={focusIframe}
+      />
+
+      {/* On-screen controls for Left / Right steering */}
+      <div className="absolute bottom-4 left-4 right-4 flex justify-between pointer-events-none opacity-80 hover:opacity-100 transition-opacity z-20">
+        <button
+          type="button"
+          onMouseDown={() => sendKeyToIframe('keydown', 'ArrowLeft', 'ArrowLeft', 37)}
+          onMouseUp={() => sendKeyToIframe('keyup', 'ArrowLeft', 'ArrowLeft', 37)}
+          onTouchStart={() => sendKeyToIframe('keydown', 'ArrowLeft', 'ArrowLeft', 37)}
+          onTouchEnd={() => sendKeyToIframe('keyup', 'ArrowLeft', 'ArrowLeft', 37)}
+          className="pointer-events-auto px-5 py-3 bg-slate-900/80 hover:bg-sky-600/80 active:bg-sky-500 text-white font-black text-xs sm:text-sm rounded-2xl border border-sky-400/40 shadow-lg backdrop-blur-md transition-all flex items-center gap-2 select-none cursor-pointer"
+        >
+          <span>◄ STEER LEFT</span>
+          <span className="text-[10px] text-sky-300 font-mono bg-slate-800 px-1.5 py-0.5 rounded">[A / ←]</span>
+        </button>
+
+        <button
+          type="button"
+          onMouseDown={() => sendKeyToIframe('keydown', 'ArrowRight', 'ArrowRight', 39)}
+          onMouseUp={() => sendKeyToIframe('keyup', 'ArrowRight', 'ArrowRight', 39)}
+          onTouchStart={() => sendKeyToIframe('keydown', 'ArrowRight', 'ArrowRight', 39)}
+          onTouchEnd={() => sendKeyToIframe('keyup', 'ArrowRight', 'ArrowRight', 39)}
+          className="pointer-events-auto px-5 py-3 bg-slate-900/80 hover:bg-sky-600/80 active:bg-sky-500 text-white font-black text-xs sm:text-sm rounded-2xl border border-sky-400/40 shadow-lg backdrop-blur-md transition-all flex items-center gap-2 select-none cursor-pointer"
+        >
+          <span className="text-[10px] text-sky-300 font-mono bg-slate-800 px-1.5 py-0.5 rounded">[D / →]</span>
+          <span>STEER RIGHT ►</span>
+        </button>
+      </div>
+    </div>
+  );
+};
+
+const EngineSlopeOldDisabled = () => {
   const canvasRef = useRef(null);
   const [gameState, setGameState] = useState('menu'); // 'menu', 'playing', 'gameover'
   const [score, setScore] = useState(0);
@@ -1770,6 +2024,1037 @@ const EnginePaperIo2 = () => {
   );
 };
 
+const EngineJetpackJoyride = () => {
+  const iframeRef = useRef(null);
+
+  const jetpackHtml = `<!DOCTYPE html>  
+<html>
+    <head>  
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+        <title>Jetpack Joyride</title>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/genizy/jride@475e65ec2f642cf50bb80f09f4f4188cf8c26faa/css/styles.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/genizy/jride@475e65ec2f642cf50bb80f09f4f4188cf8c26faa/h5Sdk.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/genizy/jride@475e65ec2f642cf50bb80f09f4f4188cf8c26faa/engine/phaser-3.24.1.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/genizy/jride@475e65ec2f642cf50bb80f09f4f4188cf8c26faa/game3.js"></script>
+        <style id="injectStyles">
+          html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #000 !important;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          #content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          #phaser-canvas {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          #phaser-canvas canvas {
+            max-width: 100% !important;
+            max-height: 100% !important;
+            object-fit: contain;
+            outline: none;
+          }
+        </style>
+    </head>
+    <body>
+        <div class="fontLoader" style="font-family: jetpackia;">-</div>
+        <img id="rotate_image" src="https://cdn.jsdelivr.net/gh/genizy/jride@475e65ec2f642cf50bb80f09f4f4188cf8c26faa/img/HB_ic_rotateScreen.png" alt="rotate_screen" class="center">
+        <div id="content">
+            <div id="phaser-canvas"></div>
+        </div>        
+        <script>
+          function focusGame() {
+            window.focus();
+            if (document.body) document.body.focus();
+            var canvas = document.querySelector('canvas');
+            if (canvas) canvas.focus();
+          }
+
+          function simulateJetpackDown() {
+            var canvas = document.querySelector('canvas') || document.body;
+            var kDown = new KeyboardEvent('keydown', { key: ' ', code: 'Space', keyCode: 32, which: 32, bubbles: true, cancelable: true });
+            var kUp = new KeyboardEvent('keydown', { key: 'ArrowUp', code: 'ArrowUp', keyCode: 38, which: 38, bubbles: true, cancelable: true });
+            window.dispatchEvent(kDown);
+            window.dispatchEvent(kUp);
+            if (canvas) {
+              canvas.dispatchEvent(kDown);
+              canvas.dispatchEvent(kUp);
+              try {
+                var pDown = new PointerEvent('pointerdown', { bubbles: true, cancelable: true, pointerType: 'mouse', isPrimary: true, button: 0, buttons: 1, clientX: 200, clientY: 200 });
+                var mDown = new MouseEvent('mousedown', { bubbles: true, cancelable: true, button: 0, buttons: 1, clientX: 200, clientY: 200 });
+                canvas.dispatchEvent(pDown);
+                canvas.dispatchEvent(mDown);
+              } catch(err) {}
+            }
+          }
+
+          function simulateJetpackUp() {
+            var canvas = document.querySelector('canvas') || document.body;
+            var kDown = new KeyboardEvent('keyup', { key: ' ', code: 'Space', keyCode: 32, which: 32, bubbles: true, cancelable: true });
+            var kUp = new KeyboardEvent('keyup', { key: 'ArrowUp', code: 'ArrowUp', keyCode: 38, which: 38, bubbles: true, cancelable: true });
+            window.dispatchEvent(kDown);
+            window.dispatchEvent(kUp);
+            if (canvas) {
+              canvas.dispatchEvent(kDown);
+              canvas.dispatchEvent(kUp);
+              try {
+                var pUp = new PointerEvent('pointerup', { bubbles: true, cancelable: true, pointerType: 'mouse', isPrimary: true, button: 0, buttons: 0, clientX: 200, clientY: 200 });
+                var mUp = new MouseEvent('mouseup', { bubbles: true, cancelable: true, button: 0, buttons: 0, clientX: 200, clientY: 200 });
+                canvas.dispatchEvent(pUp);
+                canvas.dispatchEvent(mUp);
+              } catch(err) {}
+            }
+          }
+
+          window.addEventListener('load', focusGame);
+          window.addEventListener('click', focusGame);
+
+          var isSpaceDown = false;
+
+          window.addEventListener('keydown', function(e) {
+            if ([' ', 'Spacebar', 'ArrowUp', 'w', 'W'].indexOf(e.key) >= 0 || e.keyCode === 32 || e.keyCode === 38) {
+              e.preventDefault();
+              if (!isSpaceDown) {
+                isSpaceDown = true;
+                simulateJetpackDown();
+              }
+            }
+          });
+
+          window.addEventListener('keyup', function(e) {
+            if ([' ', 'Spacebar', 'ArrowUp', 'w', 'W'].indexOf(e.key) >= 0 || e.keyCode === 32 || e.keyCode === 38) {
+              e.preventDefault();
+              isSpaceDown = false;
+              simulateJetpackUp();
+            }
+          });
+
+          window.addEventListener('message', function(event) {
+            if (event.data) {
+              if (event.data.type === 'JETPACK_DOWN') {
+                simulateJetpackDown();
+              } else if (event.data.type === 'JETPACK_UP') {
+                simulateJetpackUp();
+              }
+            }
+          });
+        </script>
+    </body>
+</html>`;
+
+  const triggerJetpackDown = () => {
+    if (!iframeRef.current) return;
+    try {
+      iframeRef.current.contentWindow?.focus();
+      iframeRef.current.contentWindow?.postMessage({ type: 'JETPACK_DOWN' }, '*');
+      const win = iframeRef.current.contentWindow;
+      if (win && typeof win.simulateJetpackDown === 'function') {
+        win.simulateJetpackDown();
+      }
+    } catch (e) {}
+  };
+
+  const triggerJetpackUp = () => {
+    if (!iframeRef.current) return;
+    try {
+      iframeRef.current.contentWindow?.postMessage({ type: 'JETPACK_UP' }, '*');
+      const win = iframeRef.current.contentWindow;
+      if (win && typeof win.simulateJetpackUp === 'function') {
+        win.simulateJetpackUp();
+      }
+    } catch (e) {}
+  };
+
+  useEffect(() => {
+    let isKeyDown = false;
+
+    const handleKeyDown = (e) => {
+      const activeElement = document.activeElement;
+      if (activeElement && (activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA')) {
+        return;
+      }
+
+      if (e.key === ' ' || e.key === 'Spacebar' || e.key === 'ArrowUp' || e.key === 'w' || e.key === 'W' || e.keyCode === 32 || e.keyCode === 38) {
+        e.preventDefault();
+        if (!isKeyDown) {
+          isKeyDown = true;
+          triggerJetpackDown();
+        }
+      }
+    };
+
+    const handleKeyUp = (e) => {
+      const activeElement = document.activeElement;
+      if (activeElement && (activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA')) {
+        return;
+      }
+
+      if (e.key === ' ' || e.key === 'Spacebar' || e.key === 'ArrowUp' || e.key === 'w' || e.key === 'W' || e.keyCode === 32 || e.keyCode === 38) {
+        e.preventDefault();
+        isKeyDown = false;
+        triggerJetpackUp();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('keyup', handleKeyUp);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('keyup', handleKeyUp);
+    };
+  }, []);
+
+  const focusIframe = () => {
+    if (iframeRef.current && iframeRef.current.contentWindow) {
+      iframeRef.current.contentWindow.focus();
+    }
+  };
+
+  return (
+    <div
+      className="w-full h-full min-h-[480px] bg-black rounded-xl overflow-hidden flex flex-col items-center justify-center relative group"
+      onClick={focusIframe}
+      onMouseEnter={focusIframe}
+    >
+      <iframe
+        ref={iframeRef}
+        srcDoc={jetpackHtml}
+        title="Jetpack Joyride"
+        style={{ width: '100%', height: '100%', border: 0, margin: 0, padding: 0 }}
+        className="w-full h-full border-0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; gamepad"
+        allowFullScreen
+        onLoad={focusIframe}
+      />
+
+      {/* On-screen control bar for Jetpack Thrust */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 pointer-events-none opacity-85 hover:opacity-100 transition-opacity z-20">
+        <button
+          type="button"
+          onMouseDown={triggerJetpackDown}
+          onMouseUp={triggerJetpackUp}
+          onTouchStart={triggerJetpackDown}
+          onTouchEnd={triggerJetpackUp}
+          className="pointer-events-auto px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 active:scale-95 text-white font-black text-xs sm:text-sm rounded-2xl border border-amber-300/40 shadow-xl backdrop-blur-md transition-all flex items-center gap-2.5 select-none cursor-pointer"
+        >
+          <span>🚀 HOLD TO FLY</span>
+          <span className="text-[10px] text-amber-100 font-mono bg-black/40 px-2 py-0.5 rounded border border-amber-200/30">[ SPACEBAR / CLICK ]</span>
+        </button>
+      </div>
+    </div>
+  );
+};
+
+const EngineSuperSmashBros = () => {
+  const iframeRef = useRef(null);
+
+  const smashHtml = `<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<script src="https://www.google.com/jsapi"></script>
+	<script>
+		if (window.parent && typeof window.parent.maeExportApis_ === 'function') {
+			try { window.parent.maeExportApis_(); } catch(e) {}
+		}
+	</script>
+
+	<style>
+		body {
+			overflow: hidden;
+			background: #000000;
+			margin: 0;
+			padding: 0;
+			color: #ffffff;
+			width: 100vw;
+			height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-family: sans-serif;
+		}
+
+		#startButton {
+			display: block;
+			width: 180px;
+			height: 48px;
+			background-color: #4CAF50;
+			color: white;
+			text-align: center;
+			text-decoration: none;
+			font-size: 16px;
+			font-weight: bold;
+			margin: 20px auto;
+			padding: 12px 20px;
+			border: none;
+			border-radius: 8px;
+			cursor: pointer;
+			font-family: 'Press Start 2P', cursive, sans-serif;
+			box-shadow: 0px 0px 12px 3px rgba(76, 175, 80, 0.6);
+			transition: transform 0.15s ease, background-color 0.15s ease;
+		}
+		#startButton:hover {
+			background-color: #45a049;
+			transform: scale(1.05);
+		}
+
+		#game {
+			width: 100vw;
+			height: 100vh;
+		}
+	</style>
+	<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&amp;display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<div style="width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+		<div id="game" style="display: none;"></div>
+		<button id="startButton">PLAY</button>
+	</div>
+	<script>
+		document.getElementById("game").style.display = "none";
+		function startGame() {
+			document.getElementById("game").style.display = "block";
+			document.getElementById("startButton").style.display = "none";
+			window.EJS_player = "#game";
+			window.EJS_core = "n64";
+			window.EJS_color = "#000000";
+			window.EJS_startOnLoaded = true;
+			window.EJS_pathtodata = "https://cdn.jsdelivr.net/gh/a456pur/seraph@81f551ca0aa8e3d6018d32d8ac5904ac9bc78f76/storage/emulatorjs/data/";
+			window.EJS_gameUrl = "https://cdn.jsdelivr.net/gh/a456pur/seraph@ae2fcc6d6a9cd051654fcc0519080db1f79cf2a7/games/supersmashbros/supersmashbros.zip";
+			loadGame(); 
+		}
+		document.getElementById("startButton").addEventListener("click", startGame);
+		function loadGame() {
+			var script1 = document.createElement("script");
+			script1.src = "https://cdn.jsdelivr.net/gh/a456pur/seraph@81f551ca0aa8e3d6018d32d8ac5904ac9bc78f76/storage/emulatorjs/data/loader.js";
+			document.body.appendChild(script1);
+			var script2 = document.createElement("script");
+			script2.src = "https://cdn.jsdelivr.net/gh/a456pur/seraph@ae2fcc6d6a9cd051654fcc0519080db1f79cf2a7/storage/js/cloak.js";
+			document.body.appendChild(script2);
+		}
+	</script>
+</body>
+</html>`;
+
+  const focusIframe = () => {
+    if (iframeRef.current && iframeRef.current.contentWindow) {
+      iframeRef.current.contentWindow.focus();
+    }
+  };
+
+  return (
+    <div
+      className="w-full h-full min-h-[480px] bg-black rounded-xl overflow-hidden flex flex-col items-center justify-center relative"
+      onClick={focusIframe}
+      onMouseEnter={focusIframe}
+    >
+      <iframe
+        ref={iframeRef}
+        srcDoc={smashHtml}
+        title="Super Smash Bros"
+        style={{ width: '100%', height: '100%', border: 0, margin: 0, padding: 0 }}
+        className="w-full h-full border-0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; gamepad"
+        allowFullScreen
+        onLoad={focusIframe}
+      />
+    </div>
+  );
+};
+
+const EngineCrossyRoad = () => {
+  const iframeRef = useRef(null);
+
+  const crossyHtml = `<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Crossy Road 3D</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
+        html, body { width: 100%; height: 100%; overflow: hidden; background: #1a202c; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        #canvas-container { width: 100%; height: 100%; position: absolute; top: 0; left: 0; }
+        #ui { position: absolute; top: 16px; left: 16px; z-index: 10; pointer-events: none; color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.8); }
+        .score-box { font-size: 32px; font-weight: 900; letter-spacing: 1px; color: #facc15; }
+        .highscore-box { font-size: 14px; font-weight: 700; color: #cbd5e1; opacity: 0.9; }
+        
+        #game-over {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            z-index: 20; color: #fff; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+        }
+        #game-over.active { opacity: 1; pointer-events: auto; }
+        #game-over h1 { font-size: 40px; font-weight: 900; color: #ef4444; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 2px; }
+        #game-over .final-score { font-size: 24px; color: #facc15; margin-bottom: 4px; font-weight: 800; }
+        #game-over .best-score { font-size: 16px; color: #94a3b8; margin-bottom: 24px; }
+        #restart-btn {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: white; border: none; padding: 14px 32px; font-size: 18px; font-weight: 800;
+            border-radius: 9999px; cursor: pointer; box-shadow: 0 10px 25px -5px rgba(34, 197, 94, 0.5);
+            transition: transform 0.15s, background 0.15s;
+        }
+        #restart-btn:hover { transform: scale(1.05); background: linear-gradient(135deg, #4ade80, #22c55e); }
+        #restart-btn:active { transform: scale(0.95); }
+
+        .controls-overlay {
+            position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+            z-index: 10; display: grid; grid-template-columns: repeat(3, 56px); grid-template-rows: repeat(2, 52px);
+            gap: 8px; pointer-events: auto;
+        }
+        .btn-ctrl {
+            background: rgba(30, 41, 59, 0.85); border: 2px solid rgba(255,255,255,0.2); color: white;
+            border-radius: 14px; font-size: 20px; font-weight: bold; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; backdrop-filter: blur(4px); box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            user-select: none; touch-action: manipulation; transition: background 0.1s, transform 0.1s;
+        }
+        .btn-ctrl:active { background: rgba(56, 189, 248, 0.9); transform: scale(0.92); }
+        .btn-up { grid-column: 2; grid-row: 1; }
+        .btn-left { grid-column: 1; grid-row: 2; }
+        .btn-down { grid-column: 2; grid-row: 2; }
+        .btn-right { grid-column: 3; grid-row: 2; }
+    </style>
+</head>
+<body>
+    <div id="canvas-container"></div>
+    <div id="ui">
+        <div className="score-box" id="score">0</div>
+        <div className="highscore-box" id="highscore">BEST: 0</div>
+    </div>
+
+    <div id="game-over">
+        <h1>GAME OVER</h1>
+        <div className="final-score" id="final-score">SCORE: 0</div>
+        <div className="best-score" id="best-score">BEST: 0</div>
+        <button id="restart-btn" onclick="restartGame()">PLAY AGAIN</button>
+    </div>
+
+    <div className="controls-overlay">
+        <div className="btn-ctrl btn-up" onclick="movePlayer('up')">▲</div>
+        <div className="btn-ctrl btn-left" onclick="movePlayer('left')">◄</div>
+        <div className="btn-ctrl btn-down" onclick="movePlayer('down')">▼</div>
+        <div className="btn-ctrl btn-right" onclick="movePlayer('right')">►</div>
+    </div>
+
+    <script>
+        // Web Audio Synthesizer for retro sounds
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        function playSound(type) {
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            const now = audioCtx.currentTime;
+
+            if (type === 'hop') {
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(300, now);
+                osc.frequency.exponentialRampToValueAtTime(600, now + 0.08);
+                gain.gain.setValueAtTime(0.3, now);
+                gain.gain.linearRampToValueAtTime(0.01, now + 0.08);
+                osc.start(now); osc.stop(now + 0.08);
+            } else if (type === 'coin') {
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(987.77, now);
+                osc.frequency.setValueAtTime(1318.51, now + 0.08);
+                gain.gain.setValueAtTime(0.3, now);
+                gain.gain.linearRampToValueAtTime(0.01, now + 0.25);
+                osc.start(now); osc.stop(now + 0.25);
+            } else if (type === 'crash') {
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(150, now);
+                osc.frequency.exponentialRampToValueAtTime(40, now + 0.3);
+                gain.gain.setValueAtTime(0.5, now);
+                gain.gain.linearRampToValueAtTime(0.01, now + 0.3);
+                osc.start(now); osc.stop(now + 0.3);
+            } else if (type === 'splash') {
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(400, now);
+                osc.frequency.exponentialRampToValueAtTime(80, now + 0.25);
+                gain.gain.setValueAtTime(0.4, now);
+                gain.gain.linearRampToValueAtTime(0.01, now + 0.25);
+                osc.start(now); osc.stop(now + 0.25);
+            }
+        }
+
+        // ThreeJS Isometric Game Scene
+        let scene, camera, renderer;
+        let player, playerGridPos = { x: 0, z: 0 };
+        let isMoving = false, moveProgress = 0, moveStartPos = null, moveTargetPos = null;
+        let score = 0, maxZ = 0, highScore = localStorage.getItem('crossy_highscore') || 0;
+        let gameOver = false;
+        let lanes = [];
+        const LANE_WIDTH = 30;
+        const GRID_SIZE = 1;
+
+        document.getElementById('highscore').innerText = 'BEST: ' + highScore;
+
+        function init() {
+            const container = document.getElementById('canvas-container');
+            scene = new THREE.Scene();
+            scene.background = new THREE.Color(0x87ceeb);
+
+            // Isometric Orthographic Camera
+            const aspect = window.innerWidth / window.innerHeight;
+            const d = 8;
+            camera = new THREE.OrthographicCamera(-d * aspect, d * aspect, d, -d, 1, 1000);
+            camera.position.set(10, 15, 10);
+            camera.lookAt(0, 0, 0);
+
+            // Lighting
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.65);
+            scene.add(ambientLight);
+
+            const dirLight = new THREE.DirectionalLight(0xffffff, 0.7);
+            dirLight.position.set(15, 25, 10);
+            dirLight.castShadow = true;
+            dirLight.shadow.mapSize.width = 1024;
+            dirLight.shadow.mapSize.height = 1024;
+            scene.add(dirLight);
+
+            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.shadowMap.enabled = true;
+            container.appendChild(renderer.domElement);
+
+            createPlayer();
+            initTerrain();
+
+            window.addEventListener('resize', onWindowResize);
+            animate();
+        }
+
+        function createPlayer() {
+            player = new THREE.Group();
+
+            // Chicken Voxel Body
+            const bodyGeo = new THREE.BoxGeometry(0.6, 0.6, 0.6);
+            const bodyMat = new THREE.MeshLambertMaterial({ color: 0xffffff });
+            const body = new THREE.Mesh(bodyGeo, bodyMat);
+            body.position.y = 0.3;
+            body.castShadow = true;
+            player.add(body);
+
+            // Comb (Red)
+            const combGeo = new THREE.BoxGeometry(0.15, 0.2, 0.3);
+            const combMat = new THREE.MeshLambertMaterial({ color: 0xef4444 });
+            const comb = new THREE.Mesh(combGeo, combMat);
+            comb.position.set(0, 0.7, 0);
+            player.add(comb);
+
+            // Beak (Yellow)
+            const beakGeo = new THREE.BoxGeometry(0.2, 0.15, 0.2);
+            const beakMat = new THREE.MeshLambertMaterial({ color: 0xf59e0b });
+            const beak = new THREE.Mesh(beakGeo, beakMat);
+            beak.position.set(0, 0.35, 0.35);
+            player.add(beak);
+
+            // Eyes
+            const eyeGeo = new THREE.BoxGeometry(0.08, 0.08, 0.08);
+            const eyeMat = new THREE.MeshBasicMaterial({ color: 0x000000 });
+            const eyeL = new THREE.Mesh(eyeGeo, eyeMat);
+            eyeL.position.set(-0.25, 0.45, 0.25);
+            const eyeR = new THREE.Mesh(eyeGeo, eyeMat);
+            eyeR.position.set(0.25, 0.45, 0.25);
+            player.add(eyeL);
+            player.add(eyeR);
+
+            player.position.set(0, 0, 0);
+            scene.add(player);
+        }
+
+        // Terrain Generation
+        function initTerrain() {
+            for (let z = -5; z <= 25; z++) {
+                spawnLane(z);
+            }
+        }
+
+        function spawnLane(z) {
+            let type = 'grass';
+            if (z < 1) type = 'grass';
+            else {
+                const rand = Math.random();
+                if (rand < 0.4) type = 'road';
+                else if (rand < 0.7) type = 'river';
+                else if (rand < 0.82) type = 'rail';
+                else type = 'grass';
+            }
+
+            const lane = { z, type, obstacles: [], speed: 0, direction: 1 };
+            const group = new THREE.Group();
+            group.position.z = z;
+
+            if (type === 'grass') {
+                const geo = new THREE.BoxGeometry(LANE_WIDTH, 1, 1);
+                const mat = new THREE.MeshLambertMaterial({ color: 0x4ade80 });
+                const mesh = new THREE.Mesh(geo, mat);
+                mesh.position.y = -0.5;
+                mesh.receiveShadow = true;
+                group.add(mesh);
+
+                // Trees on sides
+                if (z > 2 && Math.random() < 0.6) {
+                    const numTrees = Math.floor(Math.random() * 3) + 1;
+                    for (let i = 0; i < numTrees; i++) {
+                        const x = (Math.random() < 0.5 ? -1 : 1) * (3 + Math.floor(Math.random() * 8));
+                        const tree = createTree();
+                        tree.position.set(x, 0, 0);
+                        group.add(tree);
+                    }
+                }
+            } else if (type === 'road') {
+                const geo = new THREE.BoxGeometry(LANE_WIDTH, 1, 1);
+                const mat = new THREE.MeshLambertMaterial({ color: 0x334155 });
+                const mesh = new THREE.Mesh(geo, mat);
+                mesh.position.y = -0.5;
+                mesh.receiveShadow = true;
+                group.add(mesh);
+
+                lane.speed = (0.04 + Math.random() * 0.05);
+                lane.direction = Math.random() < 0.5 ? 1 : -1;
+
+                // Spawn cars
+                const numCars = Math.floor(Math.random() * 2) + 1;
+                for (let i = 0; i < numCars; i++) {
+                    const car = createCar();
+                    car.position.x = (i * 10 - 10) * lane.direction;
+                    car.rotation.y = lane.direction === 1 ? 0 : Math.PI;
+                    group.add(car);
+                    lane.obstacles.push(car);
+                }
+            } else if (type === 'river') {
+                const geo = new THREE.BoxGeometry(LANE_WIDTH, 0.8, 1);
+                const mat = new THREE.MeshLambertMaterial({ color: 0x38bdf8 });
+                const mesh = new THREE.Mesh(geo, mat);
+                mesh.position.y = -0.6;
+                group.add(mesh);
+
+                lane.speed = (0.02 + Math.random() * 0.03);
+                lane.direction = Math.random() < 0.5 ? 1 : -1;
+
+                // Spawn logs
+                const numLogs = 3;
+                for (let i = 0; i < numLogs; i++) {
+                    const log = createLog();
+                    log.position.x = (i * 9 - 10);
+                    group.add(log);
+                    lane.obstacles.push(log);
+                }
+            } else if (type === 'rail') {
+                const geo = new THREE.BoxGeometry(LANE_WIDTH, 0.9, 1);
+                const mat = new THREE.MeshLambertMaterial({ color: 0x64748b });
+                const mesh = new THREE.Mesh(geo, mat);
+                mesh.position.y = -0.55;
+                group.add(mesh);
+
+                lane.speed = 0.25; // Speeding train!
+                lane.direction = Math.random() < 0.5 ? 1 : -1;
+                lane.trainTimer = Math.random() * 200;
+
+                const train = createTrain();
+                train.position.x = -LANE_WIDTH * lane.direction;
+                group.add(train);
+                lane.train = train;
+            }
+
+            scene.add(group);
+            lane.group = group;
+            lanes.push(lane);
+        }
+
+        function createTree() {
+            const group = new THREE.Group();
+            const trunkGeo = new THREE.BoxGeometry(0.3, 0.6, 0.3);
+            const trunkMat = new THREE.MeshLambertMaterial({ color: 0x78350f });
+            const trunk = new THREE.Mesh(trunkGeo, trunkMat);
+            trunk.position.y = 0.3;
+            group.add(trunk);
+
+            const leavesGeo = new THREE.BoxGeometry(0.8, 0.8, 0.8);
+            const leavesMat = new THREE.MeshLambertMaterial({ color: 0x15803d });
+            const leaves = new THREE.Mesh(leavesGeo, leavesMat);
+            leaves.position.y = 0.9;
+            group.add(leaves);
+            return group;
+        }
+
+        function createCar() {
+            const group = new THREE.Group();
+            const colors = [0xef4444, 0x3b82f6, 0xeab308, 0xa855f7];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+
+            const bodyGeo = new THREE.BoxGeometry(1.6, 0.5, 0.8);
+            const bodyMat = new THREE.MeshLambertMaterial({ color });
+            const body = new THREE.Mesh(bodyGeo, bodyMat);
+            body.position.y = 0.25;
+            body.castShadow = true;
+            group.add(body);
+
+            const topGeo = new THREE.BoxGeometry(0.9, 0.4, 0.7);
+            const topMat = new THREE.MeshLambertMaterial({ color: 0xffffff });
+            const top = new THREE.Mesh(topGeo, topMat);
+            top.position.set(0, 0.6, 0);
+            group.add(top);
+
+            return group;
+        }
+
+        function createLog() {
+            const geo = new THREE.BoxGeometry(2.5, 0.25, 0.7);
+            const mat = new THREE.MeshLambertMaterial({ color: 0x92400e });
+            const mesh = new THREE.Mesh(geo, mat);
+            mesh.position.y = -0.1;
+            mesh.receiveShadow = true;
+            return mesh;
+        }
+
+        function createTrain() {
+            const geo = new THREE.BoxGeometry(10, 0.9, 0.8);
+            const mat = new THREE.MeshLambertMaterial({ color: 0xd97706 });
+            const mesh = new THREE.Mesh(geo, mat);
+            mesh.position.y = 0.45;
+            return mesh;
+        }
+
+        function movePlayer(dir) {
+            if (isMoving || gameOver) return;
+
+            let targetX = playerGridPos.x;
+            let targetZ = playerGridPos.z;
+
+            if (dir === 'up') { targetZ += 1; player.rotation.y = 0; }
+            else if (dir === 'down') { targetZ -= 1; player.rotation.y = Math.PI; }
+            else if (dir === 'left') { targetX -= 1; player.rotation.y = Math.PI / 2; }
+            else if (dir === 'right') { targetX += 1; player.rotation.y = -Math.PI / 2; }
+
+            // Boundary check
+            if (targetX < -8 || targetX > 8) return;
+
+            playerGridPos.x = targetX;
+            playerGridPos.z = targetZ;
+
+            moveStartPos = player.position.clone();
+            moveTargetPos = new THREE.Vector3(targetX, 0, targetZ);
+            isMoving = true;
+            moveProgress = 0;
+
+            playSound('hop');
+
+            // Score logic
+            if (targetZ > maxZ) {
+                maxZ = targetZ;
+                score = maxZ;
+                document.getElementById('score').innerText = score;
+                if (score > highScore) {
+                    highScore = score;
+                    localStorage.setItem('crossy_highscore', highScore);
+                    document.getElementById('highscore').innerText = 'BEST: ' + highScore;
+                }
+
+                // Spawn new terrain lanes dynamically
+                spawnLane(maxZ + 25);
+            }
+        }
+
+        function updateLanes() {
+            lanes.forEach(lane => {
+                if (lane.type === 'road') {
+                    lane.obstacles.forEach(car => {
+                        car.position.x += lane.speed * lane.direction;
+                        if (lane.direction === 1 && car.position.x > 14) car.position.x = -14;
+                        if (lane.direction === -1 && car.position.x < -14) car.position.x = 14;
+
+                        // Collision Check with Player
+                        if (Math.abs(player.position.z - lane.z) < 0.5 && Math.abs(player.position.x - car.position.x) < 1.1) {
+                            triggerGameOver('crash');
+                        }
+                    });
+                } else if (lane.type === 'river') {
+                    let onLog = false;
+                    lane.obstacles.forEach(log => {
+                        log.position.x += lane.speed * lane.direction;
+                        if (lane.direction === 1 && log.position.x > 14) log.position.x = -14;
+                        if (lane.direction === -1 && log.position.x < -14) log.position.x = 14;
+
+                        if (Math.abs(player.position.z - lane.z) < 0.4 && Math.abs(player.position.x - log.position.x) < 1.4) {
+                            onLog = true;
+                            if (!isMoving) {
+                                player.position.x += lane.speed * lane.direction;
+                                playerGridPos.x = Math.round(player.position.x);
+                            }
+                        }
+                    });
+
+                    if (Math.abs(player.position.z - lane.z) < 0.4 && !onLog && !isMoving) {
+                        triggerGameOver('splash');
+                    }
+                } else if (lane.type === 'rail') {
+                    lane.trainTimer++;
+                    if (lane.trainTimer > 240) {
+                        lane.train.position.x += lane.speed * lane.direction;
+                        if (Math.abs(player.position.z - lane.z) < 0.5 && Math.abs(player.position.x - lane.train.position.x) < 5.2) {
+                            triggerGameOver('crash');
+                        }
+                        if (Math.abs(lane.train.position.x) > 25) {
+                            lane.trainTimer = 0;
+                            lane.train.position.x = -LANE_WIDTH * lane.direction;
+                        }
+                    }
+                }
+            });
+        }
+
+        function triggerGameOver(type) {
+            if (gameOver) return;
+            gameOver = true;
+            playSound(type);
+
+            if (type === 'crash') {
+                player.scale.set(1.2, 0.1, 1.2); // Squish chicken
+            } else if (type === 'splash') {
+                player.position.y = -0.5; // Sink in water
+            }
+
+            document.getElementById('final-score').innerText = 'SCORE: ' + score;
+            document.getElementById('best-score').innerText = 'BEST: ' + highScore;
+            document.getElementById('game-over').classList.add('active');
+        }
+
+        function restartGame() {
+            gameOver = false;
+            score = 0;
+            maxZ = 0;
+            playerGridPos = { x: 0, z: 0 };
+            player.position.set(0, 0, 0);
+            player.scale.set(1, 1, 1);
+            document.getElementById('score').innerText = '0';
+            document.getElementById('game-over').classList.remove('active');
+
+            // Reset camera
+            camera.position.set(10, 15, 10);
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            if (!gameOver) {
+                // Smooth Hopping Lerp Animation
+                if (isMoving) {
+                    moveProgress += 0.15;
+                    player.position.lerpVectors(moveStartPos, moveTargetPos, Math.min(moveProgress, 1));
+                    player.position.y = Math.sin(Math.min(moveProgress, 1) * Math.PI) * 0.5; // Hop arc
+
+                    if (moveProgress >= 1) {
+                        player.position.copy(moveTargetPos);
+                        player.position.y = 0;
+                        isMoving = false;
+                    }
+                }
+
+                updateLanes();
+
+                // Smooth Camera Tracking
+                const targetCamX = player.position.x + 10;
+                const targetCamZ = player.position.z + 10;
+                camera.position.x += (targetCamX - camera.position.x) * 0.1;
+                camera.position.z += (targetCamZ - camera.position.z) * 0.1;
+            }
+
+            renderer.render(scene, camera);
+        }
+
+        function onWindowResize() {
+            const aspect = window.innerWidth / window.innerHeight;
+            const d = 8;
+            camera.left = -d * aspect;
+            camera.right = d * aspect;
+            camera.top = d;
+            camera.bottom = -d;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        // Key Listeners
+        window.addEventListener('keydown', (e) => {
+            if (['ArrowUp', 'w', 'W', ' '].includes(e.key)) { e.preventDefault(); movePlayer('up'); }
+            else if (['ArrowDown', 's', 'S'].includes(e.key)) { e.preventDefault(); movePlayer('down'); }
+            else if (['ArrowLeft', 'a', 'A'].includes(e.key)) { e.preventDefault(); movePlayer('left'); }
+            else if (['ArrowRight', 'd', 'D'].includes(e.key)) { e.preventDefault(); movePlayer('right'); }
+            else if (e.key === 'r' || e.key === 'R') { restartGame(); }
+        });
+
+        window.onload = init;
+    </script>
+</body>
+</html>`;
+
+  const focusIframe = () => {
+    if (iframeRef.current && iframeRef.current.contentWindow) {
+      iframeRef.current.contentWindow.focus();
+    }
+  };
+
+  return (
+    <div
+      className="w-full h-full min-h-[480px] bg-black rounded-xl overflow-hidden flex flex-col items-center justify-center relative"
+      onClick={focusIframe}
+      onMouseEnter={focusIframe}
+    >
+      <iframe
+        ref={iframeRef}
+        srcDoc={crossyHtml}
+        title="Crossy Road 3D"
+        style={{ width: '100%', height: '100%', border: 0, margin: 0, padding: 0 }}
+        className="w-full h-full border-0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; gamepad"
+        allowFullScreen
+        onLoad={focusIframe}
+      />
+    </div>
+  );
+};
+
+const EngineFinalFantasy = () => {
+  const iframeRef = useRef(null);
+
+  const ffHtml = `<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<script src="https://www.google.com/jsapi"></script>
+	<script>
+		if (window.parent && typeof window.parent.maeExportApis_ === 'function') {
+			try { window.parent.maeExportApis_(); } catch(e) {}
+		}
+	</script>
+
+	<style>
+		body {
+			overflow: hidden;
+			background: #000000;
+			margin: 0;
+			padding: 0;
+			color: #ffffff;
+			width: 100vw;
+			height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-family: sans-serif;
+		}
+
+		#startButton {
+			display: block;
+			width: 180px;
+			height: 48px;
+			background-color: #4CAF50;
+			color: white;
+			text-align: center;
+			text-decoration: none;
+			font-size: 16px;
+			font-weight: bold;
+			margin: 20px auto;
+			padding: 12px 20px;
+			border: none;
+			border-radius: 8px;
+			cursor: pointer;
+			font-family: 'Press Start 2P', cursive, sans-serif;
+			box-shadow: 0px 0px 12px 3px rgba(76, 175, 80, 0.6);
+			transition: transform 0.15s ease, background-color 0.15s ease;
+		}
+		#startButton:hover {
+			background-color: #45a049;
+			transform: scale(1.05);
+		}
+
+		#game {
+			width: 100vw;
+			height: 100vh;
+		}
+	</style>
+	<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&amp;display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<div style="width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+		<div id="game" style="display: none;"></div>
+		<button id="startButton">PLAY</button>
+	</div>
+	<script>
+		document.getElementById("game").style.display = "none";
+		function startGame() {
+			document.getElementById("game").style.display = "block";
+			document.getElementById("startButton").style.display = "none";
+			window.EJS_player = "#game";
+			window.EJS_core = "nes";
+			window.EJS_color = "#000000";
+			window.EJS_startOnLoaded = true;
+			window.EJS_pathtodata = "https://cdn.jsdelivr.net/gh/a456pur/seraph@81f551ca0aa8e3d6018d32d8ac5904ac9bc78f76/storage/emulatorjs/data";
+			window.EJS_gameUrl = "https://cdn.jsdelivr.net/gh/bubbls/UGS-file-encryption@c99c02b28ea1531fb40611092887d0aa9db97712/Final%20Fantasy%20(USA).zip";
+			loadGame(); 
+		}
+		document.getElementById("startButton").addEventListener("click", startGame);
+		function loadGame() {
+			var script1 = document.createElement("script");
+			script1.src = "https://cdn.jsdelivr.net/gh/a456pur/seraph@81f551ca0aa8e3d6018d32d8ac5904ac9bc78f76/storage/emulatorjs/data/loader.js";
+			document.body.appendChild(script1);
+			var script2 = document.createElement("script");
+			script2.src = "https://cdn.jsdelivr.net/gh/a456pur/seraph@ae2fcc6d6a9cd051654fcc0519080db1f79cf2a7/storage/js/cloak.js";
+			document.body.appendChild(script2);
+		}
+	</script>
+</body>
+</html>`;
+
+  const focusIframe = () => {
+    if (iframeRef.current && iframeRef.current.contentWindow) {
+      iframeRef.current.contentWindow.focus();
+    }
+  };
+
+  return (
+    <div
+      className="w-full h-full min-h-[480px] bg-black rounded-xl overflow-hidden flex flex-col items-center justify-center relative"
+      onClick={focusIframe}
+      onMouseEnter={focusIframe}
+    >
+      <iframe
+        ref={iframeRef}
+        srcDoc={ffHtml}
+        title="Final Fantasy NES"
+        style={{ width: '100%', height: '100%', border: 0, margin: 0, padding: 0 }}
+        className="w-full h-full border-0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; gamepad"
+        allowFullScreen
+        onLoad={focusIframe}
+      />
+    </div>
+  );
+};
+
 export const BuiltInGamesEngine = ({ gameId }) => {
   if (gameId === 'chroma-incident' || gameId === 'color-puzzles') {
     return <ChromaIncidentEngine />;
@@ -1785,6 +3070,18 @@ export const BuiltInGamesEngine = ({ gameId }) => {
   }
   if (gameId === 'slope-game') {
     return <EngineSlope />;
+  }
+  if (gameId === 'jetpack-joyride') {
+    return <EngineJetpackJoyride />;
+  }
+  if (gameId === 'super-smash-bros') {
+    return <EngineSuperSmashBros />;
+  }
+  if (gameId === 'crossy-road') {
+    return <EngineCrossyRoad />;
+  }
+  if (gameId === 'final-fantasy') {
+    return <EngineFinalFantasy />;
   }
 
   return (

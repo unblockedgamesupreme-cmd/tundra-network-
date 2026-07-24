@@ -38,7 +38,7 @@ export const initialGamesData = [
   },
   {
     "id": "slope-game",
-    "title": "Slope 3D",
+    "title": "Slope 3",
     "category": "Arcade",
     "description": "Drive a ball down a steep neon 3D obstacle course at breakneck speeds. Dodge red blocks, jump ramps, and set new high scores!",
     "iframeUrl": "https://y8.com/embed/slope",
@@ -82,6 +82,26 @@ export const initialGamesData = [
     "popular": true,
     "tags": ["snake", "classic", "retro", "arcade"],
     "author": "Retro Arcade",
+    "hasBuiltInEngine": true
+  },
+  {
+    "id": "jetpack-joyride",
+    "title": "Jetpack Joyride",
+    "category": "Arcade",
+    "description": "Fly with high-tech jetpacks as Barry Steakfries! Dodge zappers, missiles, and laser beams while collecting coins and crazy vehicles in an endless laboratory run.",
+    "iframeUrl": "https://cdn.jsdelivr.net/gh/genizy/jride@475e65ec2f642cf50bb80f09f4f4188cf8c26faa/index.html",
+    "thumbnail": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&auto=format&fit=crop&q=80",
+    "rating": 4.9,
+    "plays": "750K",
+    "controls": [
+      "Click Mouse, Tap Screen, or Hold Spacebar / Up Arrow to fire jetpack and fly",
+      "Release to fall back down",
+      "Avoid zappers, electric fields, and homing missiles"
+    ],
+    "featured": true,
+    "popular": true,
+    "tags": ["jetpack", "joyride", "arcade", "runner", "action", "phaser"],
+    "author": "Halfbrick Studios / Genizy",
     "hasBuiltInEngine": true
   },
   {
@@ -179,6 +199,71 @@ export const initialGamesData = [
     "tags": ["drift", "cars", "racing", "3d", "simulator"],
     "author": "Studiorum",
     "hasBuiltInEngine": false
+  },
+  {
+    "id": "super-smash-bros",
+    "title": "Super Smash Bros N64",
+    "category": "Action",
+    "description": "The legendary Nintendo 64 crossover brawler! Fight as Mario, Link, Pikachu, Donkey Kong, and iconic characters in epic arena battles.",
+    "iframeUrl": "https://cdn.jsdelivr.net/gh/a456pur/seraph@ae2fcc6d6a9cd051654fcc0519080db1f79cf2a7/games/supersmashbros/supersmashbros.zip",
+    "thumbnail": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&auto=format&fit=crop&q=80",
+    "rating": 5.0,
+    "plays": "980K",
+    "controls": [
+      "Click PLAY to launch the N64 Emulator",
+      "Arrow Keys / WASD for Analog Stick movement",
+      "Z / X / C / V for A, B, Z-trigger, and R buttons",
+      "Enter for Start button",
+      "Customize controls in emulator settings menu"
+    ],
+    "featured": true,
+    "popular": true,
+    "tags": ["smash", "n64", "fighting", "nintendo", "retro", "emulator"],
+    "author": "Nintendo / EmulatorJS",
+    "hasBuiltInEngine": true
+  },
+  {
+    "id": "crossy-road",
+    "title": "Crossy Road",
+    "category": "Arcade",
+    "description": "Cross endless busy roads, rushing train tracks, and treacherous rivers! Hop your voxel chicken to safety, avoid oncoming traffic, and set high scores in this addictive arcade classic.",
+    "iframeUrl": "https://cdn.jsdelivr.net/gh/bubbls/UGS-Assets@eb0836289452ca93a6c2749f95b2c8a01562d1bb/crossyroad/index.html",
+    "thumbnail": "https://images.unsplash.com/photo-1579373903781-fd5c0c30c4cd?w=600&auto=format&fit=crop&q=80",
+    "rating": 4.9,
+    "plays": "820K",
+    "controls": [
+      "Arrow Keys / WASD / Spacebar or Click Screen to Hop Forward",
+      "Left / Right Arrow Keys to Dodge Traffic",
+      "Hop on Floating Logs to cross Rivers",
+      "Watch out for speeding Trains on tracks"
+    ],
+    "featured": true,
+    "popular": true,
+    "tags": ["crossy", "road", "arcade", "3d", "voxel", "runner", "casual"],
+    "author": "Hipster Whale / HTML5",
+    "hasBuiltInEngine": true
+  },
+  {
+    "id": "final-fantasy",
+    "title": "Final Fantasy NES",
+    "category": "RPG",
+    "description": "Embark on the epic classic NES role-playing quest! Choose your Warriors of Light, defeat monsters, collect powerful spells, and restore the light to the Four Elements.",
+    "iframeUrl": "https://cdn.jsdelivr.net/gh/bubbls/UGS-file-encryption@c99c02b28ea1531fb40611092887d0aa9db97712/Final%20Fantasy%20(USA).zip",
+    "thumbnail": "https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?w=600&auto=format&fit=crop&q=80",
+    "rating": 5.0,
+    "plays": "640K",
+    "controls": [
+      "Click PLAY to load the NES Emulator",
+      "Arrow Keys / D-Pad to move character & navigate menus",
+      "Z Key for Button A (Select / Confirm)",
+      "X Key for Button B (Cancel / Back)",
+      "Enter Key for Start button"
+    ],
+    "featured": true,
+    "popular": true,
+    "tags": ["final fantasy", "rpg", "nes", "retro", "nintendo", "emulator", "adventure"],
+    "author": "Square / EmulatorJS",
+    "hasBuiltInEngine": true
   }
 ];
 

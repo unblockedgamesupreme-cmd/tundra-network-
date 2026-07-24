@@ -42,7 +42,7 @@ export const GamePlayerModal = ({
       setHasLiked(false);
 
       // Default to built-in interactive engine only for games with custom JS engines
-      const builtinSupportedGames = ['color-puzzles', 'chroma-incident', '2048-frost', 'retro-snake', 'flappy-bird', 'slope-game'];
+      const builtinSupportedGames = ['color-puzzles', 'chroma-incident', '2048-frost', 'retro-snake', 'flappy-bird', 'slope-game', 'jetpack-joyride', 'super-smash-bros', 'crossy-road', 'final-fantasy'];
       if (builtinSupportedGames.includes(game.id) || game.hasBuiltInEngine) {
         setPlayerMode('builtin');
       } else {
@@ -223,6 +223,8 @@ export const GamePlayerModal = ({
                 src={game.iframeUrl}
                 title={game.title}
                 onLoad={() => setIsLoadingIframe(false)}
+                scrolling="no"
+                style={{ width: '100%', height: '100%', border: 0, margin: 0, padding: 0 }}
                 className="w-full h-full border-0 rounded-none shadow-inner"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; gamepad"
                 allowFullScreen

@@ -5,6 +5,7 @@ import { HeroBanner } from './components/HeroBanner.jsx';
 import { GameGrid } from './components/GameGrid.jsx';
 import { GamePlayerModal } from './components/GamePlayerModal.jsx';
 import { AddGameModal } from './components/AddGameModal.jsx';
+import { GoogleDriveModal } from './components/GoogleDriveModal.jsx';
 import { PanicScreen } from './components/PanicScreen.jsx';
 import { Snowfall } from './components/Snowfall.jsx';
 import { Sidebar } from './components/Sidebar.jsx';
@@ -46,7 +47,24 @@ export default function App() {
   const [snowEnabled, setSnowEnabled] = useState(true);
   const [selectedGame, setSelectedGame] = useState(null);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isDriveModalOpen, setIsDriveModalOpen] = useState(false);
   const [isPanicActive, setIsPanicActive] = useState(false);
+
+  // Handle restoring backup from Google Drive
+  const handleRestoreBackup = (backupData) => {
+    if (backupData?.favorites && Array.isArray(backupData.favorites)) {
+      setFavorites(backupData.favorites);
+      localStorage.setItem('frost_favorites', JSON.stringify(backupData.favorites));
+    }
+    if (backupData?.customGames && Array.isArray(backupData.customGames)) {
+      const customGames = backupData.customGames;
+      localStorage.setItem('frost_custom_games', JSON.stringify(customGames));
+      setGames((prev) => {
+        const baseGames = prev.filter((g) => !g.isCustom);
+        return [...customGames, ...baseGames];
+      });
+    }
+  };
 
   // Optional extra catalog sync from public/games.json if available
   useEffect(() => {
@@ -165,6 +183,7 @@ export default function App() {
           setSelectedCategory((prev) => (prev === 'Favorites' ? 'All' : 'Favorites'));
         }}
         onOpenAddModal={() => setIsAddModalOpen(true)}
+        onOpenDriveModal={() => setIsDriveModalOpen(true)}
         onTriggerPanic={() => setIsPanicActive(true)}
         snowEnabled={snowEnabled}
         onToggleSnow={() => setSnowEnabled((prev) => !prev)}
@@ -251,6 +270,15 @@ export default function App() {
         isOpen={isAddModalOpen}
         onClose={() => setIsAddModalOpen(false)}
         onAddGame={handleAddCustomGame}
+      />
+
+      {/* Google Drive Integration Modal */}
+      <GoogleDriveModal
+        isOpen={isDriveModalOpen}
+        onClose={() => setIsDriveModalOpen(false)}
+        favorites={favorites}
+        customGames={games.filter((g) => g.isCustom)}
+        onRestoreBackup={handleRestoreBackup}
       />
     </div>
   );
