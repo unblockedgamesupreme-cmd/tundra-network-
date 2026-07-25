@@ -3,14 +3,14 @@ export const initialGamesData = [
     "id": "color-puzzles",
     "title": "Color Puzzles",
     "category": "Puzzle",
-    "description": "Control a light-frequency subject capable of shifting colors to pass through energy barriers, activate light bridges, and solve mind-bending puzzle chambers.",
-    "iframeUrl": "https://www.gamepix.com/play/the-chroma-incident",
+    "description": "Control a light-frequency subject capable of shifting colors to pass through energy barriers, activate light bridges, and solve 6 mind-bending puzzle chambers.",
+    "iframeUrl": "",
     "thumbnail": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&auto=format&fit=crop&q=80",
     "rating": 5.0,
     "plays": "620K",
     "controls": [
       "A / D or Left / Right Arrows to Move",
-      "W, Up Arrow, or Spacebar to Jump",
+      "W, Up Arrow, or Spacebar to Jump (Double Jump is half height)",
       "1, 2, 3 or C / Shift to Switch Color Frequency (Red, Blue, Green)",
       "Match your color to pass matching barriers and activate light bridges"
     ],
@@ -19,6 +19,22 @@ export const initialGamesData = [
     "tags": ["chroma", "puzzle", "color shift", "sci-fi", "platformer", "physics"],
     "author": "Chroma Labs Studio",
     "hasBuiltInEngine": true
+  },
+  {
+    "id": "the-chroma-incident",
+    "title": "The Chroma Incident",
+    "category": "Puzzle",
+    "description": "Navigate through colored laser grids and energy fields in this official Chroma Incident puzzle game.",
+    "iframeUrl": "https://www.gamepix.com/play/the-chroma-incident",
+    "thumbnail": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&auto=format&fit=crop&q=80",
+    "rating": 4.8,
+    "plays": "410K",
+    "controls": ["WASD or Arrow Keys to move", "Mouse interaction for puzzles"],
+    "featured": false,
+    "popular": true,
+    "tags": ["chroma", "puzzle", "gamepix", "laser"],
+    "author": "GamePix",
+    "hasBuiltInEngine": false
   },
   {
     "id": "2048-frost",

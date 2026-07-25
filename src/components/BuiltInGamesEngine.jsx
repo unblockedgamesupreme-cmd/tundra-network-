@@ -3056,7 +3056,7 @@ const EngineFinalFantasy = () => {
 };
 
 export const BuiltInGamesEngine = ({ gameId }) => {
-  if (gameId === 'chroma-incident' || gameId === 'color-puzzles') {
+  if (gameId === 'color-puzzles') {
     return <ChromaIncidentEngine />;
   }
   if (gameId === '2048-frost') {

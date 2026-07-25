@@ -42,7 +42,7 @@ export const GamePlayerModal = ({
       setHasLiked(false);
 
       // Default to built-in interactive engine only for games with custom JS engines
-      const builtinSupportedGames = ['color-puzzles', 'chroma-incident', '2048-frost', 'retro-snake', 'flappy-bird', 'slope-game', 'jetpack-joyride', 'super-smash-bros', 'crossy-road', 'final-fantasy'];
+      const builtinSupportedGames = ['color-puzzles', '2048-frost', 'retro-snake', 'flappy-bird', 'slope-game', 'jetpack-joyride', 'super-smash-bros', 'crossy-road', 'final-fantasy'];
       if (builtinSupportedGames.includes(game.id) || game.hasBuiltInEngine) {
         setPlayerMode('builtin');
       } else {

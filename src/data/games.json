@@ -1,5 +1,35 @@
 [
   {
+    "id": "color-puzzles",
+    "title": "Color Puzzles",
+    "category": "Puzzle",
+    "description": "Shift color frequencies to pass through matching energy barriers, activate light bridges, and solve 6 mind-bending puzzle chambers.",
+    "iframeUrl": "",
+    "thumbnail": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&auto=format&fit=crop&q=80",
+    "rating": 5.0,
+    "plays": "620K",
+    "controls": ["1, 2, 3 or C / Shift to Switch Color", "Arrow Keys / WASD to move", "Space to Jump"],
+    "featured": true,
+    "popular": true,
+    "tags": ["chroma", "puzzle", "color shift", "platformer"],
+    "author": "Chroma Labs Studio"
+  },
+  {
+    "id": "the-chroma-incident",
+    "title": "The Chroma Incident",
+    "category": "Puzzle",
+    "description": "Navigate through colored laser grids and energy fields in this official Chroma Incident puzzle game.",
+    "iframeUrl": "https://www.gamepix.com/play/the-chroma-incident",
+    "thumbnail": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&auto=format&fit=crop&q=80",
+    "rating": 4.8,
+    "plays": "410K",
+    "controls": ["WASD or Arrow Keys to move", "Mouse interaction for puzzles"],
+    "featured": false,
+    "popular": true,
+    "tags": ["chroma", "puzzle", "gamepix", "laser"],
+    "author": "GamePix"
+  },
+  {
     "id": "2048-frost",
     "title": "2048 Frost Edition",
     "category": "Puzzle",
