@@ -131,6 +131,85 @@ export const ChromaIncidentEngine = () => {
       ],
       exit: { x: 720, y: 360, w: 40, h: 60 },
       spawn: { x: 40, y: 380 }
+    },
+    // Level 4: Prism Gauntlet
+    {
+      prisms: [
+        { x: 175, y: 310, collected: false, color: 'RED' },
+        { x: 295, y: 240, collected: false, color: 'GREEN' },
+        { x: 415, y: 170, collected: false, color: 'BLUE' },
+        { x: 535, y: 240, collected: false, color: 'RED' },
+      ],
+      platforms: [
+        { x: 0, y: 440, w: 120, h: 40, type: 'WHITE' },
+        { x: 130, y: 360, w: 90, h: 18, type: 'RED' },
+        { x: 250, y: 290, w: 90, h: 18, type: 'GREEN' },
+        { x: 370, y: 220, w: 90, h: 18, type: 'BLUE' },
+        { x: 490, y: 290, w: 90, h: 18, type: 'RED' },
+        { x: 610, y: 360, w: 90, h: 18, type: 'GREEN' },
+        { x: 700, y: 440, w: 100, h: 40, type: 'WHITE' },
+      ],
+      lasers: [
+        { x: 230, y: 150, w: 10, h: 290, type: 'BLUE' },
+        { x: 470, y: 150, w: 10, h: 290, type: 'GREEN' },
+      ],
+      exit: { x: 730, y: 380, w: 40, h: 60 },
+      spawn: { x: 40, y: 380 }
+    },
+    // Level 5: Frequency Maze
+    {
+      prisms: [
+        { x: 190, y: 300, collected: false, color: 'GREEN' },
+        { x: 310, y: 220, collected: false, color: 'RED' },
+        { x: 430, y: 140, collected: false, color: 'BLUE' },
+        { x: 550, y: 220, collected: false, color: 'GREEN' },
+      ],
+      platforms: [
+        { x: 0, y: 440, w: 140, h: 40, type: 'WHITE' },
+        { x: 140, y: 350, w: 100, h: 18, type: 'GREEN' },
+        { x: 260, y: 270, w: 100, h: 18, type: 'RED' },
+        { x: 380, y: 190, w: 100, h: 18, type: 'BLUE' },
+        { x: 500, y: 270, w: 100, h: 18, type: 'GREEN' },
+        { x: 620, y: 350, w: 100, h: 18, type: 'RED' },
+        { x: 680, y: 440, w: 120, h: 40, type: 'WHITE' },
+      ],
+      lasers: [
+        { x: 245, y: 100, w: 10, h: 340, type: 'BLUE' },
+        { x: 365, y: 100, w: 10, h: 340, type: 'GREEN' },
+        { x: 485, y: 100, w: 10, h: 340, type: 'RED' },
+      ],
+      exit: { x: 720, y: 380, w: 40, h: 60 },
+      spawn: { x: 40, y: 380 }
+    },
+    // Level 6: Quantum Spectrum Finale
+    {
+      prisms: [
+        { x: 170, y: 310, collected: false, color: 'RED' },
+        { x: 270, y: 240, collected: false, color: 'BLUE' },
+        { x: 370, y: 170, collected: false, color: 'GREEN' },
+        { x: 470, y: 100, collected: false, color: 'RED' },
+        { x: 570, y: 170, collected: false, color: 'BLUE' },
+        { x: 670, y: 240, collected: false, color: 'GREEN' },
+      ],
+      platforms: [
+        { x: 0, y: 440, w: 120, h: 40, type: 'WHITE' },
+        { x: 130, y: 360, w: 80, h: 18, type: 'RED' },
+        { x: 230, y: 290, w: 80, h: 18, type: 'BLUE' },
+        { x: 330, y: 220, w: 80, h: 18, type: 'GREEN' },
+        { x: 430, y: 150, w: 80, h: 18, type: 'RED' },
+        { x: 530, y: 220, w: 80, h: 18, type: 'BLUE' },
+        { x: 630, y: 290, w: 80, h: 18, type: 'GREEN' },
+        { x: 700, y: 420, w: 100, h: 40, type: 'WHITE' },
+      ],
+      lasers: [
+        { x: 215, y: 100, w: 10, h: 340, type: 'GREEN' },
+        { x: 315, y: 100, w: 10, h: 340, type: 'RED' },
+        { x: 415, y: 100, w: 10, h: 340, type: 'BLUE' },
+        { x: 515, y: 100, w: 10, h: 340, type: 'GREEN' },
+        { x: 615, y: 100, w: 10, h: 340, type: 'RED' },
+      ],
+      exit: { x: 730, y: 360, w: 40, h: 60 },
+      spawn: { x: 40, y: 380 }
     }
   ];
 
@@ -211,7 +290,7 @@ export const ChromaIncidentEngine = () => {
       if ((e.code === 'KeyW' || e.code === 'ArrowUp' || e.code === 'Space') && !jumpPressed) {
         jumpPressed = true;
         if (player.jumpsRemaining > 0) {
-          player.vy = -450;
+          player.vy = player.jumpsRemaining === 2 ? -450 : -225;
           player.jumpsRemaining -= 1;
           player.isGrounded = false;
           playSound('jump');

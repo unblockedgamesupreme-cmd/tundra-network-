@@ -4,7 +4,7 @@ export const initialGamesData = [
     "title": "Color Puzzles",
     "category": "Puzzle",
     "description": "Control a light-frequency subject capable of shifting colors to pass through energy barriers, activate light bridges, and solve mind-bending puzzle chambers.",
-    "iframeUrl": "https://itch.io/embed-game/123456",
+    "iframeUrl": "https://www.gamepix.com/play/the-chroma-incident",
     "thumbnail": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&auto=format&fit=crop&q=80",
     "rating": 5.0,
     "plays": "620K",
