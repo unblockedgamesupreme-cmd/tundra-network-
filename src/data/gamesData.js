@@ -89,7 +89,7 @@ export const initialGamesData = [
     "title": "Jetpack Joyride",
     "category": "Arcade",
     "description": "Fly with high-tech jetpacks as Barry Steakfries! Dodge zappers, missiles, and laser beams while collecting coins and crazy vehicles in an endless laboratory run.",
-    "iframeUrl": "https://cdn.jsdelivr.net/gh/genizy/jride@475e65ec2f642cf50bb80f09f4f4188cf8c26faa/index.html",
+    "iframeUrl": "https://www.crazygames.com/game/jetpack-joyride-pcp",
     "thumbnail": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&auto=format&fit=crop&q=80",
     "rating": 4.9,
     "plays": "750K",
