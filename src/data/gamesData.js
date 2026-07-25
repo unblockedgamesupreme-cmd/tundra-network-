@@ -264,6 +264,27 @@ export const initialGamesData = [
     "tags": ["final fantasy", "rpg", "nes", "retro", "nintendo", "emulator", "adventure"],
     "author": "Square / EmulatorJS",
     "hasBuiltInEngine": true
+  },
+  {
+    "id": "roblox-experimental",
+    "title": "Roblox EXPERIMENTAL",
+    "category": "Sandbox",
+    "description": "Experience infinite community 3D virtual worlds, games, and social experiences powered by cloud web player.",
+    "iframeUrl": "https://now.gg/apps/a/19900/b.html",
+    "thumbnail": "https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=600&auto=format&fit=crop&q=80",
+    "rating": 4.9,
+    "plays": "1.2M",
+    "controls": [
+      "WASD / Arrow Keys for movement",
+      "Mouse to look around and interact",
+      "Spacebar to Jump",
+      "Esc to toggle mouse lock"
+    ],
+    "featured": true,
+    "popular": true,
+    "tags": ["roblox", "sandbox", "multiplayer", "3d", "cloud", "experimental"],
+    "author": "Roblox / Now.gg",
+    "hasBuiltInEngine": false
   }
 ];
 
