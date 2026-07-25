@@ -157,7 +157,7 @@ export const initialGamesData = [
     "title": "Moto X3M Bike Race",
     "category": "Racing",
     "description": "Awesome motocross stunt racing with 25 intense levels! Perform backflips and frontflips to shave seconds off your time.",
-    "iframeUrl": "https://motox3m2.io/",
+    "iframeUrl": "https://html5.gamedistribution.com/5b0abd4c0faa4f5eb190a9a16d5a1b4c/",
     "thumbnail": "https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=600&auto=format&fit=crop&q=80",
     "rating": 4.9,
     "plays": "600K",
