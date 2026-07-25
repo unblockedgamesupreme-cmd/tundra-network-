@@ -799,9 +799,9 @@
                 id: "drift-hunters",
                 title: "Drift Hunters",
                 category: "Racing",
-                description: "Ultimate 3D car drifting simulator with realistic physics and track maps.",
-                type: "url",
-                url: "https://cdn.jsdelivr.net/gh/bubbls/UGS-Assets@eb0836289452ca93a6c2749f95b2c8a01562d1bb/drifthunters/index.html",
+                description: "Ultimate 3D car drifting simulator with realistic physics, fully customizable tuner cars, and huge track maps.",
+                type: "drift-hunters",
+                url: "https://crazygames.com/game/drift-hunters",
                 thumbnail: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&auto=format&fit=crop&q=80",
                 rating: 4.9,
                 plays: "450K",
@@ -990,7 +990,510 @@
         }
 
         function getChromaHtml() {
-            return `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Chroma Incident</title><style>body{margin:0;background:#070d1b;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;}canvas{border:2px solid #38bdf8;border-radius:12px;background:#0b1329;}#info{margin-bottom:8px;font-size:12px;color:#38bdf8;font-weight:bold;}</style></head><body><div id="info">SHIFT COLOR: [1] Cyan &bull; [2] Magenta &bull; [3] Lime | JUMP: [Space/W]</div><canvas id="c" width="520" height="320"></canvas><script>const c=document.getElementById('c'),ctx=c.getContext('2d');let x=60,y=210,vy=0,color='#38bdf8',colors=['#38bdf8','#e0e7ff','#10b981'],cIndex=0,score=0,obs=[];window.addEventListener('keydown',e=>{if(e.key==='1'){cIndex=0;color='#38bdf8';}if(e.key==='2'){cIndex=1;color='#f43f5e';}if(e.key==='3'){cIndex=2;color='#10b981';}if([' ','ArrowUp','w','W'].includes(e.key)&&y>=210)vy=-9.5;});setInterval(()=>{vy+=0.5;y+=vy;if(y>210){y=210;vy=0;}if(Math.random()<0.025){obs.push({x:520,colorType:Math.floor(Math.random()*3)}); }score++;ctx.fillStyle='#0b1329';ctx.fillRect(0,0,520,320);ctx.fillStyle='#1e293b';ctx.fillRect(0,234,520,86);ctx.fillStyle=color;ctx.fillRect(x,y,24,24);obs.forEach((o,i)=>{o.x-=3.5;const oCol=['#38bdf8','#f43f5e','#10b981'][o.colorType];ctx.fillStyle=oCol;ctx.fillRect(o.x,110,24,124);if(o.x<x+24 && o.x+24>x && o.colorType!==cIndex){score=0;obs=[];}});obs=obs.filter(o=>o.x>-30);ctx.fillStyle='#fff';ctx.font='700 16px sans-serif';ctx.fillText('SCORE: '+score,20,30);},1000/60);<\/script></body></html>`;
+            return `<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Color Puzzles (Chroma Incident)</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: #030712;
+            color: #f0f9ff;
+            font-family: system-ui, -apple-system, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            user-select: none;
+        }
+        #game-container {
+            position: relative;
+            width: 800px;
+            max-width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #ui-bar {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 12px;
+            padding: 8px 16px;
+            margin-bottom: 8px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+        .color-pill {
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+        .color-pill.red { background: #ef4444; color: #fff; }
+        .color-pill.blue { background: #3b82f6; color: #fff; }
+        .color-pill.green { background: #22c55e; color: #fff; }
+        .color-pill.inactive { opacity: 0.35; }
+        canvas {
+            border: 2px solid rgba(56, 189, 248, 0.4);
+            border-radius: 16px;
+            background: #030712;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+            max-width: 100%;
+        }
+        #controls-hint {
+            margin-top: 8px;
+            font-size: 11px;
+            color: #38bdf8;
+            font-weight: 600;
+            text-align: center;
+        }
+        #overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(3, 7, 18, 0.9);
+            backdrop-filter: blur(8px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            z-index: 20;
+        }
+        #overlay h1 {
+            font-size: 32px;
+            font-weight: 900;
+            margin-bottom: 12px;
+            color: #38bdf8;
+        }
+        #overlay p {
+            font-size: 14px;
+            color: #94a3b8;
+            margin-bottom: 20px;
+            max-width: 400px;
+            text-align: center;
+        }
+        .btn {
+            padding: 12px 24px;
+            background: #38bdf8;
+            color: #030712;
+            border: none;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+        .btn:hover { transform: scale(1.05); }
+    </style>
+</head>
+<body>
+<div id="game-container">
+    <div id="ui-bar">
+        <div>Chamber <span id="lblLevel">1</span> / 3</div>
+        <div style="display: flex; gap: 8px;">
+            <span id="btnRed" class="color-pill red" onclick="setColor('RED')">1: RED</span>
+            <span id="btnBlue" class="color-pill blue inactive" onclick="setColor('BLUE')">2: BLUE</span>
+            <span id="btnGreen" class="color-pill green inactive" onclick="setColor('GREEN')">3: GREEN</span>
+        </div>
+        <div>Prisms: <span id="lblPrisms">0 / 3</span> | Score: <span id="lblScore">0</span></div>
+    </div>
+    <canvas id="c" width="800" height="480"></canvas>
+    <div id="controls-hint">
+        MOVE: A/D or Left/Right | JUMP / DOUBLE JUMP: W, Up, or Space | SHIFT COLOR: 1, 2, 3 or C / Shift
+    </div>
+    <div id="overlay">
+        <h1 id="ovTitle">COLOR PUZZLES</h1>
+        <p id="ovDesc">Shift your color spectrum to pass matching energy barriers, land on colored platforms, and collect all light prisms to unlock the exit chamber.</p>
+        <button class="btn" onclick="startGame()">START GAME</button>
+    </div>
+</div>
+<script>
+    const canvas = document.getElementById('c');
+    const ctx = canvas.getContext('2d');
+    let soundEnabled = true;
+
+    function playSound(type) {
+        if (!soundEnabled) return;
+        try {
+            const ctxA = new (window.AudioContext || window.webkitAudioContext)();
+            const osc = ctxA.createOscillator();
+            const gain = ctxA.createGain();
+            osc.connect(gain);
+            gain.connect(ctxA.destination);
+            if (type === 'jump') {
+                osc.frequency.setValueAtTime(300, ctxA.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(600, ctxA.currentTime + 0.15);
+                gain.gain.setValueAtTime(0.2, ctxA.currentTime);
+                gain.gain.linearRampToValueAtTime(0.01, ctxA.currentTime + 0.15);
+                osc.start(); osc.stop(ctxA.currentTime + 0.15);
+            } else if (type === 'shift') {
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(500, ctxA.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(250, ctxA.currentTime + 0.2);
+                gain.gain.setValueAtTime(0.25, ctxA.currentTime);
+                gain.gain.linearRampToValueAtTime(0.01, ctxA.currentTime + 0.2);
+                osc.start(); osc.stop(ctxA.currentTime + 0.2);
+            } else if (type === 'prism') {
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(523, ctxA.currentTime);
+                osc.frequency.setValueAtTime(659, ctxA.currentTime + 0.08);
+                osc.frequency.setValueAtTime(784, ctxA.currentTime + 0.16);
+                gain.gain.setValueAtTime(0.3, ctxA.currentTime);
+                gain.gain.linearRampToValueAtTime(0.01, ctxA.currentTime + 0.3);
+                osc.start(); osc.stop(ctxA.currentTime + 0.3);
+            } else if (type === 'death') {
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(180, ctxA.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(40, ctxA.currentTime + 0.4);
+                gain.gain.setValueAtTime(0.4, ctxA.currentTime);
+                gain.gain.linearRampToValueAtTime(0.01, ctxA.currentTime + 0.4);
+                osc.start(); osc.stop(ctxA.currentTime + 0.4);
+            } else if (type === 'win') {
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(440, ctxA.currentTime);
+                osc.frequency.setValueAtTime(554, ctxA.currentTime + 0.15);
+                osc.frequency.setValueAtTime(659, ctxA.currentTime + 0.3);
+                osc.frequency.setValueAtTime(880, ctxA.currentTime + 0.45);
+                gain.gain.setValueAtTime(0.3, ctxA.currentTime);
+                gain.gain.linearRampToValueAtTime(0.01, ctxA.currentTime + 0.6);
+                osc.start(); osc.stop(ctxA.currentTime + 0.6);
+            }
+        } catch(e) {}
+    }
+
+    const levelLayouts = [
+        {
+            prisms: [
+                { x: 210, y: 270, collected: false, color: 'RED' },
+                { x: 400, y: 190, collected: false, color: 'BLUE' },
+                { x: 590, y: 250, collected: false, color: 'GREEN' },
+            ],
+            platforms: [
+                { x: 0, y: 440, w: 800, h: 40, type: 'WHITE' },
+                { x: 140, y: 340, w: 140, h: 18, type: 'RED' },
+                { x: 330, y: 260, w: 140, h: 18, type: 'BLUE' },
+                { x: 520, y: 320, w: 140, h: 18, type: 'GREEN' },
+            ],
+            lasers: [
+                { x: 300, y: 320, w: 12, h: 120, type: 'GREEN' },
+            ],
+            exit: { x: 720, y: 380, w: 40, h: 60 },
+            spawn: { x: 50, y: 380 }
+        },
+        {
+            prisms: [
+                { x: 180, y: 260, collected: false, color: 'BLUE' },
+                { x: 330, y: 180, collected: false, color: 'RED' },
+                { x: 500, y: 110, collected: false, color: 'GREEN' },
+                { x: 710, y: 280, collected: false, color: 'BLUE' },
+            ],
+            platforms: [
+                { x: 0, y: 440, w: 180, h: 40, type: 'WHITE' },
+                { x: 120, y: 330, w: 120, h: 18, type: 'BLUE' },
+                { x: 270, y: 250, w: 120, h: 18, type: 'RED' },
+                { x: 440, y: 180, w: 120, h: 18, type: 'GREEN' },
+                { x: 630, y: 360, w: 170, h: 40, type: 'WHITE' },
+            ],
+            lasers: [
+                { x: 240, y: 200, w: 10, h: 240, type: 'RED' },
+                { x: 410, y: 100, w: 10, h: 340, type: 'BLUE' },
+            ],
+            exit: { x: 730, y: 300, w: 40, h: 60 },
+            spawn: { x: 40, y: 380 }
+        },
+        {
+            prisms: [
+                { x: 210, y: 270, collected: false, color: 'RED' },
+                { x: 350, y: 170, collected: false, color: 'BLUE' },
+                { x: 510, y: 230, collected: false, color: 'GREEN' },
+            ],
+            platforms: [
+                { x: 0, y: 440, w: 140, h: 40, type: 'WHITE' },
+                { x: 150, y: 340, w: 120, h: 18, type: 'RED' },
+                { x: 290, y: 240, w: 120, h: 18, type: 'BLUE' },
+                { x: 450, y: 300, w: 120, h: 18, type: 'GREEN' },
+                { x: 640, y: 420, w: 160, h: 40, type: 'WHITE' },
+            ],
+            lasers: [
+                { x: 260, y: 150, w: 12, h: 290, type: 'GREEN' },
+                { x: 420, y: 150, w: 12, h: 290, type: 'RED' },
+            ],
+            exit: { x: 720, y: 360, w: 40, h: 60 },
+            spawn: { x: 40, y: 380 }
+        }
+    ];
+
+    let level = 1;
+    let score = 0;
+    let colorMode = 'RED';
+    let isPlaying = false;
+    let curLevelObj = null;
+    let player = { x: 50, y: 380, vx: 0, vy: 0, radius: 14, isGrounded: false, jumpsRemaining: 2 };
+    let keys = {};
+    let jumpPressed = false;
+    let particles = [];
+
+    function setColor(newColor) {
+        if (colorMode !== newColor) {
+            colorMode = newColor;
+            playSound('shift');
+            updateUI();
+        }
+    }
+
+    function updateUI() {
+        document.getElementById('lblLevel').innerText = level;
+        document.getElementById('lblScore').innerText = score;
+        if (curLevelObj) {
+            const collected = curLevelObj.prisms.filter(p => p.collected).length;
+            document.getElementById('lblPrisms').innerText = collected + ' / ' + curLevelObj.prisms.length;
+        }
+        document.getElementById('btnRed').className = 'color-pill red ' + (colorMode === 'RED' ? '' : 'inactive');
+        document.getElementById('btnBlue').className = 'color-pill blue ' + (colorMode === 'BLUE' ? '' : 'inactive');
+        document.getElementById('btnGreen').className = 'color-pill green ' + (colorMode === 'GREEN' ? '' : 'inactive');
+    }
+
+    function startGame() {
+        document.getElementById('overlay').style.display = 'none';
+        level = 1;
+        score = 0;
+        colorMode = 'RED';
+        isPlaying = true;
+        loadLevel();
+    }
+
+    function loadLevel() {
+        curLevelObj = JSON.parse(JSON.stringify(levelLayouts[(level - 1) % levelLayouts.length]));
+        player.x = curLevelObj.spawn.x;
+        player.y = curLevelObj.spawn.y;
+        player.vx = 0;
+        player.vy = 0;
+        player.jumpsRemaining = 2;
+        updateUI();
+    }
+
+    window.addEventListener('keydown', e => {
+        keys[e.code] = true;
+        if (e.code === 'Digit1') setColor('RED');
+        if (e.code === 'Digit2') setColor('BLUE');
+        if (e.code === 'Digit3') setColor('GREEN');
+        if (e.code === 'KeyC' || e.code === 'ShiftLeft') {
+            setColor(colorMode === 'RED' ? 'BLUE' : colorMode === 'BLUE' ? 'GREEN' : 'RED');
+        }
+        if ((e.code === 'KeyW' || e.code === 'ArrowUp' || e.code === 'Space') && !jumpPressed && isPlaying) {
+            jumpPressed = true;
+            if (player.jumpsRemaining > 0) {
+                player.vy = -450;
+                player.jumpsRemaining -= 1;
+                player.isGrounded = false;
+                playSound('jump');
+                addParticles(player.x, player.y + player.radius, '#38bdf8', 6);
+            }
+        }
+    });
+
+    window.addEventListener('keyup', e => {
+        keys[e.code] = false;
+        if (e.code === 'KeyW' || e.code === 'ArrowUp' || e.code === 'Space') jumpPressed = false;
+    });
+
+    function addParticles(px, py, colorHex, count = 8) {
+        for (let i = 0; i < count; i++) {
+            particles.push({
+                x: px, y: py,
+                vx: (Math.random() - 0.5) * 6,
+                vy: (Math.random() - 0.5) * 6,
+                life: 1.0,
+                color: colorHex
+            });
+        }
+    }
+
+    let lastTime = performance.now();
+    function loop(time) {
+        const dt = Math.min((time - lastTime) / 1000, 0.1);
+        lastTime = time;
+
+        if (isPlaying && curLevelObj) {
+            if (keys['KeyA'] || keys['ArrowLeft']) player.vx = -220;
+            else if (keys['KeyD'] || keys['ArrowRight']) player.vx = 220;
+            else player.vx *= 0.8;
+
+            player.vy += 850 * dt;
+            player.x += player.vx * dt;
+            if (player.x - player.radius < 0) player.x = player.radius;
+            if (player.x + player.radius > 800) player.x = 800 - player.radius;
+
+            player.y += player.vy * dt;
+
+            curLevelObj.platforms.forEach(plat => {
+                const isSolid = plat.type === 'WHITE' || plat.type === colorMode;
+                if (isSolid) {
+                    if (player.x + player.radius > plat.x &&
+                        player.x - player.radius < plat.x + plat.w &&
+                        player.y + player.radius >= plat.y &&
+                        player.y - player.radius < plat.y + plat.h) {
+                        if (player.vy > 0 && player.y - player.vy * dt <= plat.y + 10) {
+                            player.y = plat.y - player.radius;
+                            player.vy = 0;
+                            player.isGrounded = true;
+                            player.jumpsRemaining = 2;
+                        }
+                    }
+                }
+            });
+
+            if (player.y > 520) {
+                playSound('death');
+                addParticles(player.x, player.y, '#f87171', 20);
+                player.x = curLevelObj.spawn.x;
+                player.y = curLevelObj.spawn.y;
+                player.vx = 0;
+                player.vy = 0;
+            }
+
+            curLevelObj.lasers.forEach(laser => {
+                if (colorMode !== laser.type) {
+                    if (player.x + player.radius > laser.x &&
+                        player.x - player.radius < laser.x + laser.w &&
+                        player.y + player.radius > laser.y &&
+                        player.y - player.radius < laser.y + laser.h) {
+                        playSound('death');
+                        addParticles(player.x, player.y, '#f87171', 25);
+                        player.x = curLevelObj.spawn.x;
+                        player.y = curLevelObj.spawn.y;
+                        player.vx = 0;
+                        player.vy = 0;
+                    }
+                }
+            });
+
+            curLevelObj.prisms.forEach(prism => {
+                if (!prism.collected) {
+                    const dx = player.x - prism.x;
+                    const dy = player.y - prism.y;
+                    if (Math.sqrt(dx * dx + dy * dy) < player.radius + 15) {
+                        prism.collected = true;
+                        playSound('prism');
+                        score += 250;
+                        addParticles(prism.x, prism.y, prism.color === 'RED' ? '#ef4444' : prism.color === 'BLUE' ? '#3b82f6' : '#22c55e', 15);
+                        updateUI();
+                    }
+                }
+            });
+
+            const remaining = curLevelObj.prisms.filter(p => !p.collected).length;
+            if (remaining === 0) {
+                const exit = curLevelObj.exit;
+                if (player.x + player.radius > exit.x &&
+                    player.x - player.radius < exit.x + exit.w &&
+                    player.y + player.radius > exit.y &&
+                    player.y - player.radius < exit.y + exit.h) {
+                    playSound('win');
+                    if (level < levelLayouts.length) {
+                        level++;
+                        loadLevel();
+                    } else {
+                        isPlaying = false;
+                        document.getElementById('ovTitle').innerText = 'SPECTRUM CLEARED!';
+                        document.getElementById('ovDesc').innerText = 'Congratulations! You solved all color puzzle chambers with a score of ' + score + '!';
+                        document.getElementById('overlay').style.display = 'flex';
+                    }
+                }
+            }
+
+            // Draw
+            ctx.fillStyle = '#030712';
+            ctx.fillRect(0, 0, 800, 480);
+
+            ctx.strokeStyle = 'rgba(14, 165, 233, 0.08)';
+            ctx.lineWidth = 1;
+            for (let x = 0; x < 800; x += 40) {
+                ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, 480); ctx.stroke();
+            }
+            for (let y = 0; y < 480; y += 40) {
+                ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(800, y); ctx.stroke();
+            }
+
+            curLevelObj.platforms.forEach(plat => {
+                const isSolid = plat.type === 'WHITE' || plat.type === colorMode;
+                if (plat.type === 'WHITE') ctx.fillStyle = '#64748b';
+                else if (plat.type === 'RED') ctx.fillStyle = isSolid ? '#ef4444' : 'rgba(239, 68, 68, 0.25)';
+                else if (plat.type === 'BLUE') ctx.fillStyle = isSolid ? '#3b82f6' : 'rgba(59, 130, 246, 0.25)';
+                else if (plat.type === 'GREEN') ctx.fillStyle = isSolid ? '#22c55e' : 'rgba(34, 197, 94, 0.25)';
+                ctx.fillRect(plat.x, plat.y, plat.w, plat.h);
+                if (!isSolid) {
+                    ctx.strokeStyle = '#f8fafc';
+                    ctx.lineWidth = 1;
+                    ctx.setLineDash([4, 4]);
+                    ctx.strokeRect(plat.x, plat.y, plat.w, plat.h);
+                    ctx.setLineDash([]);
+                }
+            });
+
+            curLevelObj.lasers.forEach(laser => {
+                const isSafe = colorMode === laser.type;
+                ctx.fillStyle = laser.type === 'RED' ? '#ef4444' : laser.type === 'BLUE' ? '#3b82f6' : '#22c55e';
+                ctx.globalAlpha = isSafe ? 0.35 : 0.9;
+                ctx.fillRect(laser.x, laser.y, laser.w, laser.h);
+                ctx.globalAlpha = 1.0;
+            });
+
+            curLevelObj.prisms.forEach(prism => {
+                if (!prism.collected) {
+                    ctx.save();
+                    ctx.translate(prism.x, prism.y);
+                    ctx.rotate(time * 0.003);
+                    ctx.fillStyle = prism.color === 'RED' ? '#ef4444' : prism.color === 'BLUE' ? '#3b82f6' : '#22c55e';
+                    ctx.beginPath();
+                    ctx.moveTo(0, -12); ctx.lineTo(10, 10); ctx.lineTo(-10, 10);
+                    ctx.closePath(); ctx.fill();
+                    ctx.restore();
+                }
+            });
+
+            const exit = curLevelObj.exit;
+            const isUnlocked = remaining === 0;
+            ctx.fillStyle = isUnlocked ? '#38bdf8' : '#334155';
+            ctx.fillRect(exit.x, exit.y, exit.w, exit.h);
+            ctx.fillStyle = isUnlocked ? '#ffffff' : '#94a3b8';
+            ctx.font = 'bold 11px sans-serif';
+            ctx.fillText(isUnlocked ? 'EXIT' : 'LOCKED', exit.x + 4, exit.y + 35);
+
+            let pCol = colorMode === 'RED' ? '#ef4444' : colorMode === 'BLUE' ? '#3b82f6' : '#22c55e';
+            ctx.fillStyle = pCol;
+            ctx.beginPath();
+            ctx.arc(player.x, player.y, player.radius, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.fillStyle = '#ffffff';
+            ctx.beginPath();
+            ctx.arc(player.x, player.y, 5, 0, Math.PI * 2);
+            ctx.fill();
+
+            particles.forEach((p, idx) => {
+                p.x += p.vx; p.y += p.vy; p.life -= dt * 2;
+                if (p.life <= 0) particles.splice(idx, 1);
+                else {
+                    ctx.fillStyle = p.color; ctx.globalAlpha = p.life;
+                    ctx.fillRect(p.x, p.y, 4, 4); ctx.globalAlpha = 1.0;
+                }
+            });
+        }
+        requestAnimationFrame(loop);
+    }
+    requestAnimationFrame(loop);
+<\/script>
+</body>
+</html>`;
         }
 
         function getPaperIoHtml() {
@@ -1019,7 +1522,9 @@
 
             const iframe = document.getElementById('gameIframe');
 
-            if (game.type === 'nes_n64_emulator') {
+            if (game.id === 'drift-hunters' || game.type === 'drift-hunters') {
+                iframe.srcdoc = `<!DOCTYPE html><html><head><meta charset="utf-8"><style>html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#000;display:flex;align-items:center;justify-content:center;}iframe{width:100%;height:100%;border:none;}</style></head><body><iframe src="https://crazygames.com/game/drift-hunters" width="800" height="600" frameborder="0" scrolling="no" allowfullscreen></iframe></body></html>`;
+            } else if (game.type === 'nes_n64_emulator') {
                 const core = game.emulatorType === 'n64' ? 'n64' : 'nes';
                 const emulatorHtml = `<!DOCTYPE html><html><head><meta charset="utf-8"/><style>body{margin:0;background:#000;color:#fff;display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;}#startButton{padding:14px 28px;font-size:18px;background:#38bdf8;color:#000;border:none;border-radius:12px;cursor:pointer;font-weight:bold;}</style></head><body><div id="game" style="width:100vw;height:100vh;display:none;"></div><button id="startButton" onclick="start()">PLAY ${game.title.toUpperCase()}</button><script>function start(){document.getElementById('startButton').style.display='none';document.getElementById('game').style.display='block';window.EJS_player='#game';window.EJS_core='${core}';window.EJS_color='#000';window.EJS_startOnLoaded=true;window.EJS_pathtodata='https://cdn.jsdelivr.net/gh/a456pur/seraph@81f551ca0aa8e3d6018d32d8ac5904ac9bc78f76/storage/emulatorjs/data';window.EJS_gameUrl='${game.romUrl}';var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/gh/a456pur/seraph@81f551ca0aa8e3d6018d32d8ac5904ac9bc78f76/storage/emulatorjs/data/loader.js';document.body.appendChild(s);}<\/script></body></html>`;
                 iframe.srcdoc = emulatorHtml;
