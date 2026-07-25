@@ -105,18 +105,18 @@
     "author": "Bandai Namco"
   },
   {
-    "id": "paper-io-2",
-    "title": "Paper.io 2",
+    "id": "paper-io-3d",
+    "title": "Paper.io 3D",
     "category": "Strategy",
-    "description": "Conquer as much territory as possible! Draw loops around empty areas or rival territory, but don't let anyone bite your tail.",
-    "iframeUrl": "https://paper-io.com/",
+    "description": "Conquer as much 3D territory as possible! Draw loops around 3D surfaces and rival territory, but don't let anyone bite your tail.",
+    "iframeUrl": "https://paperio.site/3d/",
     "thumbnail": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600&auto=format&fit=crop&q=80",
-    "rating": 4.7,
-    "plays": "290K",
-    "controls": ["Mouse pointer or WASD to guide block", "Form enclosed loops to capture space", "Guard your line while outside your territory"],
+    "rating": 4.8,
+    "plays": "450K",
+    "controls": ["Mouse pointer or WASD to guide block", "Form enclosed loops to capture 3D space", "Guard your line while outside your territory"],
     "featured": false,
     "popular": true,
-    "tags": ["io", "multiplayer", "territory", "strategy"],
+    "tags": ["io", "multiplayer", "3d", "territory", "strategy"],
     "author": "Voodoo"
   },
   {
