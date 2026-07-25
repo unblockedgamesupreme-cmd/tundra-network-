@@ -189,7 +189,7 @@ export const initialGamesData = [
     "title": "Drift Hunters",
     "category": "Racing",
     "description": "Ultimate 3D car drifting simulator with realistic physics, fully customizable tuner cars, and huge track maps.",
-    "iframeUrl": "https://crazygames.com/game/drift-hunters",
+    "iframeUrl": "https://www.drifted.com/drifting-games/drifted-games-drift-hunters/",
     "thumbnail": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&auto=format&fit=crop&q=80",
     "rating": 4.9,
     "plays": "450K",

@@ -801,7 +801,7 @@
                 category: "Racing",
                 description: "Ultimate 3D car drifting simulator with realistic physics, fully customizable tuner cars, and huge track maps.",
                 type: "drift-hunters",
-                url: "https://crazygames.com/game/drift-hunters",
+                url: "https://www.drifted.com/drifting-games/drifted-games-drift-hunters/",
                 thumbnail: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&auto=format&fit=crop&q=80",
                 rating: 4.9,
                 plays: "450K",
@@ -1523,7 +1523,7 @@
             const iframe = document.getElementById('gameIframe');
 
             if (game.id === 'drift-hunters' || game.type === 'drift-hunters') {
-                iframe.srcdoc = `<!DOCTYPE html><html><head><meta charset="utf-8"><style>html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#000;display:flex;align-items:center;justify-content:center;}iframe{width:100%;height:100%;border:none;}</style></head><body><iframe src="https://crazygames.com/game/drift-hunters" width="800" height="600" frameborder="0" scrolling="no" allowfullscreen></iframe></body></html>`;
+                iframe.srcdoc = `<!DOCTYPE html><html><head><meta charset="utf-8"><style>html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#000;display:flex;align-items:center;justify-content:center;}iframe{width:100%;height:100%;border:none;}</style></head><body><iframe src="https://www.drifted.com/drifting-games/drifted-games-drift-hunters/" width="100%" height="100%" frameborder="0" scrolling="no" allowfullscreen allow="autoplay; payment; fullscreen; microphone; clipboard-read; clipboard-write; hidden-caption"></iframe></body></html>`;
             } else if (game.type === 'nes_n64_emulator') {
                 const core = game.emulatorType === 'n64' ? 'n64' : 'nes';
                 const emulatorHtml = `<!DOCTYPE html><html><head><meta charset="utf-8"/><style>body{margin:0;background:#000;color:#fff;display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;}#startButton{padding:14px 28px;font-size:18px;background:#38bdf8;color:#000;border:none;border-radius:12px;cursor:pointer;font-weight:bold;}</style></head><body><div id="game" style="width:100vw;height:100vh;display:none;"></div><button id="startButton" onclick="start()">PLAY ${game.title.toUpperCase()}</button><script>function start(){document.getElementById('startButton').style.display='none';document.getElementById('game').style.display='block';window.EJS_player='#game';window.EJS_core='${core}';window.EJS_color='#000';window.EJS_startOnLoaded=true;window.EJS_pathtodata='https://cdn.jsdelivr.net/gh/a456pur/seraph@81f551ca0aa8e3d6018d32d8ac5904ac9bc78f76/storage/emulatorjs/data';window.EJS_gameUrl='${game.romUrl}';var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/gh/a456pur/seraph@81f551ca0aa8e3d6018d32d8ac5904ac9bc78f76/storage/emulatorjs/data/loader.js';document.body.appendChild(s);}<\/script></body></html>`;
