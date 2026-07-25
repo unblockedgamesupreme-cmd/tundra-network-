@@ -201,6 +201,22 @@ export const initialGamesData = [
     "hasBuiltInEngine": false
   },
   {
+    "id": "drift-hunters-max",
+    "title": "Drift Hunters MAX",
+    "category": "Racing",
+    "description": "Experience next-level 3D drifting action with expanded tracks, realistic tuning, and high-performance cars.",
+    "iframeUrl": "https://www.drifted.com/drift-hunters-max/",
+    "thumbnail": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&auto=format&fit=crop&q=80",
+    "rating": 5.0,
+    "plays": "890K",
+    "controls": ["WASD or Arrow Keys to Drive", "Spacebar for Handbrake", "C to change camera view"],
+    "featured": true,
+    "popular": true,
+    "tags": ["drift", "cars", "racing", "3d", "simulator", "max"],
+    "author": "Studiorum",
+    "hasBuiltInEngine": false
+  },
+  {
     "id": "super-smash-bros",
     "title": "Super Smash Bros N64",
     "category": "Action",
