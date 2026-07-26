@@ -37,11 +37,32 @@
         }
 
         body {
-            background-color: var(--frost-bg);
+            background: #050914;
             color: #f0f9ff;
             min-height: 100vh;
             overflow-x: hidden;
             font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        /* Fixed photographic glacier backdrop */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            background: url('https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?w=1920&auto=format&fit=crop&q=80') center center / cover no-repeat fixed;
+        }
+        /* Depth + legibility tint over the glacier */
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse at 20% 10%, rgba(56,189,248,0.18), transparent 55%),
+                radial-gradient(ellipse at 80% 90%, rgba(129,140,248,0.18), transparent 55%),
+                linear-gradient(180deg, rgba(5,9,20,0.35) 0%, rgba(5,9,20,0.55) 60%, rgba(5,9,20,0.75) 100%);
         }
 
         .frost-glass {
@@ -192,6 +213,24 @@
         </div>
     </header>
 
+    <!-- Top Section Navigation (Home / Games / Proxy) -->
+    <nav class="w-full bg-slate-950/70 border-b border-sky-500/20 backdrop-blur-md z-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex items-center justify-center gap-2 sm:gap-3">
+            <button id="topTabHome" onclick="switchTab('home')" class="top-tab-btn px-4 sm:px-5 py-2 rounded-2xl text-xs sm:text-sm font-extrabold flex items-center gap-2 transition-all border">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                <span>Home</span>
+            </button>
+            <button id="topTabGames" onclick="switchTab('games')" class="top-tab-btn px-4 sm:px-5 py-2 rounded-2xl text-xs sm:text-sm font-extrabold flex items-center gap-2 transition-all border">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a2 2 0 01-2 2 2 2 0 01-2-2V4zm-6 8a2 2 0 100-4 2 2 0 000 4zm14 0a2 2 0 100-4 2 2 0 000 4zM6 18a2 2 0 100-4 2 2 0 000 4zm12 0a2 2 0 100-4 2 2 0 000 4z"/></svg>
+                <span>Games</span>
+            </button>
+            <button id="topTabProxy" onclick="switchTab('proxy')" class="top-tab-btn px-4 sm:px-5 py-2 rounded-2xl text-xs sm:text-sm font-extrabold flex items-center gap-2 transition-all border">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                <span>Proxy</span>
+            </button>
+        </div>
+    </nav>
+
     <!-- Main Workspace Container with Left Sidebar -->
     <div class="flex-1 flex flex-col md:flex-row w-full relative z-10">
         
@@ -252,6 +291,88 @@
 
         <!-- Main Content Viewport -->
         <div class="flex-1 flex flex-col min-w-0">
+            
+            <!-- HOME LANDING TAB CONTENT -->
+            <main id="viewHome" class="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
+                <!-- Hero Banner -->
+                <section class="relative overflow-hidden rounded-3xl border border-sky-400/30 shadow-2xl p-8 sm:p-14 mb-10 bg-gradient-to-br from-slate-950/80 via-sky-950/60 to-indigo-950/70 backdrop-blur-md">
+                    <div class="absolute -top-24 -right-24 w-96 h-96 bg-sky-400/20 rounded-full blur-3xl pointer-events-none"></div>
+                    <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none"></div>
+                    <div class="relative z-10 text-center max-w-3xl mx-auto">
+                        <span class="inline-block px-3.5 py-1 rounded-full text-xs font-black uppercase tracking-widest bg-gradient-to-r from-sky-400 to-cyan-300 text-slate-950 shadow-md mb-4">
+                            Welcome to Tundra Network
+                        </span>
+                        
+                        <h1 class="text-4xl sm:text-6xl font-black text-white tracking-tight mb-2 drop-shadow-xl">
+                            TUNDRA <span class="bg-gradient-to-r from-sky-300 via-cyan-200 to-indigo-300 bg-clip-text text-transparent">NETWORK</span>
+                        </h1>
+
+                        <!-- MEDIUM SIZED TEXT REQUIREMENT -->
+                        <p class="text-xl sm:text-2xl md:text-3xl font-extrabold text-sky-200 tracking-wide my-4 drop-shadow-md">
+                            Browse, Play, Bypass
+                        </p>
+
+                        <p class="text-sm sm:text-base text-sky-100/90 leading-relaxed mb-8 max-w-2xl mx-auto font-medium">
+                            Tundra Network is your premier unblocked portal. Dive into a hand-picked singlefile catalog of games or slip through the Ultraviolet proxy to browse the open web — all from one glacial dashboard.
+                        </p>
+
+                        <div class="flex items-center justify-center gap-4 flex-wrap">
+                            <button onclick="switchTab('games')" class="px-7 py-3.5 rounded-2xl bg-gradient-to-r from-sky-400 via-cyan-400 to-sky-500 hover:from-sky-300 hover:to-cyan-300 text-slate-950 font-black text-sm shadow-xl shadow-sky-500/30 transition-all flex items-center gap-2 hover:scale-105 active:scale-95 cursor-pointer">
+                                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                <span>BROWSE GAMES</span>
+                            </button>
+
+                            <button onclick="switchTab('proxy')" class="px-7 py-3.5 rounded-2xl bg-slate-900/90 hover:bg-slate-800 text-purple-300 font-extrabold text-sm border border-purple-400/40 transition-all flex items-center gap-2 hover:scale-105 active:scale-95 shadow-lg cursor-pointer">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                                <span>LAUNCH PROXY</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Quick Feature Cards -->
+                <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
+                    <button onclick="switchTab('games')" class="text-left p-6 rounded-2xl bg-slate-900/70 hover:bg-slate-900/90 border border-sky-500/25 hover:border-sky-400/60 transition-all backdrop-blur-md shadow-lg group hover:-translate-y-0.5">
+                        <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-sky-500 to-indigo-500 flex items-center justify-center mb-4 shadow-md shadow-sky-500/30 group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a2 2 0 01-2 2 2 2 0 01-2-2V4zm-6 8a2 2 0 100-4 2 2 0 000 4zm14 0a2 2 0 100-4 2 2 0 000 4zM6 18a2 2 0 100-4 2 2 0 000 4zm12 0a2 2 0 100-4 2 2 0 000 4z"/></svg>
+                        </div>
+                        <h3 class="text-white font-extrabold text-lg mb-1 group-hover:text-sky-300">Unblocked Catalog</h3>
+                        <p class="text-xs text-sky-200/80 leading-relaxed">Action, Arcade, Puzzle, Racing, RPGs and custom iframe games ready to play instantly.</p>
+                    </button>
+
+                    <button onclick="switchTab('proxy')" class="text-left p-6 rounded-2xl bg-slate-900/70 hover:bg-slate-900/90 border border-purple-500/25 hover:border-purple-400/60 transition-all backdrop-blur-md shadow-lg group hover:-translate-y-0.5">
+                        <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-500 to-pink-500 flex items-center justify-center mb-4 shadow-md shadow-purple-500/30 group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        </div>
+                        <h3 class="text-white font-extrabold text-lg mb-1 group-hover:text-purple-300">Ultraviolet Proxy</h3>
+                        <p class="text-xs text-sky-200/80 leading-relaxed">Bypass school restrictions and surf search engines, wikis, and sites seamlessly.</p>
+                    </button>
+
+                    <div class="p-6 rounded-2xl bg-slate-900/70 border border-emerald-500/25 backdrop-blur-md shadow-lg">
+                        <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-500 flex items-center justify-center mb-4 shadow-md shadow-emerald-500/30">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                        </div>
+                        <h3 class="text-white font-extrabold text-lg mb-1">Classroom Panic Guard</h3>
+                        <p class="text-xs text-sky-200/80 leading-relaxed">Instant Esc key stealth disguise masks the page into an academic research paper.</p>
+                    </div>
+                </section>
+
+                <!-- Stats Strip -->
+                <section class="grid grid-cols-3 gap-3 sm:gap-5 rounded-2xl border border-sky-500/25 bg-slate-950/60 backdrop-blur-md p-5 sm:p-6">
+                    <div class="text-center">
+                        <div class="text-2xl sm:text-3xl font-black text-sky-300" id="homeStatGames">0</div>
+                        <div class="text-[10px] sm:text-xs uppercase tracking-widest font-bold text-sky-400/80 mt-1">Games Ready</div>
+                    </div>
+                    <div class="text-center border-x border-sky-500/15">
+                        <div class="text-2xl sm:text-3xl font-black text-indigo-300">∞</div>
+                        <div class="text-[10px] sm:text-xs uppercase tracking-widest font-bold text-sky-400/80 mt-1">Websites Unblocked</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl sm:text-3xl font-black text-emerald-300">100%</div>
+                        <div class="text-[10px] sm:text-xs uppercase tracking-widest font-bold text-sky-400/80 mt-1">Singlefile Standalone</div>
+                    </div>
+                </section>
+            </main>
             
             <!-- GAME PORTAL TAB CONTENT -->
             <main id="viewGames" class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-4 relative z-10">
@@ -949,6 +1070,8 @@
 
             document.getElementById('favBadgeCount').innerText = favorites.length;
             document.getElementById('heroTotalGames').innerText = gamesList.length;
+            const homeStat = document.getElementById('homeStatGames');
+            if (homeStat) homeStat.innerText = gamesList.length;
         }
 
         function selectCategory(cat, btnElem) {
@@ -974,6 +1097,7 @@
             searchQuery = '';
             document.getElementById('searchInput').value = '';
             activeCategory = 'All';
+            switchTab('home');
             renderGames();
         }
 
@@ -995,17 +1119,33 @@
         }
 
         function switchTab(tab) {
-            if (tab === 'games') {
-                document.getElementById('viewGames').classList.remove('hidden');
-                document.getElementById('viewProxy').classList.add('hidden');
-                document.getElementById('tabBtnGames').className = "flex items-center gap-3.5 p-2.5 rounded-xl transition-all duration-200 cursor-pointer w-full text-left relative bg-sky-500/20 text-sky-300 border border-sky-500/40 shadow-lg shadow-sky-500/10 font-bold";
-                document.getElementById('tabBtnProxy').className = "flex items-center gap-3.5 p-2.5 rounded-xl transition-all duration-200 cursor-pointer w-full text-left relative text-sky-300/70 hover:text-white hover:bg-slate-900 border border-transparent";
-            } else {
-                document.getElementById('viewGames').classList.add('hidden');
-                document.getElementById('viewProxy').classList.remove('hidden');
-                document.getElementById('tabBtnGames').className = "flex items-center gap-3.5 p-2.5 rounded-xl transition-all duration-200 cursor-pointer w-full text-left relative text-sky-300/70 hover:text-white hover:bg-slate-900 border border-transparent";
-                document.getElementById('tabBtnProxy').className = "flex items-center gap-3.5 p-2.5 rounded-xl transition-all duration-200 cursor-pointer w-full text-left relative bg-purple-500/20 text-purple-300 border border-purple-500/40 shadow-lg shadow-purple-500/10 font-bold";
-            }
+            const views = { home: 'viewHome', games: 'viewGames', proxy: 'viewProxy' };
+            Object.entries(views).forEach(([key, id]) => {
+                const el = document.getElementById(id);
+                if (el) el.classList.toggle('hidden', key !== tab);
+            });
+
+            // Top navigation pills styling
+            const topBase = "top-tab-btn px-4 sm:px-5 py-2 rounded-2xl text-xs sm:text-sm font-extrabold flex items-center gap-2 transition-all border";
+            const topActive = {
+                home:  " bg-gradient-to-r from-sky-400 to-cyan-400 text-slate-950 border-sky-300 shadow-lg shadow-sky-500/30",
+                games: " bg-sky-500/25 text-sky-200 border-sky-400/50 shadow-lg shadow-sky-500/20",
+                proxy: " bg-purple-500/25 text-purple-200 border-purple-400/50 shadow-lg shadow-purple-500/20",
+            };
+            const topIdle = " bg-slate-900/70 text-sky-200/80 border-sky-500/20 hover:bg-slate-800/80 hover:text-white";
+            ['home', 'games', 'proxy'].forEach(k => {
+                const btn = document.getElementById('topTab' + k[0].toUpperCase() + k.slice(1));
+                if (btn) btn.className = topBase + (k === tab ? topActive[k] : topIdle);
+            });
+
+            // Sidebar navigation buttons styling
+            const sideActiveGames = "flex items-center gap-3.5 p-2.5 rounded-xl transition-all duration-200 cursor-pointer w-full text-left relative bg-sky-500/20 text-sky-300 border border-sky-500/40 shadow-lg shadow-sky-500/10 font-bold";
+            const sideActiveProxy = "flex items-center gap-3.5 p-2.5 rounded-xl transition-all duration-200 cursor-pointer w-full text-left relative bg-purple-500/20 text-purple-300 border border-purple-500/40 shadow-lg shadow-purple-500/10 font-bold";
+            const sideIdle = "flex items-center gap-3.5 p-2.5 rounded-xl transition-all duration-200 cursor-pointer w-full text-left relative text-sky-300/70 hover:text-white hover:bg-slate-900 border border-transparent";
+            const g = document.getElementById('tabBtnGames');
+            const p = document.getElementById('tabBtnProxy');
+            if (g) g.className = tab === 'games' ? sideActiveGames : sideIdle;
+            if (p) p.className = tab === 'proxy' ? sideActiveProxy : sideIdle;
         }
 
         // ==========================================
@@ -2422,44 +2562,115 @@
             }
         });
 
-        // Snowfall Effect
+        // Realistic Multi-Layer Crystal Snowfall Effect
         const canvas = document.getElementById('snowCanvas');
         const ctx = canvas.getContext('2d');
         let flakes = [];
+        let lastFrame = performance.now();
+
+        function makeFlake(w, h, seeded) {
+            const kind = Math.random();
+            const isCrystal = kind < 0.22;
+            const depth = Math.random(); // 0 (far/slow) to 1 (near/fast)
+            const size = isCrystal
+                ? 4 + depth * 8       // 4px to 12px crystal stars
+                : 0.8 + depth * 2.2;  // fine flurries
+            return {
+                x: Math.random() * w,
+                y: seeded ? Math.random() * h : -size * 2,
+                size,
+                depth,
+                isCrystal,
+                vy: 0.25 + depth * 1.1 + (isCrystal ? 0.15 : 0),
+                vx: (Math.random() - 0.5) * 0.3,
+                swayAmp: 0.4 + Math.random() * 1.2,
+                swaySpeed: 0.0006 + Math.random() * 0.0016,
+                swayPhase: Math.random() * Math.PI * 2,
+                rot: Math.random() * Math.PI * 2,
+                vr: (Math.random() - 0.5) * 0.01,
+                alpha: isCrystal ? 0.55 + depth * 0.4 : 0.35 + depth * 0.55,
+                arms: 6
+            };
+        }
 
         function initSnow() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
+            const count = Math.min(180, Math.floor(window.innerWidth * window.innerHeight / 14000));
             flakes = [];
-            for (let i = 0; i < 60; i++) {
-                flakes.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    r: Math.random() * 2 + 1,
-                    d: Math.random() * 1 + 0.5
-                });
+            for (let i = 0; i < count; i++) {
+                flakes.push(makeFlake(canvas.width, canvas.height, true));
             }
         }
 
-        function drawSnow() {
+        function drawCrystal(f) {
+            const s = f.size;
+            ctx.save();
+            ctx.translate(f.x, f.y);
+            ctx.rotate(f.rot);
+            ctx.strokeStyle = `rgba(235, 246, 255, ${f.alpha})`;
+            ctx.lineWidth = Math.max(0.6, s * 0.1);
+            ctx.lineCap = 'round';
+            ctx.shadowColor = 'rgba(180, 220, 255, 0.6)';
+            ctx.shadowBlur = s * 0.6;
+            for (let i = 0; i < f.arms; i++) {
+                ctx.rotate((Math.PI * 2) / f.arms);
+                ctx.beginPath();
+                ctx.moveTo(0, 0);
+                ctx.lineTo(0, -s);
+                ctx.stroke();
+                // Side crystal branches
+                ctx.beginPath();
+                ctx.moveTo(0, -s * 0.55);
+                ctx.lineTo(s * 0.28, -s * 0.85);
+                ctx.moveTo(0, -s * 0.55);
+                ctx.lineTo(-s * 0.28, -s * 0.85);
+                ctx.moveTo(0, -s * 0.3);
+                ctx.lineTo(s * 0.18, -s * 0.5);
+                ctx.moveTo(0, -s * 0.3);
+                ctx.lineTo(-s * 0.18, -s * 0.5);
+                ctx.stroke();
+            }
+            ctx.restore();
+        }
+
+        function drawSnow(now) {
+            if (now === undefined) now = performance.now();
+            const dt = Math.min(40, now - lastFrame);
+            lastFrame = now;
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
             if (!snowEnabled) {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
                 requestAnimationFrame(drawSnow);
                 return;
             }
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = '#ffffff';
-            ctx.beginPath();
+
             for (let f of flakes) {
-                ctx.moveTo(f.x, f.y);
-                ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2, true);
-                f.y += f.d;
-                if (f.y > canvas.height) {
-                    f.y = 0;
+                const sway = Math.sin(now * f.swaySpeed + f.swayPhase) * f.swayAmp;
+                f.x += (f.vx + sway * 0.05) * dt * 0.5;
+                f.y += f.vy * dt * 0.5;
+                f.rot += f.vr * dt;
+
+                if (f.y - f.size > canvas.height) {
+                    f.y = -f.size * 2;
                     f.x = Math.random() * canvas.width;
                 }
+                if (f.x < -20) f.x = canvas.width + 10;
+                if (f.x > canvas.width + 20) f.x = -10;
+
+                if (f.isCrystal) {
+                    drawCrystal(f);
+                } else {
+                    ctx.beginPath();
+                    ctx.fillStyle = `rgba(240, 249, 255, ${f.alpha})`;
+                    ctx.shadowColor = 'rgba(200, 230, 255, 0.5)';
+                    ctx.shadowBlur = f.size * 1.5;
+                    ctx.arc(f.x, f.y, f.size, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.shadowBlur = 0;
+                }
             }
-            ctx.fill();
             requestAnimationFrame(drawSnow);
         }
 
@@ -2470,9 +2681,10 @@
 
         window.addEventListener('resize', initSnow);
         initSnow();
-        drawSnow();
+        requestAnimationFrame(drawSnow);
 
-        // Initial catalog render
+        // Initial setup: Default to Home tab landing
+        switchTab('home');
         renderGames();
     </script>
 </body>
