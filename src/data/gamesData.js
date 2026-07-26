@@ -1,5 +1,45 @@
 export const initialGamesData = [
   {
+    "id": "rooftop-run",
+    "title": "Rooftop Run",
+    "category": "Action",
+    "description": "High-octane 3D parkour runner across city skyscrapers! Sprint, jump, slide, and perform acrobatic flips across rooftop ledges.",
+    "iframeUrl": "https://rooftoprun.io/",
+    "thumbnail": "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=600&auto=format&fit=crop&q=80",
+    "rating": 4.9,
+    "plays": "680K",
+    "controls": [
+      "WASD or Arrow Keys to Move & Steer",
+      "Spacebar to Jump & Vault",
+      "Shift or Down Arrow to Slide & Roll"
+    ],
+    "featured": true,
+    "popular": true,
+    "tags": ["parkour", "runner", "rooftop", "3d", "action", "arcade"],
+    "author": "Arcade Studio",
+    "hasBuiltInEngine": false
+  },
+  {
+    "id": "smash-karts",
+    "title": "Smash Karts",
+    "category": "Action",
+    "description": "3D multiplayer kart battle arena game! Drive karts, pick up weapons, and blow up other players to win the round.",
+    "iframeUrl": "https://smashkarts.io",
+    "thumbnail": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&auto=format&fit=crop&q=80",
+    "rating": 4.9,
+    "plays": "750K",
+    "controls": [
+      "WASD or Arrow Keys to Drive",
+      "Spacebar to Fire Weapon",
+      "Drive over mystery boxes to collect weapons"
+    ],
+    "featured": true,
+    "popular": true,
+    "tags": ["kart", "multiplayer", "battle", "driving", "3d", "action"],
+    "author": "Tall Team",
+    "hasBuiltInEngine": false
+  },
+  {
     "id": "color-puzzles",
     "title": "Color Puzzles",
     "category": "Puzzle",
@@ -54,10 +94,10 @@ export const initialGamesData = [
   },
   {
     "id": "slope-game",
-    "title": "Slope 3",
+    "title": "Slope",
     "category": "Arcade",
     "description": "Drive a ball down a steep neon 3D obstacle course at breakneck speeds. Dodge red blocks, jump ramps, and set new high scores!",
-    "iframeUrl": "https://y8.com/embed/slope",
+    "iframeUrl": "https://slopeio.org/",
     "thumbnail": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&auto=format&fit=crop&q=80",
     "rating": 4.8,
     "plays": "500K",
@@ -205,7 +245,7 @@ export const initialGamesData = [
     "title": "Drift Hunters",
     "category": "Racing",
     "description": "Ultimate 3D car drifting simulator with realistic physics, fully customizable tuner cars, and huge track maps.",
-    "iframeUrl": "https://www.drifted.com/drifting-games/drifted-games-drift-hunters/",
+    "iframeUrl": "https://drifthunters2.io/",
     "thumbnail": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&auto=format&fit=crop&q=80",
     "rating": 4.9,
     "plays": "450K",
@@ -221,7 +261,7 @@ export const initialGamesData = [
     "title": "Drift Hunters MAX",
     "category": "Racing",
     "description": "Experience next-level 3D drifting action with expanded tracks, realistic tuning, and high-performance cars.",
-    "iframeUrl": "https://www.drifted.com/drift-hunters-max/",
+    "iframeUrl": "https://drifthuntersmax.io/",
     "thumbnail": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&auto=format&fit=crop&q=80",
     "rating": 5.0,
     "plays": "890K",

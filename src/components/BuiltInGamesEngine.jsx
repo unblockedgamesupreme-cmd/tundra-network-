@@ -934,8 +934,8 @@ const EngineSlope = () => {
     >
       <iframe
         ref={iframeRef}
-        srcDoc={slopeHtml}
-        title="Slope 3"
+        src="https://slopeio.org/"
+        title="Slope"
         style={{ width: '100%', height: '100%', border: 0, margin: 0, padding: 0 }}
         className="w-full h-full border-0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; gamepad"
