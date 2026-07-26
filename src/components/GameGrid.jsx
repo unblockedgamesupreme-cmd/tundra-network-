@@ -11,6 +11,7 @@ import {
 const CATEGORIES = [
   'All',
   'Favorites',
+  'GN Math',
   'Action',
   'Arcade',
   'Puzzle',
@@ -46,6 +47,8 @@ export const GameGrid = ({
                 ? games.length
                 : category === 'Favorites'
                 ? favorites.length
+                : category === 'GN Math'
+                ? games.filter((g) => g.isGnMath || (Array.isArray(g.tags) && g.tags.includes('gn-math'))).length
                 : games.filter((g) => g.category === category).length;
 
             return (
@@ -62,6 +65,12 @@ export const GameGrid = ({
                   <Bookmark className={`w-3.5 h-3.5 ${isActive ? 'fill-white' : 'text-amber-400'}`} />
                 )}
                 {category === 'All' && <Gamepad2 className="w-3.5 h-3.5" />}
+                {category === 'GN Math' && (
+                  <span className="flex items-center gap-1 font-black text-cyan-400 text-[10px]">
+                    <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                    GN
+                  </span>
+                )}
                 <span>{category}</span>
                 <span
                   className={`text-[10px] px-1.5 py-0.2 rounded-full font-semibold ${

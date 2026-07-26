@@ -26,11 +26,20 @@ export const GameCard = ({
           </div>
         </div>
 
-        {/* Category Pill */}
-        <div className="absolute top-2.5 left-2.5">
+        {/* Category Pill & GN Math Badge */}
+        <div className="absolute top-2.5 left-2.5 flex items-center gap-1.5 z-10">
           <span className="text-[10px] font-bold px-2.5 py-1 rounded-full bg-slate-900/80 text-sky-200 shadow-sm border border-sky-500/30 backdrop-blur-md">
             {game.category}
           </span>
+          {(game.isGnMath || (Array.isArray(game.tags) && game.tags.includes('gn-math'))) && (
+            <span
+              title="GN Math Game"
+              className="text-[10px] font-black px-2 py-0.5 rounded-lg bg-slate-950/90 text-cyan-300 border border-cyan-400/60 shadow-md backdrop-blur-md flex items-center gap-1 tracking-wider"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+              GN
+            </span>
+          )}
         </div>
 
         {/* Favorite Star Button */}

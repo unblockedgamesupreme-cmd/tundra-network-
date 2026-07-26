@@ -1,5 +1,323 @@
 export const initialGamesData = [
   {
+    "id": "ev-io",
+    "title": "ev.io",
+    "category": "Action",
+    "description": "Futuristic 3D FPS arena shooter! Master double jumps, teleportation abilities, grenade throws, and railgun sniper shots in high-speed sci-fi multiplayer combat.",
+    "iframeUrl": "https://ev.io/",
+    "thumbnail": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&auto=format&fit=crop&q=80",
+    "rating": 4.9,
+    "plays": "1.1M",
+    "controls": [
+      "WASD to Move & Walk",
+      "Mouse to Aim & Left Click to Shoot / Right Click Zoom",
+      "Spacebar to Jump & Double Jump",
+      "Shift to Teleport / Ability",
+      "G to Throw Grenade",
+      "1-4 to Switch Weapons"
+    ],
+    "featured": true,
+    "popular": true,
+    "tags": ["ev.io", "fps", "action", "sci-fi", "shooting", "3d", "multiplayer", "gn-math"],
+    "author": "Addicting Games / ev.io",
+    "hasBuiltInEngine": false,
+    "isGnMath": true
+  },
+  {
+    "id": "geometry-dash",
+    "title": "Geometry Dash Lite",
+    "category": "Arcade",
+    "description": "Jump, fly, and flip your way through dangerous geometric passages and spiky obstacles in this legendary rhythm-based platformer!",
+    "iframeUrl": "https://html5.gamedistribution.com/567223b98e82415d86ef8684a0d92e85/",
+    "thumbnail": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&auto=format&fit=crop&q=80",
+    "rating": 4.9,
+    "plays": "1.4M",
+    "controls": [
+      "Spacebar, Up Arrow, or Left Click to Jump",
+      "Hold to keep jumping",
+      "Time jumps precisely with soundtrack beats"
+    ],
+    "featured": true,
+    "popular": true,
+    "tags": ["geometry dash", "rhythm", "platformer", "arcade", "gn-math"],
+    "author": "RobTop Games",
+    "hasBuiltInEngine": false,
+    "isGnMath": true
+  },
+  {
+    "id": "subway-surfers",
+    "title": "Subway Surfers",
+    "category": "Arcade",
+    "description": "Dash as fast as you can through subway tracks! Dodge oncoming trains, leap over barriers, and hoverboard through obstacles.",
+    "iframeUrl": "https://html5.gamedistribution.com/d72856247c4547c18683e6022e132c3f/",
+    "thumbnail": "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=600&auto=format&fit=crop&q=80",
+    "rating": 4.9,
+    "plays": "1.8M",
+    "controls": [
+      "Left / Right Arrows or A / D to Switch Lanes",
+      "Up Arrow or W to Jump",
+      "Down Arrow or S to Roll & Slide",
+      "Double Click / Spacebar for Hoverboard"
+    ],
+    "featured": true,
+    "popular": true,
+    "tags": ["runner", "subway", "3d", "arcade", "gn-math"],
+    "author": "SYBO Games",
+    "hasBuiltInEngine": false,
+    "isGnMath": true
+  },
+  {
+    "id": "1v1-lol",
+    "title": "1v1.LOL RELOADED",
+    "category": "Action",
+    "description": "The ultimate 3D building and shooting simulator! Fight in 1v1 duels, build defensive ramps and walls, and eliminate rivals in 1v1.LOL RELOADED.",
+    "iframeUrl": "https://1v1lolreloaded.com/",
+    "thumbnail": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&auto=format&fit=crop&q=80",
+    "rating": 4.9,
+    "plays": "1.3M",
+    "controls": [
+      "WASD to Move, Spacebar to Jump",
+      "Left Click to Shoot / Place Building",
+      "Right Click to Aim Down Sight",
+      "Z, X, C, V or F Keys to Place Walls, Floors, Ramps & Roofs"
+    ],
+    "featured": true,
+    "popular": true,
+    "tags": ["1v1", "fps", "building", "battle royale", "shooting", "gn-math"],
+    "author": "JustPlay.LOL",
+    "hasBuiltInEngine": false,
+    "isGnMath": true
+  },
+  {
+    "id": "drive-mad",
+    "title": "Drive Mad",
+    "category": "Racing",
+    "description": "Drive a monster truck over crazy physics-based obstacle tracks! Balance speed and control to cross the finish line without flipping.",
+    "iframeUrl": "https://html5.gamedistribution.com/3932750e6409424cb4d21e8696c73b18/",
+    "thumbnail": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&auto=format&fit=crop&q=80",
+    "rating": 4.9,
+    "plays": "920K",
+    "controls": [
+      "W / Up Arrow / D to Drive Forward & Steer",
+      "S / Down Arrow / A to Drive Backward & Brake",
+      "Keep truck balanced over ramps and bridges"
+    ],
+    "featured": true,
+    "popular": true,
+    "tags": ["driving", "truck", "physics", "puzzle", "gn-math"],
+    "author": "Martin Magni / Fancade",
+    "hasBuiltInEngine": false,
+    "isGnMath": true
+  },
+  {
+    "id": "stickman-hook",
+    "title": "Stickman Hook",
+    "category": "Skill",
+    "description": "Swing like Spider-Man as a bouncy stickman! Grapple onto pegs, execute incredible acrobatic flips, and soar across the finish line.",
+    "iframeUrl": "https://html5.gamedistribution.com/8390b16f2ca94d1b827bf9e34c6eef92/",
+    "thumbnail": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&auto=format&fit=crop&q=80",
+    "rating": 4.8,
+    "plays": "810K",
+    "controls": [
+      "Spacebar or Left Click to Hook & Swing",
+      "Release to Launch & Bounce off trampolines"
+    ],
+    "featured": false,
+    "popular": true,
+    "tags": ["stickman", "swing", "physics", "arcade", "gn-math"],
+    "author": "Madbox",
+    "hasBuiltInEngine": false,
+    "isGnMath": true
+  },
+  {
+    "id": "vex-7",
+    "title": "Vex 7",
+    "category": "Action",
+    "description": "The peak of hardcore stickman parkour! Master deadly spikes, laser beams, falling platforms, and wall jumps across dangerous acts.",
+    "iframeUrl": "https://html5.gamedistribution.com/876c245c61eb427092bb4f7ef993a4bc/",
+    "thumbnail": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&auto=format&fit=crop&q=80",
+    "rating": 4.9,
+    "plays": "760K",
+    "controls": [
+      "WASD or Arrow Keys to Run & Jump",
+      "Down Arrow / S to Slide under obstacles",
+      "Wall jump by pressing Up near walls"
+    ],
+    "featured": true,
+    "popular": true,
+    "tags": ["vex", "parkour", "stickman", "platformer", "action", "gn-math"],
+    "author": "Amazing Adam",
+    "hasBuiltInEngine": false,
+    "isGnMath": true
+  },
+  {
+    "id": "basket-random",
+    "title": "Basket Random",
+    "category": "Sports",
+    "description": "Wacky ragdoll 2-player basketball with random physics, changing courts, and unpredictable players! Score 5 points to win.",
+    "iframeUrl": "https://html5.gamedistribution.com/2df8f9f8e43e493e8e24e2c26f09238e/",
+    "thumbnail": "https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=600&auto=format&fit=crop&q=80",
+    "rating": 4.8,
+    "plays": "890K",
+    "controls": [
+      "Player 1: W Key to Jump & Throw",
+      "Player 2: Up Arrow Key to Jump & Throw"
+    ],
+    "featured": true,
+    "popular": true,
+    "tags": ["basketball", "ragdoll", "2 player", "sports", "gn-math"],
+    "author": "RHM Interactive",
+    "hasBuiltInEngine": false,
+    "isGnMath": true
+  },
+  {
+    "id": "soccer-random",
+    "title": "Soccer Random",
+    "category": "Sports",
+    "description": "Hilarious single button ragdoll soccer! Play on snowy fields, sandy beaches, or muddy grounds with random weather and balls.",
+    "iframeUrl": "https://html5.gamedistribution.com/eb77494f6fdf40c0827f8d6896253457/",
+    "thumbnail": "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=600&auto=format&fit=crop&q=80",
+    "rating": 4.8,
+    "plays": "730K",
+    "controls": [
+      "Player 1: W Key to Kick & Jump",
+      "Player 2: Up Arrow Key to Kick & Jump"
+    ],
+    "featured": false,
+    "popular": true,
+    "tags": ["soccer", "ragdoll", "2 player", "sports", "gn-math"],
+    "author": "RHM Interactive",
+    "hasBuiltInEngine": false,
+    "isGnMath": true
+  },
+  {
+    "id": "half-life-2",
+    "title": "Half-Life 2",
+    "category": "Action",
+    "description": "Play Half-Life 2 directly in your browser! Experience Gordon Freeman's iconic sci-fi FPS journey through City 17 with realistic physics, gravity gun mechanics, and thrilling combat.",
+    "iframeUrl": "https://hl2.slqnt.dev/",
+    "thumbnail": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&auto=format&fit=crop&q=80",
+    "rating": 5.0,
+    "plays": "950K",
+    "controls": [
+      "WASD to Walk & Move",
+      "Mouse to Aim & Fire / Right Click Secondary Attack",
+      "Spacebar to Jump, Shift to Sprint, C / Ctrl to Crouch",
+      "E to Interact / Gravity Gun, R to Reload",
+      "1-6 or Scroll Wheel to Switch Weapons"
+    ],
+    "featured": true,
+    "popular": true,
+    "tags": ["half-life", "fps", "action", "sci-fi", "shooting", "3d", "valve", "gn-math"],
+    "author": "Valve / Slqnt Engine",
+    "hasBuiltInEngine": false,
+    "isGnMath": true
+  },
+  {
+    "id": "half-life-1",
+    "title": "Half-Life 1",
+    "category": "Action",
+    "description": "Play the original 1998 GoldSrc FPS classic in your browser! Survive the Black Mesa research facility incident as Dr. Gordon Freeman.",
+    "iframeUrl": "https://hl2.slqnt.dev/",
+    "thumbnail": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&auto=format&fit=crop&q=80",
+    "rating": 4.9,
+    "plays": "880K",
+    "controls": [
+      "WASD to Move",
+      "Mouse to Aim & Shoot",
+      "Spacebar to Jump, Shift to Walk, Ctrl to Crouch",
+      "E to Interact / Use, R to Reload"
+    ],
+    "featured": true,
+    "popular": true,
+    "tags": ["half-life", "fps", "action", "sci-fi", "shooting", "retro", "gn-math"],
+    "author": "Valve / Slqnt Engine",
+    "hasBuiltInEngine": false,
+    "isGnMath": true
+  },
+  {
+    "id": "retro-bowl",
+    "title": "Retro Bowl",
+    "category": "Sports",
+    "description": "The ultimate 8-bit American football management game! Call plays, pass, run, and manage your team to Super Bowl glory.",
+    "iframeUrl": "https://game316009.konggames.com/gamez/0031/6009/live/index.html",
+    "thumbnail": "https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=600&auto=format&fit=crop&q=80",
+    "rating": 4.9,
+    "plays": "1.1M",
+    "controls": [
+      "Mouse Drag & Release to Pass Football",
+      "W / S or Arrow Keys to Dodge & Sidestep Defenders",
+      "Spacebar to Dive"
+    ],
+    "featured": true,
+    "popular": true,
+    "tags": ["football", "retro", "sports", "gn-math", "arcade", "pixel"],
+    "author": "New Star Games",
+    "hasBuiltInEngine": false,
+    "isGnMath": true
+  },
+  {
+    "id": "tunnel-rush",
+    "title": "Tunnel Rush",
+    "category": "Arcade",
+    "description": "Blaze through a 3D neon tunnel at lightning speed! Dodge rotating hazard barriers, test your reflexes, and beat high scores.",
+    "iframeUrl": "https://html5.gamedistribution.com/d72856247c4547c18683e6022e132c3f/",
+    "thumbnail": "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=600&auto=format&fit=crop&q=80",
+    "rating": 4.8,
+    "plays": "790K",
+    "controls": [
+      "A / D or Left / Right Arrows to Rotate Tunnel",
+      "Dodge red barrier obstacles"
+    ],
+    "featured": true,
+    "popular": true,
+    "tags": ["tunnel", "3d", "speed", "arcade", "gn-math"],
+    "author": "Deer Cat Games",
+    "hasBuiltInEngine": false,
+    "isGnMath": true
+  },
+  {
+    "id": "cluster-rush",
+    "title": "Cluster Rush",
+    "category": "Action",
+    "description": "Jump across a swarm of frantic moving trucks! Don't touch the ground as you vault, slide, and climb over physics obstacles.",
+    "iframeUrl": "https://html5.gamedistribution.com/f047cb7d559c4b7999885e3a8fa996e3/",
+    "thumbnail": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&auto=format&fit=crop&q=80",
+    "rating": 4.8,
+    "plays": "630K",
+    "controls": [
+      "A / D or Left / Right Arrows to Steer",
+      "Spacebar or J to Jump & Vault",
+      "Hold Space to Climb Ledges"
+    ],
+    "featured": false,
+    "popular": true,
+    "tags": ["parkour", "trucks", "physics", "3d", "gn-math"],
+    "author": "Landfall / Arcade",
+    "hasBuiltInEngine": false,
+    "isGnMath": true
+  },
+  {
+    "id": "eggy-car",
+    "title": "Eggy Car",
+    "category": "Skill",
+    "description": "Drive a fragile egg over steep hills without letting it drop or break! Control gas and brakes with precision.",
+    "iframeUrl": "https://html5.gamedistribution.com/eb77494f6fdf40c0827f8d6896253457/",
+    "thumbnail": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&auto=format&fit=crop&q=80",
+    "rating": 4.8,
+    "plays": "540K",
+    "controls": [
+      "A / D or Left / Right Arrows for Gas & Brake",
+      "Keep egg balanced inside car"
+    ],
+    "featured": false,
+    "popular": true,
+    "tags": ["egg", "driving", "physics", "gn-math", "arcade"],
+    "author": "Beedo Games",
+    "hasBuiltInEngine": false,
+    "isGnMath": true
+  },
+  {
     "id": "rooftop-run",
     "title": "Rooftop Run",
     "category": "Action",
@@ -15,9 +333,10 @@ export const initialGamesData = [
     ],
     "featured": true,
     "popular": true,
-    "tags": ["parkour", "runner", "rooftop", "3d", "action", "arcade"],
+    "tags": ["parkour", "runner", "rooftop", "3d", "action", "arcade", "gn-math"],
     "author": "Arcade Studio",
-    "hasBuiltInEngine": false
+    "hasBuiltInEngine": false,
+    "isGnMath": true
   },
   {
     "id": "smash-karts",
@@ -35,9 +354,10 @@ export const initialGamesData = [
     ],
     "featured": true,
     "popular": true,
-    "tags": ["kart", "multiplayer", "battle", "driving", "3d", "action"],
+    "tags": ["kart", "multiplayer", "battle", "driving", "3d", "action", "gn-math"],
     "author": "Tall Team",
-    "hasBuiltInEngine": false
+    "hasBuiltInEngine": false,
+    "isGnMath": true
   },
   {
     "id": "color-puzzles",
@@ -88,9 +408,10 @@ export const initialGamesData = [
     "controls": ["Use Arrow Keys or WASD to slide tiles", "Combine identical numbers to double them", "Press R to restart game"],
     "featured": true,
     "popular": true,
-    "tags": ["2048", "puzzle", "numbers", "math", "relaxing"],
+    "tags": ["2048", "puzzle", "numbers", "math", "relaxing", "gn-math"],
     "author": "Gabriele Cirulli",
-    "hasBuiltInEngine": true
+    "hasBuiltInEngine": true,
+    "isGnMath": true
   },
   {
     "id": "slope-game",
@@ -104,9 +425,10 @@ export const initialGamesData = [
     "controls": ["A / D or Left / Right Arrows to Steer", "Avoid red obstacles", "Reach maximum speed down the slope"],
     "featured": true,
     "popular": true,
-    "tags": ["slope", "3d", "speed", "runner", "arcade"],
+    "tags": ["slope", "3d", "speed", "runner", "arcade", "gn-math"],
     "author": "Y8 Games",
-    "hasBuiltInEngine": true
+    "hasBuiltInEngine": true,
+    "isGnMath": true
   },
   {
     "id": "flappy-bird",
@@ -120,9 +442,10 @@ export const initialGamesData = [
     "controls": ["Tap Space or Click Mouse to flap wings", "Pass through green pipe gaps", "Don't crash into the ground or pipes"],
     "featured": false,
     "popular": true,
-    "tags": ["flappy", "arcade", "one button", "retro", "skill"],
+    "tags": ["flappy", "arcade", "one button", "retro", "skill", "gn-math"],
     "author": "Dong Nguyen",
-    "hasBuiltInEngine": true
+    "hasBuiltInEngine": true,
+    "isGnMath": true
   },
   {
     "id": "retro-snake",
@@ -136,9 +459,10 @@ export const initialGamesData = [
     "controls": ["Arrow keys or WASD to navigate", "Eat glowing ice apples to gain points", "Avoid crashing into snake body"],
     "featured": true,
     "popular": true,
-    "tags": ["snake", "classic", "retro", "arcade"],
+    "tags": ["snake", "classic", "retro", "arcade", "gn-math"],
     "author": "Retro Arcade",
-    "hasBuiltInEngine": true
+    "hasBuiltInEngine": true,
+    "isGnMath": true
   },
   {
     "id": "jetpack-joyride",
@@ -156,9 +480,10 @@ export const initialGamesData = [
     ],
     "featured": true,
     "popular": true,
-    "tags": ["jetpack", "joyride", "arcade", "runner", "action", "phaser"],
+    "tags": ["jetpack", "joyride", "arcade", "runner", "action", "phaser", "gn-math"],
     "author": "Halfbrick Studios / Genizy",
-    "hasBuiltInEngine": true
+    "hasBuiltInEngine": true,
+    "isGnMath": true
   },
   {
     "id": "paper-io-3d",
@@ -172,9 +497,10 @@ export const initialGamesData = [
     "controls": ["Mouse or Arrow Keys to navigate", "Enclose space to claim 3D land", "Eliminate opponents by cutting their tail"],
     "featured": false,
     "popular": true,
-    "tags": ["io", "paper", "3d", "territory", "multiplayer", "strategy"],
+    "tags": ["io", "paper", "3d", "territory", "multiplayer", "strategy", "gn-math"],
     "author": "Voodoo",
-    "hasBuiltInEngine": false
+    "hasBuiltInEngine": false,
+    "isGnMath": true
   },
   {
     "id": "tetris-frost",
@@ -188,9 +514,10 @@ export const initialGamesData = [
     "controls": ["Left / Right Arrows to move block", "Up Arrow to rotate piece", "Down Arrow to drop faster", "Spacebar to hard drop"],
     "featured": false,
     "popular": true,
-    "tags": ["tetris", "puzzle", "blocks", "retro"],
+    "tags": ["tetris", "puzzle", "blocks", "retro", "gn-math"],
     "author": "Alexey Pajitnov",
-    "hasBuiltInEngine": false
+    "hasBuiltInEngine": false,
+    "isGnMath": true
   },
   {
     "id": "cookie-clicker",
@@ -204,9 +531,10 @@ export const initialGamesData = [
     "controls": ["Left Click giant cookie to bake", "Buy upgrades in right panel", "Unlock achievements"],
     "featured": false,
     "popular": true,
-    "tags": ["clicker", "idle", "cookie", "casual", "upgrades"],
+    "tags": ["clicker", "idle", "cookie", "casual", "upgrades", "gn-math"],
     "author": "Orteil",
-    "hasBuiltInEngine": false
+    "hasBuiltInEngine": false,
+    "isGnMath": true
   },
   {
     "id": "moto-x3m",
@@ -220,9 +548,10 @@ export const initialGamesData = [
     "controls": ["Up Arrow to Accelerate", "Down Arrow to Brake", "Left / Right Arrows to tilt bike"],
     "featured": false,
     "popular": true,
-    "tags": ["bike", "racing", "stunts", "moto", "x3m"],
+    "tags": ["bike", "racing", "stunts", "moto", "x3m", "gn-math"],
     "author": "MadPuffers",
-    "hasBuiltInEngine": false
+    "hasBuiltInEngine": false,
+    "isGnMath": true
   },
   {
     "id": "chess-classic",
@@ -236,9 +565,10 @@ export const initialGamesData = [
     "controls": ["Click piece to view valid moves", "Click target square to move", "Capture king for checkmate"],
     "featured": false,
     "popular": false,
-    "tags": ["chess", "strategy", "board", "mind", "2player"],
+    "tags": ["chess", "strategy", "board", "mind", "2player", "gn-math"],
     "author": "Chess Community",
-    "hasBuiltInEngine": false
+    "hasBuiltInEngine": false,
+    "isGnMath": true
   },
   {
     "id": "drift-hunters",
@@ -252,9 +582,10 @@ export const initialGamesData = [
     "controls": ["WASD or Arrow Keys to Drive", "Spacebar for Handbrake", "C to change camera view"],
     "featured": false,
     "popular": true,
-    "tags": ["drift", "cars", "racing", "3d", "simulator"],
+    "tags": ["drift", "cars", "racing", "3d", "simulator", "gn-math"],
     "author": "Studiorum",
-    "hasBuiltInEngine": false
+    "hasBuiltInEngine": false,
+    "isGnMath": true
   },
   {
     "id": "drift-hunters-max",
@@ -268,9 +599,10 @@ export const initialGamesData = [
     "controls": ["WASD or Arrow Keys to Drive", "Spacebar for Handbrake", "C to change camera view"],
     "featured": true,
     "popular": true,
-    "tags": ["drift", "cars", "racing", "3d", "simulator", "max"],
+    "tags": ["drift", "cars", "racing", "3d", "simulator", "max", "gn-math"],
     "author": "Studiorum",
-    "hasBuiltInEngine": false
+    "hasBuiltInEngine": false,
+    "isGnMath": true
   },
   {
     "id": "super-smash-bros",
@@ -290,9 +622,10 @@ export const initialGamesData = [
     ],
     "featured": true,
     "popular": true,
-    "tags": ["smash", "n64", "fighting", "nintendo", "retro", "emulator"],
+    "tags": ["smash", "n64", "fighting", "nintendo", "retro", "emulator", "gn-math"],
     "author": "Nintendo / EmulatorJS",
-    "hasBuiltInEngine": true
+    "hasBuiltInEngine": true,
+    "isGnMath": true
   },
   {
     "id": "crossy-road",
@@ -311,9 +644,10 @@ export const initialGamesData = [
     ],
     "featured": true,
     "popular": true,
-    "tags": ["crossy", "road", "arcade", "3d", "voxel", "runner", "casual"],
+    "tags": ["crossy", "road", "arcade", "3d", "voxel", "runner", "casual", "gn-math"],
     "author": "Hipster Whale / HTML5",
-    "hasBuiltInEngine": true
+    "hasBuiltInEngine": true,
+    "isGnMath": true
   },
   {
     "id": "final-fantasy",
@@ -333,9 +667,10 @@ export const initialGamesData = [
     ],
     "featured": true,
     "popular": true,
-    "tags": ["final fantasy", "rpg", "nes", "retro", "nintendo", "emulator", "adventure"],
+    "tags": ["final fantasy", "rpg", "nes", "retro", "nintendo", "emulator", "adventure", "gn-math"],
     "author": "Square / EmulatorJS",
-    "hasBuiltInEngine": true
+    "hasBuiltInEngine": true,
+    "isGnMath": true
   },
   {
     "id": "roblox-experimental",
@@ -354,9 +689,10 @@ export const initialGamesData = [
     ],
     "featured": true,
     "popular": true,
-    "tags": ["roblox", "sandbox", "multiplayer", "3d", "cloud", "experimental"],
+    "tags": ["roblox", "sandbox", "multiplayer", "3d", "cloud", "experimental", "gn-math"],
     "author": "Roblox / Now.gg",
-    "hasBuiltInEngine": false
+    "hasBuiltInEngine": false,
+    "isGnMath": true
   }
 ];
 
