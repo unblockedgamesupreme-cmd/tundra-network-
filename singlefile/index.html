@@ -2537,7 +2537,8 @@
 
         function navigateProxy(url) {
             document.getElementById('proxyUrlDisplay').innerText = url;
-            document.getElementById('proxyIframe').src = url;
+            const proxyEndpoint = '/api/proxy?url=' + encodeURIComponent(url);
+            document.getElementById('proxyIframe').src = proxyEndpoint;
             document.getElementById('proxyFrameContainer').classList.remove('hidden');
             document.getElementById('proxyFrameContainer').classList.add('flex');
             document.getElementById('proxyShortcuts').classList.add('hidden');

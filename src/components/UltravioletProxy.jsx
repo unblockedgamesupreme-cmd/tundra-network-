@@ -294,10 +294,9 @@ export const UltravioletProxy = () => {
             <iframe
               ref={iframeRef}
               id="uv-frame"
-              src={activeUrl}
+              src={activeUrl ? `/api/proxy?url=${encodeURIComponent(activeUrl)}` : ''}
               className="w-full h-full border-none bg-white"
               title="Ultraviolet Proxy Viewport"
-              sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
             />
           </div>
         </div>
