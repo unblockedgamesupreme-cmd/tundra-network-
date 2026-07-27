@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Play, RotateCcw, Volume2, VolumeX, Sparkles, Trophy, Award, Zap, Shield, HelpCircle } from 'lucide-react';
 
-export const ChromaIncidentEngine = () => {
+export const ColorPuzzlesEngine = () => {
   const canvasRef = useRef(null);
   const [gameState, setGameState] = useState('start'); // start, playing, gameover, win
   const [level, setLevel] = useState(1);

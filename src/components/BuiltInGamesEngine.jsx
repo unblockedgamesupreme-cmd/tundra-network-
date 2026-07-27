@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ChromaIncidentEngine } from './ChromaIncidentEngine.jsx';
+import { ColorPuzzlesEngine } from './ColorPuzzlesEngine.jsx';
 import { Play, RotateCcw, Trophy } from 'lucide-react';
 
 // 2048 Built-In Game Component
@@ -729,9 +729,9 @@ const EngineSlope = () => {
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Slope 3</title>
     <link rel="shortcut icon" href="style/favicon.ico">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bubbls/UGS-Assets@eb0836289452ca93a6c2749f95b2c8a01562d1bb/slope%203/style/style.css">
-    <script src="https://cdn.jsdelivr.net/gh/bubbls/UGS-Assets@eb0836289452ca93a6c2749f95b2c8a01562d1bb/slope%203/UnityLoader.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/bubbls/UGS-Assets@eb0836289452ca93a6c2749f95b2c8a01562d1bb/slope%203/UnityProgress.js"></script>
+    <link rel="stylesheet" href="https://rawcdn.githack.com/bubbls/UGS-Assets/eb0836289452ca93a6c2749f95b2c8a01562d1bb/slope%203/style/style.css">
+    <script src="https://rawcdn.githack.com/bubbls/UGS-Assets/eb0836289452ca93a6c2749f95b2c8a01562d1bb/slope%203/UnityLoader.js"></script>
+    <script src="https://rawcdn.githack.com/bubbls/UGS-Assets/eb0836289452ca93a6c2749f95b2c8a01562d1bb/slope%203/UnityProgress.js"></script>
     <style>
         html, body {
             margin: 0;
@@ -2027,201 +2027,6 @@ const EnginePaperIo2 = () => {
 const EngineJetpackJoyride = () => {
   const iframeRef = useRef(null);
 
-  const jetpackHtml = `<!DOCTYPE html>  
-<html>
-    <head>  
-        <meta charset="utf-8" />
-        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-        <title>Jetpack Joyride</title>
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/genizy/jride@475e65ec2f642cf50bb80f09f4f4188cf8c26faa/css/styles.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/genizy/jride@475e65ec2f642cf50bb80f09f4f4188cf8c26faa/h5Sdk.js"></script>
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/genizy/jride@475e65ec2f642cf50bb80f09f4f4188cf8c26faa/engine/phaser-3.24.1.min.js"></script>
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/genizy/jride@475e65ec2f642cf50bb80f09f4f4188cf8c26faa/game3.js"></script>
-        <style id="injectStyles">
-          html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background: #000 !important;
-            user-select: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
-          #content {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
-          #phaser-canvas {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
-          #phaser-canvas canvas {
-            max-width: 100% !important;
-            max-height: 100% !important;
-            object-fit: contain;
-            outline: none;
-          }
-        </style>
-    </head>
-    <body>
-        <div class="fontLoader" style="font-family: jetpackia;">-</div>
-        <img id="rotate_image" src="https://cdn.jsdelivr.net/gh/genizy/jride@475e65ec2f642cf50bb80f09f4f4188cf8c26faa/img/HB_ic_rotateScreen.png" alt="rotate_screen" class="center">
-        <div id="content">
-            <div id="phaser-canvas"></div>
-        </div>        
-        <script>
-          function focusGame() {
-            window.focus();
-            if (document.body) document.body.focus();
-            var canvas = document.querySelector('canvas');
-            if (canvas) canvas.focus();
-          }
-
-          function simulateJetpackDown() {
-            var canvas = document.querySelector('canvas') || document.body;
-            var kDown = new KeyboardEvent('keydown', { key: ' ', code: 'Space', keyCode: 32, which: 32, bubbles: true, cancelable: true });
-            var kUp = new KeyboardEvent('keydown', { key: 'ArrowUp', code: 'ArrowUp', keyCode: 38, which: 38, bubbles: true, cancelable: true });
-            window.dispatchEvent(kDown);
-            window.dispatchEvent(kUp);
-            if (canvas) {
-              canvas.dispatchEvent(kDown);
-              canvas.dispatchEvent(kUp);
-              try {
-                var pDown = new PointerEvent('pointerdown', { bubbles: true, cancelable: true, pointerType: 'mouse', isPrimary: true, button: 0, buttons: 1, clientX: 200, clientY: 200 });
-                var mDown = new MouseEvent('mousedown', { bubbles: true, cancelable: true, button: 0, buttons: 1, clientX: 200, clientY: 200 });
-                canvas.dispatchEvent(pDown);
-                canvas.dispatchEvent(mDown);
-              } catch(err) {}
-            }
-          }
-
-          function simulateJetpackUp() {
-            var canvas = document.querySelector('canvas') || document.body;
-            var kDown = new KeyboardEvent('keyup', { key: ' ', code: 'Space', keyCode: 32, which: 32, bubbles: true, cancelable: true });
-            var kUp = new KeyboardEvent('keyup', { key: 'ArrowUp', code: 'ArrowUp', keyCode: 38, which: 38, bubbles: true, cancelable: true });
-            window.dispatchEvent(kDown);
-            window.dispatchEvent(kUp);
-            if (canvas) {
-              canvas.dispatchEvent(kDown);
-              canvas.dispatchEvent(kUp);
-              try {
-                var pUp = new PointerEvent('pointerup', { bubbles: true, cancelable: true, pointerType: 'mouse', isPrimary: true, button: 0, buttons: 0, clientX: 200, clientY: 200 });
-                var mUp = new MouseEvent('mouseup', { bubbles: true, cancelable: true, button: 0, buttons: 0, clientX: 200, clientY: 200 });
-                canvas.dispatchEvent(pUp);
-                canvas.dispatchEvent(mUp);
-              } catch(err) {}
-            }
-          }
-
-          window.addEventListener('load', focusGame);
-          window.addEventListener('click', focusGame);
-
-          var isSpaceDown = false;
-
-          window.addEventListener('keydown', function(e) {
-            if ([' ', 'Spacebar', 'ArrowUp', 'w', 'W'].indexOf(e.key) >= 0 || e.keyCode === 32 || e.keyCode === 38) {
-              e.preventDefault();
-              if (!isSpaceDown) {
-                isSpaceDown = true;
-                simulateJetpackDown();
-              }
-            }
-          });
-
-          window.addEventListener('keyup', function(e) {
-            if ([' ', 'Spacebar', 'ArrowUp', 'w', 'W'].indexOf(e.key) >= 0 || e.keyCode === 32 || e.keyCode === 38) {
-              e.preventDefault();
-              isSpaceDown = false;
-              simulateJetpackUp();
-            }
-          });
-
-          window.addEventListener('message', function(event) {
-            if (event.data) {
-              if (event.data.type === 'JETPACK_DOWN') {
-                simulateJetpackDown();
-              } else if (event.data.type === 'JETPACK_UP') {
-                simulateJetpackUp();
-              }
-            }
-          });
-        </script>
-    </body>
-</html>`;
-
-  const triggerJetpackDown = () => {
-    if (!iframeRef.current) return;
-    try {
-      iframeRef.current.contentWindow?.focus();
-      iframeRef.current.contentWindow?.postMessage({ type: 'JETPACK_DOWN' }, '*');
-      const win = iframeRef.current.contentWindow;
-      if (win && typeof win.simulateJetpackDown === 'function') {
-        win.simulateJetpackDown();
-      }
-    } catch (e) {}
-  };
-
-  const triggerJetpackUp = () => {
-    if (!iframeRef.current) return;
-    try {
-      iframeRef.current.contentWindow?.postMessage({ type: 'JETPACK_UP' }, '*');
-      const win = iframeRef.current.contentWindow;
-      if (win && typeof win.simulateJetpackUp === 'function') {
-        win.simulateJetpackUp();
-      }
-    } catch (e) {}
-  };
-
-  useEffect(() => {
-    let isKeyDown = false;
-
-    const handleKeyDown = (e) => {
-      const activeElement = document.activeElement;
-      if (activeElement && (activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA')) {
-        return;
-      }
-
-      if (e.key === ' ' || e.key === 'Spacebar' || e.key === 'ArrowUp' || e.key === 'w' || e.key === 'W' || e.keyCode === 32 || e.keyCode === 38) {
-        e.preventDefault();
-        if (!isKeyDown) {
-          isKeyDown = true;
-          triggerJetpackDown();
-        }
-      }
-    };
-
-    const handleKeyUp = (e) => {
-      const activeElement = document.activeElement;
-      if (activeElement && (activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA')) {
-        return;
-      }
-
-      if (e.key === ' ' || e.key === 'Spacebar' || e.key === 'ArrowUp' || e.key === 'w' || e.key === 'W' || e.keyCode === 32 || e.keyCode === 38) {
-        e.preventDefault();
-        isKeyDown = false;
-        triggerJetpackUp();
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    window.addEventListener('keyup', handleKeyUp);
-
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-      window.removeEventListener('keyup', handleKeyUp);
-    };
-  }, []);
-
   const focusIframe = () => {
     if (iframeRef.current && iframeRef.current.contentWindow) {
       iframeRef.current.contentWindow.focus();
@@ -2236,7 +2041,7 @@ const EngineJetpackJoyride = () => {
     >
       <iframe
         ref={iframeRef}
-        srcDoc={jetpackHtml}
+        src="https://www.gamepix.com/play/jetpack-joyride"
         title="Jetpack Joyride"
         style={{ width: '100%', height: '100%', border: 0, margin: 0, padding: 0 }}
         className="w-full h-full border-0"
@@ -2244,21 +2049,6 @@ const EngineJetpackJoyride = () => {
         allowFullScreen
         onLoad={focusIframe}
       />
-
-      {/* On-screen control bar for Jetpack Thrust */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 pointer-events-none opacity-85 hover:opacity-100 transition-opacity z-20">
-        <button
-          type="button"
-          onMouseDown={triggerJetpackDown}
-          onMouseUp={triggerJetpackUp}
-          onTouchStart={triggerJetpackDown}
-          onTouchEnd={triggerJetpackUp}
-          className="pointer-events-auto px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 active:scale-95 text-white font-black text-xs sm:text-sm rounded-2xl border border-amber-300/40 shadow-xl backdrop-blur-md transition-all flex items-center gap-2.5 select-none cursor-pointer"
-        >
-          <span>🚀 HOLD TO FLY</span>
-          <span className="text-[10px] text-amber-100 font-mono bg-black/40 px-2 py-0.5 rounded border border-amber-200/30">[ SPACEBAR / CLICK ]</span>
-        </button>
-      </div>
     </div>
   );
 };
@@ -2338,17 +2128,17 @@ const EngineSuperSmashBros = () => {
 			window.EJS_core = "n64";
 			window.EJS_color = "#000000";
 			window.EJS_startOnLoaded = true;
-			window.EJS_pathtodata = "https://cdn.jsdelivr.net/gh/a456pur/seraph@81f551ca0aa8e3d6018d32d8ac5904ac9bc78f76/storage/emulatorjs/data/";
-			window.EJS_gameUrl = "https://cdn.jsdelivr.net/gh/a456pur/seraph@ae2fcc6d6a9cd051654fcc0519080db1f79cf2a7/games/supersmashbros/supersmashbros.zip";
+			window.EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
+			window.EJS_gameUrl = "https://rawcdn.githack.com/a456pur/seraph/ae2fcc6d6a9cd051654fcc0519080db1f79cf2a7/games/supersmashbros/supersmashbros.zip";
 			loadGame(); 
 		}
 		document.getElementById("startButton").addEventListener("click", startGame);
 		function loadGame() {
 			var script1 = document.createElement("script");
-			script1.src = "https://cdn.jsdelivr.net/gh/a456pur/seraph@81f551ca0aa8e3d6018d32d8ac5904ac9bc78f76/storage/emulatorjs/data/loader.js";
+			script1.src = "https://cdn.emulatorjs.org/stable/data/loader.js";
 			document.body.appendChild(script1);
 			var script2 = document.createElement("script");
-			script2.src = "https://cdn.jsdelivr.net/gh/a456pur/seraph@ae2fcc6d6a9cd051654fcc0519080db1f79cf2a7/storage/js/cloak.js";
+			script2.src = "https://rawcdn.githack.com/a456pur/seraph/ae2fcc6d6a9cd051654fcc0519080db1f79cf2a7/storage/js/cloak.js";
 			document.body.appendChild(script2);
 		}
 	</script>
@@ -3012,17 +2802,17 @@ const EngineFinalFantasy = () => {
 			window.EJS_core = "nes";
 			window.EJS_color = "#000000";
 			window.EJS_startOnLoaded = true;
-			window.EJS_pathtodata = "https://cdn.jsdelivr.net/gh/a456pur/seraph@81f551ca0aa8e3d6018d32d8ac5904ac9bc78f76/storage/emulatorjs/data";
-			window.EJS_gameUrl = "https://cdn.jsdelivr.net/gh/bubbls/UGS-file-encryption@c99c02b28ea1531fb40611092887d0aa9db97712/Final%20Fantasy%20(USA).zip";
+			window.EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data";
+			window.EJS_gameUrl = "https://rawcdn.githack.com/bubbls/UGS-file-encryption/c99c02b28ea1531fb40611092887d0aa9db97712/Final%20Fantasy%20(USA).zip";
 			loadGame(); 
 		}
 		document.getElementById("startButton").addEventListener("click", startGame);
 		function loadGame() {
 			var script1 = document.createElement("script");
-			script1.src = "https://cdn.jsdelivr.net/gh/a456pur/seraph@81f551ca0aa8e3d6018d32d8ac5904ac9bc78f76/storage/emulatorjs/data/loader.js";
+			script1.src = "https://cdn.emulatorjs.org/stable/data/loader.js";
 			document.body.appendChild(script1);
 			var script2 = document.createElement("script");
-			script2.src = "https://cdn.jsdelivr.net/gh/a456pur/seraph@ae2fcc6d6a9cd051654fcc0519080db1f79cf2a7/storage/js/cloak.js";
+			script2.src = "https://rawcdn.githack.com/a456pur/seraph/ae2fcc6d6a9cd051654fcc0519080db1f79cf2a7/storage/js/cloak.js";
 			document.body.appendChild(script2);
 		}
 	</script>
@@ -3057,7 +2847,7 @@ const EngineFinalFantasy = () => {
 
 export const BuiltInGamesEngine = ({ gameId }) => {
   if (gameId === 'color-puzzles') {
-    return <ChromaIncidentEngine />;
+    return <ColorPuzzlesEngine />;
   }
   if (gameId === '2048-frost') {
     return <Engine2048 />;
