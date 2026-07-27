@@ -33,7 +33,7 @@ export const Navbar = ({
             </div>
             <div>
               <div className="flex items-center gap-1.5">
-                <span className="text-xl font-black tracking-tight text-white font-sans drop-shadow-sm">
+                <span className="text-base sm:text-lg font-black tracking-tight text-white font-funnel drop-shadow-sm">
                   TUNDRA<span className="text-sky-400 font-extrabold"> NETWORK</span>
                 </span>
                 <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-sky-500/20 text-sky-300 border border-sky-400/30">
