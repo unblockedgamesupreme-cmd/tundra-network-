@@ -1,7 +1,2104 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1280 800">
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100% 100%">
   <foreignObject width="100%" height="100%">
-    <div xmlns="http://www.w3.org/1999/xhtml" style="width: 100%; height: 100%; margin: 0; padding: 0; overflow: hidden;">
-      <iframe src="./singlefile/index.html" style="width: 100%; height: 100%; border: none; outline: none; margin: 0; padding: 0; display: block;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; gamepad" allowfullscreen="true"></iframe>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tundra Network | Unblocked Games Portal &amp; Ultraviolet Proxy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin" />
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&amp;family=Instrument+Serif:ital@0;1&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&amp;family=Press+Start+2P&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script><![CDATA[
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            850: '#0f172a',
+                            950: '#070d1b'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                        arcade: ['"Press Start 2P"', 'cursive'],
+                        blackops: ['"Black Ops One"', 'cursive'],
+                        serif: ['"Instrument Serif"', 'serif']
+                    }
+                }
+            }
+        }
+    ]]></script>
+    <style><![CDATA[
+        :root {
+            --frost-bg: #0b1329;
+            --frost-card: rgba(19, 34, 71, 0.7);
+            --frost-border: rgba(56, 189, 248, 0.25);
+            --frost-cyan: #38bdf8;
+            --frost-purple: #c084fc;
+        }
+
+        body {
+            background: #050914;
+            color: #f0f9ff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        /* Fixed photographic glacier backdrop in crisp 4K */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            background: url('https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?w=3840&amp;auto=format&amp;fit=crop&amp;q=95') center center / cover no-repeat fixed;
+        }
+        /* Depth + legibility tint over the glacier */
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse at 30% 0%, rgba(56,189,248,0.08), transparent 60%),
+                linear-gradient(180deg, rgba(5,9,20,0.55) 0%, rgba(5,9,20,0.72) 60%, rgba(5,9,20,0.88) 100%);
+        }
+
+        .frost-glass {
+            background: rgba(11, 19, 41, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        .frost-card {
+            background: rgba(19, 34, 71, 0.6);
+            border: 1px solid var(--frost-border);
+            backdrop-filter: blur(8px);
+        }
+
+        .frost-card:hover {
+            border-color: rgba(56, 189, 248, 0.5);
+            box-shadow: 0 10px 25px -5px rgba(56, 189, 248, 0.2);
+        }
+
+        /* Custom Scrollbars */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #070d1b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #38bdf8;
+        }
+
+        @keyframes pulse-slow {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+        .animate-pulse-slow {
+            animation: pulse-slow 3s infinite ease-in-out;
+        }
+    ]]></style>
+</head>
+<body class="relative flex flex-col min-h-screen selection:bg-sky-500 selection:text-white">
+
+    <!-- Background Snowfall Canvas FX -->
+    <canvas id="snowCanvas" class="fixed inset-0 pointer-events-none z-10 opacity-70"></canvas>
+
+    <!-- Top Sticky Navbar -->
+    <header class="sticky top-0 z-40 w-full frost-glass border-b border-sky-500/20 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 gap-3">
+                
+                <!-- Logo &amp; Branding -->
+                <div class="flex items-center gap-3 cursor-pointer select-none shrink-0" onclick="resetSearch()">
+                    <div class="relative w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-sky-100">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v18m9-9H3m15.364 6.364l-12.728-12.728m0 12.728l12.728-12.728"/></svg>
+                    </div>
+                    <div class="leading-tight">
+                        <div class="text-[15px] font-medium tracking-tight text-white">
+                            Tundra <span class="font-serif italic font-normal text-sky-200">Network</span>
+                        </div>
+                        <p class="text-[10px] uppercase tracking-[0.22em] text-sky-200/50 hidden sm:block mt-0.5">
+                            Portal &#183; Proxy
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Search Input Bar -->
+                <div class="flex-1 max-w-md mx-2">
+                    <div class="relative">
+                        <svg class="w-4 h-4 text-sky-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                        <input
+                            type="text"
+                            id="searchInput"
+                            oninput="onSearchInput()"
+                            placeholder="Search games, tags, or categories..."
+                            class="w-full pl-10 pr-9 py-2 text-xs font-medium bg-slate-900/90 border border-sky-500/30 rounded-2xl text-sky-100 placeholder-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:border-sky-400 transition-all shadow-inner"
+                        />
+                    </div>
+                </div>
+
+                <!-- Action Controls="Controls" &amp; Tool Buttons -->
+                <div class="flex items-center space-x-2 shrink-0">
+                    <!-- Snow Effect Toggle -->
+                    <button
+                        onclick="toggleSnow()"
+                        id="snowBtn"
+                        class="p-2 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all border bg-sky-500/20 text-sky-200 border-sky-400/40 shadow-sm"
+                        title="Toggle Frost Snow Effect"
+                    >
+                        <svg class="w-4 h-4 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v18m9-9H3"/></svg>
+                        <span class="hidden md:inline text-xs" id="snowBtnLabel">Snow ON</span>
+                    </button>
+
+                    <!-- Favorites Filter Toggle -->
+                    <button
+                        onclick="toggleFavoritesFilter()"
+                        id="favFilterBtn"
+                        class="px-3 py-2 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all border bg-slate-900/60 text-sky-200 border-sky-500/30 hover:bg-slate-800"
+                    >
+                        <svg class="w-4 h-4 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>
+                        <span class="hidden sm:inline">Favorites</span>
+                        <span id="favBadgeCount" class="px-1.5 py-0.2 rounded-full text-[10px] font-bold bg-sky-500/20 text-sky-300 border border-sky-400/30">
+                            0
+                        </span>
+                    </button>
+
+                    <!-- Add Custom Game Modal Trigger -->
+                    <button
+                        onclick="openAddModal()"
+                        class="px-3 py-2 rounded-xl text-xs font-bold text-sky-200 bg-sky-500/20 hover:bg-sky-500/30 border border-sky-400/40 transition-all flex items-center gap-1.5"
+                        title="Add custom game iframe to catalog"
+                    >
+                        <svg class="w-4 h-4 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        <span class="hidden lg:inline">Add Game</span>
+                    </button>
+
+                    <!-- Google Drive Cloud Backup Trigger -->
+                    <button
+                        onclick="openDriveModal()"
+                        class="px-3 py-2 rounded-xl text-xs font-bold text-sky-100 bg-gradient-to-r from-sky-600/30 to-indigo-600/30 hover:from-sky-500/40 hover:to-indigo-500/40 border border-sky-400/40 transition-all flex items-center gap-1.5 shadow-sm"
+                        title="Google Drive Cloud Storage &amp; Backup"
+                    >
+                        <svg class="w-4 h-4 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 1.1.9 2 2 2h12a2 2 0 002-2V7M4 7a2 2 0 012-2h12a2 2 0 012 2M4 7h16"/></svg>
+                        <span class="hidden sm:inline">Google Drive</span>
+                    </button>
+
+                    <!-- Panic Quick Hide Trigger -->
+                    <button
+                        onclick="togglePanic()"
+                        class="p-2 sm:px-3 sm:py-2 rounded-xl text-xs font-bold text-slate-300 bg-slate-800/80 hover:bg-slate-700 border border-slate-700 transition-all flex items-center gap-1.5 shadow-sm"
+                        title="Classroom Quick Hide (Press Esc)"
+                    >
+                        <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                        <span class="hidden sm:inline text-xs">Panic (Esc)</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Section Navigation (Home / Games / Proxy) -->
+    <nav class="w-full bg-slate-950/50 border-b border-white/5 backdrop-blur-md z-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-center gap-2">
+            <button id="topTabHome" onclick="switchTab('home')" class="top-tab-btn px-4 py-1.5 rounded-full text-[13px] font-medium flex items-center gap-2 transition-all border">
+                <span>Home</span>
+            </button>
+            <button id="topTabGames" onclick="switchTab('games')" class="top-tab-btn px-4 py-1.5 rounded-full text-[13px] font-medium flex items-center gap-2 transition-all border">
+                <span>Games</span>
+            </button>
+            <button id="topTabProxy" onclick="switchTab('proxy')" class="top-tab-btn px-4 py-1.5 rounded-full text-[13px] font-medium flex items-center gap-2 transition-all border">
+                <span>Proxy</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Workspace Container with Left Sidebar -->
+    <div class="flex-1 flex flex-col md:flex-row w-full relative z-10">
+        
+        <!-- Left Navigation Sidebar -->
+        <aside class="w-full md:w-20 md:hover:w-52 transition-all duration-300 bg-slate-950/90 border-b md:border-b-0 md:border-r border-sky-500/20 backdrop-blur-md z-30 flex md:flex-col justify-between p-2 md:py-6 md:px-3 flex-shrink-0 group">
+            <div class="flex md:flex-col items-center md:items-start w-full gap-2 md:gap-6">
+                
+                <!-- Sidebar Header Icon -->
+                <div class="hidden md:flex items-center gap-3 px-2 mb-2">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 via-indigo-500 to-purple-600 p-0.5 flex-shrink-0 shadow-lg shadow-sky-500/20">
+                        <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
+                            <svg class="w-5 h-5 text-sky-400 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        </div>
+                    </div>
+                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-200 overflow-hidden whitespace-nowrap">
+                        <span class="font-extrabold text-sm text-white block leading-none">Tundra</span>
+                        <span class="text-[10px] text-sky-400 font-bold uppercase tracking-widest">Network</span>
+                    </div>
+                </div>
+
+                <!-- Navigation Tabs -->
+                <div class="flex md:flex-col items-center md:items-stretch w-full gap-2">
+                    <button
+                        id="tabBtnGames"
+                        onclick="switchTab('games')"
+                        class="flex items-center gap-3.5 p-2.5 rounded-xl transition-all duration-200 cursor-pointer w-full text-left relative bg-sky-500/20 text-sky-300 border border-sky-500/40 shadow-lg shadow-sky-500/10 font-bold"
+                    >
+                        <div class="flex-shrink-0 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-sky-400 scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a2 2 0 01-2 2 2 2 0 01-2-2V4zm-6 8a2 2 0 100-4 2 2 0 000 4zm14 0a2 2 0 100-4 2 2 0 000 4zM6 18a2 2 0 100-4 2 2 0 000 4zm12 0a2 2 0 100-4 2 2 0 000 4z"/></svg>
+                        </div>
+                        <div class="hidden md:block opacity-0 group-hover:opacity-100 transition-opacity duration-200 overflow-hidden whitespace-nowrap">
+                            <span class="text-xs font-semibold block">Game Portal</span>
+                        </div>
+                    </button>
+
+                    <button
+                        id="tabBtnProxy"
+                        onclick="switchTab('proxy')"
+                        class="flex items-center gap-3.5 p-2.5 rounded-xl transition-all duration-200 cursor-pointer w-full text-left relative text-sky-300/70 hover:text-white hover:bg-slate-900 border border-transparent"
+                    >
+                        <div class="flex-shrink-0 flex items-center justify-center">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        </div>
+                        <div class="hidden md:block opacity-0 group-hover:opacity-100 transition-opacity duration-200 overflow-hidden whitespace-nowrap">
+                            <span class="text-xs font-semibold block">Ultraviolet Proxy</span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <div class="hidden md:flex items-center gap-2 px-2 pt-4 border-t border-sky-500/10 text-[10px] text-sky-400/80">
+                <svg class="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap font-medium">
+                    School Guard Active
+                </span>
+            </div>
+        </aside>
+
+        <!-- Main Content Viewport -->
+        <div class="flex-1 flex flex-col min-w-0">
+            
+            <!-- HOME LANDING TAB CONTENT -->
+            <main id="viewHome" class="flex-1 max-w-5xl w-full mx-auto px-6 lg:px-8 py-16 sm:py-24 relative z-10">
+                <!-- Editorial Hero -->
+                <section class="relative mb-24 sm:mb-28">
+                    <div class="flex items-center gap-3 mb-8 text-[11px] uppercase tracking-[0.28em] text-sky-200/70 font-medium">
+                        <span class="inline-block w-8 h-px bg-sky-200/60"></span>
+                        <span>Tundra Network — Est. 2026</span>
+                    </div>
+
+                    <h1 class="text-white font-light leading-[0.95] tracking-tight text-5xl sm:text-6xl md:text-7xl mb-8">
+                        A quieter way to<br/>
+                        <span class="font-serif italic font-normal text-sky-100">browse, play,</span>
+                        <span id="typewriterWord" class="font-serif italic font-normal text-sky-200">bypass</span><span class="ml-1 inline-block w-[2px] h-[0.9em] align-middle bg-sky-200/80 animate-pulse"></span>
+                    </h1>
+
+                    <p class="max-w-xl text-base sm:text-lg text-sky-100/70 leading-relaxed font-normal mb-10">
+                        A hand-picked catalog of singlefile games and a lightweight web proxy — housed under one glacial roof. No accounts, no clutter.
+                    </p>
+
+                    <div class="flex items-center gap-4 flex-wrap">
+                        <button onclick="switchTab('games')" class="group px-6 py-3 rounded-full bg-sky-100 hover:bg-white text-slate-950 font-semibold text-sm transition-all flex items-center gap-2.5 cursor-pointer">
+                            <span>Browse the catalog</span>
+                            <svg class="w-4 h-4 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </button>
+                        <button onclick="switchTab('proxy')" class="px-6 py-3 rounded-full bg-transparent hover:bg-white/5 text-sky-100 font-semibold text-sm border border-white/20 hover:border-white/40 transition-all flex items-center gap-2 cursor-pointer">
+                            <span>Open the proxy</span>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Editorial Feature List -->
+                <section class="mb-24 sm:mb-28">
+                    <div class="flex items-center gap-3 mb-10 text-[11px] uppercase tracking-[0.28em] text-sky-200/70 font-medium">
+                        <span class="inline-block w-8 h-px bg-sky-200/60"></span>
+                        <span>Three tools, one page</span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10 border border-white/10 rounded-2xl overflow-hidden">
+                        <button onclick="switchTab('games')" class="text-left p-8 bg-slate-950/60 hover:bg-slate-950/80 transition-colors group">
+                            <div class="flex items-center justify-between mb-8">
+                                <span class="font-serif italic text-2xl text-sky-200/80">01</span>
+                                <svg class="w-4 h-4 text-sky-200/40 group-hover:text-sky-100 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+                            </div>
+                            <h3 class="text-white font-medium text-lg mb-2 tracking-tight">Unblocked catalog</h3>
+                            <p class="text-sm text-sky-100/60 leading-relaxed">Action, arcade, puzzle, racing, RPGs, and custom iframe imports — all playable in one click.</p>
+                        </button>
+                        <button onclick="switchTab('proxy')" class="text-left p-8 bg-slate-950/60 hover:bg-slate-950/80 transition-colors group">
+                            <div class="flex items-center justify-between mb-8">
+                                <span class="font-serif italic text-2xl text-sky-200/80">02</span>
+                                <svg class="w-4 h-4 text-sky-200/40 group-hover:text-sky-100 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+                            </div>
+                            <h3 class="text-white font-medium text-lg mb-2 tracking-tight">Ultraviolet proxy</h3>
+                            <p class="text-sm text-sky-100/60 leading-relaxed">Slip past school restrictions and surf search engines, wikis, and the open web — quietly.</p>
+                        </button>
+                        <div class="text-left p-8 bg-slate-950/60">
+                            <div class="flex items-center justify-between mb-8">
+                                <span class="font-serif italic text-2xl text-sky-200/80">03</span>
+                                <span class="text-[10px] uppercase tracking-[0.2em] text-sky-200/40">Esc</span>
+                            </div>
+                            <h3 class="text-white font-medium text-lg mb-2 tracking-tight">Panic guard</h3>
+                            <p class="text-sm text-sky-100/60 leading-relaxed">A single keystroke disguises the page as an academic research paper. Nothing to explain.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Minimal stat line -->
+                <section class="border-t border-white/10 pt-10">
+                    <div class="grid grid-cols-3 gap-6">
+                        <div>
+                            <div class="font-serif text-4xl sm:text-5xl text-white font-normal leading-none" id="homeStatGames">0</div>
+                            <div class="text-[11px] uppercase tracking-[0.24em] text-sky-200/50 mt-3">Games ready</div>
+                        </div>
+                        <div>
+                            <div class="font-serif text-4xl sm:text-5xl text-white font-normal leading-none">∞</div>
+                            <div class="text-[11px] uppercase tracking-[0.24em] text-sky-200/50 mt-3">Sites reachable</div>
+                        </div>
+                        <div>
+                            <div class="font-serif text-4xl sm:text-5xl text-white font-normal leading-none">100<span class="text-2xl align-top">%</span></div>
+                            <div class="text-[11px] uppercase tracking-[0.24em] text-sky-200/50 mt-3">Singlefile</div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            
+            <!-- GAME PORTAL TAB CONTENT -->
+            <main id="viewGames" class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-4 relative z-10">
+                
+                <!-- Spotlight Hero Banner -->
+                <div id="heroBanner" class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900 via-sky-950 to-indigo-950 border border-sky-500/30 shadow-2xl p-6 sm:p-8 mb-8">
+                    <div class="absolute -right-10 -bottom-10 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                    <div class="relative z-10 max-w-2xl">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-gradient-to-r from-sky-500 to-indigo-500 text-slate-950 shadow-md">
+                                TUNDRA SPOTLIGHT
+                            </span>
+                            <span class="text-xs font-bold text-sky-300 flex items-center gap-1">
+                                ★ 4.9 Rating &#8226; <span id="heroTotalGames">15</span> Games
+                            </span>
+                        </div>
+                        <h1 id="heroTitle" class="text-3xl sm:text-4xl font-black text-white tracking-tight mb-3 drop-shadow-md">
+                            Jetpack Joyride
+                        </h1>
+                        <p id="heroDesc" class="text-xs sm:text-sm text-sky-200/90 leading-relaxed mb-6 font-medium">
+                            Fly with bullet-powered jetpacks as Barry Steakfries! Dodge zappers, laser beams, and homing missiles while collecting coins and crazy vehicles in an endless laboratory run.
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <button onclick="playHeroGame()" class="px-6 py-3 rounded-2xl bg-gradient-to-r from-sky-400 to-sky-500 hover:from-sky-300 hover:to-sky-400 text-slate-950 font-black text-sm shadow-lg shadow-sky-500/30 transition-all flex items-center gap-2 hover:scale-105 active:scale-95 cursor-pointer">
+                                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                <span>PLAY NOW</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category Pills &amp; Sorting Bar -->
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 mb-6">
+                    <!-- Categories -->
+                    <div id="categoryBar" class="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0 scrollbar-none">
+                        <button onclick="selectCategory('All', this)" class="cat-btn px-4 py-2 rounded-xl text-xs font-extrabold transition-all border bg-sky-500 text-slate-950 border-sky-400 shadow-md">
+                            All Games
+                        </button>
+                        <button onclick="selectCategory('Favorites', this)" class="cat-btn px-4 py-2 rounded-xl text-xs font-extrabold transition-all border bg-slate-900/80 text-sky-200 border-sky-500/30 hover:bg-slate-800">
+                            ★ Favorites
+                        </button>
+                        <button onclick="selectCategory('GN Math', this)" class="cat-btn px-4 py-2 rounded-xl text-xs font-extrabold transition-all border bg-slate-900/80 text-cyan-300 border-cyan-400/40 hover:bg-slate-800 flex items-center gap-1.5">
+                            <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                            GN Math
+                        </button>
+                        <button onclick="selectCategory('Action', this)" class="cat-btn px-4 py-2 rounded-xl text-xs font-extrabold transition-all border bg-slate-900/80 text-sky-200 border-sky-500/30 hover:bg-slate-800">
+                            Action
+                        </button>
+                        <button onclick="selectCategory('Arcade', this)" class="cat-btn px-4 py-2 rounded-xl text-xs font-extrabold transition-all border bg-slate-900/80 text-sky-200 border-sky-500/30 hover:bg-slate-800">
+                            Arcade
+                        </button>
+                        <button onclick="selectCategory('Puzzle', this)" class="cat-btn px-4 py-2 rounded-xl text-xs font-extrabold transition-all border bg-slate-900/80 text-sky-200 border-sky-500/30 hover:bg-slate-800">
+                            Puzzle
+                        </button>
+                        <button onclick="selectCategory('RPG', this)" class="cat-btn px-4 py-2 rounded-xl text-xs font-extrabold transition-all border bg-slate-900/80 text-sky-200 border-sky-500/30 hover:bg-slate-800">
+                            RPG
+                        </button>
+                        <button onclick="selectCategory('Sports', this)" class="cat-btn px-4 py-2 rounded-xl text-xs font-extrabold transition-all border bg-slate-900/80 text-sky-200 border-sky-500/30 hover:bg-slate-800">
+                            Sports
+                        </button>
+                        <button onclick="selectCategory('Racing', this)" class="cat-btn px-4 py-2 rounded-xl text-xs font-extrabold transition-all border bg-slate-900/80 text-sky-200 border-sky-500/30 hover:bg-slate-800">
+                            Racing
+                        </button>
+                        <button onclick="selectCategory('Skill', this)" class="cat-btn px-4 py-2 rounded-xl text-xs font-extrabold transition-all border bg-slate-900/80 text-sky-200 border-sky-500/30 hover:bg-slate-800">
+                            Skill
+                        </button>
+                        <button onclick="selectCategory('Strategy', this)" class="cat-btn px-4 py-2 rounded-xl text-xs font-extrabold transition-all border bg-slate-900/80 text-sky-200 border-sky-500/30 hover:bg-slate-800">
+                            Strategy
+                        </button>
+                    </div>
+
+                    <!-- Sort Dropdown -->
+                    <div class="flex items-center gap-2 shrink-0">
+                        <span class="text-xs font-bold text-sky-400 hidden sm:inline">Sort:</span>
+                        <select id="sortSelect" onchange="onSortChange(this.value)" class="bg-slate-900 text-sky-200 text-xs font-bold py-2 px-3 rounded-xl border border-sky-500/30 focus:outline-none focus:border-sky-400 cursor-pointer">
+                            <option value="popular">Most Popular</option>
+                            <option value="rating">Highest Rated</option>
+                            <option value="alphabetical">Alphabetical (A-Z)</option>
+                            <option value="newest">Newest First</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Game Grid -->
+                <div id="gamesGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+                    <!-- Cards injected dynamically -->
+                </div>
+            </main>
+
+            <!-- ULTRAVIOLET PROXY TAB CONTENT -->
+            <main id="viewProxy" class="hidden flex-1 w-full mx-auto p-4 sm:p-6 lg:p-8 relative z-10 max-w-5xl">
+                <div class="flex flex-col items-center text-center mb-8">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-600 via-indigo-500 to-sky-400 p-0.5 shadow-lg shadow-purple-500/30 flex items-center justify-center">
+                            <div class="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center">
+                                <svg class="w-6 h-6 text-purple-400 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                            </div>
+                        </div>
+                        <div class="text-left">
+                            <div class="flex items-center gap-2">
+                                <h1 class="text-2xl sm:text-3xl font-black tracking-tight text-white">
+                                    Ultraviolet <span class="text-purple-400 text-lg font-bold">| TN</span>
+                                </h1>
+                                <span class="px-2 py-0.5 text-[10px] font-extrabold bg-purple-500/20 text-purple-300 border border-purple-500/30 rounded-full uppercase tracking-wider">
+                                    v2.0 Proxy
+                                </span>
+                            </div>
+                            <p class="text-xs text-sky-300/80 font-medium">Sophisticated Web Proxy &amp; ServiceWorker Engine</p>
+                        </div>
+                    </div>
+                    <p class="text-xs sm:text-sm text-sky-200/90 mt-3 leading-relaxed max-w-xl">
+                        Ultraviolet is a highly sophisticated web proxy engine used for navigating the web in a controlled, unblocked sandbox environment.
+                    </p>
+                </div>
+
+                <!-- Proxy Address Bar -->
+                <form id="uvForm" onsubmit="handleProxySubmit(event)" class="w-full max-w-3xl mx-auto mb-8">
+                    <div class="flex flex-col sm:flex-row items-stretch gap-2 p-2 bg-slate-900/90 border border-purple-500/30 rounded-2xl shadow-2xl backdrop-blur-md focus-within:border-purple-400 transition-all">
+                        <select id="proxyEngine" class="bg-slate-800 text-sky-200 text-xs font-bold py-2.5 px-3 rounded-xl border border-sky-500/20 focus:outline-none focus:border-purple-400 cursor-pointer">
+                            <option value="google">Google</option>
+                            <option value="duckduckgo">DuckDuckGo</option>
+                            <option value="bing">Bing</option>
+                            <option value="brave">Brave Search</option>
+                        </select>
+                        <div class="flex-1 relative flex items-center">
+                            <input id="proxyAddress" type="text" placeholder="Search the web freely or enter URL (e.g. wikipedia.org)..." class="w-full pl-4 pr-4 py-2.5 bg-slate-950/80 border border-slate-800 rounded-xl text-xs sm:text-sm text-white placeholder-sky-400/50 focus:outline-none focus:border-purple-500 transition-all" />
+                        </div>
+                        <button type="submit" class="px-5 py-2.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white text-xs font-extrabold rounded-xl shadow-lg shadow-purple-600/30 transition-all cursor-pointer">
+                            Unblock
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Popular Unblocked Shortcuts -->
+                <div id="proxyShortcuts" class="w-full max-w-3xl mx-auto mb-8">
+                    <h2 class="text-xs font-bold text-purple-300 uppercase tracking-wider mb-3">Popular Unblocked Shortcuts</h2>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        <button onclick="navigateProxy('https://www.google.com')" class="p-3.5 bg-slate-900/80 hover:bg-slate-800/90 border border-sky-500/20 hover:border-purple-500/50 rounded-2xl text-left transition-all group">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="text-xl">🔍</span>
+                                <span class="font-bold text-sm text-white group-hover:text-purple-300">Google</span>
+                            </div>
+                            <p class="text-[11px] text-sky-300/70">Web Search Engine</p>
+                        </button>
+                        <button onclick="navigateProxy('https://duckduckgo.com')" class="p-3.5 bg-slate-900/80 hover:bg-slate-800/90 border border-sky-500/20 hover:border-purple-500/50 rounded-2xl text-left transition-all group">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="text-xl">🦆</span>
+                                <span class="font-bold text-sm text-white group-hover:text-purple-300">DuckDuckGo</span>
+                            </div>
+                            <p class="text-[11px] text-sky-300/70">Privacy Search</p>
+                        </button>
+                        <button onclick="navigateProxy('https://www.wikipedia.org')" class="p-3.5 bg-slate-900/80 hover:bg-slate-800/90 border border-sky-500/20 hover:border-purple-500/50 rounded-2xl text-left transition-all group">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="text-xl">🌐</span>
+                                <span class="font-bold text-sm text-white group-hover:text-purple-300">Wikipedia</span>
+                            </div>
+                            <p class="text-[11px] text-sky-300/70">Free Encyclopedia</p>
+                        </button>
+                        <button onclick="navigateProxy('https://archive.org')" class="p-3.5 bg-slate-900/80 hover:bg-slate-800/90 border border-sky-500/20 hover:border-purple-500/50 rounded-2xl text-left transition-all group">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="text-xl">🏛️</span>
+                                <span class="font-bold text-sm text-white group-hover:text-purple-300">Archive.org</span>
+                            </div>
+                            <p class="text-[11px] text-sky-300/70">Internet Archive</p>
+                        </button>
+                        <button onclick="navigateProxy('https://github.com')" class="p-3.5 bg-slate-900/80 hover:bg-slate-800/90 border border-sky-500/20 hover:border-purple-500/50 rounded-2xl text-left transition-all group">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="text-xl">🐙</span>
+                                <span class="font-bold text-sm text-white group-hover:text-purple-300">GitHub</span>
+                            </div>
+                            <p class="text-[11px] text-sky-300/70">Code Repository</p>
+                        </button>
+                        <button onclick="navigateProxy('https://www.ecosia.org')" class="p-3.5 bg-slate-900/80 hover:bg-slate-800/90 border border-sky-500/20 hover:border-purple-500/50 rounded-2xl text-left transition-all group">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="text-xl">🌱</span>
+                                <span class="font-bold text-sm text-white group-hover:text-purple-300">Ecosia</span>
+                            </div>
+                            <p class="text-[11px] text-sky-300/70">Green Search</p>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Active Proxy Viewport Frame -->
+                <div id="proxyFrameContainer" class="hidden w-full max-w-5xl mx-auto bg-slate-900 border border-purple-500/30 rounded-2xl overflow-hidden shadow-2xl mb-8 flex-col">
+                    <div class="bg-slate-950 px-4 py-2.5 border-b border-sky-500/20 flex items-center justify-between gap-3">
+                        <div class="flex-1 bg-slate-900 border border-slate-800 rounded-lg px-3 py-1 text-xs text-sky-200 truncate font-mono">
+                            <span id="proxyUrlDisplay">https://www.google.com</span>
+                        </div>
+                        <button onclick="closeProxyFrame()" class="px-3 py-1 bg-red-500/20 hover:bg-red-500/30 text-red-300 text-xs font-bold rounded-lg border border-red-500/40">
+                            Close Proxy
+                        </button>
+                    </div>
+                    <iframe id="proxyIframe" class="w-full h-[520px] border-none bg-white"></iframe>
+                </div>
+
+                <!-- Diagnostics Console -->
+                <div class="w-full max-w-3xl mx-auto bg-slate-950/90 border border-purple-500/20 rounded-2xl p-4 shadow-xl mb-8">
+                    <div class="text-xs font-bold text-purple-300 mb-2">Ultraviolet Service Worker Diagnostics</div>
+                    <div class="bg-slate-900/90 p-3 rounded-xl font-mono text-[11px] text-sky-300 space-y-1">
+                        <p class="text-emerald-400 font-semibold">Status: Active &#8226; ServiceWorker Scope: /uv/ &#8226; BareMux Engine Ready</p>
+                        <p class="text-sky-400/80 text-[10px]">[BareMux] Initializing transport route...</p>
+                        <p class="text-sky-400/80 text-[10px]">[UV-SW] Service worker registered on scope /uv/sw.js</p>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Footer -->
+            <footer class="frost-glass border-t border-sky-500/20 mt-12 py-8 relative z-10 text-xs text-sky-300">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div class="flex items-center space-x-2">
+                        <span class="font-bold text-sky-100">Tundra Network</span>
+                        <span>&#8226; Game Portal &amp; Ultraviolet Proxy</span>
+                    </div>
+                    <div class="flex items-center space-x-4 text-sky-300">
+                        <span>School-Friendly</span>
+                        <span>15 Unblocked Games</span>
+                        <span>Ultraviolet TN Engine</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
     </div>
+
+    <!-- Active Game Player Modal -->
+    <div id="gameModal" class="fixed inset-0 z-50 hidden bg-slate-950/95 backdrop-blur-md flex-col">
+        <div class="bg-slate-900/90 px-6 py-4 border-b border-sky-500/30 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <h2 id="modalTitle" class="text-xl font-extrabold text-white">Game Title</h2>
+                <span id="modalCategory" class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-sky-500/20 text-sky-300 border border-sky-400/30">Category</span>
+                <span id="modalRating" class="text-xs font-bold text-amber-400">★ 5.0</span>
+            </div>
+            <div class="flex items-center space-x-3">
+                <button onclick="toggleFavActiveGame()" id="modalFavBtn" class="px-3 py-1.5 rounded-xl bg-slate-800 text-sky-200 border border-sky-500/30 text-xs font-bold">
+                    ★ Favorite
+                </button>
+                <button onclick="reloadGameIframe()" class="p-2 rounded-xl bg-slate-800 text-sky-200 border border-sky-500/30 text-xs font-bold" title="Reload Game">
+                    ↻
+                </button>
+                <button onclick="closeGameModal()" class="p-2 rounded-xl bg-red-500/20 hover:bg-red-500/30 text-red-300 border border-red-500/40 text-xs font-bold">
+                    ✕ Close
+                </button>
+            </div>
+        </div>
+        <div class="flex-1 w-full relative bg-black flex items-center justify-center">
+            <iframe id="gameIframe" class="w-full h-full border-none" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; gamepad; microphone; focus-without-user-activation" allowfullscreen="allowfullscreen"></iframe>
+        </div>
+        <div class="bg-slate-900/90 p-4 border-t border-sky-500/20 flex flex-col sm:flex-row items-center justify-between text-xs text-sky-300 gap-2">
+            <div id="modalControls" class="font-medium">Controls: Mouse &amp; Keyboard</div>
+            <div id="modalAuthor" class="text-sky-400 font-semibold">Tundra Network Engine</div>
+        </div>
+    </div>
+
+    <!-- Add Custom Game Modal -->
+    <div id="addModal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="w-full max-w-xl bg-slate-900 rounded-2xl border border-sky-500/30 overflow-hidden shadow-2xl text-sky-100">
+            <div class="bg-gradient-to-r from-sky-500 to-sky-600 p-5 text-white flex items-center justify-between">
+                <div>
+                    <h2 class="text-lg font-bold">Add Custom Game Iframe</h2>
+                    <p class="text-xs text-sky-100">Store new games in your local unblocked catalog</p>
+                </div>
+                <button onclick="closeAddModal()" class="text-white hover:text-sky-200 text-lg font-bold">✕</button>
+            </div>
+            <form onsubmit="handleAddGameSubmit(event)" class="p-6 space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-sky-300 uppercase mb-1">Game Title *</label>
+                    <input id="addTitle" type="text" required="required" placeholder="e.g. My Cool Unblocked Game" class="w-full px-3.5 py-2 text-xs bg-slate-800 border border-sky-500/30 rounded-xl text-white outline-none focus:border-sky-400" />
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-sky-300 uppercase mb-1">Category</label>
+                        <select id="addCategory" class="w-full px-3.5 py-2 text-xs bg-slate-800 border border-sky-500/30 rounded-xl text-white outline-none">
+                            <option value="Arcade">Arcade</option>
+                            <option value="Action">Action</option>
+                            <option value="Puzzle">Puzzle</option>
+                            <option value="Racing">Racing</option>
+                            <option value="Skill">Skill</option>
+                            <option value="Strategy">Strategy</option>
+                            <option value="RPG">RPG</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-sky-300 uppercase mb-1">Thumbnail URL</label>
+                        <input id="addThumbnail" type="url" placeholder="https://..." class="w-full px-3.5 py-2 text-xs bg-slate-800 border border-sky-500/30 rounded-xl text-white outline-none" />
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-sky-300 uppercase mb-1">Iframe / Game URL *</label>
+                    <input id="addIframeUrl" type="url" required="required" placeholder="https://..." class="w-full px-3.5 py-2 text-xs bg-slate-800 border border-sky-500/30 rounded-xl text-white outline-none focus:border-sky-400" />
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-sky-300 uppercase mb-1">Description</label>
+                    <textarea id="addDescription" rows="2" placeholder="Brief summary of gameplay..." class="w-full px-3.5 py-2 text-xs bg-slate-800 border border-sky-500/30 rounded-xl text-white outline-none"></textarea>
+                </div>
+                <div class="flex justify-end gap-3 pt-2">
+                    <button type="button" onclick="closeAddModal()" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-sky-300">Cancel</button>
+                    <button type="submit" class="px-5 py-2 rounded-xl text-xs font-bold bg-sky-500 text-slate-950">Add to Catalog</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Google Drive Backup Modal -->
+    <div id="driveModal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="w-full max-w-lg bg-slate-900 rounded-2xl border border-sky-500/30 overflow-hidden shadow-2xl text-sky-100">
+            <div class="bg-gradient-to-r from-sky-600 to-indigo-600 p-5 text-white flex items-center justify-between">
+                <div>
+                    <h2 class="text-lg font-bold">Google Drive Storage &amp; Backup</h2>
+                    <p class="text-xs text-sky-100">Export or restore your favorites &amp; custom catalog</p>
+                </div>
+                <button onclick="closeDriveModal()" class="text-white hover:text-sky-200 text-lg font-bold">✕</button>
+            </div>
+            <div class="p-6 space-y-5">
+                <div class="p-4 bg-slate-800/80 rounded-xl border border-sky-500/20 text-xs space-y-2">
+                    <div class="flex justify-between">
+                        <span class="text-sky-300">Saved Favorites:</span>
+                        <span id="driveFavCount" class="font-bold text-white">0</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-sky-300">Custom Games Added:</span>
+                        <span id="driveCustomCount" class="font-bold text-white">0</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <button onclick="exportBackupJSON()" class="p-4 rounded-xl bg-sky-500/20 hover:bg-sky-500/30 border border-sky-400/40 text-center font-bold text-xs text-sky-200">
+                        📥 Download Backup JSON
+                    </button>
+                    <label class="p-4 rounded-xl bg-indigo-500/20 hover:bg-indigo-500/30 border border-indigo-400/40 text-center font-bold text-xs text-indigo-200 cursor-pointer">
+                        📤 Restore from JSON
+                        <input type="file" accept=".json" onchange="importBackupJSON(event)" class="hidden" />
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Panic Mode Screen (Google Docs Classroom Mask) -->
+    <div id="panicScreen" class="fixed inset-0 z-50 hidden bg-white text-slate-800 font-sans p-8 overflow-y-auto">
+        <div class="max-w-5xl mx-auto border-b border-slate-200 pb-4 mb-6 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="bg-blue-600 text-white p-2 rounded font-bold">📄</div>
+                <div>
+                    <h1 class="text-xl font-semibold text-slate-800 flex items-center gap-2">
+                        Research_Paper_Glaciology_2026.docx
+                        <span class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded border border-slate-200">Saved to Cloud</span>
+                    </h1>
+                    <p class="text-xs text-slate-500">File &#8226; Edit &#8226; View &#8226; Insert &#8226; Format &#8226; Tools &#8226; Help</p>
+                </div>
+            </div>
+            <button onclick="togglePanic()" class="px-3 py-1.5 text-xs font-medium text-slate-600 bg-slate-100 hover:bg-slate-200 rounded border border-slate-300">
+                Return to App (Esc)
+            </button>
+        </div>
+
+        <div class="max-w-3xl mx-auto bg-white p-10 border border-slate-200 shadow-sm rounded text-slate-700 leading-relaxed text-sm space-y-4">
+            <h2 class="text-2xl font-bold text-slate-900 border-b border-slate-100 pb-2">
+                An Analysis of Cryospheric Processes &amp; Polar Ice Sheet Dynamics
+            </h2>
+            <p class="text-xs text-slate-500 italic">
+                Department of Earth &amp; Atmospheric Sciences | Academic Research Draft | July 2026
+            </p>
+            <h3 class="text-lg font-semibold text-slate-800 mt-4">1. Abstract &amp; Introduction</h3>
+            <p>
+                The Earth’s cryosphere plays a critical role in regulating global climate patterns through the albedo effect and thermohaline ocean circulation. Polar ice sheets store over 68% of the planet's fresh water reserves. This paper investigates thermal conductivity within firn layers and seasonal ice pack dynamics across high-latitude boreal regions.
+            </p>
+            <div class="bg-slate-50 border-l-4 border-blue-500 p-4 rounded my-4 text-xs text-slate-600">
+                <strong>Key Note:</strong> Sub-surface meltwater channels demonstrate non-linear fluid dynamics under varying ambient temperature gradients.
+            </div>
+            <p class="text-xs text-slate-400 text-center pt-8">[Press ESC again to return to Tundra Network]</p>
+        </div>
+    </div>
+
+    <!-- JavaScript Implementation -->
+    <script><![CDATA[
+        // Full Games Catalog matching existing games
+        const baseCatalog = [
+            {
+                id: "ev-io",
+                title: "ev.io",
+                category: "Action",
+                description: "Futuristic 3D FPS arena shooter! Master double jumps, teleportation, grenades, and railguns in multiplayer combat.",
+                type: "url",
+                url: "https://ev.io/",
+                thumbnail: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                rating: 4.9,
+                plays: "1.1M",
+                controls: "WASD Move, Mouse Aim &amp; Shoot, Space Double Jump, Shift Teleport",
+                featured: true,
+                popular: true,
+                isGnMath: true
+            },
+            {
+                id: "geometry-dash",
+                title: "Geometry Dash Lite",
+                category: "Arcade",
+                description: "Jump, fly, and flip your way through dangerous geometric passages in this rhythm platformer!",
+                type: "url",
+                url: "https://geometrydashlite.io/",
+                thumbnail: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                rating: 4.9,
+                plays: "1.4M",
+                controls: "Spacebar / Up Arrow to Jump",
+                featured: true,
+                popular: true,
+                isGnMath: true
+            },
+            {
+                id: "subway-surfers",
+                title: "Subway Surfers",
+                category: "Arcade",
+                description: "Dash as fast as you can through subway tracks! Dodge oncoming trains and leap over barriers.",
+                type: "url",
+                url: "https://subwaysurfersgame.io/",
+                thumbnail: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                rating: 4.9,
+                plays: "1.8M",
+                controls: "Left / Right Arrows Switch Lanes, Up Jump, Down Roll",
+                featured: true,
+                popular: true,
+                isGnMath: true
+            },
+            {
+                id: "1v1-lol",
+                title: "1v1.LOL RELOADED",
+                category: "Action",
+                description: "3D building and shooting simulator! Fight in 1v1 duels, build ramps and walls in 1v1.LOL RELOADED.",
+                type: "url",
+                url: "https://1v1lolreloaded.com/",
+                thumbnail: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                rating: 4.9,
+                plays: "1.3M",
+                controls: "WASD Move, Mouse Shoot / Build",
+                featured: true,
+                popular: true,
+                isGnMath: true
+            },
+            {
+                id: "drive-mad",
+                title: "Drive Mad",
+                category: "Racing",
+                description: "Drive a monster truck over crazy physics-based obstacle tracks without flipping!",
+                type: "url",
+                url: "https://drivemad.org/",
+                thumbnail: "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                rating: 4.9,
+                plays: "920K",
+                controls: "W / D Drive Forward, S / A Brake &amp; Reverse",
+                featured: true,
+                popular: true,
+                isGnMath: true
+            },
+            {
+                id: "stickman-hook",
+                title: "Stickman Hook",
+                category: "Skill",
+                description: "Swing like Spider-Man as a bouncy stickman! Grapple onto pegs and soar to the finish line.",
+                type: "url",
+                url: "https://stickmanhookgame.org/",
+                thumbnail: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                rating: 4.8,
+                plays: "810K",
+                controls: "Spacebar / Mouse Click Hook &amp; Swing",
+                featured: false,
+                popular: true,
+                isGnMath: true
+            },
+            {
+                id: "vex-7",
+                title: "Vex 7",
+                category: "Action",
+                description: "Hardcore stickman parkour! Master deadly spikes, laser beams, and wall jumps.",
+                type: "url",
+                url: "https://vex7.io/",
+                thumbnail: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                rating: 4.9,
+                plays: "760K",
+                controls: "WASD / Arrow Keys Move &amp; Jump",
+                featured: true,
+                popular: true,
+                isGnMath: true
+            },
+            {
+                id: "basket-random",
+                title: "Basket Random",
+                category: "Sports",
+                description: "Wacky ragdoll 2-player basketball with random physics and courts!",
+                type: "url",
+                url: "https://basketrandom.org/",
+                thumbnail: "https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                rating: 4.8,
+                plays: "890K",
+                controls: "P1: W Key Jump, P2: Up Arrow Jump",
+                featured: true,
+                popular: true,
+                isGnMath: true
+            },
+            {
+                id: "soccer-random",
+                title: "Soccer Random",
+                category: "Sports",
+                description: "Hilarious single button ragdoll soccer! Play on random weather fields.",
+                type: "url",
+                url: "https://soccerrandom.org/",
+                thumbnail: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                rating: 4.8,
+                plays: "730K",
+                controls: "P1: W Key Kick, P2: Up Arrow Kick",
+                featured: false,
+                popular: true,
+                isGnMath: true
+            },
+            {
+                id: "half-life-2",
+                title: "Half-Life 2",
+                category: "Action",
+                description: "Play Half-Life 2 directly in your browser! Experience Gordon Freeman's iconic sci-fi FPS journey through City 17 with realistic physics and gravity gun mechanics.",
+                type: "half-life",
+                url: "https://hl2.slqnt.dev/",
+                thumbnail: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                rating: 5.0,
+                plays: "950K",
+                controls: "WASD Walk, Mouse Aim &amp; Fire, Space Jump, Shift Sprint, E Gravity Gun",
+                featured: true,
+                popular: true,
+                isGnMath: true
+            },
+            {
+                id: "half-life-1",
+                title: "Half-Life 1",
+                category: "Action",
+                description: "Play the original 1998 GoldSrc FPS classic in your browser! Survive Black Mesa as Dr. Gordon Freeman.",
+                type: "half-life",
+                url: "https://hl2.slqnt.dev/",
+                thumbnail: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                rating: 4.9,
+                plays: "880K",
+                controls: "WASD Move, Mouse Shoot, Space Jump, E Use",
+                featured: true,
+                popular: true,
+                isGnMath: true
+            },
+            {
+                id: "retro-bowl",
+                title: "Retro Bowl",
+                category: "Sports",
+                description: "The ultimate 8-bit American football management game! Call plays, pass, run, and lead your team.",
+                type: "url",
+                url: "https://game316009.konggames.com/gamez/0031/6009/live/index.html",
+                thumbnail: "https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                rating: 4.9,
+                plays: "1.1M",
+                controls: "Mouse Drag &amp; Release to Pass, W/S Dodge",
+                featured: true,
+                popular: true,
+                isGnMath: true
+            },
+            {
+                id: "tunnel-rush",
+                title: "Tunnel Rush",
+                category: "Arcade",
+                description: "Blaze through a 3D neon tunnel at lightning speed! Dodge rotating hazard barriers.",
+                type: "url",
+                url: "https://tunnelrush.org/",
+                thumbnail: "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                rating: 4.8,
+                plays: "790K",
+                controls: "A / D or Left / Right Arrows to Rotate Tunnel",
+                featured: true,
+                popular: true,
+                isGnMath: true
+            },
+            {
+                id: "cluster-rush",
+                title: "Cluster Rush",
+                category: "Action",
+                description: "Jump across a swarm of frantic moving trucks! Vault, slide, and climb physics obstacles.",
+                type: "url",
+                url: "https://clusterrush.org/",
+                thumbnail: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                rating: 4.8,
+                plays: "630K",
+                controls: "A / D Steer, Spacebar Jump / Vault",
+                featured: false,
+                popular: true,
+                isGnMath: true
+            },
+            {
+                id: "eggy-car",
+                title: "Eggy Car",
+                category: "Skill",
+                description: "Drive a fragile egg over steep hills without letting it drop or break!",
+                type: "url",
+                url: "https://eggycar.org/",
+                thumbnail: "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                rating: 4.8,
+                plays: "540K",
+                controls: "A / D or Arrow Keys Gas &amp; Brake",
+                featured: false,
+                popular: true,
+                isGnMath: true
+            },
+            {
+                id: "rooftop-run",
+                title: "Rooftop Run",
+                category: "Action",
+                description: "High-octane 3D parkour runner across city skyscrapers! Sprint, jump, slide, and perform acrobatic flips across rooftop ledges.",
+                type: "rooftop-run",
+                url: "https://rooftoprun.net/",
+                thumbnail: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                rating: 4.9,
+                plays: "680K",
+                controls: "WASD / Arrows to Move, Spacebar to Jump, Shift to Slide",
+                featured: true,
+                popular: true,
+                isGnMath: true
+            },
+            {
+                id: "smash-karts",
+                title: "Smash Karts",
+                category: "Action",
+                description: "3D multiplayer kart battle arena game! Drive karts, pick up weapons, and blow up other players to win the round.",
+                type: "smash-karts",
+                url: "https://smashkarts.io",
+                thumbnail: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                rating: 4.9,
+                plays: "750K",
+                controls: "WASD / Arrow Keys to Drive, Spacebar to Fire Weapon",
+                featured: true,
+                popular: true,
+                isGnMath: true
+            },
+            {
+                id: "jetpack-joyride",
+                title: "Jetpack Joyride",
+                category: "Arcade",
+                description: "Fly with high-tech jetpacks as Barry Steakfries! Dodge zappers, missiles, and laser beams while collecting coins.",
+                type: "jetpack",
+                url: "https://www.gamepix.com/play/jetpack-joyride",
+                thumbnail: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                rating: 4.9,
+                plays: "750K",
+                controls: "Spacebar / Up Arrow or Click to Fly",
+                featured: true,
+                popular: true
+            },
+            {
+                id: "super-smash-bros",
+                title: "Super Smash Bros N64",
+                category: "Action",
+                description: "The legendary Nintendo 64 crossover brawler! Fight as Mario, Link, Pikachu, and Donkey Kong.",
+                type: "nes_n64_emulator",
+                emulatorType: "n64",
+                romUrl: "https://rawcdn.githack.com/a456pur/seraph/ae2fcc6d6a9cd051654fcc0519080db1f79cf2a7/games/supersmashbros/supersmashbros.zip",
+                thumbnail: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                rating: 5.0,
+                plays: "980K",
+                controls: "WASD Movement, Z/X/C/V Attacks, Enter Start",
+                featured: true,
+                popular: true
+            },
+            {
+                id: "slope-game",
+                title: "Slope",
+                category: "Arcade",
+                description: "Drive a ball down a steep neon 3D obstacle course at breakneck speed!",
+                type: "slope",
+                thumbnail: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                rating: 4.8,
+                plays: "500K",
+                controls: "A / D or Left / Right Arrows to Steer",
+                featured: true,
+                popular: true
+            },
+            {
+                id: "color-puzzles",
+                title: "Color Puzzles",
+                category: "Puzzle",
+                description: "Shift color frequencies to pass through matching energy barriers, activate light bridges, and solve 6 puzzle chambers.",
+                type: "color-puzzles",
+                thumbnail: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                rating: 5.0,
+                plays: "620K",
+                controls: "1,2,3 or C to Shift Color, Space/W Jump",
+                featured: true,
+                popular: true
+            },
+            {
+                id: "the-chroma-incident",
+                title: "The Chroma Incident",
+                category: "Puzzle",
+                description: "Navigate through colored laser grids and energy fields in this official js13kGames puzzle adventure.",
+                type: "url",
+                url: "https://js13kgames.com/2018/games/the-chroma-incident#play",
+                thumbnail: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                rating: 4.8,
+                plays: "410K",
+                controls: "WASD / Mouse to play",
+                featured: false,
+                popular: true
+            },
+            {
+                id: "2048-frost",
+                title: "2048 Frost Edition",
+                category: "Puzzle",
+                description: "Slide and merge matching ice tiles together to reach the 2048 tile!",
+                type: "2048",
+                thumbnail: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                rating: 4.9,
+                plays: "250K",
+                controls: "Arrow Keys or WASD to slide tiles",
+                featured: true,
+                popular: true
+            },
+            {
+                id: "flappy-bird",
+                title: "Flappy Bird",
+                category: "Skill",
+                description: "Guide the bird through dangerous pipe gaps with precise one-button timing!",
+                type: "flappy",
+                thumbnail: "https://images.unsplash.com/photo-1517849845537-4d257902454a?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                rating: 4.8,
+                plays: "620K",
+                controls: "Tap Spacebar or Click to flap wings",
+                featured: false,
+                popular: true
+            },
+            {
+                id: "retro-snake",
+                title: "Icy Snake Classic",
+                category: "Arcade",
+                description: "Eat glowing ice apples, grow longer, and don't hit your tail!",
+                type: "snake",
+                thumbnail: "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                rating: 4.8,
+                plays: "195K",
+                controls: "Arrow keys or WASD to steer",
+                featured: true,
+                popular: true
+            },
+            {
+                id: "crossy-road",
+                title: "Crossy Road 3D",
+                category: "Arcade",
+                description: "Cross endless busy roads, train tracks, and rivers in voxel 3D!",
+                type: "url",
+                url: "https://www.gamepix.com/play/crossy-road",
+                thumbnail: "https://images.unsplash.com/photo-1579373903781-fd5c0c30c4cd?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                rating: 4.9,
+                plays: "820K",
+                controls: "Arrow Keys / Space to Hop",
+                featured: true,
+                popular: true
+            },
+            {
+                id: "paper-io-3d",
+                title: "Paper.io 3D",
+                category: "Strategy",
+                description: "Claim as much 3D territory as possible in Paper.io 3D!",
+                type: "paperio",
+                url: "https://paperio.site/3d/",
+                thumbnail: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                rating: 4.8,
+                plays: "450K",
+                controls: "Arrow Keys, WASD or Mouse to steer",
+                featured: false,
+                popular: true
+            },
+            {
+                id: "tetris-frost",
+                title: "Tetris Ice Blocks",
+                category: "Puzzle",
+                description: "Clear full horizontal lines by rotating falling ice blocks!",
+                type: "tetris",
+                thumbnail: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                rating: 4.9,
+                plays: "320K",
+                controls: "Left/Right Move, Up Rotate, Down Fast, Space Drop, C Hold",
+                featured: false,
+                popular: true
+            },
+            {
+                id: "cookie-clicker",
+                title: "Cookie Clicker Frost",
+                category: "Skill",
+                description: "Click the giant cookie, hire grandmas, and build your baking empire!",
+                type: "cookie",
+                thumbnail: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                rating: 4.9,
+                plays: "890K",
+                controls: "Left Click giant cookie to bake",
+                featured: false,
+                popular: true
+            },
+            {
+                id: "moto-x3m",
+                title: "Moto X3M Bike Race",
+                category: "Racing",
+                description: "Awesome motocross stunt racing with 25 intense levels!",
+                type: "moto-x3m",
+                url: "https://motox3m.org/",
+                thumbnail: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                rating: 4.9,
+                plays: "600K",
+                controls: "Up Accelerate, Down Brake, Left/Right Tilt",
+                featured: false,
+                popular: true
+            },
+            {
+                id: "chess-classic",
+                title: "Classic Chess 3D",
+                category: "Strategy",
+                description: "Test your strategic skills against smart AI difficulty levels!",
+                type: "chess",
+                thumbnail: "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                rating: 4.8,
+                plays: "140K",
+                controls: "Click piece to move",
+                featured: false,
+                popular: false
+            },
+            {
+                id: "drift-hunters",
+                title: "Drift Hunters",
+                category: "Racing",
+                description: "Ultimate 3D car drifting simulator with realistic physics, fully customizable tuner cars, and huge track maps.",
+                type: "drift-hunters",
+                url: "https://drifthunters2.io/",
+                thumbnail: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                rating: 4.9,
+                plays: "450K",
+                controls: "WASD Drive, Space Handbrake",
+                featured: false,
+                popular: true
+            },
+            {
+                id: "drift-hunters-max",
+                title: "Drift Hunters MAX",
+                category: "Racing",
+                description: "Experience next-level 3D drifting action with expanded tracks, realistic tuning, and high-performance cars.",
+                type: "drift-hunters-max",
+                url: "https://drifthuntersmax.io/",
+                thumbnail: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                rating: 5.0,
+                plays: "890K",
+                controls: "WASD Drive, Space Handbrake, C Camera",
+                featured: true,
+                popular: true
+            },
+            {
+                id: "final-fantasy",
+                title: "Final Fantasy NES",
+                category: "RPG",
+                description: "Embark on the epic classic NES Warriors of Light RPG quest!",
+                type: "nes_n64_emulator",
+                emulatorType: "nes",
+                romUrl: "https://rawcdn.githack.com/bubbls/UGS-file-encryption/c99c02b28ea1531fb40611092887d0aa9db97712/Final%20Fantasy%20(USA).zip",
+                thumbnail: "https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                rating: 5.0,
+                plays: "640K",
+                controls: "Arrow keys Move, Z Confirm, X Back, Enter Start",
+                featured: true,
+                popular: true
+            },
+            {
+                id: "roblox-experimental",
+                title: "Roblox EXPERIMENTAL",
+                category: "Sandbox",
+                description: "Experience infinite community 3D virtual worlds, games, and social experiences powered by cloud web player.",
+                type: "roblox",
+                url: "https://now.gg/apps/a/19900/b.html",
+                thumbnail: "https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                rating: 4.9,
+                plays: "1.2M",
+                controls: "WASD Move, Space Jump, Mouse Look",
+                featured: true,
+                popular: true
+            }
+        ];
+
+        // App State
+        let customGames = JSON.parse(localStorage.getItem('frost_custom_games') || '[]');
+        let gamesList = [...baseCatalog, ...customGames];
+        let activeCategory = 'All';
+        let activeSort = 'popular';
+        let searchQuery = '';
+        let favorites = JSON.parse(localStorage.getItem('frost_favorites') || '[]');
+        let activeGame = null;
+        let snowEnabled = true;
+
+        // Render Game Grid
+        function renderGames() {
+            const grid = document.getElementById('gamesGrid');
+            grid.innerHTML = '';
+
+            let filtered = gamesList.filter(g => {
+                const matchCat = activeCategory === 'All' || 
+                                (activeCategory === 'Favorites' &amp;&amp; favorites.includes(g.id)) || 
+                                (activeCategory === 'GN Math' &amp;&amp; (g.isGnMath || (g.tags &amp;&amp; g.tags.includes('gn-math')) || g.category === 'GN Math')) ||
+                                g.category === activeCategory;
+                const q = searchQuery.toLowerCase().trim();
+                const matchQuery = !q || g.title.toLowerCase().includes(q) || g.description.toLowerCase().includes(q) || (g.category &amp;&amp; g.category.toLowerCase().includes(q));
+                return matchCat &amp;&amp; matchQuery;
+            });
+
+            // Sorting
+            filtered.sort((a, b) => {
+                if (activeSort === 'popular') return (b.popular ? 1 : 0) - (a.popular ? 1 : 0);
+                if (activeSort === 'rating') return b.rating - a.rating;
+                if (activeSort === 'alphabetical') return a.title.localeCompare(b.title);
+                if (activeSort === 'newest') return (b.isCustom ? 1 : 0) - (a.isCustom ? 1 : 0);
+                return 0;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full py-16 text-center text-sky-300/70">
+                        <p class="text-lg font-bold">No games found</p>
+                        <p class="text-xs mt-1">Try resetting your search query or filter category</p>
+                    </div>
+                `;
+            } else {
+                filtered.forEach(game => {
+                    const isFav = favorites.includes(game.id);
+                    const card = document.createElement('div');
+                    card.className = "frost-card rounded-2xl overflow-hidden cursor-pointer transition-all hover:scale-[1.02] flex flex-col group relative";
+                    card.onclick = () => openGame(game);
+
+                    const isGn = game.isGnMath || (game.tags &amp;&amp; game.tags.includes('gn-math'));
+
+                    card.innerHTML = `
+                        <div class="relative aspect-video w-full overflow-hidden bg-slate-900">
+                            <img src="${game.thumbnail}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" alt="${game.title}" loading="lazy" />
+                            <div class="absolute top-2 left-2 flex items-center gap-1">
+                                <span class="px-2 py-0.5 rounded-full text-[10px] font-black bg-slate-950/80 text-amber-400 border border-amber-400/30">
+                                    ★ ${game.rating}
+                                </span>
+                                ${isGn ? `<span class="px-2 py-0.5 rounded-full text-[10px] font-black bg-slate-950/90 text-cyan-300 border border-cyan-400/60 shadow-md flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>GN</span>` : ''}
+                                ${game.isCustom ? `<span class="px-2 py-0.5 rounded-full text-[10px] font-black bg-purple-500/80 text-white">CUSTOM</span>` : ''}
+                            </div>
+                            <button onclick="toggleFav(event, '${game.id}')" class="absolute top-2 right-2 p-1.5 rounded-full bg-slate-950/80 text-sky-200 hover:text-amber-400 transition-colors">
+                                <span class="${isFav ? 'text-amber-400 font-bold' : 'opacity-60'}">★</span>
+                            </button>
+                        </div>
+                        <div class="p-4 flex-1 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between gap-2 mb-1">
+                                    <h3 class="font-extrabold text-sm text-white group-hover:text-sky-300 transition-colors truncate">${game.title}</h3>
+                                    <span class="text-[10px] font-bold text-sky-400 px-2 py-0.5 rounded-md bg-sky-500/10 border border-sky-400/20">${game.category}</span>
+                                </div>
+                                <p class="text-[11px] text-sky-200/70 line-clamp-2 leading-relaxed">${game.description}</p>
+                            </div>
+                            <div class="mt-3 pt-3 border-t border-sky-500/10 flex items-center justify-between text-[11px]">
+                                <span class="text-sky-400 font-semibold">${game.plays || '100K'} plays</span>
+                                <span class="text-sky-300 font-bold group-hover:translate-x-1 transition-transform">Play ▶</span>
+                            </div>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+            }
+
+            document.getElementById('favBadgeCount').innerText = favorites.length;
+            document.getElementById('heroTotalGames').innerText = gamesList.length;
+            const homeStat = document.getElementById('homeStatGames');
+            if (homeStat) homeStat.innerText = gamesList.length;
+        }
+
+        function selectCategory(cat, btnElem) {
+            activeCategory = cat;
+            document.querySelectorAll('.cat-btn').forEach(b => {
+                b.className = "cat-btn px-4 py-2 rounded-xl text-xs font-extrabold transition-all border bg-slate-900/80 text-sky-200 border-sky-500/30 hover:bg-slate-800";
+            });
+            btnElem.className = "cat-btn px-4 py-2 rounded-xl text-xs font-extrabold transition-all border bg-sky-500 text-slate-950 border-sky-400 shadow-md";
+            renderGames();
+        }
+
+        function onSortChange(val) {
+            activeSort = val;
+            renderGames();
+        }
+
+        function onSearchInput() {
+            searchQuery = document.getElementById('searchInput').value;
+            renderGames();
+        }
+
+        function resetSearch() {
+            searchQuery = '';
+            document.getElementById('searchInput').value = '';
+            activeCategory = 'All';
+            switchTab('home');
+            renderGames();
+        }
+
+        function toggleFav(e, gameId) {
+            e.stopPropagation();
+            if (favorites.includes(gameId)) {
+                favorites = favorites.filter(id => id !== gameId);
+            } else {
+                favorites.push(gameId);
+            }
+            localStorage.setItem('frost_favorites', JSON.stringify(favorites));
+            renderGames();
+        }
+
+        function toggleFavoritesFilter() {
+            switchTab('games');
+            activeCategory = activeCategory === 'Favorites' ? 'All' : 'Favorites';
+            renderGames();
+        }
+
+        function switchTab(tab) {
+            const views = { home: 'viewHome', games: 'viewGames', proxy: 'viewProxy' };
+            Object.entries(views).forEach(([key, id]) => {
+                const el = document.getElementById(id);
+                if (el) el.classList.toggle('hidden', key !== tab);
+            });
+
+            // Top navigation pills styling
+            const topBase = "top-tab-btn px-4 sm:px-5 py-2 rounded-full text-xs sm:text-[13px] font-medium flex items-center gap-2 transition-all border";
+            const topActive = {
+                home:  " bg-white/10 text-white border-white/25",
+                games: " bg-white/10 text-white border-white/25",
+                proxy: " bg-white/10 text-white border-white/25",
+            };
+            const topIdle = " bg-transparent text-sky-100/60 border-white/10 hover:text-white hover:border-white/20";
+            ['home', 'games', 'proxy'].forEach(k => {
+                const btn = document.getElementById('topTab' + k[0].toUpperCase() + k.slice(1));
+                if (btn) btn.className = topBase + (k === tab ? topActive[k] : topIdle);
+            });
+
+            // Sidebar navigation buttons styling
+            const sideActiveGames = "flex items-center gap-3.5 p-2.5 rounded-xl transition-all duration-200 cursor-pointer w-full text-left relative bg-sky-500/20 text-sky-300 border border-sky-500/40 shadow-lg shadow-sky-500/10 font-bold";
+            const sideActiveProxy = "flex items-center gap-3.5 p-2.5 rounded-xl transition-all duration-200 cursor-pointer w-full text-left relative bg-purple-500/20 text-purple-300 border border-purple-500/40 shadow-lg shadow-purple-500/10 font-bold";
+            const sideIdle = "flex items-center gap-3.5 p-2.5 rounded-xl transition-all duration-200 cursor-pointer w-full text-left relative text-sky-300/70 hover:text-white hover:bg-slate-900 border border-transparent";
+            const g = document.getElementById('tabBtnGames');
+            const p = document.getElementById('tabBtnProxy');
+            if (g) g.className = tab === 'games' ? sideActiveGames : sideIdle;
+            if (p) p.className = tab === 'proxy' ? sideActiveProxy : sideIdle;
+        }
+
+        function getIframeWrapperHtml(url, title) {
+            return `<html><head><meta charset="utf-8" /><title>${title}</title><style>body,html{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#000;}#nav{height:36px;background:#070d1b;color:#38bdf8;display:flex;align-items:center;justify-content:between;padding:0 12px;font-family:sans-serif;font-size:12px;border-b:1px solid #1e293b;box-sizing:border-box;}#nav a{color:#38bdf8;text-decoration:none;font-weight:bold;margin-left:auto;}#gframe{width:100%;height:calc(100% - 36px);border:none;}</style></head><body><div id="nav"><span>🎮 ${title} - Active Window Focus Mode</span><a href="${url}" target="_blank" rel="noopener">Open Direct ↗</a></div><iframe id="gframe" src="${url}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; gamepad; microphone"></iframe><script>window.addEventListener('load', function(){ var f = document.getElementById('gframe'); if(f) f.focus(); }); document.addEventListener('click', function(){ var f = document.getElementById('gframe'); if(f) f.focus(); });<\/script></body></html>`;
+        }
+
+        // Play Game Modal Engine
+        function openGame(game) {
+            activeGame = game;
+            document.getElementById('modalTitle').innerText = game.title;
+            document.getElementById('modalCategory').innerText = game.category;
+            document.getElementById('modalRating').innerText = `★ ${game.rating}`;
+            document.getElementById('modalControls').innerText = `Controls: ${game.controls || 'Mouse &amp; Keyboard'}`;
+
+            const iframe = document.getElementById('gameIframe');
+
+            if (game.id === 'half-life-2' || game.id === 'half-life-1' || game.type === 'half-life') {
+                iframe.src = 'https://hl2.slqnt.dev/';
+            } else if (game.id === 'drift-hunters-max' || game.type === 'drift-hunters-max') {
+                iframe.src = 'https://drifthuntersmax.io/';
+            } else if (game.id === 'moto-x3m' || game.type === 'moto-x3m') {
+                iframe.src = 'https://motox3m.org/';
+            } else if (game.id === 'drift-hunters' || game.type === 'drift-hunters') {
+                iframe.src = 'https://drifthunters2.io/';
+            } else if (game.id === 'roblox-experimental' || game.type === 'roblox') {
+                iframe.srcdoc = `<html><head><meta charset="utf-8" /><style>html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#000;display:flex;align-items:center;justify-content:center;}iframe{width:100%;height:100%;border:none;}</style></head><body><iframe src="https://now.gg/apps/a/19900/b.html" width="100%" height="100%" frameborder="0" scrolling="no" allowfullscreen="allowfullscreen" allow="autoplay; payment; fullscreen; microphone; clipboard-read; clipboard-write; hidden-caption"></iframe></body></html>`;
+            } else if (game.id === 'jetpack-joyride' || game.type === 'jetpack') {
+                iframe.src = 'https://www.gamepix.com/play/jetpack-joyride';
+            } else if (game.type === 'nes_n64_emulator') {
+                const core = game.emulatorType === 'n64' ? 'n64' : 'nes';
+                const emulatorHtml = `<html><head><meta charset="utf-8"/><style>body{margin:0;background:#000;color:#fff;display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;}#startButton{padding:14px 28px;font-size:18px;background:#38bdf8;color:#000;border:none;border-radius:12px;cursor:pointer;font-weight:bold;}</style></head><body><div id="game" style="width:100vw;height:100vh;display:none;"></div><button id="startButton" onclick="start()">PLAY ${game.title.toUpperCase()}</button><script>function start(){document.getElementById('startButton').style.display='none';document.getElementById('game').style.display='block';window.EJS_player='#game';window.EJS_core='${core}';window.EJS_color='#000';window.EJS_startOnLoaded=true;window.EJS_pathtodata='https://cdn.emulatorjs.org/stable/data';window.EJS_gameUrl='${game.romUrl}';var s=document.createElement('script');s.src='https://cdn.emulatorjs.org/stable/data/loader.js';document.body.appendChild(s);}<\/script></body></html>`;
+                iframe.srcdoc = emulatorHtml;
+            } else if (game.type === 'slope' || game.id === 'slope-game') {
+                iframe.src = 'https://slopeio.org/';
+            } else if (game.id === 'smash-karts' || game.type === 'smash-karts') {
+                iframe.src = 'https://smashkarts.io';
+            } else if (game.id === 'rooftop-run' || game.type === 'rooftop-run') {
+                iframe.src = 'https://rooftoprun.net/';
+            } else if (game.url) {
+                iframe.src = game.url;
+            } else {
+                iframe.srcdoc = getIframeWrapperHtml(game.url || 'about:blank', game.title);
+            }
+
+            document.getElementById('gameModal').classList.remove('hidden');
+            document.getElementById('gameModal').classList.add('flex');
+
+            setTimeout(() => {
+                iframe.focus();
+            }, 200);
+        }
+
+        function closeGameModal() {
+            const iframe = document.getElementById('gameIframe');
+            iframe.src = 'about:blank';
+            iframe.removeAttribute('srcdoc');
+            document.getElementById('gameModal').classList.add('hidden');
+            document.getElementById('gameModal').classList.remove('flex');
+        }
+
+        function reloadGameIframe() {
+            if (activeGame) openGame(activeGame);
+        }
+
+        function toggleFavActiveGame() {
+            if (activeGame) {
+                toggleFav({ stopPropagation: () => {} }, activeGame.id);
+            }
+        }
+
+        function playHeroGame() {
+            openGame(baseCatalog[0]);
+        }
+
+        // Add Custom Game
+        function openAddModal() {
+            document.getElementById('addModal').classList.remove('hidden');
+        }
+
+        function closeAddModal() {
+            document.getElementById('addModal').classList.add('hidden');
+        }
+
+        function handleAddGameSubmit(e) {
+            e.preventDefault();
+            const title = document.getElementById('addTitle').value.trim();
+            const category = document.getElementById('addCategory').value;
+            const iframeUrl = document.getElementById('addIframeUrl').value.trim();
+            const thumbnail = document.getElementById('addThumbnail').value.trim() || 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&amp;auto=format&amp;fit=crop&amp;q=80';
+            const description = document.getElementById('addDescription').value.trim() || 'Custom added unblocked game.';
+
+            if (!title || !iframeUrl) return;
+
+            const newGame = {
+                id: `custom-${Date.now()}`,
+                title,
+                category,
+                description,
+                type: 'url',
+                url: iframeUrl,
+                thumbnail,
+                rating: 5.0,
+                plays: '1',
+                controls: 'Mouse &amp; Keyboard',
+                isCustom: true
+            };
+
+            customGames.unshift(newGame);
+            localStorage.setItem('frost_custom_games', JSON.stringify(customGames));
+            gamesList = [...baseCatalog, ...customGames];
+            renderGames();
+            closeAddModal();
+            openGame(newGame);
+        }
+
+        // Google Drive Modal
+        function openDriveModal() {
+            document.getElementById('driveFavCount').innerText = favorites.length;
+            document.getElementById('driveCustomCount').innerText = customGames.length;
+            document.getElementById('driveModal').classList.remove('hidden');
+        }
+
+        function closeDriveModal() {
+            document.getElementById('driveModal').classList.add('hidden');
+        }
+
+        function exportBackupJSON() {
+            const backup = {
+                favorites,
+                customGames,
+                timestamp: new Date().toISOString()
+            };
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(backup, null, 2));
+            const dlAnchorElem = document.createElement('a');
+            dlAnchorElem.setAttribute("href", dataStr);
+            dlAnchorElem.setAttribute("download", `tundra_backup_${Date.now()}.json`);
+            dlAnchorElem.click();
+        }
+
+        function importBackupJSON(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const parsed = JSON.parse(e.target.result);
+                    if (parsed.favorites &amp;&amp; Array.isArray(parsed.favorites)) {
+                        favorites = parsed.favorites;
+                        localStorage.setItem('frost_favorites', JSON.stringify(favorites));
+                    }
+                    if (parsed.customGames &amp;&amp; Array.isArray(parsed.customGames)) {
+                        customGames = parsed.customGames;
+                        localStorage.setItem('frost_custom_games', JSON.stringify(customGames));
+                        gamesList = [...baseCatalog, ...customGames];
+                    }
+                    renderGames();
+                    alert("Backup restored successfully!");
+                    closeDriveModal();
+                } catch (err) {
+                    alert("Invalid backup file.");
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        // Proxy Engine JS Utilities
+        const PROXY_PATH = "/api/proxy";
+
+        const AD_HOSTS = new Set([
+          "doubleclick.net",
+          "googlesyndication.com",
+          "googleadservices.com",
+          "googletagmanager.com",
+          "googletagservices.com",
+          "google-analytics.com",
+          "adservice.google.com",
+          "adnxs.com",
+          "adsafeprotected.com",
+          "adroll.com",
+          "amazon-adsystem.com",
+          "criteo.com",
+          "criteo.net",
+          "outbrain.com",
+          "taboola.com",
+          "moatads.com",
+          "scorecardresearch.com",
+          "quantserve.com",
+          "hotjar.com",
+          "mixpanel.com",
+          "segment.io",
+          "chartbeat.com",
+          "facebook.net",
+          "connect.facebook.net",
+          "adsrvr.org",
+          "rubiconproject.com",
+          "pubmatic.com",
+          "openx.net",
+          "yieldmo.com",
+          "media.net",
+          "zedo.com",
+          "revcontent.com",
+          "mgid.com",
+          "propellerads.com",
+          "popads.net",
+          "popcash.net",
+          "onclickads.net",
+          "adcash.com",
+          "adf.ly",
+          "2mdn.net",
+          "serving-sys.com",
+          "bidswitch.net",
+          "casalemedia.com",
+          "smartadserver.com",
+          "advertising.com",
+          "yieldlab.net",
+          "sharethrough.com",
+          "adform.net",
+          "bluekai.com",
+          "demdex.net",
+          "everesttech.net",
+          "krxd.net",
+          "rlcdn.com",
+        ]);
+
+        function isAdHost(hostname) {
+          if (!hostname) return false;
+          const h = hostname.toLowerCase();
+          for (const bad of AD_HOSTS) {
+            if (h === bad || h.endsWith("." + bad)) return true;
+          }
+          return false;
+        }
+
+        function errorPage(title, message, status = 502) {
+          const html = `<html><head><meta charset="utf-8" /><title>${title}</title>
+<style>html,body{margin:0;padding:0;height:100%;background:#0b1329;color:#e0f2fe;font-family:system-ui,sans-serif;display:flex;align-items:center;justify-content:center;text-align:center}
+.box{max-width:520px;padding:32px;border:1px solid rgba(56,189,248,.3);border-radius:16px;background:rgba(15,23,42,.6)}
+h1{margin:0 0 12px;font-size:22px;color:#7dd3fc}p{margin:0;color:#bae6fd;line-height:1.5;font-size:14px}</style>
+</head><body><div class="box"><h1>${title}</h1><p>${message}</p></div></body></html>`;
+          return new Response(html, {
+            status: 200,
+            headers: { "content-type": "text/html; charset=utf-8", "access-control-allow-origin": "*", "x-proxy-status": String(status) },
+          });
+        }
+
+        function proxied(target) {
+          return `${PROXY_PATH}?url=${encodeURIComponent(target)}`;
+        }
+
+        function resolveUrl(base, ref) {
+          if (!ref) return null;
+          const trimmed = ref.trim();
+          if (!trimmed) return null;
+          if (/^(data:|blob:|javascript:|mailto:|tel:|#)/i.test(trimmed)) return null;
+          try {
+            return new URL(trimmed, base).toString();
+          } catch {
+            return null;
+          }
+        }
+
+        function rewriteAttr(html, attr, base) {
+          const re = new RegExp(`(\\s${attr}\\s*=\\s*)(["'])([\\s\\S]*?)\\2`, "gi");
+          return html.replace(re, (_m, pre, q, val) => {
+            const abs = resolveUrl(base, val);
+            if (!abs) return `${pre}${q}${val}${q}`;
+            return `${pre}${q}${proxied(abs)}${q}`;
+          });
+        }
+
+        function rewriteSrcset(html, base) {
+          return html.replace(/(\ssrcset\s*=\s*)(["'])([\s\S]*?)\2/gi, (_m, pre, q, val) => {
+            const parts = val.split(",").map((p) => {
+              const seg = p.trim().split(/\s+/);
+              const abs = resolveUrl(base, seg[0]);
+              if (!abs) return p;
+              seg[0] = proxied(abs);
+              return seg.join(" ");
+            });
+            return `${pre}${q}${parts.join(", ")}${q}`;
+          });
+        }
+
+        function rewriteCss(css, base) {
+          css = css.replace(/url\(\s*(['"]?)([^'")]+)\1\s*\)/gi, (_m, q, val) => {
+            const abs = resolveUrl(base, val);
+            if (!abs) return `url(${q}${val}${q})`;
+            return `url(${q}${proxied(abs)}${q})`;
+          });
+          css = css.replace(/@import\s+(['"])([^'"]+)\1/gi, (_m, q, val) => {
+            const abs = resolveUrl(base, val);
+            if (!abs) return `@import ${q}${val}${q}`;
+            return `@import ${q}${proxied(abs)}${q}`;
+          });
+          return css;
+        }
+
+        function rewriteHtml(html, base) {
+          html = html.replace(/<meta[^>]+http-equiv=["']?content-security-policy["']?[^>]*>/gi, "");
+          html = html.replace(/<meta[^>]+http-equiv=["']?x-frame-options["']?[^>]*>/gi, "");
+
+          html = html.replace(/(<style[^>]*>)([\s\S]*?)(<\/style>)/gi, (_m, open, css, close) => {
+            return open + rewriteCss(css, base) + close;
+          });
+
+          for (const attr of ["href", "src", "action", "poster", "data-src", "data-href"]) {
+            html = rewriteAttr(html, attr, base);
+          }
+          html = rewriteSrcset(html, base);
+
+          const injection = `
+<base href="${proxied(base)}">
+<script>(function(){
+  var PROXY = ${JSON.stringify(PROXY_PATH)};
+  var BASE = ${JSON.stringify(base)};
+  function abs(u){ try { return new URL(u, BASE).toString(); } catch(e){ return null; } }
+  function wrap(u){ if(!u||typeof u!=='string') return u; if(u.indexOf(PROXY+'?')===0) return u; if(/^(data:|blob:|javascript:|mailto:|tel:|#)/i.test(u)) return u; var a = abs(u); return a ? PROXY+'?url='+encodeURIComponent(a) : u; }
+  var _fetch = window.fetch;
+  window.fetch = function(input, init){
+    try {
+      if(typeof input==='string'){ input = wrap(input); }
+      else if(input &amp;&amp; input.url){ input = new Request(wrap(input.url), input); }
+    } catch(e){}
+    return _fetch.call(this, input, init);
+  };
+  var _open = XMLHttpRequest.prototype.open;
+  XMLHttpRequest.prototype.open = function(m,u){ try { arguments[1] = wrap(u); } catch(e){} return _open.apply(this, arguments); };
+  document.addEventListener('submit', function(e){
+    var f = e.target;
+    if(!f || !f.action) return;
+    try { f.action = wrap(f.action); } catch(e){}
+  }, true);
+  document.addEventListener('click', function(e){
+    var a = e.target &amp;&amp; e.target.closest ? e.target.closest('a[href]') : null;
+    if(!a) return;
+    if(a.target==='_blank') return;
+    var href = a.getAttribute('href');
+    if(!href) return;
+    if(/^(javascript:|mailto:|tel:|#)/i.test(href)) return;
+    e.preventDefault();
+    window.location.href = wrap(href);
+  }, true);
+})();<\/script>
+`;
+          if (/<head[^>]*>/i.test(html)) {
+            html = html.replace(/<head([^>]*)>/i, (m) => m + injection);
+          } else {
+            html = injection + html;
+          }
+          return html;
+        }
+
+        async function handleProxy(request) {
+          const url = new URL(request.url);
+          const target = url.searchParams.get("url");
+          if (!target) return errorPage("Missing URL", "No target URL was provided to the proxy.", 400);
+
+          let targetUrl;
+          try {
+            targetUrl = new URL(target);
+          } catch {
+            try {
+              targetUrl = new URL(/^https?:\/\//i.test(target) ? target : `https://${target}`);
+            } catch {
+              return errorPage("Invalid URL", "The URL you entered could not be parsed.", 400);
+            }
+          }
+          if (!/^https?:$/.test(targetUrl.protocol)) {
+            return errorPage("Blocked scheme", "Only http and https URLs are allowed.", 400);
+          }
+
+          if (isAdHost(targetUrl.hostname)) {
+            return new Response(null, { status: 204, headers: { "access-control-allow-origin": "*", "x-proxy-adblock": "1" } });
+          }
+
+          const fwdHeaders = {
+            "user-agent": request.headers.get("user-agent") || "Mozilla/5.0 (compatible; TundraProxy/1.0)",
+            accept: request.headers.get("accept") || "*/*",
+            "accept-language": request.headers.get("accept-language") || "en-US,en;q=0.9",
+          };
+          const range = request.headers.get("range");
+          if (range) fwdHeaders["range"] = range;
+
+          let body;
+          if (request.method !== "GET" &amp;&amp; request.method !== "HEAD") {
+            body = await request.arrayBuffer();
+            const ct = request.headers.get("content-type");
+            if (ct) fwdHeaders["content-type"] = ct;
+          }
+
+          let upstream;
+          try {
+            upstream = await fetch(targetUrl.toString(), {
+              method: request.method,
+              headers: fwdHeaders,
+              body,
+              redirect: "manual",
+            });
+          } catch (e) {
+            return errorPage("Site unreachable", `Could not load <b>${targetUrl.hostname}</b>. It may be down, unresolvable, or blocking proxies.<br /><br /><small>${e.message}</small>`, 502);
+          }
+
+          if (upstream.status >= 300 &amp;&amp; upstream.status < 400) {
+            const loc = upstream.headers.get("location");
+            if (loc) {
+              const abs = resolveUrl(targetUrl.toString(), loc);
+              if (abs) {
+                return new Response(null, {
+                  status: upstream.status,
+                  headers: { location: proxied(abs) },
+                });
+              }
+            }
+          }
+
+          const contentType = (upstream.headers.get("content-type") || "").toLowerCase();
+          const outHeaders = new Headers();
+          outHeaders.set("access-control-allow-origin", "*");
+          const stripped = new Set([
+            "content-security-policy",
+            "content-security-policy-report-only",
+            "x-frame-options",
+            "frame-options",
+            "cross-origin-opener-policy",
+            "cross-origin-embedder-policy",
+            "cross-origin-resource-policy",
+            "strict-transport-security",
+            "content-length",
+            "content-encoding",
+            "transfer-encoding",
+          ]);
+          for (const [k, v] of upstream.headers.entries()) {
+            if (stripped.has(k.toLowerCase())) continue;
+            outHeaders.set(k, v);
+          }
+
+          if (contentType.includes("text/html")) {
+            const text = await upstream.text();
+            const rewritten = rewriteHtml(text, targetUrl.toString());
+            outHeaders.set("content-type", "text/html; charset=utf-8");
+            return new Response(rewritten, { status: upstream.status, headers: outHeaders });
+          }
+          if (contentType.includes("text/css")) {
+            const text = await upstream.text();
+            const rewritten = rewriteCss(text, targetUrl.toString());
+            outHeaders.set("content-type", "text/css; charset=utf-8");
+            return new Response(rewritten, { status: upstream.status, headers: outHeaders });
+          }
+
+          return new Response(upstream.body, { status: upstream.status, headers: outHeaders });
+        }
+
+        // Proxy Functions
+        function handleProxySubmit(e) {
+            e.preventDefault();
+            const input = document.getElementById('proxyAddress').value.trim();
+            if (!input) return;
+
+            let url = input;
+            if (!/^https?:\/\//i.test(url)) {
+                if (url.includes('.') &amp;&amp; !url.includes(' ')) {
+                    url = 'https://' + url;
+                } else {
+                    const engine = document.getElementById('proxyEngine').value;
+                    if (engine === 'duckduckgo') url = 'https://duckduckgo.com/?q=' + encodeURIComponent(input);
+                    else if (engine === 'bing') url = 'https://www.bing.com/search?q=' + encodeURIComponent(input);
+                    else if (engine === 'brave') url = 'https://search.brave.com/search?q=' + encodeURIComponent(input);
+                    else url = 'https://www.google.com/search?q=' + encodeURIComponent(input);
+                }
+            }
+            navigateProxy(url);
+        }
+
+        function navigateProxy(url) {
+            document.getElementById('proxyUrlDisplay').innerText = url;
+            const proxyEndpoint = '/api/proxy?url=' + encodeURIComponent(url);
+            document.getElementById('proxyIframe').src = proxyEndpoint;
+            document.getElementById('proxyFrameContainer').classList.remove('hidden');
+            document.getElementById('proxyFrameContainer').classList.add('flex');
+            document.getElementById('proxyShortcuts').classList.add('hidden');
+        }
+
+        function closeProxyFrame() {
+            document.getElementById('proxyIframe').src = 'about:blank';
+            document.getElementById('proxyFrameContainer').classList.add('hidden');
+            document.getElementById('proxyFrameContainer').classList.remove('flex');
+            document.getElementById('proxyShortcuts').classList.remove('hidden');
+        }
+
+        // Panic Mode
+        function togglePanic() {
+            const panic = document.getElementById('panicScreen');
+            panic.classList.toggle('hidden');
+        }
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                togglePanic();
+            }
+        });
+
+        // Realistic Multi-Layer Crystal Snowfall Effect
+        const canvas = document.getElementById('snowCanvas');
+        const ctx = canvas.getContext('2d');
+        let flakes = [];
+        let lastFrame = performance.now();
+
+        function makeFlake(w, h, seeded) {
+            const kind = Math.random();
+            const isCrystal = kind < 0.22;
+            const depth = Math.random(); // 0 (far/slow) to 1 (near/fast)
+            const size = isCrystal
+                ? 4 + depth * 8       // 4px to 12px crystal stars
+                : 0.8 + depth * 2.2;  // fine flurries
+            return {
+                x: Math.random() * w,
+                y: seeded ? Math.random() * h : -size * 2,
+                size,
+                depth,
+                isCrystal,
+                vy: 0.25 + depth * 1.1 + (isCrystal ? 0.15 : 0),
+                vx: (Math.random() - 0.5) * 0.3,
+                swayAmp: 0.4 + Math.random() * 1.2,
+                swaySpeed: 0.0006 + Math.random() * 0.0016,
+                swayPhase: Math.random() * Math.PI * 2,
+                rot: Math.random() * Math.PI * 2,
+                vr: (Math.random() - 0.5) * 0.01,
+                alpha: isCrystal ? 0.55 + depth * 0.4 : 0.35 + depth * 0.55,
+                arms: 6
+            };
+        }
+
+        function initSnow() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            const count = Math.min(180, Math.floor(window.innerWidth * window.innerHeight / 14000));
+            flakes = [];
+            for (let i = 0; i < count; i++) {
+                flakes.push(makeFlake(canvas.width, canvas.height, true));
+            }
+        }
+
+        function drawCrystal(f) {
+            const s = f.size;
+            ctx.save();
+            ctx.translate(f.x, f.y);
+            ctx.rotate(f.rot);
+            ctx.strokeStyle = `rgba(235, 246, 255, ${f.alpha})`;
+            ctx.lineWidth = Math.max(0.6, s * 0.1);
+            ctx.lineCap = 'round';
+            ctx.shadowColor = 'rgba(180, 220, 255, 0.6)';
+            ctx.shadowBlur = s * 0.6;
+            for (let i = 0; i < f.arms; i++) {
+                ctx.rotate((Math.PI * 2) / f.arms);
+                ctx.beginPath();
+                ctx.moveTo(0, 0);
+                ctx.lineTo(0, -s);
+                ctx.stroke();
+                // Side crystal branches
+                ctx.beginPath();
+                ctx.moveTo(0, -s * 0.55);
+                ctx.lineTo(s * 0.28, -s * 0.85);
+                ctx.moveTo(0, -s * 0.55);
+                ctx.lineTo(-s * 0.28, -s * 0.85);
+                ctx.moveTo(0, -s * 0.3);
+                ctx.lineTo(s * 0.18, -s * 0.5);
+                ctx.moveTo(0, -s * 0.3);
+                ctx.lineTo(-s * 0.18, -s * 0.5);
+                ctx.stroke();
+            }
+            ctx.restore();
+        }
+
+        function drawSnow(now) {
+            if (now === undefined) now = performance.now();
+            const dt = Math.min(40, now - lastFrame);
+            lastFrame = now;
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            if (!snowEnabled) {
+                requestAnimationFrame(drawSnow);
+                return;
+            }
+
+            for (let f of flakes) {
+                const sway = Math.sin(now * f.swaySpeed + f.swayPhase) * f.swayAmp;
+                f.x += (f.vx + sway * 0.05) * dt * 0.5;
+                f.y += f.vy * dt * 0.5;
+                f.rot += f.vr * dt;
+
+                if (f.y - f.size > canvas.height) {
+                    f.y = -f.size * 2;
+                    f.x = Math.random() * canvas.width;
+                }
+                if (f.x < -20) f.x = canvas.width + 10;
+                if (f.x > canvas.width + 20) f.x = -10;
+
+                if (f.isCrystal) {
+                    drawCrystal(f);
+                } else {
+                    ctx.beginPath();
+                    ctx.fillStyle = `rgba(240, 249, 255, ${f.alpha})`;
+                    ctx.shadowColor = 'rgba(200, 230, 255, 0.5)';
+                    ctx.shadowBlur = f.size * 1.5;
+                    ctx.arc(f.x, f.y, f.size, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.shadowBlur = 0;
+                }
+            }
+            requestAnimationFrame(drawSnow);
+        }
+
+        function toggleSnow() {
+            snowEnabled = !snowEnabled;
+            document.getElementById('snowBtnLabel').innerText = snowEnabled ? 'Snow ON' : 'Snow OFF';
+        }
+
+        window.addEventListener('resize', initSnow);
+        initSnow();
+        requestAnimationFrame(drawSnow);
+
+        // Initial setup: Default to Home tab landing
+        switchTab('home');
+        renderGames();
+
+        // Typewriter animation loop for the tagline word: Bypass -> Experience -> Freedom -> repeat
+        const typewriterWords = ["Bypass", "Experience", "Freedom"];
+        const bypassFonts = [
+            'italic 1em "Instrument Serif", serif',
+            'normal 1em "Instrument Serif", serif',
+            '500 0.85em "JetBrains Mono", monospace',
+            '600 0.9em "Plus Jakarta Sans", sans-serif',
+            'italic 1em Georgia, "Times New Roman", serif',
+        ];
+        let lastBypassFontIdx = -1;
+        function randomizeBypassFont(el) {
+            let idx;
+            do { idx = Math.floor(Math.random() * bypassFonts.length); }
+            while (bypassFonts.length > 1 &amp;&amp; idx === lastBypassFontIdx);
+            lastBypassFontIdx = idx;
+            el.style.font = bypassFonts[idx];
+            el.style.color = '';
+        }
+        let twWordIdx = 0;
+        let twCharIdx = typewriterWords[0].length;
+        let twIsDeleting = true;
+
+        function runTypewriter() {
+            const twEl = document.getElementById('typewriterWord');
+            if (!twEl) {
+                setTimeout(runTypewriter, 500);
+                return;
+            }
+
+            const currentWord = typewriterWords[twWordIdx];
+
+            if (twIsDeleting) {
+                twCharIdx--;
+                twEl.innerText = currentWord.substring(0, Math.max(0, twCharIdx));
+            } else {
+                if (twCharIdx === 0 &amp;&amp; currentWord === "Bypass") {
+                    randomizeBypassFont(twEl);
+                }
+                twCharIdx++;
+                twEl.innerText = currentWord.substring(0, Math.min(currentWord.length, twCharIdx));
+            }
+
+            let speed = twIsDeleting ? 60 : 120;
+
+            if (!twIsDeleting &amp;&amp; twCharIdx >= currentWord.length) {
+                twCharIdx = currentWord.length;
+                speed = 2500;
+                twIsDeleting = true;
+            } else if (twIsDeleting &amp;&amp; twCharIdx <= 0) {
+                twCharIdx = 0;
+                twIsDeleting = false;
+                twWordIdx = (twWordIdx + 1) % typewriterWords.length;
+                speed = 300;
+            }
+
+            setTimeout(runTypewriter, speed);
+        }
+
+        (function initBypassFont(){
+            const el = document.getElementById('typewriterWord');
+            if (el) randomizeBypassFont(el);
+        })();
+        setTimeout(runTypewriter, 2500);
+    ]]></script>
+</body>
+</html>
+
   </foreignObject>
 </svg>
