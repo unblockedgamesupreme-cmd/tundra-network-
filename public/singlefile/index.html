@@ -6,7 +6,7 @@
     <title>Tundra Network | Unblocked Games Portal & Ultraviolet Proxy</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Funnel+Display:wght@300..800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Press+Start+2P&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Press+Start+2P&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -20,10 +20,10 @@
                     },
                     fontFamily: {
                         sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                        funnel: ['"Funnel Display"', 'sans-serif'],
                         mono: ['"JetBrains Mono"', 'monospace'],
                         arcade: ['"Press Start 2P"', 'cursive'],
-                        blackops: ['"Black Ops One"', 'cursive']
+                        blackops: ['"Black Ops One"', 'cursive'],
+                        serif: ['"Instrument Serif"', 'serif']
                     }
                 }
             }
@@ -62,9 +62,8 @@
             z-index: -1;
             pointer-events: none;
             background:
-                radial-gradient(ellipse at 20% 10%, rgba(56,189,248,0.12), transparent 55%),
-                radial-gradient(ellipse at 80% 90%, rgba(129,140,248,0.12), transparent 55%),
-                linear-gradient(180deg, rgba(5,9,20,0.15) 0%, rgba(5,9,20,0.40) 60%, rgba(5,9,20,0.70) 100%);
+                radial-gradient(ellipse at 30% 0%, rgba(56,189,248,0.08), transparent 60%),
+                linear-gradient(180deg, rgba(5,9,20,0.55) 0%, rgba(5,9,20,0.72) 60%, rgba(5,9,20,0.88) 100%);
         }
 
         .frost-glass {
@@ -121,22 +120,16 @@
             <div class="flex items-center justify-between h-16 gap-3">
                 
                 <!-- Logo & Branding -->
-                <div class="flex items-center space-x-3 cursor-pointer select-none shrink-0" onclick="resetSearch()">
-                    <div class="relative p-2.5 bg-gradient-to-tr from-sky-500 via-sky-400 to-indigo-400 rounded-2xl shadow-lg border border-sky-300/40 text-white flex items-center justify-center">
-                        <svg class="w-6 h-6 animate-pulse-slow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v18m9-9H3m15.364 6.364l-12.728-12.728m0 12.728l12.728-12.728"/></svg>
-                        <div class="absolute -top-1 -right-1 w-3 h-3 bg-cyan-300 rounded-full border-2 border-slate-900"></div>
+                <div class="flex items-center gap-3 cursor-pointer select-none shrink-0" onclick="resetSearch()">
+                    <div class="relative w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-sky-100">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v18m9-9H3m15.364 6.364l-12.728-12.728m0 12.728l12.728-12.728"/></svg>
                     </div>
-                    <div>
-                        <div class="flex items-center gap-1.5">
-                            <span class="text-base sm:text-lg font-black tracking-tight text-white font-funnel drop-shadow-sm">
-                                TUNDRA<span class="text-sky-400 font-extrabold"> NETWORK</span>
-                            </span>
-                            <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-sky-500/20 text-sky-300 border border-sky-400/30">
-                                Unblocked
-                            </span>
+                    <div class="leading-tight">
+                        <div class="text-[15px] font-medium tracking-tight text-white">
+                            Tundra <span class="font-serif italic font-normal text-sky-200">Network</span>
                         </div>
-                        <p class="text-[11px] text-sky-300 font-medium hidden sm:block">
-                            Tundra Games Portal &bull; Standalone Singlefile Catalog
+                        <p class="text-[10px] uppercase tracking-[0.22em] text-sky-200/50 hidden sm:block mt-0.5">
+                            Portal &middot; Proxy
                         </p>
                     </div>
                 </div>
@@ -215,145 +208,161 @@
         </div>
     </header>
 
-    <!-- Floating Oval Top Sidebar Navigation -->
-    <div class="sticky top-3 z-50 flex justify-center w-full px-4 my-2 pointer-events-auto">
-        <aside class="flex items-center gap-2 sm:gap-3 px-3.5 py-2 rounded-full bg-slate-950/85 backdrop-blur-xl border border-sky-400/40 shadow-2xl shadow-sky-500/25 ring-1 ring-white/10 transition-all duration-300 hover:border-sky-300/60 max-w-[95vw]">
-            <!-- Network Logo & Brand -->
-            <div onclick="switchTab('home')" class="flex items-center gap-2.5 pl-1 pr-1 cursor-pointer select-none">
-                <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-sky-500 via-indigo-500 to-purple-600 p-0.5 flex-shrink-0 shadow-md shadow-sky-500/30">
-                    <div class="w-full h-full bg-slate-950 rounded-full flex items-center justify-center">
-                        <svg class="w-4 h-4 text-sky-400 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+    <!-- Top Section Navigation (Home / Games / Proxy) -->
+    <nav class="w-full bg-slate-950/50 border-b border-white/5 backdrop-blur-md z-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-center gap-2">
+            <button id="topTabHome" onclick="switchTab('home')" class="top-tab-btn px-4 py-1.5 rounded-full text-[13px] font-medium flex items-center gap-2 transition-all border">
+                <span>Home</span>
+            </button>
+            <button id="topTabGames" onclick="switchTab('games')" class="top-tab-btn px-4 py-1.5 rounded-full text-[13px] font-medium flex items-center gap-2 transition-all border">
+                <span>Games</span>
+            </button>
+            <button id="topTabProxy" onclick="switchTab('proxy')" class="top-tab-btn px-4 py-1.5 rounded-full text-[13px] font-medium flex items-center gap-2 transition-all border">
+                <span>Proxy</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Workspace Container with Left Sidebar -->
+    <div class="flex-1 flex flex-col md:flex-row w-full relative z-10">
+        
+        <!-- Left Navigation Sidebar -->
+        <aside class="w-full md:w-20 md:hover:w-52 transition-all duration-300 bg-slate-950/90 border-b md:border-b-0 md:border-r border-sky-500/20 backdrop-blur-md z-30 flex md:flex-col justify-between p-2 md:py-6 md:px-3 flex-shrink-0 group">
+            <div class="flex md:flex-col items-center md:items-start w-full gap-2 md:gap-6">
+                
+                <!-- Sidebar Header Icon -->
+                <div class="hidden md:flex items-center gap-3 px-2 mb-2">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 via-indigo-500 to-purple-600 p-0.5 flex-shrink-0 shadow-lg shadow-sky-500/20">
+                        <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
+                            <svg class="w-5 h-5 text-sky-400 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        </div>
+                    </div>
+                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-200 overflow-hidden whitespace-nowrap">
+                        <span class="font-extrabold text-sm text-white block leading-none">Tundra</span>
+                        <span class="text-[10px] text-sky-400 font-bold uppercase tracking-widest">Network</span>
                     </div>
                 </div>
-                <div class="hidden sm:block whitespace-nowrap font-funnel">
-                    <span class="font-extrabold text-[11px] text-white block leading-none">Tundra</span>
-                    <span class="text-[8px] text-sky-400 font-bold uppercase tracking-widest">Network</span>
+
+                <!-- Navigation Tabs -->
+                <div class="flex md:flex-col items-center md:items-stretch w-full gap-2">
+                    <button
+                        id="tabBtnGames"
+                        onclick="switchTab('games')"
+                        class="flex items-center gap-3.5 p-2.5 rounded-xl transition-all duration-200 cursor-pointer w-full text-left relative bg-sky-500/20 text-sky-300 border border-sky-500/40 shadow-lg shadow-sky-500/10 font-bold"
+                    >
+                        <div class="flex-shrink-0 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-sky-400 scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a2 2 0 01-2 2 2 2 0 01-2-2V4zm-6 8a2 2 0 100-4 2 2 0 000 4zm14 0a2 2 0 100-4 2 2 0 000 4zM6 18a2 2 0 100-4 2 2 0 000 4zm12 0a2 2 0 100-4 2 2 0 000 4z"/></svg>
+                        </div>
+                        <div class="hidden md:block opacity-0 group-hover:opacity-100 transition-opacity duration-200 overflow-hidden whitespace-nowrap">
+                            <span class="text-xs font-semibold block">Game Portal</span>
+                        </div>
+                    </button>
+
+                    <button
+                        id="tabBtnProxy"
+                        onclick="switchTab('proxy')"
+                        class="flex items-center gap-3.5 p-2.5 rounded-xl transition-all duration-200 cursor-pointer w-full text-left relative text-sky-300/70 hover:text-white hover:bg-slate-900 border border-transparent"
+                    >
+                        <div class="flex-shrink-0 flex items-center justify-center">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        </div>
+                        <div class="hidden md:block opacity-0 group-hover:opacity-100 transition-opacity duration-200 overflow-hidden whitespace-nowrap">
+                            <span class="text-xs font-semibold block">Ultraviolet Proxy</span>
+                        </div>
+                    </button>
                 </div>
             </div>
 
-            <div class="w-px h-5 bg-sky-500/25 hidden sm:block"></div>
-
-            <!-- Oval Floating Navigation Buttons -->
-            <div class="flex items-center gap-1.5">
-                <button
-                    id="tabBtnHome"
-                    onclick="switchTab('home')"
-                    class="flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-extrabold transition-all duration-200 cursor-pointer border bg-gradient-to-r from-sky-400 to-cyan-400 text-slate-950 border-sky-300 shadow-md shadow-sky-500/20"
-                >
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-                    <span>Home</span>
-                </button>
-
-                <button
-                    id="tabBtnGames"
-                    onclick="switchTab('games')"
-                    class="flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-extrabold transition-all duration-200 cursor-pointer border text-sky-300/70 hover:text-white hover:bg-slate-900/80 border-transparent"
-                >
-                    <svg class="w-4 h-4 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a2 2 0 01-2 2 2 2 0 01-2-2V4zm-6 8a2 2 0 100-4 2 2 0 000 4zm14 0a2 2 0 100-4 2 2 0 000 4zM6 18a2 2 0 100-4 2 2 0 000 4zm12 0a2 2 0 100-4 2 2 0 000 4z"/></svg>
-                    <span>Game Portal</span>
-                </button>
-
-                <button
-                    id="tabBtnProxy"
-                    onclick="switchTab('proxy')"
-                    class="flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-extrabold transition-all duration-200 cursor-pointer border text-sky-300/70 hover:text-white hover:bg-slate-900/80 border-transparent"
-                >
-                    <svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                    <span>Proxy</span>
-                </button>
-            </div>
-
-            <div class="hidden md:block w-px h-5 bg-sky-500/25"></div>
-
-            <!-- Status Oval Tag -->
-            <div class="hidden md:flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900/90 border border-emerald-500/30 text-[10px] font-bold text-emerald-400 shadow-sm">
+            <div class="hidden md:flex items-center gap-2 px-2 pt-4 border-t border-sky-500/10 text-[10px] text-sky-400/80">
                 <svg class="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                <span>Protected</span>
+                <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap font-medium">
+                    School Guard Active
+                </span>
             </div>
         </aside>
-    </div>
 
-    <!-- Main Workspace Container -->
-    <div class="flex-1 flex flex-col w-full relative z-10">
+        <!-- Main Content Viewport -->
+        <div class="flex-1 flex flex-col min-w-0">
             
             <!-- HOME LANDING TAB CONTENT -->
-            <main id="viewHome" class="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
-                <!-- Hero Banner - Transparent Container for 4K Glacier Visibility -->
-                <section class="relative overflow-hidden p-8 sm:p-14 mb-10 bg-transparent border-none shadow-none">
-                    <div class="absolute -top-24 -right-24 w-96 h-96 bg-sky-400/20 rounded-full blur-3xl pointer-events-none"></div>
-                    <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none"></div>
-                    <div class="relative z-10 text-center max-w-3xl mx-auto">
-                        <span class="inline-block px-3.5 py-1 rounded-full text-xs font-black uppercase tracking-widest bg-gradient-to-r from-sky-400 to-cyan-300 text-slate-950 shadow-md mb-4">
-                            Welcome to Tundra Network
-                        </span>
-                        
-                        <h1 class="font-blackops text-4xl sm:text-6xl sm:text-7xl tracking-wider text-white mb-2 drop-shadow-xl">
-                            TUNDRA <span class="bg-gradient-to-r from-sky-300 via-cyan-200 to-indigo-300 bg-clip-text text-transparent">NETWORK</span>
-                        </h1>
+            <main id="viewHome" class="flex-1 max-w-5xl w-full mx-auto px-6 lg:px-8 py-16 sm:py-24 relative z-10">
+                <!-- Editorial Hero -->
+                <section class="relative mb-24 sm:mb-28">
+                    <div class="flex items-center gap-3 mb-8 text-[11px] uppercase tracking-[0.28em] text-sky-200/70 font-medium">
+                        <span class="inline-block w-8 h-px bg-sky-200/60"></span>
+                        <span>Tundra Network — Est. 2026</span>
+                    </div>
 
-                        <!-- MEDIUM SIZED TEXT WITH TYPEWRITER ANIMATION -->
-                        <p class="text-xl sm:text-2xl md:text-3xl font-extrabold text-sky-200 tracking-wide my-4 drop-shadow-md">
-                            Browse, Play, <span id="typewriterWord" class="bg-gradient-to-r from-cyan-300 via-sky-300 to-indigo-300 bg-clip-text text-transparent underline decoration-sky-400/50">Bypass</span><span class="animate-pulse text-sky-400 font-normal ml-0.5">|</span>
-                        </p>
+                    <h1 class="text-white font-light leading-[0.95] tracking-tight text-5xl sm:text-6xl md:text-7xl mb-8">
+                        A quieter way to<br/>
+                        <span class="font-serif italic font-normal text-sky-100">browse, play,</span>
+                        <span id="typewriterWord" class="font-serif italic font-normal text-sky-200">bypass</span><span class="ml-1 inline-block w-[2px] h-[0.9em] align-middle bg-sky-200/80 animate-pulse"></span>
+                    </h1>
 
-                        <p class="text-sm sm:text-base text-sky-100/90 leading-relaxed mb-8 max-w-2xl mx-auto font-medium">
-                            Tundra Network is your premier unblocked portal. Dive into a hand-picked singlefile catalog of games or slip through the Ultraviolet proxy to browse the open web — all from one glacial dashboard.
-                        </p>
+                    <p class="max-w-xl text-base sm:text-lg text-sky-100/70 leading-relaxed font-normal mb-10">
+                        A hand-picked catalog of singlefile games and a lightweight web proxy — housed under one glacial roof. No accounts, no clutter.
+                    </p>
 
-                        <div class="flex items-center justify-center gap-4 flex-wrap">
-                            <button onclick="switchTab('games')" class="px-7 py-3.5 rounded-2xl bg-gradient-to-r from-sky-400 via-cyan-400 to-sky-500 hover:from-sky-300 hover:to-cyan-300 text-slate-950 font-black text-sm shadow-xl shadow-sky-500/30 transition-all flex items-center gap-2 hover:scale-105 active:scale-95 cursor-pointer">
-                                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                <span>BROWSE GAMES</span>
-                            </button>
+                    <div class="flex items-center gap-4 flex-wrap">
+                        <button onclick="switchTab('games')" class="group px-6 py-3 rounded-full bg-sky-100 hover:bg-white text-slate-950 font-semibold text-sm transition-all flex items-center gap-2.5 cursor-pointer">
+                            <span>Browse the catalog</span>
+                            <svg class="w-4 h-4 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </button>
+                        <button onclick="switchTab('proxy')" class="px-6 py-3 rounded-full bg-transparent hover:bg-white/5 text-sky-100 font-semibold text-sm border border-white/20 hover:border-white/40 transition-all flex items-center gap-2 cursor-pointer">
+                            <span>Open the proxy</span>
+                        </button>
+                    </div>
+                </section>
 
-                            <button onclick="switchTab('proxy')" class="px-7 py-3.5 rounded-2xl bg-slate-900/90 hover:bg-slate-800 text-purple-300 font-extrabold text-sm border border-purple-400/40 transition-all flex items-center gap-2 hover:scale-105 active:scale-95 shadow-lg cursor-pointer">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                                <span>LAUNCH PROXY</span>
-                            </button>
+                <!-- Editorial Feature List -->
+                <section class="mb-24 sm:mb-28">
+                    <div class="flex items-center gap-3 mb-10 text-[11px] uppercase tracking-[0.28em] text-sky-200/70 font-medium">
+                        <span class="inline-block w-8 h-px bg-sky-200/60"></span>
+                        <span>Three tools, one page</span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10 border border-white/10 rounded-2xl overflow-hidden">
+                        <button onclick="switchTab('games')" class="text-left p-8 bg-slate-950/60 hover:bg-slate-950/80 transition-colors group">
+                            <div class="flex items-center justify-between mb-8">
+                                <span class="font-serif italic text-2xl text-sky-200/80">01</span>
+                                <svg class="w-4 h-4 text-sky-200/40 group-hover:text-sky-100 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+                            </div>
+                            <h3 class="text-white font-medium text-lg mb-2 tracking-tight">Unblocked catalog</h3>
+                            <p class="text-sm text-sky-100/60 leading-relaxed">Action, arcade, puzzle, racing, RPGs, and custom iframe imports — all playable in one click.</p>
+                        </button>
+                        <button onclick="switchTab('proxy')" class="text-left p-8 bg-slate-950/60 hover:bg-slate-950/80 transition-colors group">
+                            <div class="flex items-center justify-between mb-8">
+                                <span class="font-serif italic text-2xl text-sky-200/80">02</span>
+                                <svg class="w-4 h-4 text-sky-200/40 group-hover:text-sky-100 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+                            </div>
+                            <h3 class="text-white font-medium text-lg mb-2 tracking-tight">Ultraviolet proxy</h3>
+                            <p class="text-sm text-sky-100/60 leading-relaxed">Slip past school restrictions and surf search engines, wikis, and the open web — quietly.</p>
+                        </button>
+                        <div class="text-left p-8 bg-slate-950/60">
+                            <div class="flex items-center justify-between mb-8">
+                                <span class="font-serif italic text-2xl text-sky-200/80">03</span>
+                                <span class="text-[10px] uppercase tracking-[0.2em] text-sky-200/40">Esc</span>
+                            </div>
+                            <h3 class="text-white font-medium text-lg mb-2 tracking-tight">Panic guard</h3>
+                            <p class="text-sm text-sky-100/60 leading-relaxed">A single keystroke disguises the page as an academic research paper. Nothing to explain.</p>
                         </div>
                     </div>
                 </section>
 
-                <!-- Quick Feature Cards -->
-                <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
-                    <button onclick="switchTab('games')" class="text-left p-6 rounded-2xl bg-slate-900/70 hover:bg-slate-900/90 border border-sky-500/25 hover:border-sky-400/60 transition-all backdrop-blur-md shadow-lg group hover:-translate-y-0.5">
-                        <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-sky-500 to-indigo-500 flex items-center justify-center mb-4 shadow-md shadow-sky-500/30 group-hover:scale-110 transition-transform">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a2 2 0 01-2 2 2 2 0 01-2-2V4zm-6 8a2 2 0 100-4 2 2 0 000 4zm14 0a2 2 0 100-4 2 2 0 000 4zM6 18a2 2 0 100-4 2 2 0 000 4zm12 0a2 2 0 100-4 2 2 0 000 4z"/></svg>
+                <!-- Minimal stat line -->
+                <section class="border-t border-white/10 pt-10">
+                    <div class="grid grid-cols-3 gap-6">
+                        <div>
+                            <div class="font-serif text-4xl sm:text-5xl text-white font-normal leading-none" id="homeStatGames">0</div>
+                            <div class="text-[11px] uppercase tracking-[0.24em] text-sky-200/50 mt-3">Games ready</div>
                         </div>
-                        <h3 class="text-white font-extrabold text-lg mb-1 group-hover:text-sky-300">Unblocked Catalog</h3>
-                        <p class="text-xs text-sky-200/80 leading-relaxed">Action, Arcade, Puzzle, Racing, RPGs and custom iframe games ready to play instantly.</p>
-                    </button>
-
-                    <button onclick="switchTab('proxy')" class="text-left p-6 rounded-2xl bg-slate-900/70 hover:bg-slate-900/90 border border-purple-500/25 hover:border-purple-400/60 transition-all backdrop-blur-md shadow-lg group hover:-translate-y-0.5">
-                        <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-500 to-pink-500 flex items-center justify-center mb-4 shadow-md shadow-purple-500/30 group-hover:scale-110 transition-transform">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        <div>
+                            <div class="font-serif text-4xl sm:text-5xl text-white font-normal leading-none">∞</div>
+                            <div class="text-[11px] uppercase tracking-[0.24em] text-sky-200/50 mt-3">Sites reachable</div>
                         </div>
-                        <h3 class="text-white font-extrabold text-lg mb-1 group-hover:text-purple-300">Ultraviolet Proxy</h3>
-                        <p class="text-xs text-sky-200/80 leading-relaxed">Bypass school restrictions and surf search engines, wikis, and sites seamlessly.</p>
-                    </button>
-
-                    <div class="p-6 rounded-2xl bg-slate-900/70 border border-emerald-500/25 backdrop-blur-md shadow-lg">
-                        <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-500 flex items-center justify-center mb-4 shadow-md shadow-emerald-500/30">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                        <div>
+                            <div class="font-serif text-4xl sm:text-5xl text-white font-normal leading-none">100<span class="text-2xl align-top">%</span></div>
+                            <div class="text-[11px] uppercase tracking-[0.24em] text-sky-200/50 mt-3">Singlefile</div>
                         </div>
-                        <h3 class="text-white font-extrabold text-lg mb-1">Classroom Panic Guard</h3>
-                        <p class="text-xs text-sky-200/80 leading-relaxed">Instant Esc key stealth disguise masks the page into an academic research paper.</p>
-                    </div>
-                </section>
-
-                <!-- Stats Strip -->
-                <section class="grid grid-cols-3 gap-3 sm:gap-5 rounded-2xl border border-sky-500/25 bg-slate-950/60 backdrop-blur-md p-5 sm:p-6">
-                    <div class="text-center">
-                        <div class="text-2xl sm:text-3xl font-black text-sky-300" id="homeStatGames">0</div>
-                        <div class="text-[10px] sm:text-xs uppercase tracking-widest font-bold text-sky-400/80 mt-1">Games Ready</div>
-                    </div>
-                    <div class="text-center border-x border-sky-500/15">
-                        <div class="text-2xl sm:text-3xl font-black text-indigo-300">∞</div>
-                        <div class="text-[10px] sm:text-xs uppercase tracking-widest font-bold text-sky-400/80 mt-1">Websites Unblocked</div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-2xl sm:text-3xl font-black text-emerald-300">100%</div>
-                        <div class="text-[10px] sm:text-xs uppercase tracking-widest font-bold text-sky-400/80 mt-1">Singlefile Standalone</div>
                     </div>
                 </section>
             </main>
@@ -731,7 +740,7 @@
 
     <!-- JavaScript Implementation -->
     <script>
-        // Full Games Catalog matching site data
+        // Full Games Catalog matching existing games
         const baseCatalog = [
             {
                 id: "ev-io",
@@ -1375,1215 +1384,31 @@
                 if (el) el.classList.toggle('hidden', key !== tab);
             });
 
-            // Floating Oval Navigation buttons styling
-            const sideActiveHome = "flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-extrabold transition-all duration-200 cursor-pointer border bg-gradient-to-r from-sky-400 to-cyan-400 text-slate-950 border-sky-300 shadow-md shadow-sky-500/20";
-            const sideActiveGames = "flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-extrabold transition-all duration-200 cursor-pointer border bg-sky-500/20 text-sky-300 border-sky-500/40 shadow-md shadow-sky-500/20";
-            const sideActiveProxy = "flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-extrabold transition-all duration-200 cursor-pointer border bg-purple-500/20 text-purple-300 border-purple-500/40 shadow-md shadow-purple-500/20";
-            const sideIdle = "flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-extrabold transition-all duration-200 cursor-pointer border text-sky-300/70 hover:text-white hover:bg-slate-900/80 border-transparent";
-            
-            const h = document.getElementById('tabBtnHome');
+            // Top navigation pills styling
+            const topBase = "top-tab-btn px-4 sm:px-5 py-2 rounded-full text-xs sm:text-[13px] font-medium flex items-center gap-2 transition-all border";
+            const topActive = {
+                home:  " bg-white/10 text-white border-white/25",
+                games: " bg-white/10 text-white border-white/25",
+                proxy: " bg-white/10 text-white border-white/25",
+            };
+            const topIdle = " bg-transparent text-sky-100/60 border-white/10 hover:text-white hover:border-white/20";
+            ['home', 'games', 'proxy'].forEach(k => {
+                const btn = document.getElementById('topTab' + k[0].toUpperCase() + k.slice(1));
+                if (btn) btn.className = topBase + (k === tab ? topActive[k] : topIdle);
+            });
+
+            // Sidebar navigation buttons styling
+            const sideActiveGames = "flex items-center gap-3.5 p-2.5 rounded-xl transition-all duration-200 cursor-pointer w-full text-left relative bg-sky-500/20 text-sky-300 border border-sky-500/40 shadow-lg shadow-sky-500/10 font-bold";
+            const sideActiveProxy = "flex items-center gap-3.5 p-2.5 rounded-xl transition-all duration-200 cursor-pointer w-full text-left relative bg-purple-500/20 text-purple-300 border border-purple-500/40 shadow-lg shadow-purple-500/10 font-bold";
+            const sideIdle = "flex items-center gap-3.5 p-2.5 rounded-xl transition-all duration-200 cursor-pointer w-full text-left relative text-sky-300/70 hover:text-white hover:bg-slate-900 border border-transparent";
             const g = document.getElementById('tabBtnGames');
             const p = document.getElementById('tabBtnProxy');
-            if (h) h.className = tab === 'home' ? sideActiveHome : sideIdle;
             if (g) g.className = tab === 'games' ? sideActiveGames : sideIdle;
             if (p) p.className = tab === 'proxy' ? sideActiveProxy : sideIdle;
         }
 
-        // ==========================================
-        // STANDALONE EMBEDDED HIGH-QUALITY GAME HTMLS
-        // ==========================================
-
         function getIframeWrapperHtml(url, title) {
             return `<!DOCTYPE html><html><head><meta charset="utf-8"><title>${title}</title><style>body,html{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#000;}#nav{height:36px;background:#070d1b;color:#38bdf8;display:flex;align-items:center;justify-content:between;padding:0 12px;font-family:sans-serif;font-size:12px;border-b:1px solid #1e293b;box-sizing:border-box;}#nav a{color:#38bdf8;text-decoration:none;font-weight:bold;margin-left:auto;}#gframe{width:100%;height:calc(100% - 36px);border:none;}</style></head><body><div id="nav"><span>🎮 ${title} - Active Window Focus Mode</span><a href="${url}" target="_blank" rel="noopener">Open Direct ↗</a></div><iframe id="gframe" src="${url}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; gamepad; microphone"></iframe><script>window.addEventListener('load', function(){ var f = document.getElementById('gframe'); if(f) f.focus(); }); document.addEventListener('click', function(){ var f = document.getElementById('gframe'); if(f) f.focus(); });<\/script></body></html>`;
-        }
-
-        function getSlopeHtml() {
-            return `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Slope 3D</title><style>html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#070d1b;font-family:'Plus Jakarta Sans',sans-serif;color:#fff;}#canvas-container{width:100%;height:100%;position:relative;}#ui{position:absolute;top:16px;left:16px;z-index:10;font-family:sans-serif;text-shadow:0 2px 4px rgba(0,0,0,0.8);}.score{font-size:28px;font-weight:900;color:#38bdf8;}.highscore{font-size:14px;color:#94a3b8;font-weight:600;}#gameover{position:absolute;inset:0;background:rgba(7,13,27,0.85);backdrop-filter:blur(8px);display:none;flex-direction:column;align-items:center;justify-content:center;z-index:20;}#gameover h1{font-size:48px;margin:0 0 12px 0;color:#ef4444;font-weight:900;}#gameover p{font-size:18px;margin:0 0 24px 0;color:#cbd5e1;}.btn{padding:14px 28px;background:linear-gradient(to right, #38bdf8, #0284c7);color:#000;border:none;border-radius:14px;font-size:16px;font-weight:800;cursor:pointer;transition:transform 0.1s;}.btn:hover{transform:scale(1.05);}</style><script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"><\/script></head><body><div id="canvas-container"><div id="ui"><div class="score">SCORE: <span id="s">0</span></div><div class="highscore">BEST: <span id="hs">0</span></div></div><div id="gameover"><h1>CRASHED!</h1><p>Distance: <span id="finalScore">0</span>m</p><button class="btn" onclick="resetGame()">PLAY AGAIN (Space)</button></div></div><script>let scene, camera, renderer, ball, trackGroup;let speed = 0.4, distance = 0, highscore = parseInt(localStorage.getItem('slope_hs')||'0');let dirX = 0, ballX = 0, isGameOver = false;document.getElementById('hs').innerText = highscore;function init(){scene = new THREE.Scene();scene.background = new THREE.Color(0x070d1b);scene.fog = new THREE.FogExp2(0x070d1b, 0.02);camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 1000);renderer = new THREE.WebGLRenderer({antialias:true});renderer.setSize(window.innerWidth, window.innerHeight);document.getElementById('canvas-container').appendChild(renderer.domElement);const light = new THREE.DirectionalLight(0xffffff, 1);light.position.set(0, 20, 10);scene.add(light);scene.add(new THREE.AmbientLight(0x38bdf8, 0.5));const geo = new THREE.SphereGeometry(0.8, 32, 32);const mat = new THREE.MeshStandardMaterial({color: 0x38bdf8, roughness: 0.2, metalness: 0.8, emissive: 0x0284c7, emissiveIntensity: 0.4});ball = new THREE.Mesh(geo, mat);scene.add(ball);trackGroup = new THREE.Group();scene.add(trackGroup);generateTrack();resetGame();animate();}let obstacles = [];function generateTrack(){for(let i=0; i<100; i++){let tileGeo = new THREE.BoxGeometry(10, 0.5, 8);let tileMat = new THREE.MeshStandardMaterial({color: i%2===0?0x0f172a:0x1e293b, roughness:0.5});let tile = new THREE.Mesh(tileGeo, tileMat);tile.position.set(0, -i*0.5, -i*8);trackGroup.add(tile);if(i>5 && Math.random()<0.45){let obsGeo = new THREE.BoxGeometry(1.8, 1.8, 1.8);let obsMat = new THREE.MeshStandardMaterial({color: 0xef4444, emissive: 0x991b1b});let obs = new THREE.Mesh(obsGeo, obsMat);let ox = (Math.random()-0.5)*7;obs.position.set(ox, -i*0.5 + 1.1, -i*8);trackGroup.add(obs);obstacles.push(obs);}}}function resetGame(){distance = 0;speed = 0.45;ballX = 0;dirX = 0;isGameOver = false;ball.position.set(0, 0.8, 0);document.getElementById('gameover').style.display='none';window.focus();}window.addEventListener('keydown', e=>{if(e.key==='ArrowLeft'||e.key==='a'||e.key==='A') dirX = -0.15;if(e.key==='ArrowRight'||e.key==='d'||e.key==='D') dirX = 0.15;if(e.key===' ' && isGameOver) resetGame();});window.addEventListener('keyup', e=>{if(e.key==='ArrowLeft'||e.key==='a'||e.key==='A'||e.key==='ArrowRight'||e.key==='d'||e.key==='D') dirX = 0;});function animate(){requestAnimationFrame(animate);if(!isGameOver){speed += 0.0001;distance += Math.floor(speed*10);document.getElementById('s').innerText = distance;ballX += dirX;if(Math.abs(ballX)>4.5){endGame();}ball.position.x = ballX;ball.position.z -= speed;ball.position.y = (ball.position.z*0.0625) + 0.8;ball.rotation.x -= speed*1.2;camera.position.set(ball.position.x*0.5, ball.position.y + 2.5, ball.position.z + 6);camera.lookAt(ball.position.x*0.2, ball.position.y, ball.position.z - 5);for(let obs of obstacles){let dz = Math.abs(ball.position.z - obs.position.z);let dx = Math.abs(ball.position.x - obs.position.x);if(dz < 1.2 && dx < 1.2){endGame();break;}}}renderer.render(scene, camera);}function endGame(){isGameOver = true;if(distance > highscore){highscore = distance;localStorage.setItem('slope_hs', highscore);document.getElementById('hs').innerText = highscore;}document.getElementById('finalScore').innerText = distance;document.getElementById('gameover').style.display='flex';}window.addEventListener('resize', ()=>{if(camera && renderer){camera.aspect = window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth, window.innerHeight);}});init();<\/script></body></html>`;
-        }
-
-        function get2048Html() {
-            return `<!DOCTYPE html><html><head><meta charset="utf-8"><title>2048 Frost</title><style>body{margin:0;background:#0b1329;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;user-select:none;}.header{display:flex;justify-content:space-between;width:340px;align-items:center;margin-bottom:12px;}.title{font-size:32px;font-weight:900;color:#38bdf8;}.scores{display:flex;gap:8px;}.box{background:#132247;padding:6px 12px;border-radius:8px;text-align:center;font-size:11px;color:#94a3b8;font-weight:bold;}.box span{display:block;font-size:16px;color:#fff;}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;background:#070d1b;padding:12px;border-radius:16px;width:340px;height:340px;box-sizing:border-box;border:1px solid rgba(56,189,248,0.3);}.tile{background:#132247;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:900;transition:all 0.1s ease-in-out;}.btn{margin-top:14px;padding:10px 20px;background:#38bdf8;color:#000;border:none;border-radius:10px;font-weight:bold;cursor:pointer;}</style></head><body><div class="header"><div class="title">2048</div><div class="scores"><div class="box">SCORE<span id="s">0</span></div><div class="box">BEST<span id="hs">0</span></div></div></div><div class="grid" id="g"></div><button class="btn" onclick="reset()">New Game</button><script>let b=Array(16).fill(0),sc=0,hs=parseInt(localStorage.getItem('2048_hs')||'0');document.getElementById('hs').innerText=hs;const colors={0:'#132247',2:'#1e293b',4:'#334155',8:'#0284c7',16:'#0369a1',32:'#0284c7',64:'#38bdf8',128:'#818cf8',256:'#6366f1',512:'#a855f7',1024:'#ec4899',2048:'#10b981'};function addRandom(){let e=b.map((v,i)=>v===0?i:-1).filter(v=>v!==-1);if(e.length)b[e[Math.floor(Math.random()*e.length)]]=Math.random()<0.9?2:4;}function draw(){const g=document.getElementById('g');g.innerHTML='';b.forEach(v=>{const t=document.createElement('div');t.className='tile';t.innerText=v||'';t.style.background=colors[v]||'#10b981';t.style.color=v>4?'#fff':'#94a3b8';g.appendChild(t);});document.getElementById('s').innerText=sc;if(sc>hs){hs=sc;localStorage.setItem('2048_hs',hs);document.getElementById('hs').innerText=hs;}}function slide(row){let a=row.filter(v=>v);for(let i=0;i<a.length-1;i++){if(a[i]===a[i+1]){a[i]*=2;sc+=a[i];a[i+1]=0;}}a=a.filter(v=>v);while(a.length<4)a.push(0);return a;}function move(dir){let moved=false,old=JSON.stringify(b);if(dir==='L'||dir==='R'){for(let r=0;r<4;r++){let row=b.slice(r*4,r*4+4);if(dir==='R')row.reverse();let res=slide(row);if(dir==='R')res.reverse();for(let c=0;c<4;c++)b[r*4+c]=res[c];}}else{for(let c=0;c<4;c++){let col=[b[c],b[c+4],b[c+8],b[c+12]];if(dir==='D')col.reverse();let res=slide(col);if(dir==='D')res.reverse();for(let r=0;r<4;r++)b[r*4+c]=res[r];}}if(old!==JSON.stringify(b)){addRandom();draw();}}function reset(){b=Array(16).fill(0);sc=0;addRandom();addRandom();draw();}window.addEventListener('keydown',e=>{if(['ArrowLeft','a','A'].includes(e.key))move('L');if(['ArrowRight','d','D'].includes(e.key))move('R');if(['ArrowUp','w','W'].includes(e.key))move('U');if(['ArrowDown','s','S'].includes(e.key))move('D');});reset();<\/script></body></html>`;
-        }
-
-        function getSnakeHtml() {
-            return `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Snake</title><style>body{margin:0;background:#0b1329;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;}canvas{background:#070d1b;border:2px solid #38bdf8;border-radius:12px;box-shadow:0 0 20px rgba(56,189,248,0.2);}.ui{display:flex;justify-content:space-between;width:360px;margin-bottom:10px;font-weight:bold;color:#38bdf8;}</style></head><body><div class="ui"><div>SCORE: <span id="s">0</span></div><div>HIGH: <span id="hs">0</span></div></div><canvas id="c" width="360" height="360"></canvas><script>const c=document.getElementById('c'),ctx=c.getContext('2d');let s=[{x:10,y:10}],f={x:5,y:5},gold={x:-1,y:-1},dx=1,dy=0,score=0,hs=parseInt(localStorage.getItem('snake_hs')||'0');document.getElementById('hs').innerText=hs;function spawnGold(){if(Math.random()<0.3)gold={x:Math.floor(Math.random()*18),y:Math.floor(Math.random()*18)};else gold={x:-1,y:-1};}window.addEventListener('keydown',e=>{if(['ArrowUp','w','W'].includes(e.key)&&dy===0){dx=0;dy=-1;}if(['ArrowDown','s','S'].includes(e.key)&&dy===0){dx=0;dy=1;}if(['ArrowLeft','a','A'].includes(e.key)&&dx===0){dx=-1;dy=0;}if(['ArrowRight','d','D'].includes(e.key)&&dx===0){dx=1;dy=0;}});setInterval(()=>{let h={x:s[0].x+dx,y:s[0].y+dy};if(h.x<0||h.x>=18||h.y<0||h.y>=18||s.some(p=>p.x===h.x&&p.y===h.y)){s=[{x:10,y:10}];dx=1;dy=0;score=0;document.getElementById('s').innerText=0;return;}s.unshift(h);if(h.x===f.x&&h.y===f.y){score+=10;f={x:Math.floor(Math.random()*18),y:Math.floor(Math.random()*18)};spawnGold();}else if(gold.x!==-1&&h.x===gold.x&&h.y===gold.y){score+=50;gold={x:-1,y:-1};}else{s.pop();}if(score>hs){hs=score;localStorage.setItem('snake_hs',hs);document.getElementById('hs').innerText=hs;}document.getElementById('s').innerText=score;ctx.fillStyle='#070d1b';ctx.fillRect(0,0,360,360);ctx.fillStyle='#38bdf8';s.forEach((p,i)=>{ctx.fillStyle=i===0?'#38bdf8':'#0284c7';ctx.fillRect(p.x*20+1,p.y*20+1,18,18);});ctx.fillStyle='#ef4444';ctx.beginPath();ctx.arc(f.x*20+10,f.y*20+10,8,0,Math.PI*2);ctx.fill();if(gold.x!==-1){ctx.fillStyle='#fbbf24';ctx.beginPath();ctx.arc(gold.x*20+10,gold.y*20+10,9,0,Math.PI*2);ctx.fill();}},110);<\/script></body></html>`;
-        }
-
-        function getFlappyHtml() {
-            return `<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8"/>
-    <title>Flappy Bird</title>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            background: #030712;
-            color: #f0f9ff;
-            font-family: system-ui, -apple-system, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            overflow: hidden;
-            user-select: none;
-        }
-        #game-container {
-            position: relative;
-            width: 360px;
-            max-width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        canvas {
-            border: 2px solid rgba(56, 189, 248, 0.4);
-            border-radius: 16px;
-            background: #38bdf8;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
-            cursor: pointer;
-        }
-        #controls-hint {
-            margin-top: 8px;
-            font-size: 11px;
-            color: #38bdf8;
-            font-weight: 600;
-            text-align: center;
-        }
-        #overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(3, 7, 18, 0.85);
-            backdrop-filter: blur(6px);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border-radius: 16px;
-            z-index: 20;
-            padding: 20px;
-            text-align: center;
-        }
-        #overlay h1 {
-            font-size: 32px;
-            font-weight: 900;
-            margin-bottom: 8px;
-            color: #fbbf24;
-            text-shadow: 0 2px 10px rgba(251, 191, 36, 0.3);
-        }
-        #overlay p {
-            font-size: 13px;
-            color: #94a3b8;
-            margin-bottom: 16px;
-            max-width: 280px;
-        }
-        .stats-box {
-            background: rgba(15, 23, 42, 0.8);
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            border-radius: 12px;
-            padding: 12px 24px;
-            margin-bottom: 20px;
-            display: flex;
-            gap: 20px;
-            text-align: center;
-        }
-        .stat-item label {
-            display: block;
-            font-size: 10px;
-            color: #38bdf8;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-        }
-        .stat-item span {
-            font-size: 20px;
-            font-weight: 900;
-            color: #fff;
-        }
-        .btn {
-            padding: 12px 28px;
-            background: #fbbf24;
-            color: #78350f;
-            border: none;
-            border-radius: 12px;
-            font-size: 15px;
-            font-weight: 900;
-            cursor: pointer;
-            transition: transform 0.1s, background-color 0.2s;
-            box-shadow: 0 4px 14px rgba(251, 191, 36, 0.4);
-        }
-        .btn:hover { transform: scale(1.05); background: #f59e0b; }
-    </style>
-</head>
-<body>
-<div id="game-container">
-    <canvas id="c" width="360" height="480"></canvas>
-    <div id="controls-hint">
-        PRESS SPACE / UP ARROW / CLICK TO FLAP WINGS
-    </div>
-    <div id="overlay">
-        <h1 id="ovTitle">FLAPPY BIRD</h1>
-        <p id="ovDesc">Flap your wings and fly through green pipe obstacles without crashing!</p>
-        <div class="stats-box">
-            <div class="stat-item"><label>SCORE</label><span id="ovScore">0</span></div>
-            <div class="stat-item"><label>BEST</label><span id="ovBest">0</span></div>
-        </div>
-        <button class="btn" id="ovBtn" onclick="startGame()">START GAME</button>
-    </div>
-</div>
-<script>
-    const canvas = document.getElementById('c');
-    const ctx = canvas.getContext('2d');
-    const WIDTH = 360;
-    const HEIGHT = 480;
-    const GRAVITY = 0.38;
-    const GROUND_HEIGHT = 70;
-
-    let gameState = 'menu';
-    let score = 0;
-    let highScore = parseInt(localStorage.getItem('flappy_high_score') || '0', 10);
-    let birdY = 200;
-    let velocity = 0;
-    let rotation = 0;
-    let pipes = [];
-    let frame = 0;
-    let groundX = 0;
-
-    function playSound(type) {
-        try {
-            const ctxA = new (window.AudioContext || window.webkitAudioContext)();
-            const osc = ctxA.createOscillator();
-            const gain = ctxA.createGain();
-            osc.connect(gain);
-            gain.connect(ctxA.destination);
-
-            if (type === 'flap') {
-                osc.frequency.setValueAtTime(400, ctxA.currentTime);
-                osc.frequency.exponentialRampToValueAtTime(800, ctxA.currentTime + 0.1);
-                gain.gain.setValueAtTime(0.15, ctxA.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.01, ctxA.currentTime + 0.1);
-                osc.start(); osc.stop(ctxA.currentTime + 0.1);
-            } else if (type === 'score') {
-                osc.frequency.setValueAtTime(523.25, ctxA.currentTime);
-                osc.frequency.setValueAtTime(659.25, ctxA.currentTime + 0.08);
-                gain.gain.setValueAtTime(0.15, ctxA.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.01, ctxA.currentTime + 0.2);
-                osc.start(); osc.stop(ctxA.currentTime + 0.2);
-            } else if (type === 'hit') {
-                osc.type = 'sawtooth';
-                osc.frequency.setValueAtTime(200, ctxA.currentTime);
-                osc.frequency.exponentialRampToValueAtTime(50, ctxA.currentTime + 0.25);
-                gain.gain.setValueAtTime(0.2, ctxA.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.01, ctxA.currentTime + 0.25);
-                osc.start(); osc.stop(ctxA.currentTime + 0.25);
-            }
-        } catch (e) {}
-    }
-
-    function jump() {
-        if (gameState === 'menu' || gameState === 'gameover') {
-            startGame();
-            return;
-        }
-        if (gameState === 'playing') {
-            velocity = -6.5;
-            rotation = -25;
-            playSound('flap');
-        }
-    }
-
-    function startGame() {
-        document.getElementById('overlay').style.display = 'none';
-        birdY = 200;
-        velocity = -6.5;
-        rotation = -20;
-        pipes = [
-            { x: 380, top: 120, bottom: 140, passed: false },
-            { x: 560, top: 160, bottom: 100, passed: false }
-        ];
-        score = 0;
-        gameState = 'playing';
-        playSound('flap');
-    }
-
-    function gameOver() {
-        gameState = 'gameover';
-        if (score > highScore) {
-            highScore = score;
-            localStorage.setItem('flappy_high_score', highScore.toString());
-        }
-        document.getElementById('ovTitle').innerText = 'GAME OVER';
-        document.getElementById('ovDesc').innerText = 'You hit an obstacle! Try again to beat your high score.';
-        document.getElementById('ovScore').innerText = score;
-        document.getElementById('ovBest').innerText = highScore;
-        document.getElementById('ovBtn').innerText = 'PLAY AGAIN';
-        document.getElementById('overlay').style.display = 'flex';
-    }
-
-    window.addEventListener('keydown', e => {
-        if (['Space', 'ArrowUp', 'KeyW'].includes(e.code)) {
-            e.preventDefault();
-            jump();
-        }
-    });
-
-    canvas.addEventListener('mousedown', e => {
-        e.preventDefault();
-        jump();
-    });
-
-    canvas.addEventListener('touchstart', e => {
-        e.preventDefault();
-        jump();
-    });
-
-    document.getElementById('ovScore').innerText = score;
-    document.getElementById('ovBest').innerText = highScore;
-
-    function loop() {
-        frame++;
-
-        const skyGradient = ctx.createLinearGradient(0, 0, 0, HEIGHT);
-        skyGradient.addColorStop(0, '#38bdf8');
-        skyGradient.addColorStop(0.6, '#7dd3fc');
-        skyGradient.addColorStop(1, '#bae6fd');
-        ctx.fillStyle = skyGradient;
-        ctx.fillRect(0, 0, WIDTH, HEIGHT);
-
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
-        const cloudOffset = (frame * 0.4) % WIDTH;
-        ctx.beginPath();
-        ctx.arc((80 - cloudOffset + WIDTH) % WIDTH, 80, 24, 0, Math.PI * 2);
-        ctx.arc((110 - cloudOffset + WIDTH) % WIDTH, 70, 30, 0, Math.PI * 2);
-        ctx.arc((140 - cloudOffset + WIDTH) % WIDTH, 80, 24, 0, Math.PI * 2);
-        ctx.fill();
-
-        ctx.beginPath();
-        ctx.arc((260 - cloudOffset + WIDTH) % WIDTH, 120, 20, 0, Math.PI * 2);
-        ctx.arc((285 - cloudOffset + WIDTH) % WIDTH, 110, 26, 0, Math.PI * 2);
-        ctx.arc((310 - cloudOffset + WIDTH) % WIDTH, 120, 20, 0, Math.PI * 2);
-        ctx.fill();
-
-        if (gameState === 'playing') {
-            velocity += GRAVITY;
-            birdY += velocity;
-            rotation = Math.min(Math.max(rotation + 2.5, -30), 70);
-
-            if (birdY + 14 >= HEIGHT - GROUND_HEIGHT) {
-                birdY = HEIGHT - GROUND_HEIGHT - 14;
-                playSound('hit');
-                gameOver();
-            }
-
-            if (birdY - 14 <= 0) {
-                birdY = 14;
-                velocity = 0;
-            }
-
-            groundX = (groundX + 2.5) % 24;
-
-            pipes.forEach(p => {
-                p.x -= 2.5;
-
-                if (!p.passed && p.x + 26 < 90) {
-                    p.passed = true;
-                    score += 1;
-                    playSound('score');
-                    if (score > highScore) {
-                        highScore = score;
-                        localStorage.setItem('flappy_high_score', highScore.toString());
-                    }
-                }
-
-                const birdX = 90;
-                const birdRadius = 13;
-                if (birdX + birdRadius > p.x && birdX - birdRadius < p.x + 52) {
-                    if (birdY - birdRadius < p.top || birdY + birdRadius > HEIGHT - GROUND_HEIGHT - p.bottom) {
-                        playSound('hit');
-                        gameOver();
-                    }
-                }
-            });
-
-            if (pipes.length > 0 && pipes[0].x < -60) {
-                pipes.shift();
-                const topGap = Math.floor(Math.random() * 140) + 60;
-                const bottomGap = HEIGHT - GROUND_HEIGHT - topGap - 120;
-                pipes.push({
-                    x: pipes[pipes.length - 1].x + 180,
-                    top: topGap,
-                    bottom: bottomGap,
-                    passed: false
-                });
-            }
-        }
-
-        pipes.forEach(p => {
-            const pipeGrad = ctx.createLinearGradient(p.x, 0, p.x + 52, 0);
-            pipeGrad.addColorStop(0, '#22c55e');
-            pipeGrad.addColorStop(0.5, '#4ade80');
-            pipeGrad.addColorStop(1, '#15803d');
-
-            ctx.fillStyle = pipeGrad;
-            ctx.strokeStyle = '#052e16';
-            ctx.lineWidth = 3;
-
-            ctx.fillRect(p.x, 0, 52, p.top);
-            ctx.strokeRect(p.x, 0, 52, p.top);
-            ctx.fillRect(p.x - 4, p.top - 24, 60, 24);
-            ctx.strokeRect(p.x - 4, p.top - 24, 60, 24);
-
-            const bottomY = HEIGHT - GROUND_HEIGHT - p.bottom;
-            ctx.fillRect(p.x, bottomY, 52, p.bottom);
-            ctx.strokeRect(p.x, bottomY, 52, p.bottom);
-            ctx.fillRect(p.x - 4, bottomY, 60, 24);
-            ctx.strokeRect(p.x - 4, bottomY, 60, 24);
-        });
-
-        const groundY = HEIGHT - GROUND_HEIGHT;
-        ctx.fillStyle = '#fde047';
-        ctx.fillRect(0, groundY, WIDTH, GROUND_HEIGHT);
-
-        ctx.fillStyle = '#16a34a';
-        ctx.fillRect(0, groundY, WIDTH, 16);
-
-        ctx.strokeStyle = '#14532d';
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.moveTo(0, groundY);
-        ctx.lineTo(WIDTH, groundY);
-        ctx.stroke();
-
-        ctx.fillStyle = '#22c55e';
-        for (let x = -groundX; x < WIDTH + 24; x += 24) {
-            ctx.beginPath();
-            ctx.moveTo(x, groundY);
-            ctx.lineTo(x + 12, groundY);
-            ctx.lineTo(x + 6, groundY + 16);
-            ctx.fill();
-        }
-
-        ctx.save();
-        ctx.translate(90, birdY);
-        ctx.rotate((rotation * Math.PI) / 180);
-
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
-        ctx.beginPath();
-        ctx.ellipse(2, 16, 14, 5, 0, 0, Math.PI * 2);
-        ctx.fill();
-
-        ctx.fillStyle = '#fbbf24';
-        ctx.strokeStyle = '#78350f';
-        ctx.lineWidth = 2.5;
-        ctx.beginPath();
-        ctx.arc(0, 0, 14, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.stroke();
-
-        ctx.fillStyle = '#fef08a';
-        ctx.beginPath();
-        ctx.arc(-2, 3, 9, 0, Math.PI);
-        ctx.fill();
-
-        ctx.fillStyle = '#ffffff';
-        ctx.beginPath();
-        ctx.arc(5, -4, 5, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.stroke();
-
-        ctx.fillStyle = '#0f172a';
-        ctx.beginPath();
-        ctx.arc(6.5, -4, 2, 0, Math.PI * 2);
-        ctx.fill();
-
-        ctx.fillStyle = '#f97316';
-        ctx.beginPath();
-        ctx.moveTo(11, -1);
-        ctx.lineTo(19, 2);
-        ctx.lineTo(11, 6);
-        ctx.closePath();
-        ctx.fill();
-        ctx.stroke();
-
-        const wingAngle = gameState === 'playing' ? Math.sin(frame * 0.4) * 8 : 0;
-        ctx.fillStyle = '#f59e0b';
-        ctx.beginPath();
-        ctx.ellipse(-5, 2, 7, 4, (wingAngle * Math.PI) / 180, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.stroke();
-
-        ctx.restore();
-
-        if (gameState === 'playing') {
-            ctx.fillStyle = '#ffffff';
-            ctx.strokeStyle = '#0f172a';
-            ctx.lineWidth = 4;
-            ctx.font = '900 32px sans-serif';
-            ctx.textAlign = 'center';
-            ctx.strokeText(score.toString(), WIDTH / 2, 60);
-            ctx.fillText(score.toString(), WIDTH / 2, 60);
-        }
-
-        requestAnimationFrame(loop);
-    }
-    requestAnimationFrame(loop);
-<\/script>
-</body>
-</html>`;
-        }
-
-        function getChromaHtml() {
-            return `<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8"/>
-    <title>Color Puzzles (Chroma Incident)</title>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            background: #030712;
-            color: #f0f9ff;
-            font-family: system-ui, -apple-system, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            overflow: hidden;
-            user-select: none;
-        }
-        #game-container {
-            position: relative;
-            width: 800px;
-            max-width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        #ui-bar {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: rgba(15, 23, 42, 0.8);
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            border-radius: 12px;
-            padding: 8px 16px;
-            margin-bottom: 8px;
-            font-size: 13px;
-            font-weight: 700;
-        }
-        .color-pill {
-            padding: 4px 12px;
-            border-radius: 8px;
-            font-weight: 800;
-            cursor: pointer;
-            transition: all 0.2s;
-            border: 1px solid transparent;
-        }
-        .color-pill.red { background: #ef4444; color: #fff; }
-        .color-pill.blue { background: #3b82f6; color: #fff; }
-        .color-pill.green { background: #22c55e; color: #fff; }
-        .color-pill.inactive { opacity: 0.35; }
-        canvas {
-            border: 2px solid rgba(56, 189, 248, 0.4);
-            border-radius: 16px;
-            background: #030712;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
-            max-width: 100%;
-        }
-        #controls-hint {
-            margin-top: 8px;
-            font-size: 11px;
-            color: #38bdf8;
-            font-weight: 600;
-            text-align: center;
-        }
-        #overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(3, 7, 18, 0.9);
-            backdrop-filter: blur(8px);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border-radius: 16px;
-            z-index: 20;
-        }
-        #overlay h1 {
-            font-size: 32px;
-            font-weight: 900;
-            margin-bottom: 12px;
-            color: #38bdf8;
-        }
-        #overlay p {
-            font-size: 14px;
-            color: #94a3b8;
-            margin-bottom: 20px;
-            max-width: 400px;
-            text-align: center;
-        }
-        .btn {
-            padding: 12px 24px;
-            background: #38bdf8;
-            color: #030712;
-            border: none;
-            border-radius: 12px;
-            font-size: 14px;
-            font-weight: 800;
-            cursor: pointer;
-            transition: transform 0.1s;
-        }
-        .btn:hover { transform: scale(1.05); }
-    </style>
-</head>
-<body>
-<div id="game-container">
-    <div id="ui-bar">
-        <div>Chamber <span id="lblLevel">1</span> / 3</div>
-        <div style="display: flex; gap: 8px;">
-            <span id="btnRed" class="color-pill red" onclick="setColor('RED')">1: RED</span>
-            <span id="btnBlue" class="color-pill blue inactive" onclick="setColor('BLUE')">2: BLUE</span>
-            <span id="btnGreen" class="color-pill green inactive" onclick="setColor('GREEN')">3: GREEN</span>
-        </div>
-        <div>Prisms: <span id="lblPrisms">0 / 3</span> | Score: <span id="lblScore">0</span></div>
-    </div>
-    <canvas id="c" width="800" height="480"></canvas>
-    <div id="controls-hint">
-        MOVE: A/D or Left/Right | JUMP / DOUBLE JUMP: W, Up, or Space | SHIFT COLOR: 1, 2, 3 or C / Shift
-    </div>
-    <div id="overlay">
-        <h1 id="ovTitle">COLOR PUZZLES</h1>
-        <p id="ovDesc">Shift your color spectrum to pass matching energy barriers, land on colored platforms, and collect all light prisms to unlock the exit chamber.</p>
-        <button class="btn" onclick="startGame()">START GAME</button>
-    </div>
-</div>
-<script>
-    const canvas = document.getElementById('c');
-    const ctx = canvas.getContext('2d');
-    let soundEnabled = true;
-
-    function playSound(type) {
-        if (!soundEnabled) return;
-        try {
-            const ctxA = new (window.AudioContext || window.webkitAudioContext)();
-            const osc = ctxA.createOscillator();
-            const gain = ctxA.createGain();
-            osc.connect(gain);
-            gain.connect(ctxA.destination);
-            if (type === 'jump') {
-                osc.frequency.setValueAtTime(300, ctxA.currentTime);
-                osc.frequency.exponentialRampToValueAtTime(600, ctxA.currentTime + 0.15);
-                gain.gain.setValueAtTime(0.2, ctxA.currentTime);
-                gain.gain.linearRampToValueAtTime(0.01, ctxA.currentTime + 0.15);
-                osc.start(); osc.stop(ctxA.currentTime + 0.15);
-            } else if (type === 'shift') {
-                osc.type = 'sawtooth';
-                osc.frequency.setValueAtTime(500, ctxA.currentTime);
-                osc.frequency.exponentialRampToValueAtTime(250, ctxA.currentTime + 0.2);
-                gain.gain.setValueAtTime(0.25, ctxA.currentTime);
-                gain.gain.linearRampToValueAtTime(0.01, ctxA.currentTime + 0.2);
-                osc.start(); osc.stop(ctxA.currentTime + 0.2);
-            } else if (type === 'prism') {
-                osc.type = 'sine';
-                osc.frequency.setValueAtTime(523, ctxA.currentTime);
-                osc.frequency.setValueAtTime(659, ctxA.currentTime + 0.08);
-                osc.frequency.setValueAtTime(784, ctxA.currentTime + 0.16);
-                gain.gain.setValueAtTime(0.3, ctxA.currentTime);
-                gain.gain.linearRampToValueAtTime(0.01, ctxA.currentTime + 0.3);
-                osc.start(); osc.stop(ctxA.currentTime + 0.3);
-            } else if (type === 'death') {
-                osc.type = 'sawtooth';
-                osc.frequency.setValueAtTime(180, ctxA.currentTime);
-                osc.frequency.exponentialRampToValueAtTime(40, ctxA.currentTime + 0.4);
-                gain.gain.setValueAtTime(0.4, ctxA.currentTime);
-                gain.gain.linearRampToValueAtTime(0.01, ctxA.currentTime + 0.4);
-                osc.start(); osc.stop(ctxA.currentTime + 0.4);
-            } else if (type === 'win') {
-                osc.type = 'triangle';
-                osc.frequency.setValueAtTime(440, ctxA.currentTime);
-                osc.frequency.setValueAtTime(554, ctxA.currentTime + 0.15);
-                osc.frequency.setValueAtTime(659, ctxA.currentTime + 0.3);
-                osc.frequency.setValueAtTime(880, ctxA.currentTime + 0.45);
-                gain.gain.setValueAtTime(0.3, ctxA.currentTime);
-                gain.gain.linearRampToValueAtTime(0.01, ctxA.currentTime + 0.6);
-                osc.start(); osc.stop(ctxA.currentTime + 0.6);
-            }
-        } catch(e) {}
-    }
-
-    const levelLayouts = [
-        {
-            prisms: [
-                { x: 210, y: 270, collected: false, color: 'RED' },
-                { x: 400, y: 190, collected: false, color: 'BLUE' },
-                { x: 590, y: 250, collected: false, color: 'GREEN' },
-            ],
-            platforms: [
-                { x: 0, y: 440, w: 800, h: 40, type: 'WHITE' },
-                { x: 140, y: 340, w: 140, h: 18, type: 'RED' },
-                { x: 330, y: 260, w: 140, h: 18, type: 'BLUE' },
-                { x: 520, y: 320, w: 140, h: 18, type: 'GREEN' },
-            ],
-            lasers: [
-                { x: 300, y: 320, w: 12, h: 120, type: 'GREEN' },
-            ],
-            exit: { x: 720, y: 380, w: 40, h: 60 },
-            spawn: { x: 50, y: 380 }
-        },
-        {
-            prisms: [
-                { x: 180, y: 260, collected: false, color: 'BLUE' },
-                { x: 330, y: 180, collected: false, color: 'RED' },
-                { x: 500, y: 110, collected: false, color: 'GREEN' },
-                { x: 710, y: 280, collected: false, color: 'BLUE' },
-            ],
-            platforms: [
-                { x: 0, y: 440, w: 180, h: 40, type: 'WHITE' },
-                { x: 120, y: 330, w: 120, h: 18, type: 'BLUE' },
-                { x: 270, y: 250, w: 120, h: 18, type: 'RED' },
-                { x: 440, y: 180, w: 120, h: 18, type: 'GREEN' },
-                { x: 630, y: 360, w: 170, h: 40, type: 'WHITE' },
-            ],
-            lasers: [
-                { x: 240, y: 200, w: 10, h: 240, type: 'RED' },
-                { x: 410, y: 100, w: 10, h: 340, type: 'BLUE' },
-            ],
-            exit: { x: 730, y: 300, w: 40, h: 60 },
-            spawn: { x: 40, y: 380 }
-        },
-        {
-            prisms: [
-                { x: 210, y: 270, collected: false, color: 'RED' },
-                { x: 350, y: 170, collected: false, color: 'BLUE' },
-                { x: 510, y: 230, collected: false, color: 'GREEN' },
-            ],
-            platforms: [
-                { x: 0, y: 440, w: 140, h: 40, type: 'WHITE' },
-                { x: 150, y: 340, w: 120, h: 18, type: 'RED' },
-                { x: 290, y: 240, w: 120, h: 18, type: 'BLUE' },
-                { x: 450, y: 300, w: 120, h: 18, type: 'GREEN' },
-                { x: 640, y: 420, w: 160, h: 40, type: 'WHITE' },
-            ],
-            lasers: [
-                { x: 260, y: 150, w: 12, h: 290, type: 'GREEN' },
-                { x: 420, y: 150, w: 12, h: 290, type: 'RED' },
-            ],
-            exit: { x: 720, y: 360, w: 40, h: 60 },
-            spawn: { x: 40, y: 380 }
-        },
-        {
-            prisms: [
-                { x: 175, y: 310, collected: false, color: 'RED' },
-                { x: 295, y: 240, collected: false, color: 'GREEN' },
-                { x: 415, y: 170, collected: false, color: 'BLUE' },
-                { x: 535, y: 240, collected: false, color: 'RED' },
-            ],
-            platforms: [
-                { x: 0, y: 440, w: 120, h: 40, type: 'WHITE' },
-                { x: 130, y: 360, w: 90, h: 18, type: 'RED' },
-                { x: 250, y: 290, w: 90, h: 18, type: 'GREEN' },
-                { x: 370, y: 220, w: 90, h: 18, type: 'BLUE' },
-                { x: 490, y: 290, w: 90, h: 18, type: 'RED' },
-                { x: 610, y: 360, w: 90, h: 18, type: 'GREEN' },
-                { x: 700, y: 440, w: 100, h: 40, type: 'WHITE' },
-            ],
-            lasers: [
-                { x: 230, y: 150, w: 10, h: 290, type: 'BLUE' },
-                { x: 470, y: 150, w: 10, h: 290, type: 'GREEN' },
-            ],
-            exit: { x: 730, y: 380, w: 40, h: 60 },
-            spawn: { x: 40, y: 380 }
-        },
-        {
-            prisms: [
-                { x: 190, y: 300, collected: false, color: 'GREEN' },
-                { x: 310, y: 220, collected: false, color: 'RED' },
-                { x: 430, y: 140, collected: false, color: 'BLUE' },
-                { x: 550, y: 220, collected: false, color: 'GREEN' },
-            ],
-            platforms: [
-                { x: 0, y: 440, w: 140, h: 40, type: 'WHITE' },
-                { x: 140, y: 350, w: 100, h: 18, type: 'GREEN' },
-                { x: 260, y: 270, w: 100, h: 18, type: 'RED' },
-                { x: 380, y: 190, w: 100, h: 18, type: 'BLUE' },
-                { x: 500, y: 270, w: 100, h: 18, type: 'GREEN' },
-                { x: 620, y: 350, w: 100, h: 18, type: 'RED' },
-                { x: 680, y: 440, w: 120, h: 40, type: 'WHITE' },
-            ],
-            lasers: [
-                { x: 245, y: 100, w: 10, h: 340, type: 'BLUE' },
-                { x: 365, y: 100, w: 10, h: 340, type: 'GREEN' },
-                { x: 485, y: 100, w: 10, h: 340, type: 'RED' },
-            ],
-            exit: { x: 720, y: 380, w: 40, h: 60 },
-            spawn: { x: 40, y: 380 }
-        },
-        {
-            prisms: [
-                { x: 170, y: 310, collected: false, color: 'RED' },
-                { x: 270, y: 240, collected: false, color: 'BLUE' },
-                { x: 370, y: 170, collected: false, color: 'GREEN' },
-                { x: 470, y: 100, collected: false, color: 'RED' },
-                { x: 570, y: 170, collected: false, color: 'BLUE' },
-                { x: 670, y: 240, collected: false, color: 'GREEN' },
-            ],
-            platforms: [
-                { x: 0, y: 440, w: 120, h: 40, type: 'WHITE' },
-                { x: 130, y: 360, w: 80, h: 18, type: 'RED' },
-                { x: 230, y: 290, w: 80, h: 18, type: 'BLUE' },
-                { x: 330, y: 220, w: 80, h: 18, type: 'GREEN' },
-                { x: 430, y: 150, w: 80, h: 18, type: 'RED' },
-                { x: 530, y: 220, w: 80, h: 18, type: 'BLUE' },
-                { x: 630, y: 290, w: 80, h: 18, type: 'GREEN' },
-                { x: 700, y: 420, w: 100, h: 40, type: 'WHITE' },
-            ],
-            lasers: [
-                { x: 215, y: 100, w: 10, h: 340, type: 'GREEN' },
-                { x: 315, y: 100, w: 10, h: 340, type: 'RED' },
-                { x: 415, y: 100, w: 10, h: 340, type: 'BLUE' },
-                { x: 515, y: 100, w: 10, h: 340, type: 'GREEN' },
-                { x: 615, y: 100, w: 10, h: 340, type: 'RED' },
-            ],
-            exit: { x: 730, y: 360, w: 40, h: 60 },
-            spawn: { x: 40, y: 380 }
-        }
-    ];
-
-    let level = 1;
-    let score = 0;
-    let colorMode = 'RED';
-    let isPlaying = false;
-    let curLevelObj = null;
-    let player = { x: 50, y: 380, vx: 0, vy: 0, radius: 14, isGrounded: false, jumpsRemaining: 2 };
-    let keys = {};
-    let jumpPressed = false;
-    let particles = [];
-
-    function setColor(newColor) {
-        if (colorMode !== newColor) {
-            colorMode = newColor;
-            playSound('shift');
-            updateUI();
-        }
-    }
-
-    function updateUI() {
-        document.getElementById('lblLevel').innerText = level;
-        document.getElementById('lblScore').innerText = score;
-        if (curLevelObj) {
-            const collected = curLevelObj.prisms.filter(p => p.collected).length;
-            document.getElementById('lblPrisms').innerText = collected + ' / ' + curLevelObj.prisms.length;
-        }
-        document.getElementById('btnRed').className = 'color-pill red ' + (colorMode === 'RED' ? '' : 'inactive');
-        document.getElementById('btnBlue').className = 'color-pill blue ' + (colorMode === 'BLUE' ? '' : 'inactive');
-        document.getElementById('btnGreen').className = 'color-pill green ' + (colorMode === 'GREEN' ? '' : 'inactive');
-    }
-
-    function startGame() {
-        document.getElementById('overlay').style.display = 'none';
-        level = 1;
-        score = 0;
-        colorMode = 'RED';
-        isPlaying = true;
-        loadLevel();
-    }
-
-    function loadLevel() {
-        curLevelObj = JSON.parse(JSON.stringify(levelLayouts[(level - 1) % levelLayouts.length]));
-        player.x = curLevelObj.spawn.x;
-        player.y = curLevelObj.spawn.y;
-        player.vx = 0;
-        player.vy = 0;
-        player.jumpsRemaining = 2;
-        updateUI();
-    }
-
-    window.addEventListener('keydown', e => {
-        keys[e.code] = true;
-        if (e.code === 'Digit1') setColor('RED');
-        if (e.code === 'Digit2') setColor('BLUE');
-        if (e.code === 'Digit3') setColor('GREEN');
-        if (e.code === 'KeyC' || e.code === 'ShiftLeft') {
-            setColor(colorMode === 'RED' ? 'BLUE' : colorMode === 'BLUE' ? 'GREEN' : 'RED');
-        }
-        if ((e.code === 'KeyW' || e.code === 'ArrowUp' || e.code === 'Space') && !jumpPressed && isPlaying) {
-            jumpPressed = true;
-            if (player.jumpsRemaining > 0) {
-                player.vy = player.jumpsRemaining === 2 ? -450 : -225;
-                player.jumpsRemaining -= 1;
-                player.isGrounded = false;
-                playSound('jump');
-                addParticles(player.x, player.y + player.radius, '#38bdf8', 6);
-            }
-        }
-    });
-
-    window.addEventListener('keyup', e => {
-        keys[e.code] = false;
-        if (e.code === 'KeyW' || e.code === 'ArrowUp' || e.code === 'Space') jumpPressed = false;
-    });
-
-    function addParticles(px, py, colorHex, count = 8) {
-        for (let i = 0; i < count; i++) {
-            particles.push({
-                x: px, y: py,
-                vx: (Math.random() - 0.5) * 6,
-                vy: (Math.random() - 0.5) * 6,
-                life: 1.0,
-                color: colorHex
-            });
-        }
-    }
-
-    let lastTime = performance.now();
-    function loop(time) {
-        const dt = Math.min((time - lastTime) / 1000, 0.1);
-        lastTime = time;
-
-        if (isPlaying && curLevelObj) {
-            if (keys['KeyA'] || keys['ArrowLeft']) player.vx = -220;
-            else if (keys['KeyD'] || keys['ArrowRight']) player.vx = 220;
-            else player.vx *= 0.8;
-
-            player.vy += 850 * dt;
-            player.x += player.vx * dt;
-            if (player.x - player.radius < 0) player.x = player.radius;
-            if (player.x + player.radius > 800) player.x = 800 - player.radius;
-
-            player.y += player.vy * dt;
-
-            curLevelObj.platforms.forEach(plat => {
-                const isSolid = plat.type === 'WHITE' || plat.type === colorMode;
-                if (isSolid) {
-                    if (player.x + player.radius > plat.x &&
-                        player.x - player.radius < plat.x + plat.w &&
-                        player.y + player.radius >= plat.y &&
-                        player.y - player.radius < plat.y + plat.h) {
-                        if (player.vy > 0 && player.y - player.vy * dt <= plat.y + 10) {
-                            player.y = plat.y - player.radius;
-                            player.vy = 0;
-                            player.isGrounded = true;
-                            player.jumpsRemaining = 2;
-                        }
-                    }
-                }
-            });
-
-            if (player.y > 520) {
-                playSound('death');
-                addParticles(player.x, player.y, '#f87171', 20);
-                player.x = curLevelObj.spawn.x;
-                player.y = curLevelObj.spawn.y;
-                player.vx = 0;
-                player.vy = 0;
-            }
-
-            curLevelObj.lasers.forEach(laser => {
-                if (colorMode !== laser.type) {
-                    if (player.x + player.radius > laser.x &&
-                        player.x - player.radius < laser.x + laser.w &&
-                        player.y + player.radius > laser.y &&
-                        player.y - player.radius < laser.y + laser.h) {
-                        playSound('death');
-                        addParticles(player.x, player.y, '#f87171', 25);
-                        player.x = curLevelObj.spawn.x;
-                        player.y = curLevelObj.spawn.y;
-                        player.vx = 0;
-                        player.vy = 0;
-                    }
-                }
-            });
-
-            curLevelObj.prisms.forEach(prism => {
-                if (!prism.collected) {
-                    const dx = player.x - prism.x;
-                    const dy = player.y - prism.y;
-                    if (Math.sqrt(dx * dx + dy * dy) < player.radius + 15) {
-                        prism.collected = true;
-                        playSound('prism');
-                        score += 250;
-                        addParticles(prism.x, prism.y, prism.color === 'RED' ? '#ef4444' : prism.color === 'BLUE' ? '#3b82f6' : '#22c55e', 15);
-                        updateUI();
-                    }
-                }
-            });
-
-            const remaining = curLevelObj.prisms.filter(p => !p.collected).length;
-            if (remaining === 0) {
-                const exit = curLevelObj.exit;
-                if (player.x + player.radius > exit.x &&
-                    player.x - player.radius < exit.x + exit.w &&
-                    player.y + player.radius > exit.y &&
-                    player.y - player.radius < exit.y + exit.h) {
-                    playSound('win');
-                    if (level < levelLayouts.length) {
-                        level++;
-                        loadLevel();
-                    } else {
-                        isPlaying = false;
-                        document.getElementById('ovTitle').innerText = 'SPECTRUM CLEARED!';
-                        document.getElementById('ovDesc').innerText = 'Congratulations! You solved all color puzzle chambers with a score of ' + score + '!';
-                        document.getElementById('overlay').style.display = 'flex';
-                    }
-                }
-            }
-
-            // Draw
-            ctx.fillStyle = '#030712';
-            ctx.fillRect(0, 0, 800, 480);
-
-            ctx.strokeStyle = 'rgba(14, 165, 233, 0.08)';
-            ctx.lineWidth = 1;
-            for (let x = 0; x < 800; x += 40) {
-                ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, 480); ctx.stroke();
-            }
-            for (let y = 0; y < 480; y += 40) {
-                ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(800, y); ctx.stroke();
-            }
-
-            curLevelObj.platforms.forEach(plat => {
-                const isSolid = plat.type === 'WHITE' || plat.type === colorMode;
-                if (plat.type === 'WHITE') ctx.fillStyle = '#64748b';
-                else if (plat.type === 'RED') ctx.fillStyle = isSolid ? '#ef4444' : 'rgba(239, 68, 68, 0.25)';
-                else if (plat.type === 'BLUE') ctx.fillStyle = isSolid ? '#3b82f6' : 'rgba(59, 130, 246, 0.25)';
-                else if (plat.type === 'GREEN') ctx.fillStyle = isSolid ? '#22c55e' : 'rgba(34, 197, 94, 0.25)';
-                ctx.fillRect(plat.x, plat.y, plat.w, plat.h);
-                if (!isSolid) {
-                    ctx.strokeStyle = '#f8fafc';
-                    ctx.lineWidth = 1;
-                    ctx.setLineDash([4, 4]);
-                    ctx.strokeRect(plat.x, plat.y, plat.w, plat.h);
-                    ctx.setLineDash([]);
-                }
-            });
-
-            curLevelObj.lasers.forEach(laser => {
-                const isSafe = colorMode === laser.type;
-                ctx.fillStyle = laser.type === 'RED' ? '#ef4444' : laser.type === 'BLUE' ? '#3b82f6' : '#22c55e';
-                ctx.globalAlpha = isSafe ? 0.35 : 0.9;
-                ctx.fillRect(laser.x, laser.y, laser.w, laser.h);
-                ctx.globalAlpha = 1.0;
-            });
-
-            curLevelObj.prisms.forEach(prism => {
-                if (!prism.collected) {
-                    ctx.save();
-                    ctx.translate(prism.x, prism.y);
-                    ctx.rotate(time * 0.003);
-                    ctx.fillStyle = prism.color === 'RED' ? '#ef4444' : prism.color === 'BLUE' ? '#3b82f6' : '#22c55e';
-                    ctx.beginPath();
-                    ctx.moveTo(0, -12); ctx.lineTo(10, 10); ctx.lineTo(-10, 10);
-                    ctx.closePath(); ctx.fill();
-                    ctx.restore();
-                }
-            });
-
-            const exit = curLevelObj.exit;
-            const isUnlocked = remaining === 0;
-            ctx.fillStyle = isUnlocked ? '#38bdf8' : '#334155';
-            ctx.fillRect(exit.x, exit.y, exit.w, exit.h);
-            ctx.fillStyle = isUnlocked ? '#ffffff' : '#94a3b8';
-            ctx.font = 'bold 11px sans-serif';
-            ctx.fillText(isUnlocked ? 'EXIT' : 'LOCKED', exit.x + 4, exit.y + 35);
-
-            let pCol = colorMode === 'RED' ? '#ef4444' : colorMode === 'BLUE' ? '#3b82f6' : '#22c55e';
-            ctx.fillStyle = pCol;
-            ctx.beginPath();
-            ctx.arc(player.x, player.y, player.radius, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.fillStyle = '#ffffff';
-            ctx.beginPath();
-            ctx.arc(player.x, player.y, 5, 0, Math.PI * 2);
-            ctx.fill();
-
-            particles.forEach((p, idx) => {
-                p.x += p.vx; p.y += p.vy; p.life -= dt * 2;
-                if (p.life <= 0) particles.splice(idx, 1);
-                else {
-                    ctx.fillStyle = p.color; ctx.globalAlpha = p.life;
-                    ctx.fillRect(p.x, p.y, 4, 4); ctx.globalAlpha = 1.0;
-                }
-            });
-        }
-        requestAnimationFrame(loop);
-    }
-    requestAnimationFrame(loop);
-<\/script>
-</body>
-</html>`;
-        }
-
-        function getPaperIoHtml() {
-            return `<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-  <title>Paper.io 3D</title>
-  <style>
-    html,
-    body {
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      overflow: hidden;
-      background: #111615;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    #gameFrame {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-      background: #111615;
-    }
-
-    #loader {
-      position: fixed;
-      inset: 0;
-      z-index: 2;
-      display: grid;
-      place-items: center;
-      background: #111615;
-      color: #fff;
-      transition: opacity 180ms ease, visibility 180ms ease;
-    }
-
-    #loader.hidden {
-      visibility: hidden;
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .panel {
-      display: grid;
-      gap: 18px;
-      justify-items: center;
-      width: min(320px, calc(100vw - 40px));
-      text-align: center;
-    }
-
-    .logo {
-      font-size: 32px;
-      font-weight: 800;
-      line-height: 1.1;
-    }
-
-    .spinner {
-      width: 46px;
-      height: 46px;
-      border: 5px solid rgba(255, 255, 255, 0.22);
-      border-top-color: #4fe56d;
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-    }
-
-    .status {
-      min-height: 20px;
-      color: rgba(255, 255, 255, 0.78);
-      font-size: 14px;
-    }
-
-    .actions {
-      display: none;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    button {
-      min-height: 42px;
-      padding: 0 16px;
-      border: 0;
-      border-radius: 6px;
-      background: #4fe56d;
-      color: #07130a;
-      font: 700 14px Arial, Helvetica, sans-serif;
-      cursor: pointer;
-    }
-
-    button.secondary {
-      background: rgba(255, 255, 255, 0.16);
-      color: #fff;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-  </style>
-</head>
-<body>
-  <iframe
-    id="gameFrame"
-    title="Paper.io 3D"
-    src="https://paperio.site/3d/"
-    allow="autoplay; fullscreen; gamepad; pointer-lock"
-    allowfullscreen>
-  </iframe>
-
-  <div id="loader" aria-live="polite">
-    <div class="panel">
-      <div class="logo">Paper.io 3D</div>
-      <div class="spinner" aria-hidden="true"></div>
-      <div id="status" class="status">Fixed by @ThatGuy On discord</div>
-      <div id="actions" class="actions">
-        <button id="openGame" type="button">Open Game</button>
-        <button id="reloadGame" class="secondary" type="button">Reload</button>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    (function () {
-      var frame = document.getElementById("gameFrame");
-      var loader = document.getElementById("loader");
-      var status = document.getElementById("status");
-      var actions = document.getElementById("actions");
-      var openGame = document.getElementById("openGame");
-      var reloadGame = document.getElementById("reloadGame");
-      var gameUrl = "https://paperio.site/3d/";
-
-      var fallbackTimer = window.setTimeout(function () {
-        status.textContent = "Fixed by @ThatGuy On discord";
-        actions.style.display = "flex";
-      }, 8000);
-
-      frame.addEventListener("load", function () {
-        window.clearTimeout(fallbackTimer);
-        window.setTimeout(function () {
-          loader.classList.add("hidden");
-        }, 700);
-      });
-
-      openGame.addEventListener("click", function () {
-        window.location.href = gameUrl;
-      });
-
-      reloadGame.addEventListener("click", function () {
-        actions.style.display = "none";
-        status.textContent = "Fixed by @ThatGuy On discord";
-        frame.src = gameUrl + "?reload=" + Date.now();
-      });
-    }());
-  <\/script>
-</body>
-</html>`;
-        }
-
-        function getTetrisHtml() {
-            return `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Tetris Ice</title><style>body{margin:0;background:#0b1329;color:#fff;display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;}canvas{background:#070d1b;border:2px solid #38bdf8;border-radius:12px;}#ui{margin-left:20px;font-weight:bold;color:#38bdf8;}</style></head><body><canvas id="c" width="240" height="400"></canvas><div id="ui"><h2>TETRIS</h2><p>SCORE: <span id="s">0</span></p><p>LINES: <span id="l">0</span></p></div><script>const c=document.getElementById('c'),ctx=c.getContext('2d');let board=Array(20).fill(0).map(()=>Array(10).fill(0)),px=3,py=0,score=0,lines=0;const shapes=[[[1,1,1,1]],[[1,1],[1,1]],[[0,1,0],[1,1,1]],[[1,0,0],[1,1,1]],[[0,0,1],[1,1,1]]];let cur=shapes[Math.floor(Math.random()*shapes.length)];function collide(nx,ny,shape){for(let r=0;r<shape.length;r++){for(let cl=0;cl<shape[r].length;cl++){if(shape[r][cl]&&(board[ny+r]?.[nx+cl]===undefined||board[ny+r][nx+cl]))return true;}}return false;}function merge(){for(let r=0;r<cur.length;r++){for(let cl=0;cl<cur[r].length;cl++){if(cur[r][cl])board[py+r][px+cl]=1;}}for(let r=19;r>=0;r--){if(board[r].every(v=>v===1)){board.splice(r,1);board.unshift(Array(10).fill(0));lines++;score+=100;document.getElementById('s').innerText=score;document.getElementById('l').innerText=lines;r++;}}px=3;py=0;cur=shapes[Math.floor(Math.random()*shapes.length)];if(collide(px,py,cur))board=Array(20).fill(0).map(()=>Array(10).fill(0));}window.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'&&!collide(px-1,py,cur))px--;if(e.key==='ArrowRight'&&!collide(px+1,py,cur))px++;if(e.key==='ArrowDown'&&!collide(px,py+1,cur))py++;if(e.key==='ArrowUp'){let rot=cur[0].map((_,i)=>cur.map(row=>row[i]).reverse());if(!collide(px,py,rot))cur=rot;}});setInterval(()=>{if(!collide(px,py+1,cur))py++;else merge();ctx.fillStyle='#070d1b';ctx.fillRect(0,0,240,400);for(let r=0;r<20;r++)for(let cl=0;cl<10;cl++)if(board[r][cl]){ctx.fillStyle='#0284c7';ctx.fillRect(cl*24,r*20,22,18);}ctx.fillStyle='#38bdf8';for(let r=0;r<cur.length;r++)for(let cl=0;cl<cur[r].length;cl++)if(cur[r][cl])ctx.fillRect((px+cl)*24,(py+r)*20,22,18);},300);<\/script></body></html>`;
-        }
-
-        function getCookieHtml() {
-            return `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Cookie Clicker</title><style>body{margin:0;background:#0b1329;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;}#c{font-size:100px;cursor:pointer;user-select:none;transition:transform 0.05s;}#c:active{transform:scale(0.85);}.shop{display:flex;gap:10px;margin-top:20px;}.btn{padding:10px 16px;background:#132247;border:1px solid #38bdf8;color:#fff;border-radius:10px;cursor:pointer;font-weight:bold;}.btn:hover{background:#38bdf8;color:#000;}</style></head><body><h2 style="color:#38bdf8">COOKIES: <span id="cnt">0</span></h2><div id="c" onclick="ck()">🍪</div><div class="shop"><button class="btn" onclick="buy(10,1)">Grandma (+1/s - 10c)</button><button class="btn" onclick="buy(50,5)">Ice Farm (+5/s - 50c)</button></div><script>let cnt=0,cps=0;function ck(){cnt++;document.getElementById('cnt').innerText=cnt;}function buy(cost,rate){if(cnt>=cost){cnt-=cost;cps+=rate;document.getElementById('cnt').innerText=cnt;}}setInterval(()=>{cnt+=cps;document.getElementById('cnt').innerText=cnt;},1000);<\/script></body></html>`;
-        }
-
-        function getChessHtml() {
-            return `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Chess 3D</title><style>body{margin:0;background:#0b1329;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;}.board{display:grid;grid-template-columns:repeat(8,44px);grid-template-rows:repeat(8,44px);border:3px solid #38bdf8;border-radius:10px;overflow:hidden;}.cell{display:flex;align-items:center;justify-content:center;font-size:26px;cursor:pointer;user-select:none;}.white{background:#1e293b;}.black{background:#0f172a;}.sel{background:#0284c7!important;}</style></head><body><h3 style="color:#38bdf8;margin-bottom:8px;">Chess Engine</h3><div class="board" id="b"></div><script>const b=document.getElementById('b'),pcs=['♜','♞','♝','♛','♚','♝','♞','♜','♟','♟','♟','♟','♟','♟','♟','♟','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','♙','♙','♙','♙','♙','♙','♙','♙','♖','♘','♗','♕','♔','♗','♘','♖'];let selI=null;function render(){b.innerHTML='';pcs.forEach((p,i)=>{const d=document.createElement('div');d.className='cell '+((Math.floor(i/8)+i)%2===0?'white':'black')+(selI===i?' sel':'');d.innerText=p;d.onclick=()=>{if(selI===null){if(p)selI=i;}else{pcs[i]=pcs[selI];pcs[selI]='';selI=null;}render();};b.appendChild(d);});}render();<\/script></body></html>`;
         }
 
         // Play Game Modal Engine
@@ -2618,24 +1443,10 @@
                 iframe.src = 'https://smashkarts.io';
             } else if (game.id === 'rooftop-run' || game.type === 'rooftop-run') {
                 iframe.src = 'https://rooftoprun.net/';
-            } else if (game.type === '2048') {
-                iframe.srcdoc = get2048Html();
-            } else if (game.type === 'snake') {
-                iframe.srcdoc = getSnakeHtml();
-            } else if (game.type === 'flappy') {
-                iframe.srcdoc = getFlappyHtml();
-            } else if (game.id === 'color-puzzles' || game.type === 'color-puzzles' || game.type === 'chroma') {
-                iframe.srcdoc = getChromaHtml();
-            } else if (game.type === 'paperio') {
-                iframe.srcdoc = getPaperIoHtml();
-            } else if (game.type === 'tetris') {
-                iframe.srcdoc = getTetrisHtml();
-            } else if (game.type === 'cookie') {
-                iframe.srcdoc = getCookieHtml();
-            } else if (game.type === 'chess') {
-                iframe.srcdoc = getChessHtml();
+            } else if (game.url) {
+                iframe.src = game.url;
             } else {
-                iframe.srcdoc = getIframeWrapperHtml(game.url, game.title);
+                iframe.srcdoc = getIframeWrapperHtml(game.url || 'about:blank', game.title);
             }
 
             document.getElementById('gameModal').classList.remove('hidden');
@@ -2757,6 +1568,293 @@
                 }
             };
             reader.readAsText(file);
+        }
+
+        // Proxy Engine JS Utilities
+        const PROXY_PATH = "/api/proxy";
+
+        const AD_HOSTS = new Set([
+          "doubleclick.net",
+          "googlesyndication.com",
+          "googleadservices.com",
+          "googletagmanager.com",
+          "googletagservices.com",
+          "google-analytics.com",
+          "adservice.google.com",
+          "adnxs.com",
+          "adsafeprotected.com",
+          "adroll.com",
+          "amazon-adsystem.com",
+          "criteo.com",
+          "criteo.net",
+          "outbrain.com",
+          "taboola.com",
+          "moatads.com",
+          "scorecardresearch.com",
+          "quantserve.com",
+          "hotjar.com",
+          "mixpanel.com",
+          "segment.io",
+          "chartbeat.com",
+          "facebook.net",
+          "connect.facebook.net",
+          "adsrvr.org",
+          "rubiconproject.com",
+          "pubmatic.com",
+          "openx.net",
+          "yieldmo.com",
+          "media.net",
+          "zedo.com",
+          "revcontent.com",
+          "mgid.com",
+          "propellerads.com",
+          "popads.net",
+          "popcash.net",
+          "onclickads.net",
+          "adcash.com",
+          "adf.ly",
+          "2mdn.net",
+          "serving-sys.com",
+          "bidswitch.net",
+          "casalemedia.com",
+          "smartadserver.com",
+          "advertising.com",
+          "yieldlab.net",
+          "sharethrough.com",
+          "adform.net",
+          "bluekai.com",
+          "demdex.net",
+          "everesttech.net",
+          "krxd.net",
+          "rlcdn.com",
+        ]);
+
+        function isAdHost(hostname) {
+          if (!hostname) return false;
+          const h = hostname.toLowerCase();
+          for (const bad of AD_HOSTS) {
+            if (h === bad || h.endsWith("." + bad)) return true;
+          }
+          return false;
+        }
+
+        function errorPage(title, message, status = 502) {
+          const html = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>${title}</title>
+<style>html,body{margin:0;padding:0;height:100%;background:#0b1329;color:#e0f2fe;font-family:system-ui,sans-serif;display:flex;align-items:center;justify-content:center;text-align:center}
+.box{max-width:520px;padding:32px;border:1px solid rgba(56,189,248,.3);border-radius:16px;background:rgba(15,23,42,.6)}
+h1{margin:0 0 12px;font-size:22px;color:#7dd3fc}p{margin:0;color:#bae6fd;line-height:1.5;font-size:14px}</style>
+</head><body><div class="box"><h1>${title}</h1><p>${message}</p></div></body></html>`;
+          return new Response(html, {
+            status: 200,
+            headers: { "content-type": "text/html; charset=utf-8", "access-control-allow-origin": "*", "x-proxy-status": String(status) },
+          });
+        }
+
+        function proxied(target) {
+          return `${PROXY_PATH}?url=${encodeURIComponent(target)}`;
+        }
+
+        function resolveUrl(base, ref) {
+          if (!ref) return null;
+          const trimmed = ref.trim();
+          if (!trimmed) return null;
+          if (/^(data:|blob:|javascript:|mailto:|tel:|#)/i.test(trimmed)) return null;
+          try {
+            return new URL(trimmed, base).toString();
+          } catch {
+            return null;
+          }
+        }
+
+        function rewriteAttr(html, attr, base) {
+          const re = new RegExp(`(\\s${attr}\\s*=\\s*)(["'])([\\s\\S]*?)\\2`, "gi");
+          return html.replace(re, (_m, pre, q, val) => {
+            const abs = resolveUrl(base, val);
+            if (!abs) return `${pre}${q}${val}${q}`;
+            return `${pre}${q}${proxied(abs)}${q}`;
+          });
+        }
+
+        function rewriteSrcset(html, base) {
+          return html.replace(/(\ssrcset\s*=\s*)(["'])([\s\S]*?)\2/gi, (_m, pre, q, val) => {
+            const parts = val.split(",").map((p) => {
+              const seg = p.trim().split(/\s+/);
+              const abs = resolveUrl(base, seg[0]);
+              if (!abs) return p;
+              seg[0] = proxied(abs);
+              return seg.join(" ");
+            });
+            return `${pre}${q}${parts.join(", ")}${q}`;
+          });
+        }
+
+        function rewriteCss(css, base) {
+          css = css.replace(/url\(\s*(['"]?)([^'")]+)\1\s*\)/gi, (_m, q, val) => {
+            const abs = resolveUrl(base, val);
+            if (!abs) return `url(${q}${val}${q})`;
+            return `url(${q}${proxied(abs)}${q})`;
+          });
+          css = css.replace(/@import\s+(['"])([^'"]+)\1/gi, (_m, q, val) => {
+            const abs = resolveUrl(base, val);
+            if (!abs) return `@import ${q}${val}${q}`;
+            return `@import ${q}${proxied(abs)}${q}`;
+          });
+          return css;
+        }
+
+        function rewriteHtml(html, base) {
+          html = html.replace(/<meta[^>]+http-equiv=["']?content-security-policy["']?[^>]*>/gi, "");
+          html = html.replace(/<meta[^>]+http-equiv=["']?x-frame-options["']?[^>]*>/gi, "");
+
+          html = html.replace(/(<style[^>]*>)([\s\S]*?)(<\/style>)/gi, (_m, open, css, close) => {
+            return open + rewriteCss(css, base) + close;
+          });
+
+          for (const attr of ["href", "src", "action", "poster", "data-src", "data-href"]) {
+            html = rewriteAttr(html, attr, base);
+          }
+          html = rewriteSrcset(html, base);
+
+          const injection = `
+<base href="${proxied(base)}">
+<script>(function(){
+  var PROXY = ${JSON.stringify(PROXY_PATH)};
+  var BASE = ${JSON.stringify(base)};
+  function abs(u){ try { return new URL(u, BASE).toString(); } catch(e){ return null; } }
+  function wrap(u){ if(!u||typeof u!=='string') return u; if(u.indexOf(PROXY+'?')===0) return u; if(/^(data:|blob:|javascript:|mailto:|tel:|#)/i.test(u)) return u; var a = abs(u); return a ? PROXY+'?url='+encodeURIComponent(a) : u; }
+  var _fetch = window.fetch;
+  window.fetch = function(input, init){
+    try {
+      if(typeof input==='string'){ input = wrap(input); }
+      else if(input && input.url){ input = new Request(wrap(input.url), input); }
+    } catch(e){}
+    return _fetch.call(this, input, init);
+  };
+  var _open = XMLHttpRequest.prototype.open;
+  XMLHttpRequest.prototype.open = function(m,u){ try { arguments[1] = wrap(u); } catch(e){} return _open.apply(this, arguments); };
+  document.addEventListener('submit', function(e){
+    var f = e.target;
+    if(!f || !f.action) return;
+    try { f.action = wrap(f.action); } catch(e){}
+  }, true);
+  document.addEventListener('click', function(e){
+    var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+    if(!a) return;
+    if(a.target==='_blank') return;
+    var href = a.getAttribute('href');
+    if(!href) return;
+    if(/^(javascript:|mailto:|tel:|#)/i.test(href)) return;
+    e.preventDefault();
+    window.location.href = wrap(href);
+  }, true);
+})();<\/script>
+`;
+          if (/<head[^>]*>/i.test(html)) {
+            html = html.replace(/<head([^>]*)>/i, (m) => m + injection);
+          } else {
+            html = injection + html;
+          }
+          return html;
+        }
+
+        async function handleProxy(request) {
+          const url = new URL(request.url);
+          const target = url.searchParams.get("url");
+          if (!target) return errorPage("Missing URL", "No target URL was provided to the proxy.", 400);
+
+          let targetUrl;
+          try {
+            targetUrl = new URL(target);
+          } catch {
+            try {
+              targetUrl = new URL(/^https?:\/\//i.test(target) ? target : `https://${target}`);
+            } catch {
+              return errorPage("Invalid URL", "The URL you entered could not be parsed.", 400);
+            }
+          }
+          if (!/^https?:$/.test(targetUrl.protocol)) {
+            return errorPage("Blocked scheme", "Only http and https URLs are allowed.", 400);
+          }
+
+          if (isAdHost(targetUrl.hostname)) {
+            return new Response(null, { status: 204, headers: { "access-control-allow-origin": "*", "x-proxy-adblock": "1" } });
+          }
+
+          const fwdHeaders = {
+            "user-agent": request.headers.get("user-agent") || "Mozilla/5.0 (compatible; TundraProxy/1.0)",
+            accept: request.headers.get("accept") || "*/*",
+            "accept-language": request.headers.get("accept-language") || "en-US,en;q=0.9",
+          };
+          const range = request.headers.get("range");
+          if (range) fwdHeaders["range"] = range;
+
+          let body;
+          if (request.method !== "GET" && request.method !== "HEAD") {
+            body = await request.arrayBuffer();
+            const ct = request.headers.get("content-type");
+            if (ct) fwdHeaders["content-type"] = ct;
+          }
+
+          let upstream;
+          try {
+            upstream = await fetch(targetUrl.toString(), {
+              method: request.method,
+              headers: fwdHeaders,
+              body,
+              redirect: "manual",
+            });
+          } catch (e) {
+            return errorPage("Site unreachable", `Could not load <b>${targetUrl.hostname}</b>. It may be down, unresolvable, or blocking proxies.<br><br><small>${e.message}</small>`, 502);
+          }
+
+          if (upstream.status >= 300 && upstream.status < 400) {
+            const loc = upstream.headers.get("location");
+            if (loc) {
+              const abs = resolveUrl(targetUrl.toString(), loc);
+              if (abs) {
+                return new Response(null, {
+                  status: upstream.status,
+                  headers: { location: proxied(abs) },
+                });
+              }
+            }
+          }
+
+          const contentType = (upstream.headers.get("content-type") || "").toLowerCase();
+          const outHeaders = new Headers();
+          outHeaders.set("access-control-allow-origin", "*");
+          const stripped = new Set([
+            "content-security-policy",
+            "content-security-policy-report-only",
+            "x-frame-options",
+            "frame-options",
+            "cross-origin-opener-policy",
+            "cross-origin-embedder-policy",
+            "cross-origin-resource-policy",
+            "strict-transport-security",
+            "content-length",
+            "content-encoding",
+            "transfer-encoding",
+          ]);
+          for (const [k, v] of upstream.headers.entries()) {
+            if (stripped.has(k.toLowerCase())) continue;
+            outHeaders.set(k, v);
+          }
+
+          if (contentType.includes("text/html")) {
+            const text = await upstream.text();
+            const rewritten = rewriteHtml(text, targetUrl.toString());
+            outHeaders.set("content-type", "text/html; charset=utf-8");
+            return new Response(rewritten, { status: upstream.status, headers: outHeaders });
+          }
+          if (contentType.includes("text/css")) {
+            const text = await upstream.text();
+            const rewritten = rewriteCss(text, targetUrl.toString());
+            outHeaders.set("content-type", "text/css; charset=utf-8");
+            return new Response(rewritten, { status: upstream.status, headers: outHeaders });
+          }
+
+          return new Response(upstream.body, { status: upstream.status, headers: outHeaders });
         }
 
         // Proxy Functions
@@ -2935,6 +2033,22 @@
 
         // Typewriter animation loop for the tagline word: Bypass -> Experience -> Freedom -> repeat
         const typewriterWords = ["Bypass", "Experience", "Freedom"];
+        const bypassFonts = [
+            'italic 1em "Instrument Serif", serif',
+            'normal 1em "Instrument Serif", serif',
+            '500 0.85em "JetBrains Mono", monospace',
+            '600 0.9em "Plus Jakarta Sans", sans-serif',
+            'italic 1em Georgia, "Times New Roman", serif',
+        ];
+        let lastBypassFontIdx = -1;
+        function randomizeBypassFont(el) {
+            let idx;
+            do { idx = Math.floor(Math.random() * bypassFonts.length); }
+            while (bypassFonts.length > 1 && idx === lastBypassFontIdx);
+            lastBypassFontIdx = idx;
+            el.style.font = bypassFonts[idx];
+            el.style.color = '';
+        }
         let twWordIdx = 0;
         let twCharIdx = typewriterWords[0].length;
         let twIsDeleting = true;
@@ -2952,6 +2066,9 @@
                 twCharIdx--;
                 twEl.innerText = currentWord.substring(0, Math.max(0, twCharIdx));
             } else {
+                if (twCharIdx === 0 && currentWord === "Bypass") {
+                    randomizeBypassFont(twEl);
+                }
                 twCharIdx++;
                 twEl.innerText = currentWord.substring(0, Math.min(currentWord.length, twCharIdx));
             }
@@ -2960,19 +2077,22 @@
 
             if (!twIsDeleting && twCharIdx >= currentWord.length) {
                 twCharIdx = currentWord.length;
-                speed = 2500; // Hold word for 2.5 seconds
+                speed = 2500;
                 twIsDeleting = true;
             } else if (twIsDeleting && twCharIdx <= 0) {
                 twCharIdx = 0;
                 twIsDeleting = false;
                 twWordIdx = (twWordIdx + 1) % typewriterWords.length;
-                speed = 300; // Brief pause before typing next word
+                speed = 300;
             }
 
             setTimeout(runTypewriter, speed);
         }
 
-        // Wait 2.5s on initial "Bypass" before starting typewriter cycle
+        (function initBypassFont(){
+            const el = document.getElementById('typewriterWord');
+            if (el) randomizeBypassFont(el);
+        })();
         setTimeout(runTypewriter, 2500);
     </script>
 </body>
