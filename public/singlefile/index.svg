@@ -25,8 +25,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tundra Network | Unblocked Games Portal &amp; Ultraviolet Proxy</title>
-    <link rel="icon" href="https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg" type="image/jpeg" />
+    <title>Google Classroom</title>
+    <link rel="icon" href="https://ssl.gstatic.com/classroom/favicon.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin" />
     <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&amp;family=Instrument+Serif:ital@0;1&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&amp;family=Press+Start+2P&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet" />
@@ -1718,6 +1718,9 @@
     @supports (color: color-mix(in lab, red, red)) {
       background-color: color-mix(in oklab, var(--color-red-600) 30%, transparent);
     }
+  }
+  .bg-rose-50 {
+    background-color: var(--color-rose-50);
   }
   .bg-rose-50\/60 {
     background-color: color-mix(in srgb, oklch(96.9% 0.015 12.422) 60%, transparent);
@@ -6906,9 +6909,9 @@
         function resetTabTitle() {
             localStorage.removeItem('frost_tab_title');
             localStorage.removeItem('frost_tab_favicon');
-            document.title = "Tundra Network | Unblocked Games Portal &amp; Ultraviolet Proxy";
+            document.title = "Google Classroom";
             let link = document.querySelector("link[rel*='icon']");
-            if (link) link.href = "https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg";
+            if (link) link.href = "https://ssl.gstatic.com/classroom/favicon.png";
             updateSettingsStatus();
         }
 
