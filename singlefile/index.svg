@@ -26,6 +26,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tundra Network | Unblocked Games Portal &amp; Ultraviolet Proxy</title>
+    <link rel="icon" href="https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg" type="image/jpeg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin" />
     <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&amp;family=Instrument+Serif:ital@0;1&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&amp;family=Press+Start+2P&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet" />
@@ -42,6 +43,7 @@
     --font-sans: 'Plus Jakarta Sans', sans-serif;
     --font-serif: 'Instrument Serif', serif;
     --font-mono: 'JetBrains Mono', monospace;
+    --color-red-200: oklch(88.5% 0.062 18.334);
     --color-red-300: oklch(80.8% 0.114 19.571);
     --color-red-400: oklch(70.4% 0.191 22.216);
     --color-red-500: oklch(63.7% 0.237 25.331);
@@ -55,6 +57,7 @@
     --color-amber-300: oklch(87.9% 0.169 91.605);
     --color-amber-400: oklch(82.8% 0.189 84.429);
     --color-amber-500: oklch(76.9% 0.188 70.08);
+    --color-amber-600: oklch(66.6% 0.179 58.318);
     --color-amber-900: oklch(41.4% 0.112 45.904);
     --color-amber-950: oklch(27.9% 0.077 45.635);
     --color-yellow-100: oklch(97.3% 0.071 103.193);
@@ -66,6 +69,7 @@
     --color-emerald-300: oklch(84.5% 0.143 164.978);
     --color-emerald-400: oklch(76.5% 0.177 163.223);
     --color-emerald-500: oklch(69.6% 0.17 162.48);
+    --color-emerald-600: oklch(59.6% 0.145 163.225);
     --color-cyan-300: oklch(86.5% 0.127 207.078);
     --color-cyan-400: oklch(78.9% 0.154 211.53);
     --color-sky-100: oklch(95.1% 0.026 236.824);
@@ -77,6 +81,7 @@
     --color-sky-950: oklch(29.3% 0.066 243.157);
     --color-blue-50: oklch(97% 0.014 254.604);
     --color-blue-100: oklch(93.2% 0.032 255.585);
+    --color-blue-200: oklch(88.2% 0.059 254.128);
     --color-blue-400: oklch(70.7% 0.165 254.624);
     --color-blue-500: oklch(62.3% 0.214 259.815);
     --color-blue-600: oklch(54.6% 0.245 262.881);
@@ -88,10 +93,12 @@
     --color-indigo-500: oklch(58.5% 0.233 277.117);
     --color-indigo-600: oklch(51.1% 0.262 276.966);
     --color-indigo-950: oklch(25.7% 0.09 281.288);
+    --color-purple-200: oklch(90.2% 0.063 306.703);
     --color-purple-300: oklch(82.7% 0.119 306.383);
     --color-purple-400: oklch(71.4% 0.203 305.504);
     --color-purple-500: oklch(62.7% 0.265 303.9);
     --color-purple-600: oklch(55.8% 0.288 302.321);
+    --color-purple-950: oklch(29.1% 0.149 302.717);
     --color-slate-50: oklch(98.4% 0.003 247.858);
     --color-slate-100: oklch(96.8% 0.007 247.896);
     --color-slate-200: oklch(92.9% 0.013 255.508);
@@ -159,6 +166,7 @@
     --drop-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.15);
     --drop-shadow-md: 0 3px 3px rgb(0 0 0 / 0.12);
     --drop-shadow-lg: 0 4px 4px rgb(0 0 0 / 0.15);
+    --ease-out: cubic-bezier(0, 0, 0.2, 1);
     --animate-spin: spin 1s linear infinite;
     --animate-ping: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
     --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
@@ -384,6 +392,9 @@
   .-right-24 {
     right: calc(var(--spacing) * -24);
   }
+  .right-0 {
+    right: 0px;
+  }
   .right-2 {
     right: calc(var(--spacing) * 2);
   }
@@ -416,6 +427,9 @@
   }
   .-left-24 {
     left: calc(var(--spacing) * -24);
+  }
+  .left-0 {
+    left: 0px;
   }
   .left-1 {
     left: var(--spacing);
@@ -458,6 +472,9 @@
   }
   .z-60 {
     z-index: 60;
+  }
+  .z-\[9\] {
+    z-index: 9;
   }
   .col-span-full {
     grid-column: 1 / -1;
@@ -552,6 +569,9 @@
   .ml-1 {
     margin-left: var(--spacing);
   }
+  .ml-2 {
+    margin-left: calc(var(--spacing) * 2);
+  }
   .line-clamp-1 {
     overflow: hidden;
     display: -webkit-box;
@@ -614,6 +634,9 @@
   }
   .h-2 {
     height: calc(var(--spacing) * 2);
+  }
+  .h-2\.5 {
+    height: calc(var(--spacing) * 2.5);
   }
   .h-3 {
     height: calc(var(--spacing) * 3);
@@ -698,6 +721,9 @@
   }
   .w-2 {
     width: calc(var(--spacing) * 2);
+  }
+  .w-2\.5 {
+    width: calc(var(--spacing) * 2.5);
   }
   .w-3 {
     width: calc(var(--spacing) * 3);
@@ -833,6 +859,14 @@
     --tw-translate-x: calc(calc(1 / 2 * 100%) * -1);
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
+  .translate-x-0 {
+    --tw-translate-x: 0px;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-x-0\.5 {
+    --tw-translate-x: calc(var(--spacing) * 0.5);
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
   .-translate-y-1 {
     --tw-translate-y: calc(var(--spacing) * -1);
     translate: var(--tw-translate-x) var(--tw-translate-y);
@@ -910,6 +944,9 @@
   }
   .items-center {
     align-items: center;
+  }
+  .items-end {
+    align-items: flex-end;
   }
   .items-stretch {
     align-items: stretch;
@@ -1158,6 +1195,15 @@
   .border-blue-100 {
     border-color: var(--color-blue-100);
   }
+  .border-blue-400 {
+    border-color: var(--color-blue-400);
+  }
+  .border-blue-400\/40 {
+    border-color: color-mix(in srgb, oklch(70.7% 0.165 254.624) 40%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-blue-400) 40%, transparent);
+    }
+  }
   .border-blue-500 {
     border-color: var(--color-blue-500);
   }
@@ -1230,10 +1276,22 @@
   .border-purple-500 {
     border-color: var(--color-purple-500);
   }
+  .border-purple-500\/15 {
+    border-color: color-mix(in srgb, oklch(62.7% 0.265 303.9) 15%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-purple-500) 15%, transparent);
+    }
+  }
   .border-purple-500\/20 {
     border-color: color-mix(in srgb, oklch(62.7% 0.265 303.9) 20%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
       border-color: color-mix(in oklab, var(--color-purple-500) 20%, transparent);
+    }
+  }
+  .border-purple-500\/25 {
+    border-color: color-mix(in srgb, oklch(62.7% 0.265 303.9) 25%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-purple-500) 25%, transparent);
     }
   }
   .border-purple-500\/30 {
@@ -1250,6 +1308,12 @@
   }
   .border-red-400 {
     border-color: var(--color-red-400);
+  }
+  .border-red-400\/40 {
+    border-color: color-mix(in srgb, oklch(70.4% 0.191 22.216) 40%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-red-400) 40%, transparent);
+    }
   }
   .border-red-500 {
     border-color: var(--color-red-500);
@@ -1278,12 +1342,6 @@
   .border-sky-400 {
     border-color: var(--color-sky-400);
   }
-  .border-sky-400\/20 {
-    border-color: color-mix(in srgb, oklch(74.6% 0.16 232.661) 20%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      border-color: color-mix(in oklab, var(--color-sky-400) 20%, transparent);
-    }
-  }
   .border-sky-400\/30 {
     border-color: color-mix(in srgb, oklch(74.6% 0.16 232.661) 30%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
@@ -1305,16 +1363,34 @@
       border-color: color-mix(in oklab, var(--color-sky-500) 10%, transparent);
     }
   }
+  .border-sky-500\/15 {
+    border-color: color-mix(in srgb, oklch(68.5% 0.169 237.323) 15%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-sky-500) 15%, transparent);
+    }
+  }
   .border-sky-500\/20 {
     border-color: color-mix(in srgb, oklch(68.5% 0.169 237.323) 20%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
       border-color: color-mix(in oklab, var(--color-sky-500) 20%, transparent);
     }
   }
+  .border-sky-500\/25 {
+    border-color: color-mix(in srgb, oklch(68.5% 0.169 237.323) 25%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-sky-500) 25%, transparent);
+    }
+  }
   .border-sky-500\/30 {
     border-color: color-mix(in srgb, oklch(68.5% 0.169 237.323) 30%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
       border-color: color-mix(in oklab, var(--color-sky-500) 30%, transparent);
+    }
+  }
+  .border-sky-500\/35 {
+    border-color: color-mix(in srgb, oklch(68.5% 0.169 237.323) 35%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-sky-500) 35%, transparent);
     }
   }
   .border-sky-500\/40 {
@@ -1332,8 +1408,17 @@
   .border-slate-300 {
     border-color: var(--color-slate-300);
   }
+  .border-slate-600 {
+    border-color: var(--color-slate-600);
+  }
   .border-slate-700 {
     border-color: var(--color-slate-700);
+  }
+  .border-slate-700\/80 {
+    border-color: color-mix(in srgb, oklch(37.2% 0.044 257.287) 80%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-slate-700) 80%, transparent);
+    }
   }
   .border-slate-800 {
     border-color: var(--color-slate-800);
@@ -1398,6 +1483,12 @@
   .bg-amber-400 {
     background-color: var(--color-amber-400);
   }
+  .bg-amber-400\/70 {
+    background-color: color-mix(in srgb, oklch(82.8% 0.189 84.429) 70%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-amber-400) 70%, transparent);
+    }
+  }
   .bg-amber-500 {
     background-color: var(--color-amber-500);
   }
@@ -1411,6 +1502,15 @@
     background-color: color-mix(in srgb, oklch(76.9% 0.188 70.08) 20%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
       background-color: color-mix(in oklab, var(--color-amber-500) 20%, transparent);
+    }
+  }
+  .bg-amber-600 {
+    background-color: var(--color-amber-600);
+  }
+  .bg-amber-600\/30 {
+    background-color: color-mix(in srgb, oklch(66.6% 0.179 58.318) 30%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-amber-600) 30%, transparent);
     }
   }
   .bg-black {
@@ -1431,6 +1531,12 @@
   .bg-blue-600 {
     background-color: var(--color-blue-600);
   }
+  .bg-blue-600\/30 {
+    background-color: color-mix(in srgb, oklch(54.6% 0.245 262.881) 30%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-blue-600) 30%, transparent);
+    }
+  }
   .bg-cyan-300 {
     background-color: var(--color-cyan-300);
   }
@@ -1446,6 +1552,12 @@
   .bg-emerald-400 {
     background-color: var(--color-emerald-400);
   }
+  .bg-emerald-400\/70 {
+    background-color: color-mix(in srgb, oklch(76.5% 0.177 163.223) 70%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-emerald-400) 70%, transparent);
+    }
+  }
   .bg-emerald-500 {
     background-color: var(--color-emerald-500);
   }
@@ -1459,6 +1571,15 @@
     background-color: color-mix(in srgb, oklch(69.6% 0.17 162.48) 20%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
       background-color: color-mix(in oklab, var(--color-emerald-500) 20%, transparent);
+    }
+  }
+  .bg-emerald-600 {
+    background-color: var(--color-emerald-600);
+  }
+  .bg-emerald-600\/30 {
+    background-color: color-mix(in srgb, oklch(59.6% 0.145 163.225) 30%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-emerald-600) 30%, transparent);
     }
   }
   .bg-indigo-500 {
@@ -1488,6 +1609,9 @@
   .bg-orange-600 {
     background-color: var(--color-orange-600);
   }
+  .bg-purple-400 {
+    background-color: var(--color-purple-400);
+  }
   .bg-purple-500 {
     background-color: var(--color-purple-500);
   }
@@ -1497,10 +1621,13 @@
       background-color: color-mix(in oklab, var(--color-purple-500) 20%, transparent);
     }
   }
-  .bg-purple-500\/80 {
-    background-color: color-mix(in srgb, oklch(62.7% 0.265 303.9) 80%, transparent);
+  .bg-purple-950 {
+    background-color: var(--color-purple-950);
+  }
+  .bg-purple-950\/80 {
+    background-color: color-mix(in srgb, oklch(29.1% 0.149 302.717) 80%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
-      background-color: color-mix(in oklab, var(--color-purple-500) 80%, transparent);
+      background-color: color-mix(in oklab, var(--color-purple-950) 80%, transparent);
     }
   }
   .bg-red-500 {
@@ -1518,8 +1645,20 @@
       background-color: color-mix(in oklab, var(--color-red-500) 20%, transparent);
     }
   }
+  .bg-red-500\/70 {
+    background-color: color-mix(in srgb, oklch(63.7% 0.237 25.331) 70%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-red-500) 70%, transparent);
+    }
+  }
   .bg-red-600 {
     background-color: var(--color-red-600);
+  }
+  .bg-red-600\/30 {
+    background-color: color-mix(in srgb, oklch(57.7% 0.245 27.325) 30%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-red-600) 30%, transparent);
+    }
   }
   .bg-sky-100 {
     background-color: var(--color-sky-100);
@@ -1644,6 +1783,12 @@
   .bg-slate-950 {
     background-color: var(--color-slate-950);
   }
+  .bg-slate-950\/40 {
+    background-color: color-mix(in srgb, #070d1b 40%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-slate-950) 40%, transparent);
+    }
+  }
   .bg-slate-950\/50 {
     background-color: color-mix(in srgb, #070d1b 50%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
@@ -1713,6 +1858,10 @@
   .bg-yellow-500 {
     background-color: var(--color-yellow-500);
   }
+  .bg-gradient-to-br {
+    --tw-gradient-position: to bottom right in oklab;
+    background-image: linear-gradient(var(--tw-gradient-stops));
+  }
   .bg-gradient-to-r {
     --tw-gradient-position: to right in oklab;
     background-image: linear-gradient(var(--tw-gradient-stops));
@@ -1725,8 +1874,16 @@
     --tw-gradient-position: to top right in oklab;
     background-image: linear-gradient(var(--tw-gradient-stops));
   }
+  .from-purple-500 {
+    --tw-gradient-from: var(--color-purple-500);
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
   .from-purple-600 {
     --tw-gradient-from: var(--color-purple-600);
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+  .from-sky-300 {
+    --tw-gradient-from: var(--color-sky-300);
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
   .from-sky-400 {
@@ -1763,6 +1920,13 @@
     }
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
+  .from-slate-950\/85 {
+    --tw-gradient-from: color-mix(in srgb, #070d1b 85%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-gradient-from: color-mix(in oklab, var(--color-slate-950) 85%, transparent);
+    }
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
   .via-indigo-300 {
     --tw-gradient-via: var(--color-indigo-300);
     --tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);
@@ -1773,6 +1937,11 @@
     --tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);
     --tw-gradient-stops: var(--tw-gradient-via-stops);
   }
+  .via-indigo-600 {
+    --tw-gradient-via: var(--color-indigo-600);
+    --tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-via-stops);
+  }
   .via-sky-400 {
     --tw-gradient-via: var(--color-sky-400);
     --tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);
@@ -1780,6 +1949,14 @@
   }
   .via-sky-950 {
     --tw-gradient-via: var(--color-sky-950);
+    --tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-via-stops);
+  }
+  .via-sky-950\/60 {
+    --tw-gradient-via: color-mix(in srgb, oklch(29.3% 0.066 243.157) 60%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-gradient-via: color-mix(in oklab, var(--color-sky-950) 60%, transparent);
+    }
     --tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);
     --tw-gradient-stops: var(--tw-gradient-via-stops);
   }
@@ -1830,6 +2007,13 @@
   }
   .to-indigo-950 {
     --tw-gradient-to: var(--color-indigo-950);
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+  .to-indigo-950\/80 {
+    --tw-gradient-to: color-mix(in srgb, oklch(25.7% 0.09 281.288) 80%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-gradient-to: color-mix(in oklab, var(--color-indigo-950) 80%, transparent);
+    }
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
   .to-purple-400 {
@@ -1991,6 +2175,9 @@
   .pt-2 {
     padding-top: calc(var(--spacing) * 2);
   }
+  .pt-2\.5 {
+    padding-top: calc(var(--spacing) * 2.5);
+  }
   .pt-3 {
     padding-top: calc(var(--spacing) * 3);
   }
@@ -2042,6 +2229,9 @@
   .pl-1 {
     padding-left: var(--spacing);
   }
+  .pl-2 {
+    padding-left: calc(var(--spacing) * 2);
+  }
   .pl-3 {
     padding-left: calc(var(--spacing) * 3);
   }
@@ -2053,6 +2243,9 @@
   }
   .pl-10 {
     padding-left: calc(var(--spacing) * 10);
+  }
+  .pl-14 {
+    padding-left: calc(var(--spacing) * 14);
   }
   .text-center {
     text-align: center;
@@ -2120,6 +2313,9 @@
   .text-\[10px\] {
     font-size: 10px;
   }
+  .text-\[11\.5px\] {
+    font-size: 11.5px;
+  }
   .text-\[11px\] {
     font-size: 11px;
   }
@@ -2176,6 +2372,14 @@
   .tracking-\[0\.2em\] {
     --tw-tracking: 0.2em;
     letter-spacing: 0.2em;
+  }
+  .tracking-\[0\.3em\] {
+    --tw-tracking: 0.3em;
+    letter-spacing: 0.3em;
+  }
+  .tracking-\[0\.18em\] {
+    --tw-tracking: 0.18em;
+    letter-spacing: 0.18em;
   }
   .tracking-\[0\.22em\] {
     --tw-tracking: 0.22em;
@@ -2244,6 +2448,9 @@
   .text-amber-950 {
     color: var(--color-amber-950);
   }
+  .text-blue-200 {
+    color: var(--color-blue-200);
+  }
   .text-blue-400 {
     color: var(--color-blue-400);
   }
@@ -2280,11 +2487,29 @@
   .text-orange-400 {
     color: var(--color-orange-400);
   }
+  .text-purple-200 {
+    color: var(--color-purple-200);
+  }
   .text-purple-300 {
     color: var(--color-purple-300);
   }
+  .text-purple-300\/70 {
+    color: color-mix(in srgb, oklch(82.7% 0.119 306.383) 70%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      color: color-mix(in oklab, var(--color-purple-300) 70%, transparent);
+    }
+  }
+  .text-purple-300\/80 {
+    color: color-mix(in srgb, oklch(82.7% 0.119 306.383) 80%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      color: color-mix(in oklab, var(--color-purple-300) 80%, transparent);
+    }
+  }
   .text-purple-400 {
     color: var(--color-purple-400);
+  }
+  .text-red-200 {
+    color: var(--color-red-200);
   }
   .text-red-300 {
     color: var(--color-red-300);
@@ -2305,6 +2530,18 @@
     color: color-mix(in srgb, oklch(95.1% 0.026 236.824) 70%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
       color: color-mix(in oklab, var(--color-sky-100) 70%, transparent);
+    }
+  }
+  .text-sky-100\/80 {
+    color: color-mix(in srgb, oklch(95.1% 0.026 236.824) 80%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      color: color-mix(in oklab, var(--color-sky-100) 80%, transparent);
+    }
+  }
+  .text-sky-100\/85 {
+    color: color-mix(in srgb, oklch(95.1% 0.026 236.824) 85%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      color: color-mix(in oklab, var(--color-sky-100) 85%, transparent);
     }
   }
   .text-sky-200 {
@@ -2391,6 +2628,9 @@
       color: color-mix(in oklab, var(--color-sky-500) 40%, transparent);
     }
   }
+  .text-slate-200 {
+    color: var(--color-slate-200);
+  }
   .text-slate-300 {
     color: var(--color-slate-300);
   }
@@ -2433,6 +2673,12 @@
   .placeholder-sky-400::placeholder {
     color: var(--color-sky-400);
   }
+  .placeholder-sky-400\/40::placeholder {
+    color: color-mix(in srgb, oklch(74.6% 0.16 232.661) 40%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      color: color-mix(in oklab, var(--color-sky-400) 40%, transparent);
+    }
+  }
   .placeholder-sky-400\/50::placeholder {
     color: color-mix(in srgb, oklch(74.6% 0.16 232.661) 50%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
@@ -2447,6 +2693,9 @@
   }
   .opacity-0 {
     opacity: 0%;
+  }
+  .opacity-40 {
+    opacity: 40%;
   }
   .opacity-60 {
     opacity: 60%;
@@ -2463,6 +2712,10 @@
   }
   .shadow-2xl {
     --tw-shadow: 0 25px 50px -12px var(--tw-shadow-color, rgb(0 0 0 / 0.25));
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  .shadow-\[0_0_18px_rgba\(56\,189\,248\,0\.35\)\] {
+    --tw-shadow: 0 0 18px var(--tw-shadow-color, rgba(56,189,248,0.35));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
   .shadow-inner {
@@ -2627,6 +2880,12 @@
       --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, var(--color-sky-500) 30%, transparent) var(--tw-shadow-alpha), transparent);
     }
   }
+  .shadow-sky-500\/40 {
+    --tw-shadow-color: color-mix(in srgb, oklch(68.5% 0.169 237.323) 40%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, var(--color-sky-500) 40%, transparent) var(--tw-shadow-alpha), transparent);
+    }
+  }
   .shadow-sky-950 {
     --tw-shadow-color: oklch(29.3% 0.066 243.157);
     @supports (color: color-mix(in lab, red, red)) {
@@ -2675,6 +2934,15 @@
       --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, var(--color-yellow-500) 70%, transparent) var(--tw-shadow-alpha), transparent);
     }
   }
+  .ring-sky-400 {
+    --tw-ring-color: var(--color-sky-400);
+  }
+  .ring-sky-400\/30 {
+    --tw-ring-color: color-mix(in srgb, oklch(74.6% 0.16 232.661) 30%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-ring-color: color-mix(in oklab, var(--color-sky-400) 30%, transparent);
+    }
+  }
   .ring-white {
     --tw-ring-color: var(--color-white);
   }
@@ -2695,6 +2963,21 @@
   .drop-shadow {
     --tw-drop-shadow-size: drop-shadow(0 1px 2px var(--tw-drop-shadow-color, rgb(0 0 0 / 0.1))) drop-shadow(0 1px 1px var(--tw-drop-shadow-color, rgb(0 0 0 / 0.06)));
     --tw-drop-shadow: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1)) drop-shadow( 0 1px 1px rgb(0 0 0 / 0.06));
+    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+  }
+  .drop-shadow-\[0_0_6px_rgba\(252\,211\,77\,0\.9\)\] {
+    --tw-drop-shadow-size: drop-shadow(0 0 6px var(--tw-drop-shadow-color, rgba(252,211,77,0.9)));
+    --tw-drop-shadow: var(--tw-drop-shadow-size);
+    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+  }
+  .drop-shadow-\[0_2px_8px_rgba\(0\,0\,0\,0\.7\)\] {
+    --tw-drop-shadow-size: drop-shadow(0 2px 8px var(--tw-drop-shadow-color, rgba(0,0,0,0.7)));
+    --tw-drop-shadow: var(--tw-drop-shadow-size);
+    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+  }
+  .drop-shadow-\[0_2px_20px_rgba\(56\,189\,248\,0\.35\)\] {
+    --tw-drop-shadow-size: drop-shadow(0 2px 20px var(--tw-drop-shadow-color, rgba(56,189,248,0.35)));
+    --tw-drop-shadow: var(--tw-drop-shadow-size);
     filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
   }
   .drop-shadow-lg {
@@ -2780,6 +3063,10 @@
     --tw-duration: 500ms;
     transition-duration: 500ms;
   }
+  .ease-out {
+    --tw-ease: var(--ease-out);
+    transition-timing-function: var(--ease-out);
+  }
   .outline-none {
     --tw-outline-style: none;
     outline-style: none;
@@ -2791,10 +3078,6 @@
   @media (hover: hover) {
     .group-hover\:translate-x-0\.5:is(:where(.group):hover *) {
       --tw-translate-x: calc(var(--spacing) * 0.5);
-      translate: var(--tw-translate-x) var(--tw-translate-y);
-    }
-    .group-hover\:translate-x-1:is(:where(.group):hover *) {
-      --tw-translate-x: var(--spacing);
       translate: var(--tw-translate-x) var(--tw-translate-y);
     }
     .group-hover\:translate-y-0:is(:where(.group):hover *) {
@@ -2812,6 +3095,15 @@
       --tw-scale-y: 110%;
       --tw-scale-z: 110%;
       scale: var(--tw-scale-x) var(--tw-scale-y);
+    }
+    .group-hover\:scale-\[1\.08\]:is(:where(.group):hover *) {
+      scale: 1.08;
+    }
+    .group-hover\:rotate-45:is(:where(.group):hover *) {
+      rotate: 45deg;
+    }
+    .group-hover\:text-purple-200:is(:where(.group):hover *) {
+      color: var(--color-purple-200);
     }
     .group-hover\:text-purple-300:is(:where(.group):hover *) {
       color: var(--color-purple-300);
@@ -2851,8 +3143,14 @@
       --tw-scale-z: 105%;
       scale: var(--tw-scale-x) var(--tw-scale-y);
     }
-    .hover\:scale-\[1\.02\]:hover {
-      scale: 1.02;
+    .hover\:scale-110:hover {
+      --tw-scale-x: 110%;
+      --tw-scale-y: 110%;
+      --tw-scale-z: 110%;
+      scale: var(--tw-scale-x) var(--tw-scale-y);
+    }
+    .hover\:scale-\[1\.03\]:hover {
+      scale: 1.03;
     }
     .hover\:border-purple-500\/50:hover {
       border-color: color-mix(in srgb, oklch(62.7% 0.265 303.9) 50%, transparent);
@@ -2868,6 +3166,14 @@
     @supports (color: color-mix(in lab, red, red)) {
       .hover\:border-sky-300\/60:hover {
         border-color: color-mix(in oklab, var(--color-sky-300) 60%, transparent);
+      }
+    }
+    .hover\:border-sky-400\/60:hover {
+      border-color: color-mix(in srgb, oklch(74.6% 0.16 232.661) 60%, transparent);
+    }
+    @supports (color: color-mix(in lab, red, red)) {
+      .hover\:border-sky-400\/60:hover {
+        border-color: color-mix(in oklab, var(--color-sky-400) 60%, transparent);
       }
     }
     .hover\:border-white\/20:hover {
@@ -2891,6 +3197,30 @@
     }
     .hover\:bg-amber-400:hover {
       background-color: var(--color-amber-400);
+    }
+    .hover\:bg-amber-600\/50:hover {
+      background-color: color-mix(in srgb, oklch(66.6% 0.179 58.318) 50%, transparent);
+    }
+    @supports (color: color-mix(in lab, red, red)) {
+      .hover\:bg-amber-600\/50:hover {
+        background-color: color-mix(in oklab, var(--color-amber-600) 50%, transparent);
+      }
+    }
+    .hover\:bg-blue-600\/50:hover {
+      background-color: color-mix(in srgb, oklch(54.6% 0.245 262.881) 50%, transparent);
+    }
+    @supports (color: color-mix(in lab, red, red)) {
+      .hover\:bg-blue-600\/50:hover {
+        background-color: color-mix(in oklab, var(--color-blue-600) 50%, transparent);
+      }
+    }
+    .hover\:bg-emerald-600\/50:hover {
+      background-color: color-mix(in srgb, oklch(59.6% 0.145 163.225) 50%, transparent);
+    }
+    @supports (color: color-mix(in lab, red, red)) {
+      .hover\:bg-emerald-600\/50:hover {
+        background-color: color-mix(in oklab, var(--color-emerald-600) 50%, transparent);
+      }
     }
     .hover\:bg-indigo-400:hover {
       background-color: var(--color-indigo-400);
@@ -2920,6 +3250,14 @@
     @supports (color: color-mix(in lab, red, red)) {
       .hover\:bg-red-500\/30:hover {
         background-color: color-mix(in oklab, var(--color-red-500) 30%, transparent);
+      }
+    }
+    .hover\:bg-red-600\/50:hover {
+      background-color: color-mix(in srgb, oklch(57.7% 0.245 27.325) 50%, transparent);
+    }
+    @supports (color: color-mix(in lab, red, red)) {
+      .hover\:bg-red-600\/50:hover {
+        background-color: color-mix(in oklab, var(--color-red-600) 50%, transparent);
       }
     }
     .hover\:bg-sky-400:hover {
@@ -3004,6 +3342,14 @@
         background-color: color-mix(in oklab, var(--color-white) 5%, transparent);
       }
     }
+    .hover\:bg-white\/10:hover {
+      background-color: color-mix(in srgb, #fff 10%, transparent);
+    }
+    @supports (color: color-mix(in lab, red, red)) {
+      .hover\:bg-white\/10:hover {
+        background-color: color-mix(in oklab, var(--color-white) 10%, transparent);
+      }
+    }
     .hover\:bg-white\/20:hover {
       background-color: color-mix(in srgb, #fff 20%, transparent);
     }
@@ -3012,12 +3358,16 @@
         background-color: color-mix(in oklab, var(--color-white) 20%, transparent);
       }
     }
+    .hover\:from-purple-400:hover {
+      --tw-gradient-from: var(--color-purple-400);
+      --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+    }
     .hover\:from-purple-500:hover {
       --tw-gradient-from: var(--color-purple-500);
       --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
     }
-    .hover\:from-sky-300:hover {
-      --tw-gradient-from: var(--color-sky-300);
+    .hover\:from-sky-200:hover {
+      --tw-gradient-from: var(--color-sky-200);
       --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
     }
     .hover\:from-sky-400:hover {
@@ -3034,6 +3384,11 @@
     }
     .hover\:from-sky-500\/40:hover {
       --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+    }
+    .hover\:via-indigo-400:hover {
+      --tw-gradient-via: var(--color-indigo-400);
+      --tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);
+      --tw-gradient-stops: var(--tw-gradient-via-stops);
     }
     .hover\:to-indigo-500:hover {
       --tw-gradient-to: var(--color-indigo-500);
@@ -3052,6 +3407,10 @@
     }
     .hover\:to-sky-400:hover {
       --tw-gradient-to: var(--color-sky-400);
+      --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+    }
+    .hover\:to-sky-500:hover {
+      --tw-gradient-to: var(--color-sky-500);
       --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
     }
     .hover\:text-amber-400:hover {
@@ -3101,6 +3460,10 @@
   .focus\:border-sky-400:focus {
     border-color: var(--color-sky-400);
   }
+  .focus\:shadow-\[0_0_0_3px_rgba\(139\,92\,246\,0\.15\)\]:focus {
+    --tw-shadow: 0 0 0 3px var(--tw-shadow-color, rgba(139,92,246,0.15));
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
   .focus\:ring-1:focus {
     --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
@@ -3149,6 +3512,9 @@
     .sm\:block {
       display: block;
     }
+    .sm\:flex {
+      display: flex;
+    }
     .sm\:inline {
       display: inline;
     }
@@ -3185,6 +3551,9 @@
     .sm\:p-8 {
       padding: calc(var(--spacing) * 8);
     }
+    .sm\:p-9 {
+      padding: calc(var(--spacing) * 9);
+    }
     .sm\:px-3 {
       padding-inline: calc(var(--spacing) * 3);
     }
@@ -3199,9 +3568,6 @@
     }
     .sm\:py-24 {
       padding-block: calc(var(--spacing) * 24);
-    }
-    .sm\:pb-0 {
-      padding-bottom: 0px;
     }
     .sm\:text-3xl {
       font-size: var(--text-3xl);
@@ -3254,6 +3620,9 @@
     }
     .md\:grid-cols-3 {
       grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .md\:grid-cols-\[1\.4fr_1fr\] {
+      grid-template-columns: 1.4fr 1fr;
     }
     .md\:flex-col {
       flex-direction: column;
@@ -3614,6 +3983,10 @@
   syntax: "*";
   inherits: false;
 }
+@property --tw-ease {
+  syntax: "*";
+  inherits: false;
+}
 @keyframes spin {
   to {
     transform: rotate(360deg);
@@ -3708,6 +4081,7 @@
       --tw-backdrop-saturate: initial;
       --tw-backdrop-sepia: initial;
       --tw-duration: initial;
+      --tw-ease: initial;
     }
   }
 }
@@ -3798,6 +4172,8 @@
 
     <!-- Background Snowfall Canvas FX -->
     <canvas id="snowCanvas" class="fixed inset-0 pointer-events-none z-10 opacity-70"></canvas>
+    <canvas id="flareCanvasLeft"  class="flare-canvas fixed top-0 left-0  h-full pointer-events-none z-[9] hidden"></canvas>
+    <canvas id="flareCanvasRight" class="flare-canvas fixed top-0 right-0 h-full pointer-events-none z-[9] hidden"></canvas>
 
     <!-- Top Sticky Navbar -->
     <header class="sticky top-0 z-40 w-full frost-glass border-b border-sky-500/20 shadow-lg">
@@ -3806,8 +4182,8 @@
                 
                 <!-- Logo &amp; Branding -->
                 <div class="flex items-center gap-3 cursor-pointer select-none shrink-0" onclick="resetSearch()">
-                    <div class="relative w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-sky-100">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v18m9-9H3m15.364 6.364l-12.728-12.728m0 12.728l12.728-12.728"/></svg>
+                    <div class="relative w-10 h-10 rounded-xl overflow-hidden bg-black flex items-center justify-center ring-1 ring-sky-400/30 shadow-[0_0_18px_rgba(56,189,248,0.35)]">
+                        <img src="https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg" alt="Tundra Network logo" class="w-full h-full object-cover" />
                     </div>
                     <div class="leading-tight">
                         <div class="text-[15px] font-medium tracking-tight text-white">
@@ -3831,62 +4207,17 @@
                             class="w-full pl-10 pr-9 py-2 text-xs font-medium bg-slate-900/90 border border-sky-500/30 rounded-2xl text-sky-100 placeholder-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:border-sky-400 transition-all shadow-inner"
                         />
                     </div>
-                </div>
-
-                <!-- Action Controls="Controls" &amp; Tool Buttons -->
+                </div>                <!-- Action Controls="Controls" &amp; Tool Buttons -->
                 <div class="flex items-center space-x-2 shrink-0">
-                    <!-- Snow Effect Toggle -->
+                    <!-- Single Unified Settings Trigger Button -->
                     <button
-                        onclick="toggleSnow()"
-                        id="snowBtn"
-                        class="p-2 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all border bg-sky-500/20 text-sky-200 border-sky-400/40 shadow-sm"
-                        title="Toggle Frost Snow Effect"
+                        onclick="openSettingsModal()"
+                        id="settingsBtn"
+                        class="px-3.5 py-2 rounded-xl text-xs font-bold text-sky-100 bg-slate-900/90 hover:bg-slate-800 border border-sky-500/35 hover:border-sky-400/60 shadow-lg shadow-sky-500/10 transition-all flex items-center gap-2 cursor-pointer group"
+                        title="Open Settings &amp; Tools"
                     >
-                        <svg class="w-4 h-4 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v18m9-9H3"/></svg>
-                        <span class="hidden md:inline text-xs" id="snowBtnLabel">Snow ON</span>
-                    </button>
-
-                    <!-- Favorites Filter Toggle -->
-                    <button
-                        onclick="toggleFavoritesFilter()"
-                        id="favFilterBtn"
-                        class="px-3 py-2 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all border bg-slate-900/60 text-sky-200 border-sky-500/30 hover:bg-slate-800"
-                    >
-                        <svg class="w-4 h-4 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>
-                        <span class="hidden sm:inline">Favorites</span>
-                        <span id="favBadgeCount" class="px-1.5 py-0.2 rounded-full text-[10px] font-bold bg-sky-500/20 text-sky-300 border border-sky-400/30">
-                            0
-                        </span>
-                    </button>
-
-                    <!-- Add Custom Game Modal Trigger -->
-                    <button
-                        onclick="openAddModal()"
-                        class="px-3 py-2 rounded-xl text-xs font-bold text-sky-200 bg-sky-500/20 hover:bg-sky-500/30 border border-sky-400/40 transition-all flex items-center gap-1.5"
-                        title="Add custom game iframe to catalog"
-                    >
-                        <svg class="w-4 h-4 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                        <span class="hidden lg:inline">Add Game</span>
-                    </button>
-
-                    <!-- Google Drive Cloud Backup Trigger -->
-                    <button
-                        onclick="openDriveModal()"
-                        class="px-3 py-2 rounded-xl text-xs font-bold text-sky-100 bg-gradient-to-r from-sky-600/30 to-indigo-600/30 hover:from-sky-500/40 hover:to-indigo-500/40 border border-sky-400/40 transition-all flex items-center gap-1.5 shadow-sm"
-                        title="Google Drive Cloud Storage &amp; Backup"
-                    >
-                        <svg class="w-4 h-4 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 1.1.9 2 2 2h12a2 2 0 002-2V7M4 7a2 2 0 012-2h12a2 2 0 012 2M4 7h16"/></svg>
-                        <span class="hidden sm:inline">Google Drive</span>
-                    </button>
-
-                    <!-- Panic Quick Hide Trigger -->
-                    <button
-                        onclick="togglePanic()"
-                        class="p-2 sm:px-3 sm:py-2 rounded-xl text-xs font-bold text-slate-300 bg-slate-800/80 hover:bg-slate-700 border border-slate-700 transition-all flex items-center gap-1.5 shadow-sm"
-                        title="Classroom Quick Hide (Press Esc)"
-                    >
-                        <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-                        <span class="hidden sm:inline text-xs">Panic (Esc)</span>
+                        <svg class="w-4 h-4 text-sky-400 group-hover:rotate-45 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        <span>Settings</span>
                     </button>
                 </div>
             </div>
@@ -3981,7 +4312,7 @@
                     <h1 class="text-white font-light leading-[0.95] tracking-tight text-5xl sm:text-6xl md:text-7xl mb-8">
                         A quieter way to<br/>
                         <span class="font-serif italic font-normal text-sky-100">browse, play,</span>
-                        <span id="typewriterWord" class="font-serif italic font-normal text-sky-200">experience</span><span class="ml-1 inline-block w-[2px] h-[0.9em] align-middle bg-sky-200/80 animate-pulse"></span>
+                        <span id="typewriterWord" class="font-serif italic font-normal text-sky-200">bypass</span><span class="ml-1 inline-block w-[2px] h-[0.9em] align-middle bg-sky-200/80 animate-pulse"></span>
                     </h1>
 
                     <p class="max-w-xl text-base sm:text-lg text-sky-100/70 leading-relaxed font-normal mb-10">
@@ -4056,37 +4387,71 @@
             <main id="viewGames" class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-4 relative z-10">
                 
                 <!-- Spotlight Hero Banner -->
-                <div id="heroBanner" class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900 via-sky-950 to-indigo-950 border border-sky-500/30 shadow-2xl p-6 sm:p-8 mb-8">
-                    <div class="absolute -right-10 -bottom-10 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
-                    <div class="relative z-10 max-w-2xl">
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-gradient-to-r from-sky-500 to-indigo-500 text-slate-950 shadow-md">
-                                TUNDRA SPOTLIGHT
-                            </span>
-                            <span class="text-xs font-bold text-sky-300 flex items-center gap-1">
-                                ★ 4.9 Rating &#8226; <span id="heroTotalGames">15</span> Games
-                            </span>
+                <div id="heroBanner" class="relative overflow-hidden rounded-3xl border border-sky-500/25 shadow-2xl mb-8">
+                    <div class="tn-grid absolute inset-0 opacity-40"></div>
+                    <div class="hero-orbit"></div>
+                    <div class="absolute inset-0 bg-gradient-to-br from-slate-950/85 via-sky-950/60 to-indigo-950/80"></div>
+                    <div class="tn-scan"></div>
+                    <div class="relative z-10 p-6 sm:p-9 grid grid-cols-1 md:grid-cols-[1.4fr_1fr] gap-6 items-center">
+                        <div class="max-w-2xl">
+                            <div class="flex flex-wrap items-center gap-2 mb-4">
+                                <span class="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.18em] bg-gradient-to-r from-sky-400 to-indigo-400 text-slate-950 shadow-md">
+                                    ◆ Tundra Spotlight
+                                </span>
+                                <span class="glow-chip rating">★ 4.9</span>
+                                <span class="glow-chip"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>Live · <span id="heroTotalGames">15</span> games</span>
+                                <span class="glow-chip">◇ Instant Play</span>
+                            </div>
+                            <p class="text-[11px] font-mono uppercase tracking-[0.3em] text-sky-300/70 mb-2">Featured / Arcade / Endless Runner</p>
+                            <h1 id="heroTitle" class="text-4xl sm:text-5xl font-black text-white tracking-tight mb-3 drop-shadow-[0_2px_20px_rgba(56,189,248,0.35)]">
+                                Jetpack Joyride
+                            </h1>
+                            <p id="heroDesc" class="text-sm text-sky-100/85 leading-relaxed mb-6 font-medium max-w-xl">
+                                Fly with bullet-powered jetpacks as Barry Steakfries! Dodge zappers, laser beams, and homing missiles while collecting coins and crazy vehicles in an endless laboratory run.
+                            </p>
+                            <div class="flex items-center gap-3 flex-wrap">
+                                <button onclick="playHeroGame()" class="tn-sheen px-6 py-3 rounded-2xl bg-gradient-to-r from-sky-300 to-sky-500 hover:from-sky-200 hover:to-sky-400 text-slate-950 font-black text-sm shadow-lg shadow-sky-500/40 transition-all flex items-center gap-2 hover:scale-[1.03] active:scale-95 cursor-pointer">
+                                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                    <span>PLAY NOW</span>
+                                </button>
+                                <div class="hidden sm:flex items-center gap-3 pl-2 text-[11px] font-mono text-sky-300/70">
+                                    <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>1080p</span>
+                                    <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>Cloud</span>
+                                    <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>No login</span>
+                                </div>
+                            </div>
                         </div>
-                        <h1 id="heroTitle" class="text-3xl sm:text-4xl font-black text-white tracking-tight mb-3 drop-shadow-md">
-                            Jetpack Joyride
-                        </h1>
-                        <p id="heroDesc" class="text-xs sm:text-sm text-sky-200/90 leading-relaxed mb-6 font-medium">
-                            Fly with bullet-powered jetpacks as Barry Steakfries! Dodge zappers, laser beams, and homing missiles while collecting coins and crazy vehicles in an endless laboratory run.
-                        </p>
-                        <div class="flex items-center gap-3">
-                            <button onclick="playHeroGame()" class="px-6 py-3 rounded-2xl bg-gradient-to-r from-sky-400 to-sky-500 hover:from-sky-300 hover:to-sky-400 text-slate-950 font-black text-sm shadow-lg shadow-sky-500/30 transition-all flex items-center gap-2 hover:scale-105 active:scale-95 cursor-pointer">
-                                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                <span>PLAY NOW</span>
-                            </button>
+                        <!-- HUD side panel -->
+                        <div class="hidden md:block relative">
+                            <div class="tn-holo rounded-2xl p-4 bg-slate-950/60 border border-white/5">
+                                <div class="text-[10px] font-mono uppercase tracking-[0.24em] text-sky-300/70 mb-3">Network Status</div>
+                                <div class="grid grid-cols-2 gap-3 text-[11px]">
+                                    <div><div class="text-sky-300/60 font-mono">LATENCY</div><div class="text-white font-black text-lg">12<span class="text-xs text-sky-300/70 font-medium ml-0.5">ms</span></div></div>
+                                    <div><div class="text-sky-300/60 font-mono">UPTIME</div><div class="text-emerald-400 font-black text-lg">99.9%</div></div>
+                                    <div><div class="text-sky-300/60 font-mono">CACHE</div><div class="text-white font-black text-lg">HIT</div></div>
+                                    <div><div class="text-sky-300/60 font-mono">REGION</div><div class="text-white font-black text-lg">GLC-01</div></div>
+                                </div>
+                                <div class="mt-3 flex items-end gap-1 h-6">
+                                    <span class="tn-bar" style="height:30%"></span>
+                                    <span class="tn-bar" style="height:60%"></span>
+                                    <span class="tn-bar" style="height:45%"></span>
+                                    <span class="tn-bar" style="height:85%"></span>
+                                    <span class="tn-bar" style="height:70%"></span>
+                                    <span class="tn-bar" style="height:55%"></span>
+                                    <span class="tn-bar dim" style="height:40%"></span>
+                                    <span class="tn-bar dim" style="height:65%"></span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Category Pills &amp; Sorting Bar -->
-                <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 mb-6">
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 mb-6 p-3 rounded-2xl bg-slate-950/40 border border-sky-500/15 backdrop-blur-md">
                     <!-- Categories -->
-                    <div id="categoryBar" class="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0 scrollbar-none">
-                        <button onclick="selectCategory('All', this)" class="cat-btn px-4 py-2 rounded-xl text-xs font-extrabold transition-all border bg-sky-500 text-slate-950 border-sky-400 shadow-md">
+                    <div class="cat-scroll-wrap flex-1 min-w-0">
+                    <div id="categoryBar" class="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar">
+                        <button onclick="selectCategory('All', this)" class="cat-btn is-active px-4 py-2 rounded-xl text-xs font-extrabold transition-all border bg-sky-500 text-slate-950 border-sky-400 shadow-md">
                             All Games
                         </button>
                         <button onclick="selectCategory('Favorites', this)" class="cat-btn px-4 py-2 rounded-xl text-xs font-extrabold transition-all border bg-slate-900/80 text-sky-200 border-sky-500/30 hover:bg-slate-800">
@@ -4120,6 +4485,7 @@
                         <button onclick="selectCategory('Strategy', this)" class="cat-btn px-4 py-2 rounded-xl text-xs font-extrabold transition-all border bg-slate-900/80 text-sky-200 border-sky-500/30 hover:bg-slate-800">
                             Strategy
                         </button>
+                    </div>
                     </div>
 
                     <!-- Sort Dropdown -->
@@ -4168,67 +4534,122 @@
 
                 <!-- Proxy Address Bar -->
                 <form id="uvForm" onsubmit="handleProxySubmit(event)" class="w-full max-w-3xl mx-auto mb-8">
-                    <div class="flex flex-col sm:flex-row items-stretch gap-2 p-2 bg-slate-900/90 border border-purple-500/30 rounded-2xl shadow-2xl backdrop-blur-md focus-within:border-purple-400 transition-all">
-                        <select id="proxyEngine" class="bg-slate-800 text-sky-200 text-xs font-bold py-2.5 px-3 rounded-xl border border-sky-500/20 focus:outline-none focus:border-purple-400 cursor-pointer">
-                            <option value="google">Google</option>
-                            <option value="duckduckgo">DuckDuckGo</option>
-                            <option value="bing">Bing</option>
-                            <option value="brave">Brave Search</option>
-                        </select>
-                        <div class="flex-1 relative flex items-center">
-                            <input id="proxyAddress" type="text" placeholder="Search the web freely or enter URL (e.g. wikipedia.org)..." class="w-full pl-4 pr-4 py-2.5 bg-slate-950/80 border border-slate-800 rounded-xl text-xs sm:text-sm text-white placeholder-sky-400/50 focus:outline-none focus:border-purple-500 transition-all" />
+                    <div class="flex items-center justify-between mb-2 px-1 text-[10px] font-mono uppercase tracking-[0.24em]">
+                        <div class="flex items-center gap-3 text-sky-300/70">
+                            <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>Encrypted TLS</span>
+                            <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>Bare v3</span>
+                            <span class="hidden sm:flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>SW Ready</span>
                         </div>
-                        <button type="submit" class="px-5 py-2.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white text-xs font-extrabold rounded-xl shadow-lg shadow-purple-600/30 transition-all cursor-pointer">
-                            Unblock
+                        <span class="text-purple-300/80">TN-PROXY / v2.0</span>
+                    </div>
+                    <div class="tn-holo relative rounded-2xl">
+                    <div class="relative flex flex-col sm:flex-row items-stretch gap-2 p-2 bg-slate-950/90 border border-purple-500/25 rounded-2xl shadow-2xl backdrop-blur-md focus-within:border-purple-400 transition-all overflow-hidden">
+                        <div class="tn-scan"></div>
+                        <div class="flex items-center gap-2 pl-2 pr-1 relative z-10">
+                            <svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 11V7a4 4 0 118 0v4M5 11h14v10H5V11z"/></svg>
+                            <select id="proxyEngine" class="bg-slate-900 text-sky-200 text-xs font-bold py-2.5 px-3 rounded-xl border border-sky-500/20 focus:outline-none focus:border-purple-400 cursor-pointer">
+                                <option value="google">Google</option>
+                                <option value="duckduckgo">DuckDuckGo</option>
+                                <option value="bing">Bing</option>
+                                <option value="brave">Brave Search</option>
+                            </select>
+                        </div>
+                        <div class="flex-1 relative flex items-center z-10">
+                            <span class="absolute left-3 text-purple-300/70 font-mono text-xs pointer-events-none">tn://</span>
+                            <input id="proxyAddress" type="text" placeholder="search or paste a URL — wikipedia.org, youtube.com…" class="w-full pl-14 pr-4 py-2.5 bg-slate-900/80 border border-slate-800 rounded-xl text-xs sm:text-sm text-white placeholder-sky-400/40 focus:outline-none focus:border-purple-500 focus:shadow-[0_0_0_3px_rgba(139,92,246,0.15)] transition-all font-mono" />
+                        </div>
+                        <button type="submit" class="tn-sheen relative z-10 px-6 py-2.5 bg-gradient-to-r from-purple-500 via-indigo-500 to-sky-500 hover:from-purple-400 hover:via-indigo-400 hover:to-sky-400 text-white text-xs font-black tracking-wider rounded-xl shadow-lg shadow-purple-600/30 transition-all cursor-pointer flex items-center gap-2">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                            UNBLOCK
                         </button>
+                    </div>
                     </div>
                 </form>
 
                 <!-- Popular Unblocked Shortcuts -->
                 <div id="proxyShortcuts" class="w-full max-w-3xl mx-auto mb-8">
-                    <h2 class="text-xs font-bold text-purple-300 uppercase tracking-wider mb-3">Popular Unblocked Shortcuts</h2>
+                    <div class="flex items-center justify-between mb-3 px-1">
+                        <h2 class="text-[10px] font-mono uppercase tracking-[0.28em] text-purple-300">◆ Popular Unblocked Shortcuts</h2>
+                        <span class="text-[10px] font-mono uppercase tracking-[0.22em] text-sky-300/60">6 pinned</span>
+                    </div>
                     <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                        <button onclick="navigateProxy('https://www.google.com')" class="p-3.5 bg-slate-900/80 hover:bg-slate-800/90 border border-sky-500/20 hover:border-purple-500/50 rounded-2xl text-left transition-all group">
-                            <div class="flex items-center gap-2 mb-1">
-                                <span class="text-xl">🔍</span>
-                                <span class="font-bold text-sm text-white group-hover:text-purple-300">Google</span>
+                        <button onclick="navigateProxy('https://www.google.com')" class="prox-card tn-sheen text-left group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="prox-orb">🔍</div>
+                                <div>
+                                    <div class="font-black text-sm text-white group-hover:text-purple-200">Google</div>
+                                    <div class="text-[10px] font-mono uppercase tracking-[0.18em] text-sky-300/60">google.com</div>
+                                </div>
                             </div>
-                            <p class="text-[11px] text-sky-300/70">Web Search Engine</p>
+                            <div class="flex items-center justify-between text-[10px] font-mono">
+                                <span class="text-sky-300/70">Search engine</span>
+                                <span class="text-purple-300 group-hover:translate-x-0.5 transition-transform">OPEN ▸</span>
+                            </div>
                         </button>
-                        <button onclick="navigateProxy('https://duckduckgo.com')" class="p-3.5 bg-slate-900/80 hover:bg-slate-800/90 border border-sky-500/20 hover:border-purple-500/50 rounded-2xl text-left transition-all group">
-                            <div class="flex items-center gap-2 mb-1">
-                                <span class="text-xl">🦆</span>
-                                <span class="font-bold text-sm text-white group-hover:text-purple-300">DuckDuckGo</span>
+                        <button onclick="navigateProxy('https://duckduckgo.com')" class="prox-card tn-sheen text-left group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="prox-orb">🦆</div>
+                                <div>
+                                    <div class="font-black text-sm text-white group-hover:text-purple-200">DuckDuckGo</div>
+                                    <div class="text-[10px] font-mono uppercase tracking-[0.18em] text-sky-300/60">duckduckgo.com</div>
+                                </div>
                             </div>
-                            <p class="text-[11px] text-sky-300/70">Privacy Search</p>
+                            <div class="flex items-center justify-between text-[10px] font-mono">
+                                <span class="text-sky-300/70">Private search</span>
+                                <span class="text-purple-300 group-hover:translate-x-0.5 transition-transform">OPEN ▸</span>
+                            </div>
                         </button>
-                        <button onclick="navigateProxy('https://www.wikipedia.org')" class="p-3.5 bg-slate-900/80 hover:bg-slate-800/90 border border-sky-500/20 hover:border-purple-500/50 rounded-2xl text-left transition-all group">
-                            <div class="flex items-center gap-2 mb-1">
-                                <span class="text-xl">🌐</span>
-                                <span class="font-bold text-sm text-white group-hover:text-purple-300">Wikipedia</span>
+                        <button onclick="navigateProxy('https://www.wikipedia.org')" class="prox-card tn-sheen text-left group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="prox-orb">🌐</div>
+                                <div>
+                                    <div class="font-black text-sm text-white group-hover:text-purple-200">Wikipedia</div>
+                                    <div class="text-[10px] font-mono uppercase tracking-[0.18em] text-sky-300/60">wikipedia.org</div>
+                                </div>
                             </div>
-                            <p class="text-[11px] text-sky-300/70">Free Encyclopedia</p>
+                            <div class="flex items-center justify-between text-[10px] font-mono">
+                                <span class="text-sky-300/70">Encyclopedia</span>
+                                <span class="text-purple-300 group-hover:translate-x-0.5 transition-transform">OPEN ▸</span>
+                            </div>
                         </button>
-                        <button onclick="navigateProxy('https://archive.org')" class="p-3.5 bg-slate-900/80 hover:bg-slate-800/90 border border-sky-500/20 hover:border-purple-500/50 rounded-2xl text-left transition-all group">
-                            <div class="flex items-center gap-2 mb-1">
-                                <span class="text-xl">🏛️</span>
-                                <span class="font-bold text-sm text-white group-hover:text-purple-300">Archive.org</span>
+                        <button onclick="navigateProxy('https://archive.org')" class="prox-card tn-sheen text-left group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="prox-orb">🏛️</div>
+                                <div>
+                                    <div class="font-black text-sm text-white group-hover:text-purple-200">Archive.org</div>
+                                    <div class="text-[10px] font-mono uppercase tracking-[0.18em] text-sky-300/60">archive.org</div>
+                                </div>
                             </div>
-                            <p class="text-[11px] text-sky-300/70">Internet Archive</p>
+                            <div class="flex items-center justify-between text-[10px] font-mono">
+                                <span class="text-sky-300/70">Internet archive</span>
+                                <span class="text-purple-300 group-hover:translate-x-0.5 transition-transform">OPEN ▸</span>
+                            </div>
                         </button>
-                        <button onclick="navigateProxy('https://github.com')" class="p-3.5 bg-slate-900/80 hover:bg-slate-800/90 border border-sky-500/20 hover:border-purple-500/50 rounded-2xl text-left transition-all group">
-                            <div class="flex items-center gap-2 mb-1">
-                                <span class="text-xl">🐙</span>
-                                <span class="font-bold text-sm text-white group-hover:text-purple-300">GitHub</span>
+                        <button onclick="navigateProxy('https://github.com')" class="prox-card tn-sheen text-left group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="prox-orb">🐙</div>
+                                <div>
+                                    <div class="font-black text-sm text-white group-hover:text-purple-200">GitHub</div>
+                                    <div class="text-[10px] font-mono uppercase tracking-[0.18em] text-sky-300/60">github.com</div>
+                                </div>
                             </div>
-                            <p class="text-[11px] text-sky-300/70">Code Repository</p>
+                            <div class="flex items-center justify-between text-[10px] font-mono">
+                                <span class="text-sky-300/70">Code repository</span>
+                                <span class="text-purple-300 group-hover:translate-x-0.5 transition-transform">OPEN ▸</span>
+                            </div>
                         </button>
-                        <button onclick="navigateProxy('https://www.ecosia.org')" class="p-3.5 bg-slate-900/80 hover:bg-slate-800/90 border border-sky-500/20 hover:border-purple-500/50 rounded-2xl text-left transition-all group">
-                            <div class="flex items-center gap-2 mb-1">
-                                <span class="text-xl">🌱</span>
-                                <span class="font-bold text-sm text-white group-hover:text-purple-300">Ecosia</span>
+                        <button onclick="navigateProxy('https://www.ecosia.org')" class="prox-card tn-sheen text-left group">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="prox-orb">🌱</div>
+                                <div>
+                                    <div class="font-black text-sm text-white group-hover:text-purple-200">Ecosia</div>
+                                    <div class="text-[10px] font-mono uppercase tracking-[0.18em] text-sky-300/60">ecosia.org</div>
+                                </div>
                             </div>
-                            <p class="text-[11px] text-sky-300/70">Green Search</p>
+                            <div class="flex items-center justify-between text-[10px] font-mono">
+                                <span class="text-sky-300/70">Green search</span>
+                                <span class="text-purple-300 group-hover:translate-x-0.5 transition-transform">OPEN ▸</span>
+                            </div>
                         </button>
                     </div>
                 </div>
@@ -4247,12 +4668,31 @@
                 </div>
 
                 <!-- Diagnostics Console -->
-                <div class="w-full max-w-3xl mx-auto bg-slate-950/90 border border-purple-500/20 rounded-2xl p-4 shadow-xl mb-8">
-                    <div class="text-xs font-bold text-purple-300 mb-2">Ultraviolet Service Worker Diagnostics</div>
-                    <div class="bg-slate-900/90 p-3 rounded-xl font-mono text-[11px] text-sky-300 space-y-1">
-                        <p class="text-emerald-400 font-semibold">Status: Active &#8226; ServiceWorker Scope: /uv/ &#8226; BareMux Engine Ready</p>
-                        <p class="text-sky-400/80 text-[10px]">[BareMux] Initializing transport route...</p>
-                        <p class="text-sky-400/80 text-[10px]">[UV-SW] Service worker registered on scope /uv/sw.js</p>
+                <div class="w-full max-w-3xl mx-auto bg-slate-950/90 border border-purple-500/20 rounded-2xl shadow-xl mb-8 overflow-hidden">
+                    <div class="flex items-center justify-between px-4 py-2 bg-slate-900/80 border-b border-purple-500/15">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-red-500/70"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-amber-400/70"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400/70"></span>
+                            <span class="ml-2 text-[11px] font-mono text-sky-300/80">tn-proxy · diagnostics.log</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-[10px] font-mono text-sky-300/70">
+                            <span class="flex items-end gap-0.5 h-3">
+                                <span class="tn-bar" style="height:40%"></span>
+                                <span class="tn-bar" style="height:70%"></span>
+                                <span class="tn-bar" style="height:55%"></span>
+                                <span class="tn-bar" style="height:90%"></span>
+                            </span>
+                            <span>UP 00:47:12</span>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-slate-950 font-mono text-[11px] space-y-1.5">
+                        <p><span class="text-emerald-400">✔ status</span> <span class="text-sky-300/80">tn-proxy active · scope /api/proxy · engine bare-v3</span></p>
+                        <p><span class="text-purple-300">→ init</span> <span class="text-sky-300/70">initializing transport route (region GLC-01)</span></p>
+                        <p><span class="text-purple-300">→ swreg</span> <span class="text-sky-300/70">service worker registered</span> <span class="text-emerald-400">ok</span></p>
+                        <p><span class="text-purple-300">→ tls</span> <span class="text-sky-300/70">handshake complete · cipher TLS_AES_256_GCM_SHA384</span></p>
+                        <p><span class="text-purple-300">→ adblk</span> <span class="text-sky-300/70">blocklist loaded · 50 hosts</span></p>
+                        <p><span class="text-sky-300/60 tn-caret">$ tn-proxy ready — awaiting request </span></p>
                     </div>
                 </div>
             </main>
@@ -4271,6 +4711,162 @@
                     </div>
                 </div>
             </footer>
+        </div>
+    </div>
+
+    <!-- Settings &amp; Customization Modal -->
+    <div id="settingsModal" class="fixed inset-0 z-50 hidden bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="w-full max-w-2xl bg-slate-900 rounded-2xl border border-sky-500/30 overflow-hidden shadow-2xl text-sky-100 max-h-[90vh] flex flex-col">
+            <!-- Modal Header -->
+            <div class="bg-gradient-to-r from-sky-600 via-indigo-600 to-purple-600 p-5 text-white flex items-center justify-between shrink-0">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-xl bg-slate-950/50 flex items-center justify-center border border-white/20">
+                        <svg class="w-5 h-5 text-sky-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    </div>
+                    <div>
+                        <h2 class="text-lg font-bold">Control Panel &amp; Settings</h2>
+                        <p class="text-xs text-sky-100/80">Tab cloaking, stealth launcher, preferences &amp; tools</p>
+                    </div>
+                </div>
+                <button onclick="closeSettingsModal()" class="text-white hover:text-sky-200 text-lg font-bold w-8 h-8 rounded-lg flex items-center justify-center hover:bg-white/10 transition-colors">✕</button>
+            </div>
+
+            <!-- Modal Content (Scrollable) -->
+            <div class="p-6 overflow-y-auto space-y-6 flex-1 text-xs">
+
+                <!-- 1. TAB CLOAKER / NAME CHANGER SECTION -->
+                <div class="p-4 bg-slate-950/70 rounded-xl border border-sky-500/20 space-y-3">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <span class="text-base">🏷️</span>
+                            <div>
+                                <h3 class="font-bold text-sm text-white">Tab Cloaking &amp; Masking</h3>
+                                <p class="text-[11px] text-sky-300/70">Change browser tab name and favicon to disguise the portal</p>
+                            </div>
+                        </div>
+                        <span id="currentCloakBadge" class="px-2.5 py-1 rounded-full text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                            Active: Default
+                        </span>
+                    </div>
+
+                    <!-- Preset Quick Cloak Buttons -->
+                    <div class="flex flex-wrap gap-2 pt-1">
+                        <button onclick="cloakGoogleClassroom()" class="px-3 py-2 rounded-xl bg-emerald-600/30 hover:bg-emerald-600/50 border border-emerald-400/40 text-emerald-200 font-bold flex items-center gap-2 transition-all cursor-pointer">
+                            <img src="https://ssl.gstatic.com/classroom/favicon.png" class="w-4 h-4 rounded" alt="Classroom" />
+                            <span>Set to "Google Classroom"</span>
+                        </button>
+                        <button onclick="cloakGoogleDocs()" class="px-3 py-2 rounded-xl bg-blue-600/30 hover:bg-blue-600/50 border border-blue-400/40 text-blue-200 font-bold flex items-center gap-2 transition-all cursor-pointer">
+                            <img src="https://ssl.gstatic.com/docs/documents/images/kix-favicon7.ico" class="w-4 h-4 rounded" alt="Docs" />
+                            <span>Google Docs</span>
+                        </button>
+                        <button onclick="cloakGoogleDrive()" class="px-3 py-2 rounded-xl bg-amber-600/30 hover:bg-amber-600/50 border border-amber-400/40 text-amber-200 font-bold flex items-center gap-2 transition-all cursor-pointer">
+                            <img src="https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_32dp.png" class="w-4 h-4 rounded" alt="Drive" />
+                            <span>Google Drive</span>
+                        </button>
+                        <button onclick="cloakCanvas()" class="px-3 py-2 rounded-xl bg-red-600/30 hover:bg-red-600/50 border border-red-400/40 text-red-200 font-bold flex items-center gap-2 transition-all cursor-pointer">
+                            <span class="w-4 h-4 rounded bg-red-500 text-white font-extrabold text-[10px] flex items-center justify-center">C</span>
+                            <span>Canvas LMS</span>
+                        </button>
+                        <button onclick="resetTabTitle()" class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-sky-300 font-bold flex items-center gap-1.5 transition-all cursor-pointer">
+                            <span>Reset to Default</span>
+                        </button>
+                    </div>
+
+                    <!-- Custom Title Input -->
+                    <div class="pt-2 flex items-center gap-2">
+                        <input id="customTabTitleInput" type="text" placeholder="Custom tab title..." class="flex-1 px-3 py-2 bg-slate-900 border border-sky-500/30 rounded-xl text-white outline-none focus:border-sky-400 text-xs" />
+                        <button onclick="applyCustomTabTitle()" class="px-4 py-2 bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold rounded-xl transition-all cursor-pointer">
+                            Apply Title
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 2. ABOUT:BLANK TAB LAUNCHER -->
+                <div class="p-4 bg-slate-950/70 rounded-xl border border-purple-500/25 space-y-3">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <span class="text-base">🚀</span>
+                            <div>
+                                <h3 class="font-bold text-sm text-white">about:blank Stealth Tab Launcher</h3>
+                                <p class="text-[11px] text-purple-300/70">Launches Tundra Network inside a clean <code class="bg-purple-950/80 px-1 py-0.5 rounded text-purple-200">about:blank</code> browser tab</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-[11.5px] text-sky-200/70 leading-relaxed">
+                        Running inside an <code class="text-purple-300 font-mono">about:blank</code> tab embeds all games, proxy tools, and features in a clean window to prevent URLs from appearing in browser history.
+                    </p>
+                    <button onclick="openAboutBlank()" class="w-full py-2.5 px-4 bg-gradient-to-r from-purple-600 via-indigo-600 to-sky-600 hover:from-purple-500 hover:to-sky-500 text-white font-black text-xs tracking-wider rounded-xl shadow-lg shadow-purple-600/30 transition-all flex items-center justify-center gap-2 cursor-pointer">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+                        <span>LAUNCH IN ABOUT:BLANK TAB</span>
+                    </button>
+                </div>
+
+                <!-- 3. PANIC GUARD / MASK -->
+                <div class="p-4 bg-slate-950/70 rounded-xl border border-slate-700/80 space-y-3">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <span class="text-base">🔒</span>
+                            <div>
+                                <h3 class="font-bold text-sm text-white">Classroom Panic Guard</h3>
+                                <p class="text-[11px] text-slate-400">Instantly disguises screen as a Google Doc / Research Paper</p>
+                            </div>
+                        </div>
+                        <button onclick="togglePanic()" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-600 rounded-xl font-bold text-xs flex items-center gap-1.5 transition-all cursor-pointer">
+                            <span>Trigger Panic Mask (Esc)</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 4. QUICK TOOLS &amp; MANAGEMENT -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <!-- Add Custom Game -->
+                    <div class="p-4 bg-slate-950/70 rounded-xl border border-sky-500/20 flex flex-col justify-between gap-3">
+                        <div>
+                            <h4 class="font-bold text-xs text-white flex items-center gap-1.5">
+                                <span class="text-sky-400">➕</span> Add Custom Game
+                            </h4>
+                            <p class="text-[11px] text-sky-300/70 mt-1">Import external game URLs into your local catalog</p>
+                        </div>
+                        <button onclick="closeSettingsModal(); openAddModal();" class="w-full py-2 bg-sky-500/20 hover:bg-sky-500/30 text-sky-200 border border-sky-400/40 rounded-xl font-bold text-xs transition-all cursor-pointer">
+                            Add Game Iframe
+                        </button>
+                    </div>
+
+                    <!-- Google Drive Backup -->
+                    <div class="p-4 bg-slate-950/70 rounded-xl border border-sky-500/20 flex flex-col justify-between gap-3">
+                        <div>
+                            <h4 class="font-bold text-xs text-white flex items-center gap-1.5">
+                                <span class="text-sky-400">☁️</span> Cloud Storage Backup
+                            </h4>
+                            <p class="text-[11px] text-sky-300/70 mt-1">Export / import backup JSON file to Google Drive</p>
+                        </div>
+                        <button onclick="closeSettingsModal(); openDriveModal();" class="w-full py-2 bg-indigo-500/20 hover:bg-indigo-500/30 text-indigo-200 border border-indigo-400/40 rounded-xl font-bold text-xs transition-all cursor-pointer">
+                            Google Drive Backup
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 5. VISUAL PREFERENCES -->
+                <div class="p-4 bg-slate-950/70 rounded-xl border border-sky-500/20 flex items-center justify-between">
+                    <div>
+                        <h4 class="font-bold text-xs text-white flex items-center gap-1.5">
+                            <span>❄️</span> Snowfall FX
+                        </h4>
+                        <p class="text-[11px] text-sky-300/70 mt-0.5">Toggle ambient snow canvas animation</p>
+                    </div>
+                    <button onclick="toggleSnow()" id="settingsSnowBtn" class="px-4 py-2 bg-sky-500/20 text-sky-200 border border-sky-400/40 rounded-xl font-bold text-xs transition-all cursor-pointer">
+                        Snow ON
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="p-4 bg-slate-950 border-t border-sky-500/20 flex justify-end shrink-0">
+                <button onclick="closeSettingsModal()" class="px-5 py-2 bg-slate-800 hover:bg-slate-700 text-sky-200 rounded-xl font-bold text-xs transition-all cursor-pointer">
+                    Done
+                </button>
+            </div>
         </div>
     </div>
 
@@ -4975,36 +5571,43 @@
                 filtered.forEach(game => {
                     const isFav = favorites.includes(game.id);
                     const card = document.createElement('div');
-                    card.className = "frost-card rounded-2xl overflow-hidden cursor-pointer transition-all hover:scale-[1.02] flex flex-col group relative";
+                    card.className = "game-card tn-sheen cursor-pointer flex flex-col group";
                     card.onclick = () => openGame(game);
 
                     const isGn = game.isGnMath || (game.tags &amp;&amp; game.tags.includes('gn-math'));
 
                     card.innerHTML = `
-                        <div class="relative aspect-video w-full overflow-hidden bg-slate-900">
-                            <img src="${game.thumbnail}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" alt="${game.title}" loading="lazy" />
-                            <div class="absolute top-2 left-2 flex items-center gap-1">
-                                <span class="px-2 py-0.5 rounded-full text-[10px] font-black bg-slate-950/80 text-amber-400 border border-amber-400/30">
-                                    ★ ${game.rating}
-                                </span>
-                                ${isGn ? `<span class="px-2 py-0.5 rounded-full text-[10px] font-black bg-slate-950/90 text-cyan-300 border border-cyan-400/60 shadow-md flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>GN</span>` : ''}
-                                ${game.isCustom ? `<span class="px-2 py-0.5 rounded-full text-[10px] font-black bg-purple-500/80 text-white">CUSTOM</span>` : ''}
+                        <div class="thumb aspect-video w-full bg-slate-900">
+                            <img src="${game.thumbnail}" class="w-full h-full object-cover group-hover:scale-[1.08] transition-transform duration-500 ease-out" alt="${game.title}" loading="lazy" />
+                            <div class="absolute top-2.5 left-2.5 flex items-center gap-1.5 z-10">
+                                <span class="glow-chip rating">★ ${game.rating}</span>
+                                ${isGn ? `<span class="glow-chip gn"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>GN MATH</span>` : ''}
+                                ${game.isCustom ? `<span class="glow-chip custom">✦ CUSTOM</span>` : ''}
                             </div>
-                            <button onclick="toggleFav(event, '${game.id}')" class="absolute top-2 right-2 p-1.5 rounded-full bg-slate-950/80 text-sky-200 hover:text-amber-400 transition-colors">
-                                <span class="${isFav ? 'text-amber-400 font-bold' : 'opacity-60'}">★</span>
+                            <button onclick="toggleFav(event, '${game.id}')" class="absolute top-2.5 right-2.5 z-10 w-8 h-8 rounded-full bg-slate-950/80 border border-white/10 backdrop-blur-md text-lg leading-none flex items-center justify-center transition-transform hover:scale-110">
+                                <span class="${isFav ? 'text-amber-400 drop-shadow-[0_0_6px_rgba(252,211,77,0.9)]' : 'text-sky-200/60'}">★</span>
                             </button>
-                        </div>
-                        <div class="p-4 flex-1 flex flex-col justify-between">
-                            <div>
-                                <div class="flex items-center justify-between gap-2 mb-1">
-                                    <h3 class="font-extrabold text-sm text-white group-hover:text-sky-300 transition-colors truncate">${game.title}</h3>
-                                    <span class="text-[10px] font-bold text-sky-400 px-2 py-0.5 rounded-md bg-sky-500/10 border border-sky-400/20">${game.category}</span>
-                                </div>
-                                <p class="text-[11px] text-sky-200/70 line-clamp-2 leading-relaxed">${game.description}</p>
+                            <div class="play-orb z-10">
+                                <span class="play-orb-ring"></span>
+                                <span class="play-orb-core">
+                                    <svg class="w-6 h-6 fill-current translate-x-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                </span>
                             </div>
-                            <div class="mt-3 pt-3 border-t border-sky-500/10 flex items-center justify-between text-[11px]">
-                                <span class="text-sky-400 font-semibold">${game.plays || '100K'} plays</span>
-                                <span class="text-sky-300 font-bold group-hover:translate-x-1 transition-transform">Play ▶</span>
+                            <div class="absolute bottom-2.5 left-2.5 right-2.5 z-10 flex items-end justify-between gap-2 pointer-events-none">
+                                <div class="min-w-0">
+                                    <div class="text-[9px] font-mono uppercase tracking-[0.22em] text-sky-300/80">${game.category}</div>
+                                    <h3 class="font-black text-[15px] text-white truncate drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]">${game.title}</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-3.5 flex-1 flex flex-col justify-between gap-3">
+                            <p class="text-[11.5px] text-sky-100/70 line-clamp-2 leading-relaxed">${game.description}</p>
+                            <div class="flex items-center justify-between text-[11px] pt-2.5 border-t border-white/5">
+                                <div class="flex items-center gap-3 text-sky-300/70 font-mono">
+                                    <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>${game.plays || '100K'}</span>
+                                    <span class="flex items-center gap-1.5"><span class="w-1 h-1 rounded-full bg-sky-400"></span>1080p</span>
+                                </div>
+                                <span class="text-sky-200 font-black tracking-wider group-hover:text-sky-300 group-hover:translate-x-0.5 transition-transform">PLAY ▸</span>
                             </div>
                         </div>
                     `;
@@ -5023,7 +5626,7 @@
             document.querySelectorAll('.cat-btn').forEach(b => {
                 b.className = "cat-btn px-4 py-2 rounded-xl text-xs font-extrabold transition-all border bg-slate-900/80 text-sky-200 border-sky-500/30 hover:bg-slate-800";
             });
-            btnElem.className = "cat-btn px-4 py-2 rounded-xl text-xs font-extrabold transition-all border bg-sky-500 text-slate-950 border-sky-400 shadow-md";
+            btnElem.className = "cat-btn is-active px-4 py-2 rounded-xl text-xs font-extrabold transition-all border bg-sky-500 text-slate-950 border-sky-400 shadow-md";
             renderGames();
         }
 
@@ -5090,6 +5693,14 @@
             const p = document.getElementById('tabBtnProxy');
             if (g) g.className = tab === 'games' ? sideActiveGames : sideIdle;
             if (p) p.className = tab === 'proxy' ? sideActiveProxy : sideIdle;
+
+            // Show blue fire flares only on the games catalog view
+            const showFlares = tab === 'games';
+            const flL = document.getElementById('flareCanvasLeft');
+            const flR = document.getElementById('flareCanvasRight');
+            if (flL) flL.classList.toggle('hidden', !showFlares);
+            if (flR) flR.classList.toggle('hidden', !showFlares);
+            if (showFlares &amp;&amp; typeof initFlares === 'function') initFlares();
         }
 
         function getIframeWrapperHtml(url, title) {
@@ -5710,6 +6321,219 @@
         initSnow();
         requestAnimationFrame(drawSnow);
 
+        // ============ LIGHT BLUE FIRE FLARES (games catalog sides) ============
+        const flareCanvasL = document.getElementById('flareCanvasLeft');
+        const flareCanvasR = document.getElementById('flareCanvasRight');
+        const flareCtxL = flareCanvasL.getContext('2d');
+        const flareCtxR = flareCanvasR.getContext('2d');
+        const FLARE_STRIP_W = 120;
+        let flaresL = [], flaresR = [];
+        let lastFlareFrame = performance.now();
+
+        function makeFlare(w, h, seeded) {
+            const depth = Math.random();
+            const size = 0.9 + depth * 2.6;
+            return {
+                x: Math.random() * w,
+                y: seeded ? Math.random() * h : -size * 4,
+                size,
+                depth,
+                vy: 0.35 + depth * 1.4,
+                vx: (Math.random() - 0.5) * 0.25,
+                swayAmp: 0.4 + Math.random() * 1.0,
+                swaySpeed: 0.0005 + Math.random() * 0.0014,
+                swayPhase: Math.random() * Math.PI * 2,
+                life: 0,
+                maxLife: 320 + Math.random() * 420,
+                hue: 198 + Math.random() * 18,     // soft cyan -> sky blue
+                alpha: 0.28 + depth * 0.35,
+                tail: 14 + depth * 32
+            };
+        }
+
+        function sizeFlareCanvas(canvas) {
+            const w = Math.min(FLARE_STRIP_W, Math.floor(window.innerWidth * 0.14));
+            canvas.width = w;
+            canvas.height = window.innerHeight;
+            canvas.style.width = w + 'px';
+            return w;
+        }
+
+        function initFlares() {
+            const wL = sizeFlareCanvas(flareCanvasL);
+            const wR = sizeFlareCanvas(flareCanvasR);
+            const count = Math.min(55, Math.floor(window.innerHeight / 22));
+            flaresL = []; flaresR = [];
+            for (let i = 0; i < count; i++) {
+                flaresL.push(makeFlare(wL, window.innerHeight, true));
+                flaresR.push(makeFlare(wR, window.innerHeight, true));
+            }
+        }
+
+        function drawFlare(ctx, f) {
+            // Soft blue-fire glow — smooth, diffuse, no hard core
+            const r = f.size * 6;
+            const grad = ctx.createRadialGradient(f.x, f.y, 0, f.x, f.y, r);
+            grad.addColorStop(0,    `hsla(${f.hue}, 100%, 88%, ${f.alpha * 0.9})`);
+            grad.addColorStop(0.35, `hsla(${f.hue}, 100%, 70%, ${f.alpha * 0.45})`);
+            grad.addColorStop(0.75, `hsla(${f.hue}, 100%, 55%, ${f.alpha * 0.15})`);
+            grad.addColorStop(1,    `hsla(${f.hue}, 100%, 50%, 0)`);
+            ctx.fillStyle = grad;
+            ctx.beginPath();
+            ctx.arc(f.x, f.y, r, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Soft rising wisp — feathered, thin
+            const wispGrad = ctx.createLinearGradient(f.x, f.y - f.tail, f.x, f.y);
+            wispGrad.addColorStop(0, `hsla(${f.hue}, 100%, 80%, 0)`);
+            wispGrad.addColorStop(1, `hsla(${f.hue}, 100%, 88%, ${f.alpha * 0.35})`);
+            ctx.strokeStyle = wispGrad;
+            ctx.lineWidth = Math.max(0.4, f.size * 0.35);
+            ctx.lineCap = 'round';
+            ctx.beginPath();
+            ctx.moveTo(f.x, f.y - f.tail);
+            ctx.lineTo(f.x, f.y);
+            ctx.stroke();
+        }
+
+        function stepFlares(ctx, canvas, arr, now, dt) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.globalCompositeOperation = 'lighter';
+            for (let f of arr) {
+                const sway = Math.sin(now * f.swaySpeed + f.swayPhase) * f.swayAmp;
+                f.x += (f.vx + sway * 0.08) * dt * 0.4;
+                f.y += f.vy * dt * 0.35;
+                f.life += dt;
+                if (f.y - f.tail > canvas.height || f.life > f.maxLife) {
+                    Object.assign(f, makeFlare(canvas.width, canvas.height, false));
+                }
+                drawFlare(ctx, f);
+            }
+            ctx.globalCompositeOperation = 'source-over';
+        }
+
+        function animateFlares(now) {
+            if (now === undefined) now = performance.now();
+            const dt = Math.min(40, now - lastFlareFrame);
+            lastFlareFrame = now;
+            if (!flareCanvasL.classList.contains('hidden')) {
+                stepFlares(flareCtxL, flareCanvasL, flaresL, now, dt);
+                stepFlares(flareCtxR, flareCanvasR, flaresR, now, dt);
+            }
+            requestAnimationFrame(animateFlares);
+        }
+
+        window.addEventListener('resize', () => { if (!flareCanvasL.classList.contains('hidden')) initFlares(); });
+        initFlares();
+        requestAnimationFrame(animateFlares);
+        // =====================================================================
+
+        // Settings Modal &amp; Tools Control Panel
+        function openSettingsModal() {
+            updateSettingsStatus();
+            const modal = document.getElementById('settingsModal');
+            if (modal) modal.classList.remove('hidden');
+        }
+
+        function closeSettingsModal() {
+            const modal = document.getElementById('settingsModal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        // Tab Cloaking &amp; Masking Engine
+        function setTabTitle(title, faviconUrl) {
+            document.title = title;
+            if (faviconUrl) {
+                let link = document.querySelector("link[rel*='icon']");
+                if (!link) {
+                    link = document.createElement('link');
+                    link.rel = 'shortcut icon';
+                    document.getElementsByTagName('head')[0].appendChild(link);
+                }
+                link.href = faviconUrl;
+            }
+            localStorage.setItem('frost_tab_title', title);
+            if (faviconUrl) localStorage.setItem('frost_tab_favicon', faviconUrl);
+            updateSettingsStatus();
+        }
+
+        function cloakGoogleClassroom() {
+            setTabTitle("Google Classroom", "https://ssl.gstatic.com/classroom/favicon.png");
+        }
+
+        function cloakGoogleDocs() {
+            setTabTitle("Google Docs", "https://ssl.gstatic.com/docs/documents/images/kix-favicon7.ico");
+        }
+
+        function cloakGoogleDrive() {
+            setTabTitle("My Drive - Google Drive", "https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_32dp.png");
+        }
+
+        function cloakCanvas() {
+            setTabTitle("Dashboard", "https://du11hjcvx0uqb.cloudfront.net/dist/images/favicon-e10d657a73.ico");
+        }
+
+        function applyCustomTabTitle() {
+            const input = document.getElementById('customTabTitleInput');
+            if (input &amp;&amp; input.value.trim()) {
+                setTabTitle(input.value.trim(), null);
+            }
+        }
+
+        function resetTabTitle() {
+            localStorage.removeItem('frost_tab_title');
+            localStorage.removeItem('frost_tab_favicon');
+            document.title = "Tundra Network | Unblocked Games Portal &amp; Ultraviolet Proxy";
+            let link = document.querySelector("link[rel*='icon']");
+            if (link) link.href = "https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg";
+            updateSettingsStatus();
+        }
+
+        function updateSettingsStatus() {
+            const badge = document.getElementById('currentCloakBadge');
+            if (badge) {
+                const titleStr = document.title;
+                badge.innerText = `Active: ${titleStr.length > 22 ? titleStr.substring(0, 20) + '...' : titleStr}`;
+            }
+            const setSnowBtn = document.getElementById('settingsSnowBtn');
+            if (setSnowBtn) {
+                setSnowBtn.innerText = snowEnabled ? 'Snow ON' : 'Snow OFF';
+            }
+        }
+
+        // about:blank Stealth Tab Launcher
+        function openAboutBlank() {
+            const win = window.open('about:blank', '_blank');
+            if (!win) {
+                alert("Popup blocked! Please allow popups for this site to open in about:blank.");
+                return;
+            }
+            win.document.title = document.title || 'Google Classroom';
+            const doc = win.document;
+            const html = document.documentElement.outerHTML;
+            doc.open();
+            doc.write(html);
+            doc.close();
+        }
+
+        // Restore saved tab cloaking on startup
+        (function initTabCloak() {
+            const savedTitle = localStorage.getItem('frost_tab_title');
+            const savedFavicon = localStorage.getItem('frost_tab_favicon');
+            if (savedTitle) {
+                document.title = savedTitle;
+            }
+            if (savedFavicon) {
+                let link = document.querySelector("link[rel*='icon']");
+                if (!link) {
+                    link = document.createElement('link');
+                    link.rel = 'shortcut icon';
+                    document.getElementsByTagName('head')[0].appendChild(link);
+                }
+                link.href = savedFavicon;
+            }
+        })();
+
         // Initial setup: Default to Home tab landing
         switchTab('home');
         renderGames();
@@ -5749,7 +6573,7 @@
                 twCharIdx--;
                 twEl.innerText = currentWord.substring(0, Math.max(0, twCharIdx));
             } else {
-                if (twCharIdx === 0) {
+                if (twCharIdx === 0 &amp;&amp; currentWord === "Bypass") {
                     randomizeBypassFont(twEl);
                 }
                 twCharIdx++;
