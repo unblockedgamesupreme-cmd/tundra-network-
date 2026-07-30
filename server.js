@@ -6,7 +6,7 @@ const PROXY_PATH = "/api/proxy";
 
 // Lightweight ad/tracker blocklist. Any hostname whose registrable suffix
 // matches an entry is refused before we hit the upstream.
-const AD_HOSTS = new Set<string>([
+const AD_HOSTS = new Set([
   "doubleclick.net",
   "googlesyndication.com",
   "googleadservices.com",
@@ -62,7 +62,7 @@ const AD_HOSTS = new Set<string>([
   "rlcdn.com",
 ]);
 
-function isAdHost(hostname: string): boolean {
+function isAdHost(hostname) {
   const h = hostname.toLowerCase();
   for (const bad of AD_HOSTS) {
     if (h === bad || h.endsWith("." + bad)) return true;
@@ -70,7 +70,7 @@ function isAdHost(hostname: string): boolean {
   return false;
 }
 
-function errorPage(title: string, message: string, status = 502): Response {
+function errorPage(title, message, status = 502) {
   const html = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>${title}</title>
 <style>html,body{margin:0;padding:0;height:100%;background:#0b1329;color:#e0f2fe;font-family:system-ui,sans-serif;display:flex;align-items:center;justify-content:center;text-align:center}
 .box{max-width:520px;padding:32px;border:1px solid rgba(56,189,248,.3);border-radius:16px;background:rgba(15,23,42,.6)}
@@ -82,11 +82,11 @@ h1{margin:0 0 12px;font-size:22px;color:#7dd3fc}p{margin:0;color:#bae6fd;line-he
   });
 }
 
-function proxied(target: string): string {
+function proxied(target) {
   return `${PROXY_PATH}?url=${encodeURIComponent(target)}`;
 }
 
-function resolveUrl(base: string, ref: string): string | null {
+function resolveUrl(base, ref) {
   if (!ref) return null;
   const trimmed = ref.trim();
   if (!trimmed) return null;
@@ -98,7 +98,7 @@ function resolveUrl(base: string, ref: string): string | null {
   }
 }
 
-function rewriteAttr(html: string, attr: string, base: string): string {
+function rewriteAttr(html, attr, base) {
   const re = new RegExp(`(\\s${attr}\\s*=\\s*)(["'])([\\s\\S]*?)\\2`, "gi");
   return html.replace(re, (_m, pre, q, val) => {
     const abs = resolveUrl(base, val);
@@ -107,9 +107,9 @@ function rewriteAttr(html: string, attr: string, base: string): string {
   });
 }
 
-function rewriteSrcset(html: string, base: string): string {
+function rewriteSrcset(html, base) {
   return html.replace(/(\ssrcset\s*=\s*)(["'])([\s\S]*?)\2/gi, (_m, pre, q, val) => {
-    const parts = val.split(",").map((p: string) => {
+    const parts = val.split(",").map((p) => {
       const seg = p.trim().split(/\s+/);
       const abs = resolveUrl(base, seg[0]);
       if (!abs) return p;
@@ -120,7 +120,7 @@ function rewriteSrcset(html: string, base: string): string {
   });
 }
 
-function rewriteCss(css: string, base: string): string {
+function rewriteCss(css, base) {
   css = css.replace(/url\(\s*(['"]?)([^'")]+)\1\s*\)/gi, (_m, q, val) => {
     const abs = resolveUrl(base, val);
     if (!abs) return `url(${q}${val}${q})`;
@@ -134,7 +134,7 @@ function rewriteCss(css: string, base: string): string {
   return css;
 }
 
-function rewriteHtml(html: string, base: string): string {
+function rewriteHtml(html, base) {
   html = html.replace(/<meta[^>]+http-equiv=["']?content-security-policy["']?[^>]*>/gi, "");
   html = html.replace(/<meta[^>]+http-equiv=["']?x-frame-options["']?[^>]*>/gi, "");
 
@@ -189,12 +189,12 @@ function rewriteHtml(html: string, base: string): string {
   return html;
 }
 
-async function handleProxy(request: Request): Promise<Response> {
+async function handleProxy(request) {
   const url = new URL(request.url);
   const target = url.searchParams.get("url");
   if (!target) return errorPage("Missing URL", "No target URL was provided to the proxy.", 400);
 
-  let targetUrl: URL;
+  let targetUrl;
   try {
     targetUrl = new URL(target);
   } catch {
@@ -213,7 +213,7 @@ async function handleProxy(request: Request): Promise<Response> {
     return new Response(null, { status: 204, headers: { "access-control-allow-origin": "*", "x-proxy-adblock": "1" } });
   }
 
-  const fwdHeaders: Record<string, string> = {
+  const fwdHeaders = {
     "user-agent": request.headers.get("user-agent") || "Mozilla/5.0 (compatible; TundraProxy/1.0)",
     accept: request.headers.get("accept") || "*/*",
     "accept-language": request.headers.get("accept-language") || "en-US,en;q=0.9",
@@ -221,14 +221,14 @@ async function handleProxy(request: Request): Promise<Response> {
   const range = request.headers.get("range");
   if (range) fwdHeaders["range"] = range;
 
-  let body: BodyInit | undefined;
+  let body;
   if (request.method !== "GET" && request.method !== "HEAD") {
     body = await request.arrayBuffer();
     const ct = request.headers.get("content-type");
     if (ct) fwdHeaders["content-type"] = ct;
   }
 
-  let upstream: Response;
+  let upstream;
   try {
     upstream = await fetch(targetUrl.toString(), {
       method: request.method,
@@ -237,7 +237,7 @@ async function handleProxy(request: Request): Promise<Response> {
       redirect: "manual",
     });
   } catch (e) {
-    return errorPage("Site unreachable", `Could not load <b>${targetUrl.hostname}</b>. It may be down, unresolvable, or blocking proxies.<br><br><small>${(e as Error).message}</small>`, 502);
+    return errorPage("Site unreachable", `Could not load <b>${targetUrl.hostname}</b>. It may be down, unresolvable, or blocking proxies.<br><br><small>${e.message}</small>`, 502);
   }
 
   if (upstream.status >= 300 && upstream.status < 400) {
@@ -315,7 +315,7 @@ async function startServer() {
         }
       }
 
-      let body: Uint8Array | undefined;
+      let body;
       if (req.method !== "GET" && req.method !== "HEAD") {
         if (Buffer.isBuffer(req.body)) {
           body = req.body;
@@ -345,7 +345,7 @@ async function startServer() {
 
       const arrayBuffer = await webRes.arrayBuffer();
       return res.send(Buffer.from(arrayBuffer));
-    } catch (err: any) {
+    } catch (err) {
       console.error("Proxy error:", err);
       const errRes = errorPage("Server Error", err?.message || "An error occurred in proxy server", 500);
       res.status(errRes.status);

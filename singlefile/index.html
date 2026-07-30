@@ -107,273 +107,12 @@
         .animate-pulse-slow {
             animation: pulse-slow 3s infinite ease-in-out;
         }
-
-        /* =========================================================
-           Detailed FX for Game Catalog + Proxy
-           ========================================================= */
-
-        /* Subtle carbon grid used behind cards / panels */
-        .tn-grid {
-            background-image:
-                linear-gradient(rgba(56,189,248,0.06) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(56,189,248,0.06) 1px, transparent 1px);
-            background-size: 22px 22px;
-        }
-
-        /* Iridescent rotating border */
-        @keyframes tn-spin { to { transform: rotate(360deg); } }
-        .tn-holo {
-            position: relative;
-            isolation: isolate;
-        }
-        .tn-holo::before {
-            content: "";
-            position: absolute;
-            inset: -1px;
-            border-radius: inherit;
-            padding: 1px;
-            background: conic-gradient(from 0deg,
-                rgba(56,189,248,0.0) 0deg,
-                rgba(56,189,248,0.9) 60deg,
-                rgba(129,140,248,0.85) 130deg,
-                rgba(192,132,252,0.9) 200deg,
-                rgba(56,189,248,0.0) 320deg);
-            -webkit-mask:
-                linear-gradient(#000 0 0) content-box,
-                linear-gradient(#000 0 0);
-            -webkit-mask-composite: xor;
-                    mask-composite: exclude;
-            animation: tn-spin 6s linear infinite;
-            opacity: 0.55;
-            pointer-events: none;
-            z-index: 0;
-        }
-        .tn-holo > * { position: relative; z-index: 1; }
-
-        /* Sheen sweep on hover */
-        .tn-sheen { position: relative; overflow: hidden; }
-        .tn-sheen::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(115deg,
-                transparent 30%,
-                rgba(255,255,255,0.14) 50%,
-                transparent 70%);
-            transform: translateX(-120%);
-            transition: transform 0.9s ease;
-            pointer-events: none;
-        }
-        .tn-sheen:hover::after { transform: translateX(120%); }
-
-        /* Game card upgrades */
-        .game-card {
-            position: relative;
-            background: linear-gradient(180deg, rgba(15,23,42,0.85), rgba(11,19,41,0.9));
-            border: 1px solid rgba(56,189,248,0.18);
-            border-radius: 18px;
-            overflow: hidden;
-            transition: transform 0.35s cubic-bezier(.2,.7,.2,1), border-color 0.3s, box-shadow 0.3s;
-        }
-        .game-card::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            border-radius: inherit;
-            padding: 1px;
-            background: linear-gradient(160deg, rgba(56,189,248,0.35), transparent 40%, transparent 60%, rgba(192,132,252,0.35));
-            -webkit-mask:
-                linear-gradient(#000 0 0) content-box,
-                linear-gradient(#000 0 0);
-            -webkit-mask-composite: xor;
-                    mask-composite: exclude;
-            opacity: 0;
-            transition: opacity 0.35s ease;
-            pointer-events: none;
-        }
-        .game-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(56,189,248,0.55);
-            box-shadow:
-                0 20px 40px -20px rgba(56,189,248,0.35),
-                0 0 0 1px rgba(56,189,248,0.15);
-        }
-        .game-card:hover::before { opacity: 1; }
-
-        .game-card .thumb { position: relative; overflow: hidden; }
-        .game-card .thumb::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg,
-                rgba(5,9,20,0) 40%,
-                rgba(5,9,20,0.55) 80%,
-                rgba(5,9,20,0.95) 100%);
-            pointer-events: none;
-        }
-        .game-card .play-orb {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-        }
-        .game-card:hover .play-orb { opacity: 1; }
-        .play-orb-core {
-            width: 56px; height: 56px;
-            border-radius: 999px;
-            background: rgba(15,23,42,0.85);
-            border: 1px solid rgba(56,189,248,0.6);
-            display: flex; align-items: center; justify-content: center;
-            color: #e0f2fe;
-            backdrop-filter: blur(6px);
-            box-shadow: 0 0 25px rgba(56,189,248,0.55), inset 0 0 12px rgba(56,189,248,0.25);
-        }
-        @keyframes tn-ring {
-            0% { transform: scale(1); opacity: 0.7; }
-            100% { transform: scale(1.7); opacity: 0; }
-        }
-        .play-orb-ring {
-            position: absolute;
-            width: 56px; height: 56px;
-            border-radius: 999px;
-            border: 1px solid rgba(56,189,248,0.6);
-            animation: tn-ring 1.6s ease-out infinite;
-        }
-
-        .glow-chip {
-            display: inline-flex; align-items: center; gap: 4px;
-            padding: 2px 8px;
-            border-radius: 999px;
-            font-size: 10px;
-            font-weight: 800;
-            letter-spacing: 0.04em;
-            background: rgba(5,9,20,0.8);
-            border: 1px solid rgba(56,189,248,0.35);
-            color: #bae6fd;
-            backdrop-filter: blur(4px);
-        }
-        .glow-chip.gn {
-            color: #67e8f9;
-            border-color: rgba(103,232,249,0.55);
-            box-shadow: 0 0 12px rgba(103,232,249,0.35);
-        }
-        .glow-chip.rating { color: #fcd34d; border-color: rgba(252,211,77,0.4); }
-        .glow-chip.custom {
-            color: #f5f3ff;
-            background: linear-gradient(120deg, #7c3aed, #6366f1);
-            border-color: rgba(167,139,250,0.5);
-            box-shadow: 0 0 12px rgba(139,92,246,0.4);
-        }
-
-        /* Category bar edge fade */
-        .cat-scroll-wrap {
-            position: relative;
-            mask-image: linear-gradient(90deg, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
-            -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
-        }
-        .cat-btn.is-active {
-            box-shadow: 0 0 18px rgba(56,189,248,0.5), inset 0 0 8px rgba(255,255,255,0.15);
-        }
-
-        /* Proxy: animated scanning line */
-        @keyframes tn-scan {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-        .tn-scan {
-            position: absolute;
-            top: 0; left: 0;
-            width: 40%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(192,132,252,0.18), transparent);
-            animation: tn-scan 3.6s linear infinite;
-            pointer-events: none;
-        }
-
-        /* Proxy shortcut cards */
-        .prox-card {
-            position: relative;
-            padding: 14px;
-            border-radius: 18px;
-            background: linear-gradient(180deg, rgba(15,23,42,0.85), rgba(11,19,41,0.9));
-            border: 1px solid rgba(139,92,246,0.22);
-            overflow: hidden;
-            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-        }
-        .prox-card::before {
-            content: "";
-            position: absolute;
-            inset: -1px;
-            border-radius: inherit;
-            padding: 1px;
-            background: linear-gradient(140deg, rgba(139,92,246,0.6), transparent 45%, transparent 55%, rgba(56,189,248,0.5));
-            -webkit-mask:
-                linear-gradient(#000 0 0) content-box,
-                linear-gradient(#000 0 0);
-            -webkit-mask-composite: xor; mask-composite: exclude;
-            opacity: 0.35;
-            transition: opacity 0.3s;
-            pointer-events: none;
-        }
-        .prox-card:hover {
-            transform: translateY(-3px);
-            border-color: rgba(139,92,246,0.55);
-            box-shadow: 0 18px 40px -20px rgba(139,92,246,0.45);
-        }
-        .prox-card:hover::before { opacity: 1; }
-        .prox-orb {
-            width: 40px; height: 40px;
-            border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 20px;
-            background: radial-gradient(circle at 30% 30%, rgba(192,132,252,0.35), rgba(15,23,42,0.9) 70%);
-            border: 1px solid rgba(139,92,246,0.4);
-            box-shadow: inset 0 0 12px rgba(139,92,246,0.25), 0 0 14px rgba(139,92,246,0.25);
-        }
-
-        /* Terminal diagnostics */
-        @keyframes tn-blink { 50% { opacity: 0; } }
-        .tn-caret::after {
-            content: "▍";
-            margin-left: 2px;
-            animation: tn-blink 1s steps(1) infinite;
-            color: #67e8f9;
-        }
-        .tn-bar {
-            display: inline-block;
-            width: 3px; height: 10px;
-            margin-right: 2px;
-            background: #22d3ee;
-            border-radius: 1px;
-            opacity: 0.85;
-        }
-        .tn-bar.dim { opacity: 0.25; }
-
-        /* Hero banner background pattern */
-        .hero-orbit {
-            position: absolute;
-            inset: -50%;
-            background:
-                radial-gradient(circle at 20% 30%, rgba(56,189,248,0.25), transparent 40%),
-                radial-gradient(circle at 80% 70%, rgba(139,92,246,0.22), transparent 45%);
-            filter: blur(30px);
-            animation: tn-spin 30s linear infinite;
-            pointer-events: none;
-        }
-
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { scrollbar-width: none; }
     </style>
 </head>
 <body class="relative flex flex-col min-h-screen selection:bg-sky-500 selection:text-white">
 
     <!-- Background Snowfall Canvas FX -->
     <canvas id="snowCanvas" class="fixed inset-0 pointer-events-none z-10 opacity-70"></canvas>
-    <canvas id="flareCanvasLeft"  class="flare-canvas fixed top-0 left-0  h-full pointer-events-none z-[9] hidden"></canvas>
-    <canvas id="flareCanvasRight" class="flare-canvas fixed top-0 right-0 h-full pointer-events-none z-[9] hidden"></canvas>
 
     <!-- Top Sticky Navbar -->
     <header class="sticky top-0 z-40 w-full frost-glass border-b border-sky-500/20 shadow-lg">
@@ -382,8 +121,8 @@
                 
                 <!-- Logo & Branding -->
                 <div class="flex items-center gap-3 cursor-pointer select-none shrink-0" onclick="resetSearch()">
-                    <div class="relative w-10 h-10 rounded-xl overflow-hidden bg-black flex items-center justify-center ring-1 ring-sky-400/30 shadow-[0_0_18px_rgba(56,189,248,0.35)]">
-                        <img src="/assets/tundra-logo.jpeg" alt="Tundra Network logo" class="w-full h-full object-cover" />
+                    <div class="relative w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-sky-100">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v18m9-9H3m15.364 6.364l-12.728-12.728m0 12.728l12.728-12.728"/></svg>
                     </div>
                     <div class="leading-tight">
                         <div class="text-[15px] font-medium tracking-tight text-white">
@@ -557,7 +296,7 @@
                     <h1 class="text-white font-light leading-[0.95] tracking-tight text-5xl sm:text-6xl md:text-7xl mb-8">
                         A quieter way to<br/>
                         <span class="font-serif italic font-normal text-sky-100">browse, play,</span>
-                        <span id="typewriterWord" class="font-serif italic font-normal text-sky-200">bypass</span><span class="ml-1 inline-block w-[2px] h-[0.9em] align-middle bg-sky-200/80 animate-pulse"></span>
+                        <span id="typewriterWord" class="font-serif italic font-normal text-sky-200">experience</span><span class="ml-1 inline-block w-[2px] h-[0.9em] align-middle bg-sky-200/80 animate-pulse"></span>
                     </h1>
 
                     <p class="max-w-xl text-base sm:text-lg text-sky-100/70 leading-relaxed font-normal mb-10">
@@ -632,71 +371,37 @@
             <main id="viewGames" class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-4 relative z-10">
                 
                 <!-- Spotlight Hero Banner -->
-                <div id="heroBanner" class="relative overflow-hidden rounded-3xl border border-sky-500/25 shadow-2xl mb-8">
-                    <div class="tn-grid absolute inset-0 opacity-40"></div>
-                    <div class="hero-orbit"></div>
-                    <div class="absolute inset-0 bg-gradient-to-br from-slate-950/85 via-sky-950/60 to-indigo-950/80"></div>
-                    <div class="tn-scan"></div>
-                    <div class="relative z-10 p-6 sm:p-9 grid grid-cols-1 md:grid-cols-[1.4fr_1fr] gap-6 items-center">
-                        <div class="max-w-2xl">
-                            <div class="flex flex-wrap items-center gap-2 mb-4">
-                                <span class="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.18em] bg-gradient-to-r from-sky-400 to-indigo-400 text-slate-950 shadow-md">
-                                    ◆ Tundra Spotlight
-                                </span>
-                                <span class="glow-chip rating">★ 4.9</span>
-                                <span class="glow-chip"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>Live · <span id="heroTotalGames">15</span> games</span>
-                                <span class="glow-chip">◇ Instant Play</span>
-                            </div>
-                            <p class="text-[11px] font-mono uppercase tracking-[0.3em] text-sky-300/70 mb-2">Featured / Arcade / Endless Runner</p>
-                            <h1 id="heroTitle" class="text-4xl sm:text-5xl font-black text-white tracking-tight mb-3 drop-shadow-[0_2px_20px_rgba(56,189,248,0.35)]">
-                                Jetpack Joyride
-                            </h1>
-                            <p id="heroDesc" class="text-sm text-sky-100/85 leading-relaxed mb-6 font-medium max-w-xl">
-                                Fly with bullet-powered jetpacks as Barry Steakfries! Dodge zappers, laser beams, and homing missiles while collecting coins and crazy vehicles in an endless laboratory run.
-                            </p>
-                            <div class="flex items-center gap-3 flex-wrap">
-                                <button onclick="playHeroGame()" class="tn-sheen px-6 py-3 rounded-2xl bg-gradient-to-r from-sky-300 to-sky-500 hover:from-sky-200 hover:to-sky-400 text-slate-950 font-black text-sm shadow-lg shadow-sky-500/40 transition-all flex items-center gap-2 hover:scale-[1.03] active:scale-95 cursor-pointer">
-                                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                    <span>PLAY NOW</span>
-                                </button>
-                                <div class="hidden sm:flex items-center gap-3 pl-2 text-[11px] font-mono text-sky-300/70">
-                                    <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>1080p</span>
-                                    <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>Cloud</span>
-                                    <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>No login</span>
-                                </div>
-                            </div>
+                <div id="heroBanner" class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900 via-sky-950 to-indigo-950 border border-sky-500/30 shadow-2xl p-6 sm:p-8 mb-8">
+                    <div class="absolute -right-10 -bottom-10 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                    <div class="relative z-10 max-w-2xl">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-gradient-to-r from-sky-500 to-indigo-500 text-slate-950 shadow-md">
+                                TUNDRA SPOTLIGHT
+                            </span>
+                            <span class="text-xs font-bold text-sky-300 flex items-center gap-1">
+                                ★ 4.9 Rating &bull; <span id="heroTotalGames">15</span> Games
+                            </span>
                         </div>
-                        <!-- HUD side panel -->
-                        <div class="hidden md:block relative">
-                            <div class="tn-holo rounded-2xl p-4 bg-slate-950/60 border border-white/5">
-                                <div class="text-[10px] font-mono uppercase tracking-[0.24em] text-sky-300/70 mb-3">Network Status</div>
-                                <div class="grid grid-cols-2 gap-3 text-[11px]">
-                                    <div><div class="text-sky-300/60 font-mono">LATENCY</div><div class="text-white font-black text-lg">12<span class="text-xs text-sky-300/70 font-medium ml-0.5">ms</span></div></div>
-                                    <div><div class="text-sky-300/60 font-mono">UPTIME</div><div class="text-emerald-400 font-black text-lg">99.9%</div></div>
-                                    <div><div class="text-sky-300/60 font-mono">CACHE</div><div class="text-white font-black text-lg">HIT</div></div>
-                                    <div><div class="text-sky-300/60 font-mono">REGION</div><div class="text-white font-black text-lg">GLC-01</div></div>
-                                </div>
-                                <div class="mt-3 flex items-end gap-1 h-6">
-                                    <span class="tn-bar" style="height:30%"></span>
-                                    <span class="tn-bar" style="height:60%"></span>
-                                    <span class="tn-bar" style="height:45%"></span>
-                                    <span class="tn-bar" style="height:85%"></span>
-                                    <span class="tn-bar" style="height:70%"></span>
-                                    <span class="tn-bar" style="height:55%"></span>
-                                    <span class="tn-bar dim" style="height:40%"></span>
-                                    <span class="tn-bar dim" style="height:65%"></span>
-                                </div>
-                            </div>
+                        <h1 id="heroTitle" class="text-3xl sm:text-4xl font-black text-white tracking-tight mb-3 drop-shadow-md">
+                            Jetpack Joyride
+                        </h1>
+                        <p id="heroDesc" class="text-xs sm:text-sm text-sky-200/90 leading-relaxed mb-6 font-medium">
+                            Fly with bullet-powered jetpacks as Barry Steakfries! Dodge zappers, laser beams, and homing missiles while collecting coins and crazy vehicles in an endless laboratory run.
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <button onclick="playHeroGame()" class="px-6 py-3 rounded-2xl bg-gradient-to-r from-sky-400 to-sky-500 hover:from-sky-300 hover:to-sky-400 text-slate-950 font-black text-sm shadow-lg shadow-sky-500/30 transition-all flex items-center gap-2 hover:scale-105 active:scale-95 cursor-pointer">
+                                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                <span>PLAY NOW</span>
+                            </button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Category Pills & Sorting Bar -->
-                <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 mb-6 p-3 rounded-2xl bg-slate-950/40 border border-sky-500/15 backdrop-blur-md">
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 mb-6">
                     <!-- Categories -->
-                    <div class="cat-scroll-wrap flex-1 min-w-0">
-                    <div id="categoryBar" class="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar">
-                        <button onclick="selectCategory('All', this)" class="cat-btn is-active px-4 py-2 rounded-xl text-xs font-extrabold transition-all border bg-sky-500 text-slate-950 border-sky-400 shadow-md">
+                    <div id="categoryBar" class="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0 scrollbar-none">
+                        <button onclick="selectCategory('All', this)" class="cat-btn px-4 py-2 rounded-xl text-xs font-extrabold transition-all border bg-sky-500 text-slate-950 border-sky-400 shadow-md">
                             All Games
                         </button>
                         <button onclick="selectCategory('Favorites', this)" class="cat-btn px-4 py-2 rounded-xl text-xs font-extrabold transition-all border bg-slate-900/80 text-sky-200 border-sky-500/30 hover:bg-slate-800">
@@ -730,7 +435,6 @@
                         <button onclick="selectCategory('Strategy', this)" class="cat-btn px-4 py-2 rounded-xl text-xs font-extrabold transition-all border bg-slate-900/80 text-sky-200 border-sky-500/30 hover:bg-slate-800">
                             Strategy
                         </button>
-                    </div>
                     </div>
 
                     <!-- Sort Dropdown -->
@@ -779,122 +483,67 @@
 
                 <!-- Proxy Address Bar -->
                 <form id="uvForm" onsubmit="handleProxySubmit(event)" class="w-full max-w-3xl mx-auto mb-8">
-                    <div class="flex items-center justify-between mb-2 px-1 text-[10px] font-mono uppercase tracking-[0.24em]">
-                        <div class="flex items-center gap-3 text-sky-300/70">
-                            <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>Encrypted TLS</span>
-                            <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>Bare v3</span>
-                            <span class="hidden sm:flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>SW Ready</span>
+                    <div class="flex flex-col sm:flex-row items-stretch gap-2 p-2 bg-slate-900/90 border border-purple-500/30 rounded-2xl shadow-2xl backdrop-blur-md focus-within:border-purple-400 transition-all">
+                        <select id="proxyEngine" class="bg-slate-800 text-sky-200 text-xs font-bold py-2.5 px-3 rounded-xl border border-sky-500/20 focus:outline-none focus:border-purple-400 cursor-pointer">
+                            <option value="google">Google</option>
+                            <option value="duckduckgo">DuckDuckGo</option>
+                            <option value="bing">Bing</option>
+                            <option value="brave">Brave Search</option>
+                        </select>
+                        <div class="flex-1 relative flex items-center">
+                            <input id="proxyAddress" type="text" placeholder="Search the web freely or enter URL (e.g. wikipedia.org)..." class="w-full pl-4 pr-4 py-2.5 bg-slate-950/80 border border-slate-800 rounded-xl text-xs sm:text-sm text-white placeholder-sky-400/50 focus:outline-none focus:border-purple-500 transition-all" />
                         </div>
-                        <span class="text-purple-300/80">TN-PROXY / v2.0</span>
-                    </div>
-                    <div class="tn-holo relative rounded-2xl">
-                    <div class="relative flex flex-col sm:flex-row items-stretch gap-2 p-2 bg-slate-950/90 border border-purple-500/25 rounded-2xl shadow-2xl backdrop-blur-md focus-within:border-purple-400 transition-all overflow-hidden">
-                        <div class="tn-scan"></div>
-                        <div class="flex items-center gap-2 pl-2 pr-1 relative z-10">
-                            <svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 11V7a4 4 0 118 0v4M5 11h14v10H5V11z"/></svg>
-                            <select id="proxyEngine" class="bg-slate-900 text-sky-200 text-xs font-bold py-2.5 px-3 rounded-xl border border-sky-500/20 focus:outline-none focus:border-purple-400 cursor-pointer">
-                                <option value="google">Google</option>
-                                <option value="duckduckgo">DuckDuckGo</option>
-                                <option value="bing">Bing</option>
-                                <option value="brave">Brave Search</option>
-                            </select>
-                        </div>
-                        <div class="flex-1 relative flex items-center z-10">
-                            <span class="absolute left-3 text-purple-300/70 font-mono text-xs pointer-events-none">tn://</span>
-                            <input id="proxyAddress" type="text" placeholder="search or paste a URL — wikipedia.org, youtube.com…" class="w-full pl-14 pr-4 py-2.5 bg-slate-900/80 border border-slate-800 rounded-xl text-xs sm:text-sm text-white placeholder-sky-400/40 focus:outline-none focus:border-purple-500 focus:shadow-[0_0_0_3px_rgba(139,92,246,0.15)] transition-all font-mono" />
-                        </div>
-                        <button type="submit" class="tn-sheen relative z-10 px-6 py-2.5 bg-gradient-to-r from-purple-500 via-indigo-500 to-sky-500 hover:from-purple-400 hover:via-indigo-400 hover:to-sky-400 text-white text-xs font-black tracking-wider rounded-xl shadow-lg shadow-purple-600/30 transition-all cursor-pointer flex items-center gap-2">
-                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                            UNBLOCK
+                        <button type="submit" class="px-5 py-2.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white text-xs font-extrabold rounded-xl shadow-lg shadow-purple-600/30 transition-all cursor-pointer">
+                            Unblock
                         </button>
-                    </div>
                     </div>
                 </form>
 
                 <!-- Popular Unblocked Shortcuts -->
                 <div id="proxyShortcuts" class="w-full max-w-3xl mx-auto mb-8">
-                    <div class="flex items-center justify-between mb-3 px-1">
-                        <h2 class="text-[10px] font-mono uppercase tracking-[0.28em] text-purple-300">◆ Popular Unblocked Shortcuts</h2>
-                        <span class="text-[10px] font-mono uppercase tracking-[0.22em] text-sky-300/60">6 pinned</span>
-                    </div>
+                    <h2 class="text-xs font-bold text-purple-300 uppercase tracking-wider mb-3">Popular Unblocked Shortcuts</h2>
                     <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                        <button onclick="navigateProxy('https://www.google.com')" class="prox-card tn-sheen text-left group">
-                            <div class="flex items-center gap-3 mb-2">
-                                <div class="prox-orb">🔍</div>
-                                <div>
-                                    <div class="font-black text-sm text-white group-hover:text-purple-200">Google</div>
-                                    <div class="text-[10px] font-mono uppercase tracking-[0.18em] text-sky-300/60">google.com</div>
-                                </div>
+                        <button onclick="navigateProxy('https://www.google.com')" class="p-3.5 bg-slate-900/80 hover:bg-slate-800/90 border border-sky-500/20 hover:border-purple-500/50 rounded-2xl text-left transition-all group">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="text-xl">🔍</span>
+                                <span class="font-bold text-sm text-white group-hover:text-purple-300">Google</span>
                             </div>
-                            <div class="flex items-center justify-between text-[10px] font-mono">
-                                <span class="text-sky-300/70">Search engine</span>
-                                <span class="text-purple-300 group-hover:translate-x-0.5 transition-transform">OPEN ▸</span>
-                            </div>
+                            <p class="text-[11px] text-sky-300/70">Web Search Engine</p>
                         </button>
-                        <button onclick="navigateProxy('https://duckduckgo.com')" class="prox-card tn-sheen text-left group">
-                            <div class="flex items-center gap-3 mb-2">
-                                <div class="prox-orb">🦆</div>
-                                <div>
-                                    <div class="font-black text-sm text-white group-hover:text-purple-200">DuckDuckGo</div>
-                                    <div class="text-[10px] font-mono uppercase tracking-[0.18em] text-sky-300/60">duckduckgo.com</div>
-                                </div>
+                        <button onclick="navigateProxy('https://duckduckgo.com')" class="p-3.5 bg-slate-900/80 hover:bg-slate-800/90 border border-sky-500/20 hover:border-purple-500/50 rounded-2xl text-left transition-all group">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="text-xl">🦆</span>
+                                <span class="font-bold text-sm text-white group-hover:text-purple-300">DuckDuckGo</span>
                             </div>
-                            <div class="flex items-center justify-between text-[10px] font-mono">
-                                <span class="text-sky-300/70">Private search</span>
-                                <span class="text-purple-300 group-hover:translate-x-0.5 transition-transform">OPEN ▸</span>
-                            </div>
+                            <p class="text-[11px] text-sky-300/70">Privacy Search</p>
                         </button>
-                        <button onclick="navigateProxy('https://www.wikipedia.org')" class="prox-card tn-sheen text-left group">
-                            <div class="flex items-center gap-3 mb-2">
-                                <div class="prox-orb">🌐</div>
-                                <div>
-                                    <div class="font-black text-sm text-white group-hover:text-purple-200">Wikipedia</div>
-                                    <div class="text-[10px] font-mono uppercase tracking-[0.18em] text-sky-300/60">wikipedia.org</div>
-                                </div>
+                        <button onclick="navigateProxy('https://www.wikipedia.org')" class="p-3.5 bg-slate-900/80 hover:bg-slate-800/90 border border-sky-500/20 hover:border-purple-500/50 rounded-2xl text-left transition-all group">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="text-xl">🌐</span>
+                                <span class="font-bold text-sm text-white group-hover:text-purple-300">Wikipedia</span>
                             </div>
-                            <div class="flex items-center justify-between text-[10px] font-mono">
-                                <span class="text-sky-300/70">Encyclopedia</span>
-                                <span class="text-purple-300 group-hover:translate-x-0.5 transition-transform">OPEN ▸</span>
-                            </div>
+                            <p class="text-[11px] text-sky-300/70">Free Encyclopedia</p>
                         </button>
-                        <button onclick="navigateProxy('https://archive.org')" class="prox-card tn-sheen text-left group">
-                            <div class="flex items-center gap-3 mb-2">
-                                <div class="prox-orb">🏛️</div>
-                                <div>
-                                    <div class="font-black text-sm text-white group-hover:text-purple-200">Archive.org</div>
-                                    <div class="text-[10px] font-mono uppercase tracking-[0.18em] text-sky-300/60">archive.org</div>
-                                </div>
+                        <button onclick="navigateProxy('https://archive.org')" class="p-3.5 bg-slate-900/80 hover:bg-slate-800/90 border border-sky-500/20 hover:border-purple-500/50 rounded-2xl text-left transition-all group">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="text-xl">🏛️</span>
+                                <span class="font-bold text-sm text-white group-hover:text-purple-300">Archive.org</span>
                             </div>
-                            <div class="flex items-center justify-between text-[10px] font-mono">
-                                <span class="text-sky-300/70">Internet archive</span>
-                                <span class="text-purple-300 group-hover:translate-x-0.5 transition-transform">OPEN ▸</span>
-                            </div>
+                            <p class="text-[11px] text-sky-300/70">Internet Archive</p>
                         </button>
-                        <button onclick="navigateProxy('https://github.com')" class="prox-card tn-sheen text-left group">
-                            <div class="flex items-center gap-3 mb-2">
-                                <div class="prox-orb">🐙</div>
-                                <div>
-                                    <div class="font-black text-sm text-white group-hover:text-purple-200">GitHub</div>
-                                    <div class="text-[10px] font-mono uppercase tracking-[0.18em] text-sky-300/60">github.com</div>
-                                </div>
+                        <button onclick="navigateProxy('https://github.com')" class="p-3.5 bg-slate-900/80 hover:bg-slate-800/90 border border-sky-500/20 hover:border-purple-500/50 rounded-2xl text-left transition-all group">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="text-xl">🐙</span>
+                                <span class="font-bold text-sm text-white group-hover:text-purple-300">GitHub</span>
                             </div>
-                            <div class="flex items-center justify-between text-[10px] font-mono">
-                                <span class="text-sky-300/70">Code repository</span>
-                                <span class="text-purple-300 group-hover:translate-x-0.5 transition-transform">OPEN ▸</span>
-                            </div>
+                            <p class="text-[11px] text-sky-300/70">Code Repository</p>
                         </button>
-                        <button onclick="navigateProxy('https://www.ecosia.org')" class="prox-card tn-sheen text-left group">
-                            <div class="flex items-center gap-3 mb-2">
-                                <div class="prox-orb">🌱</div>
-                                <div>
-                                    <div class="font-black text-sm text-white group-hover:text-purple-200">Ecosia</div>
-                                    <div class="text-[10px] font-mono uppercase tracking-[0.18em] text-sky-300/60">ecosia.org</div>
-                                </div>
+                        <button onclick="navigateProxy('https://www.ecosia.org')" class="p-3.5 bg-slate-900/80 hover:bg-slate-800/90 border border-sky-500/20 hover:border-purple-500/50 rounded-2xl text-left transition-all group">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="text-xl">🌱</span>
+                                <span class="font-bold text-sm text-white group-hover:text-purple-300">Ecosia</span>
                             </div>
-                            <div class="flex items-center justify-between text-[10px] font-mono">
-                                <span class="text-sky-300/70">Green search</span>
-                                <span class="text-purple-300 group-hover:translate-x-0.5 transition-transform">OPEN ▸</span>
-                            </div>
+                            <p class="text-[11px] text-sky-300/70">Green Search</p>
                         </button>
                     </div>
                 </div>
@@ -913,31 +562,12 @@
                 </div>
 
                 <!-- Diagnostics Console -->
-                <div class="w-full max-w-3xl mx-auto bg-slate-950/90 border border-purple-500/20 rounded-2xl shadow-xl mb-8 overflow-hidden">
-                    <div class="flex items-center justify-between px-4 py-2 bg-slate-900/80 border-b border-purple-500/15">
-                        <div class="flex items-center gap-2">
-                            <span class="w-2.5 h-2.5 rounded-full bg-red-500/70"></span>
-                            <span class="w-2.5 h-2.5 rounded-full bg-amber-400/70"></span>
-                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400/70"></span>
-                            <span class="ml-2 text-[11px] font-mono text-sky-300/80">tn-proxy · diagnostics.log</span>
-                        </div>
-                        <div class="flex items-center gap-3 text-[10px] font-mono text-sky-300/70">
-                            <span class="flex items-end gap-0.5 h-3">
-                                <span class="tn-bar" style="height:40%"></span>
-                                <span class="tn-bar" style="height:70%"></span>
-                                <span class="tn-bar" style="height:55%"></span>
-                                <span class="tn-bar" style="height:90%"></span>
-                            </span>
-                            <span>UP 00:47:12</span>
-                        </div>
-                    </div>
-                    <div class="p-4 bg-slate-950 font-mono text-[11px] space-y-1.5">
-                        <p><span class="text-emerald-400">✔ status</span> <span class="text-sky-300/80">tn-proxy active · scope /api/proxy · engine bare-v3</span></p>
-                        <p><span class="text-purple-300">→ init</span> <span class="text-sky-300/70">initializing transport route (region GLC-01)</span></p>
-                        <p><span class="text-purple-300">→ swreg</span> <span class="text-sky-300/70">service worker registered</span> <span class="text-emerald-400">ok</span></p>
-                        <p><span class="text-purple-300">→ tls</span> <span class="text-sky-300/70">handshake complete · cipher TLS_AES_256_GCM_SHA384</span></p>
-                        <p><span class="text-purple-300">→ adblk</span> <span class="text-sky-300/70">blocklist loaded · 50 hosts</span></p>
-                        <p><span class="text-sky-300/60 tn-caret">$ tn-proxy ready — awaiting request </span></p>
+                <div class="w-full max-w-3xl mx-auto bg-slate-950/90 border border-purple-500/20 rounded-2xl p-4 shadow-xl mb-8">
+                    <div class="text-xs font-bold text-purple-300 mb-2">Ultraviolet Service Worker Diagnostics</div>
+                    <div class="bg-slate-900/90 p-3 rounded-xl font-mono text-[11px] text-sky-300 space-y-1">
+                        <p class="text-emerald-400 font-semibold">Status: Active &bull; ServiceWorker Scope: /uv/ &bull; BareMux Engine Ready</p>
+                        <p class="text-sky-400/80 text-[10px]">[BareMux] Initializing transport route...</p>
+                        <p class="text-sky-400/80 text-[10px]">[UV-SW] Service worker registered on scope /uv/sw.js</p>
                     </div>
                 </div>
             </main>
@@ -1660,43 +1290,36 @@
                 filtered.forEach(game => {
                     const isFav = favorites.includes(game.id);
                     const card = document.createElement('div');
-                    card.className = "game-card tn-sheen cursor-pointer flex flex-col group";
+                    card.className = "frost-card rounded-2xl overflow-hidden cursor-pointer transition-all hover:scale-[1.02] flex flex-col group relative";
                     card.onclick = () => openGame(game);
 
                     const isGn = game.isGnMath || (game.tags && game.tags.includes('gn-math'));
 
                     card.innerHTML = `
-                        <div class="thumb aspect-video w-full bg-slate-900">
-                            <img src="${game.thumbnail}" class="w-full h-full object-cover group-hover:scale-[1.08] transition-transform duration-500 ease-out" alt="${game.title}" loading="lazy" />
-                            <div class="absolute top-2.5 left-2.5 flex items-center gap-1.5 z-10">
-                                <span class="glow-chip rating">★ ${game.rating}</span>
-                                ${isGn ? `<span class="glow-chip gn"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>GN MATH</span>` : ''}
-                                ${game.isCustom ? `<span class="glow-chip custom">✦ CUSTOM</span>` : ''}
-                            </div>
-                            <button onclick="toggleFav(event, '${game.id}')" class="absolute top-2.5 right-2.5 z-10 w-8 h-8 rounded-full bg-slate-950/80 border border-white/10 backdrop-blur-md text-lg leading-none flex items-center justify-center transition-transform hover:scale-110">
-                                <span class="${isFav ? 'text-amber-400 drop-shadow-[0_0_6px_rgba(252,211,77,0.9)]' : 'text-sky-200/60'}">★</span>
-                            </button>
-                            <div class="play-orb z-10">
-                                <span class="play-orb-ring"></span>
-                                <span class="play-orb-core">
-                                    <svg class="w-6 h-6 fill-current translate-x-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        <div class="relative aspect-video w-full overflow-hidden bg-slate-900">
+                            <img src="${game.thumbnail}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" alt="${game.title}" loading="lazy" />
+                            <div class="absolute top-2 left-2 flex items-center gap-1">
+                                <span class="px-2 py-0.5 rounded-full text-[10px] font-black bg-slate-950/80 text-amber-400 border border-amber-400/30">
+                                    ★ ${game.rating}
                                 </span>
+                                ${isGn ? `<span class="px-2 py-0.5 rounded-full text-[10px] font-black bg-slate-950/90 text-cyan-300 border border-cyan-400/60 shadow-md flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>GN</span>` : ''}
+                                ${game.isCustom ? `<span class="px-2 py-0.5 rounded-full text-[10px] font-black bg-purple-500/80 text-white">CUSTOM</span>` : ''}
                             </div>
-                            <div class="absolute bottom-2.5 left-2.5 right-2.5 z-10 flex items-end justify-between gap-2 pointer-events-none">
-                                <div class="min-w-0">
-                                    <div class="text-[9px] font-mono uppercase tracking-[0.22em] text-sky-300/80">${game.category}</div>
-                                    <h3 class="font-black text-[15px] text-white truncate drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]">${game.title}</h3>
-                                </div>
-                            </div>
+                            <button onclick="toggleFav(event, '${game.id}')" class="absolute top-2 right-2 p-1.5 rounded-full bg-slate-950/80 text-sky-200 hover:text-amber-400 transition-colors">
+                                <span class="${isFav ? 'text-amber-400 font-bold' : 'opacity-60'}">★</span>
+                            </button>
                         </div>
-                        <div class="p-3.5 flex-1 flex flex-col justify-between gap-3">
-                            <p class="text-[11.5px] text-sky-100/70 line-clamp-2 leading-relaxed">${game.description}</p>
-                            <div class="flex items-center justify-between text-[11px] pt-2.5 border-t border-white/5">
-                                <div class="flex items-center gap-3 text-sky-300/70 font-mono">
-                                    <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>${game.plays || '100K'}</span>
-                                    <span class="flex items-center gap-1.5"><span class="w-1 h-1 rounded-full bg-sky-400"></span>1080p</span>
+                        <div class="p-4 flex-1 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between gap-2 mb-1">
+                                    <h3 class="font-extrabold text-sm text-white group-hover:text-sky-300 transition-colors truncate">${game.title}</h3>
+                                    <span class="text-[10px] font-bold text-sky-400 px-2 py-0.5 rounded-md bg-sky-500/10 border border-sky-400/20">${game.category}</span>
                                 </div>
-                                <span class="text-sky-200 font-black tracking-wider group-hover:text-sky-300 group-hover:translate-x-0.5 transition-transform">PLAY ▸</span>
+                                <p class="text-[11px] text-sky-200/70 line-clamp-2 leading-relaxed">${game.description}</p>
+                            </div>
+                            <div class="mt-3 pt-3 border-t border-sky-500/10 flex items-center justify-between text-[11px]">
+                                <span class="text-sky-400 font-semibold">${game.plays || '100K'} plays</span>
+                                <span class="text-sky-300 font-bold group-hover:translate-x-1 transition-transform">Play ▶</span>
                             </div>
                         </div>
                     `;
@@ -1715,7 +1338,7 @@
             document.querySelectorAll('.cat-btn').forEach(b => {
                 b.className = "cat-btn px-4 py-2 rounded-xl text-xs font-extrabold transition-all border bg-slate-900/80 text-sky-200 border-sky-500/30 hover:bg-slate-800";
             });
-            btnElem.className = "cat-btn is-active px-4 py-2 rounded-xl text-xs font-extrabold transition-all border bg-sky-500 text-slate-950 border-sky-400 shadow-md";
+            btnElem.className = "cat-btn px-4 py-2 rounded-xl text-xs font-extrabold transition-all border bg-sky-500 text-slate-950 border-sky-400 shadow-md";
             renderGames();
         }
 
@@ -1782,14 +1405,6 @@
             const p = document.getElementById('tabBtnProxy');
             if (g) g.className = tab === 'games' ? sideActiveGames : sideIdle;
             if (p) p.className = tab === 'proxy' ? sideActiveProxy : sideIdle;
-
-            // Show blue fire flares only on the games catalog view
-            const showFlares = tab === 'games';
-            const flL = document.getElementById('flareCanvasLeft');
-            const flR = document.getElementById('flareCanvasRight');
-            if (flL) flL.classList.toggle('hidden', !showFlares);
-            if (flR) flR.classList.toggle('hidden', !showFlares);
-            if (showFlares && typeof initFlares === 'function') initFlares();
         }
 
         function getIframeWrapperHtml(url, title) {
@@ -2412,119 +2027,12 @@ h1{margin:0 0 12px;font-size:22px;color:#7dd3fc}p{margin:0;color:#bae6fd;line-he
         initSnow();
         requestAnimationFrame(drawSnow);
 
-        // ============ LIGHT BLUE FIRE FLARES (games catalog sides) ============
-        const flareCanvasL = document.getElementById('flareCanvasLeft');
-        const flareCanvasR = document.getElementById('flareCanvasRight');
-        const flareCtxL = flareCanvasL.getContext('2d');
-        const flareCtxR = flareCanvasR.getContext('2d');
-        const FLARE_STRIP_W = 120;
-        let flaresL = [], flaresR = [];
-        let lastFlareFrame = performance.now();
-
-        function makeFlare(w, h, seeded) {
-            const depth = Math.random();
-            const size = 0.9 + depth * 2.6;
-            return {
-                x: Math.random() * w,
-                y: seeded ? Math.random() * h : -size * 4,
-                size,
-                depth,
-                vy: 0.35 + depth * 1.4,
-                vx: (Math.random() - 0.5) * 0.25,
-                swayAmp: 0.4 + Math.random() * 1.0,
-                swaySpeed: 0.0005 + Math.random() * 0.0014,
-                swayPhase: Math.random() * Math.PI * 2,
-                life: 0,
-                maxLife: 320 + Math.random() * 420,
-                hue: 198 + Math.random() * 18,     // soft cyan -> sky blue
-                alpha: 0.28 + depth * 0.35,
-                tail: 14 + depth * 32
-            };
-        }
-
-        function sizeFlareCanvas(canvas) {
-            const w = Math.min(FLARE_STRIP_W, Math.floor(window.innerWidth * 0.14));
-            canvas.width = w;
-            canvas.height = window.innerHeight;
-            canvas.style.width = w + 'px';
-            return w;
-        }
-
-        function initFlares() {
-            const wL = sizeFlareCanvas(flareCanvasL);
-            const wR = sizeFlareCanvas(flareCanvasR);
-            const count = Math.min(55, Math.floor(window.innerHeight / 22));
-            flaresL = []; flaresR = [];
-            for (let i = 0; i < count; i++) {
-                flaresL.push(makeFlare(wL, window.innerHeight, true));
-                flaresR.push(makeFlare(wR, window.innerHeight, true));
-            }
-        }
-
-        function drawFlare(ctx, f) {
-            // Soft blue-fire glow — smooth, diffuse, no hard core
-            const r = f.size * 6;
-            const grad = ctx.createRadialGradient(f.x, f.y, 0, f.x, f.y, r);
-            grad.addColorStop(0,    `hsla(${f.hue}, 100%, 88%, ${f.alpha * 0.9})`);
-            grad.addColorStop(0.35, `hsla(${f.hue}, 100%, 70%, ${f.alpha * 0.45})`);
-            grad.addColorStop(0.75, `hsla(${f.hue}, 100%, 55%, ${f.alpha * 0.15})`);
-            grad.addColorStop(1,    `hsla(${f.hue}, 100%, 50%, 0)`);
-            ctx.fillStyle = grad;
-            ctx.beginPath();
-            ctx.arc(f.x, f.y, r, 0, Math.PI * 2);
-            ctx.fill();
-
-            // Soft rising wisp — feathered, thin
-            const wispGrad = ctx.createLinearGradient(f.x, f.y - f.tail, f.x, f.y);
-            wispGrad.addColorStop(0, `hsla(${f.hue}, 100%, 80%, 0)`);
-            wispGrad.addColorStop(1, `hsla(${f.hue}, 100%, 88%, ${f.alpha * 0.35})`);
-            ctx.strokeStyle = wispGrad;
-            ctx.lineWidth = Math.max(0.4, f.size * 0.35);
-            ctx.lineCap = 'round';
-            ctx.beginPath();
-            ctx.moveTo(f.x, f.y - f.tail);
-            ctx.lineTo(f.x, f.y);
-            ctx.stroke();
-        }
-
-        function stepFlares(ctx, canvas, arr, now, dt) {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.globalCompositeOperation = 'lighter';
-            for (let f of arr) {
-                const sway = Math.sin(now * f.swaySpeed + f.swayPhase) * f.swayAmp;
-                f.x += (f.vx + sway * 0.08) * dt * 0.4;
-                f.y += f.vy * dt * 0.35;
-                f.life += dt;
-                if (f.y - f.tail > canvas.height || f.life > f.maxLife) {
-                    Object.assign(f, makeFlare(canvas.width, canvas.height, false));
-                }
-                drawFlare(ctx, f);
-            }
-            ctx.globalCompositeOperation = 'source-over';
-        }
-
-        function animateFlares(now) {
-            if (now === undefined) now = performance.now();
-            const dt = Math.min(40, now - lastFlareFrame);
-            lastFlareFrame = now;
-            if (!flareCanvasL.classList.contains('hidden')) {
-                stepFlares(flareCtxL, flareCanvasL, flaresL, now, dt);
-                stepFlares(flareCtxR, flareCanvasR, flaresR, now, dt);
-            }
-            requestAnimationFrame(animateFlares);
-        }
-
-        window.addEventListener('resize', () => { if (!flareCanvasL.classList.contains('hidden')) initFlares(); });
-        initFlares();
-        requestAnimationFrame(animateFlares);
-        // =====================================================================
-
         // Initial setup: Default to Home tab landing
         switchTab('home');
         renderGames();
 
-        // Typewriter animation loop for the tagline word: Bypass -> Experience -> Freedom -> repeat
-        const typewriterWords = ["Bypass", "Experience", "Freedom"];
+        // Typewriter animation loop for the tagline words: Experience -> Bypass -> Enjoy -> Be Free -> repeat
+        const typewriterWords = ["Experience", "Bypass", "Enjoy", "Be Free"];
         const bypassFonts = [
             'italic 1em "Instrument Serif", serif',
             'normal 1em "Instrument Serif", serif',
@@ -2558,7 +2066,7 @@ h1{margin:0 0 12px;font-size:22px;color:#7dd3fc}p{margin:0;color:#bae6fd;line-he
                 twCharIdx--;
                 twEl.innerText = currentWord.substring(0, Math.max(0, twCharIdx));
             } else {
-                if (twCharIdx === 0 && currentWord === "Bypass") {
+                if (twCharIdx === 0) {
                     randomizeBypassFont(twEl);
                 }
                 twCharIdx++;

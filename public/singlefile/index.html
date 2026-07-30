@@ -296,7 +296,7 @@
                     <h1 class="text-white font-light leading-[0.95] tracking-tight text-5xl sm:text-6xl md:text-7xl mb-8">
                         A quieter way to<br/>
                         <span class="font-serif italic font-normal text-sky-100">browse, play,</span>
-                        <span id="typewriterWord" class="font-serif italic font-normal text-sky-200">bypass</span><span class="ml-1 inline-block w-[2px] h-[0.9em] align-middle bg-sky-200/80 animate-pulse"></span>
+                        <span id="typewriterWord" class="font-serif italic font-normal text-sky-200">experience</span><span class="ml-1 inline-block w-[2px] h-[0.9em] align-middle bg-sky-200/80 animate-pulse"></span>
                     </h1>
 
                     <p class="max-w-xl text-base sm:text-lg text-sky-100/70 leading-relaxed font-normal mb-10">
@@ -2031,8 +2031,8 @@ h1{margin:0 0 12px;font-size:22px;color:#7dd3fc}p{margin:0;color:#bae6fd;line-he
         switchTab('home');
         renderGames();
 
-        // Typewriter animation loop for the tagline word: Bypass -> Experience -> Freedom -> repeat
-        const typewriterWords = ["Bypass", "Experience", "Freedom"];
+        // Typewriter animation loop for the tagline words: Experience -> Bypass -> Enjoy -> Be Free -> repeat
+        const typewriterWords = ["Experience", "Bypass", "Enjoy", "Be Free"];
         const bypassFonts = [
             'italic 1em "Instrument Serif", serif',
             'normal 1em "Instrument Serif", serif',
@@ -2066,7 +2066,7 @@ h1{margin:0 0 12px;font-size:22px;color:#7dd3fc}p{margin:0;color:#bae6fd;line-he
                 twCharIdx--;
                 twEl.innerText = currentWord.substring(0, Math.max(0, twCharIdx));
             } else {
-                if (twCharIdx === 0 && currentWord === "Bypass") {
+                if (twCharIdx === 0) {
                     randomizeBypassFont(twEl);
                 }
                 twCharIdx++;
