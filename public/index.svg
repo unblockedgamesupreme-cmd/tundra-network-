@@ -73,6 +73,7 @@
     --color-emerald-500: oklch(69.6% 0.17 162.48);
     --color-emerald-600: oklch(59.6% 0.145 163.225);
     --color-emerald-700: oklch(50.8% 0.118 165.612);
+    --color-teal-400: oklch(77.7% 0.152 181.912);
     --color-cyan-300: oklch(86.5% 0.127 207.078);
     --color-cyan-400: oklch(78.9% 0.154 211.53);
     --color-sky-50: oklch(97.7% 0.013 236.62);
@@ -128,6 +129,7 @@
     --container-2xl: 42rem;
     --container-3xl: 48rem;
     --container-5xl: 64rem;
+    --container-6xl: 72rem;
     --container-7xl: 80rem;
     --text-xs: 0.75rem;
     --text-xs--line-height: calc(1 / 0.75);
@@ -693,6 +695,9 @@
   .h-\[520px\] {
     height: 520px;
   }
+  .h-\[650px\] {
+    height: 650px;
+  }
   .h-full {
     height: 100%;
   }
@@ -722,6 +727,9 @@
   }
   .min-h-\[480px\] {
     min-height: 480px;
+  }
+  .min-h-\[650px\] {
+    min-height: 650px;
   }
   .min-h-\[calc\(100vh-6rem\)\] {
     min-height: calc(100vh - 6rem);
@@ -806,6 +814,9 @@
   }
   .max-w-5xl {
     max-width: var(--container-5xl);
+  }
+  .max-w-6xl {
+    max-width: var(--container-6xl);
   }
   .max-w-7xl {
     max-width: var(--container-7xl);
@@ -972,6 +983,9 @@
   }
   .items-end {
     align-items: flex-end;
+  }
+  .items-start {
+    align-items: flex-start;
   }
   .items-stretch {
     align-items: stretch;
@@ -1266,13 +1280,31 @@
       border-color: color-mix(in oklab, var(--color-emerald-400) 40%, transparent);
     }
   }
+  .border-emerald-400\/50 {
+    border-color: color-mix(in srgb, oklch(76.5% 0.177 163.223) 50%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-emerald-400) 50%, transparent);
+    }
+  }
   .border-emerald-500 {
     border-color: var(--color-emerald-500);
+  }
+  .border-emerald-500\/20 {
+    border-color: color-mix(in srgb, oklch(69.6% 0.17 162.48) 20%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-emerald-500) 20%, transparent);
+    }
   }
   .border-emerald-500\/30 {
     border-color: color-mix(in srgb, oklch(69.6% 0.17 162.48) 30%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
       border-color: color-mix(in oklab, var(--color-emerald-500) 30%, transparent);
+    }
+  }
+  .border-emerald-500\/40 {
+    border-color: color-mix(in srgb, oklch(69.6% 0.17 162.48) 40%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-emerald-500) 40%, transparent);
     }
   }
   .border-indigo-400 {
@@ -1945,6 +1977,10 @@
     --tw-gradient-position: to top right in oklab;
     background-image: linear-gradient(var(--tw-gradient-stops));
   }
+  .from-emerald-500 {
+    --tw-gradient-from: var(--color-emerald-500);
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
   .from-purple-500 {
     --tw-gradient-from: var(--color-purple-500);
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
@@ -2105,6 +2141,10 @@
   }
   .to-sky-600 {
     --tw-gradient-to: var(--color-sky-600);
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+  .to-teal-400 {
+    --tw-gradient-to: var(--color-teal-400);
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
   .to-transparent {
@@ -2858,6 +2898,24 @@
       --tw-shadow-color: color-mix(in oklab, var(--color-emerald-500) var(--tw-shadow-alpha), transparent);
     }
   }
+  .shadow-emerald-500\/5 {
+    --tw-shadow-color: color-mix(in srgb, oklch(69.6% 0.17 162.48) 5%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, var(--color-emerald-500) 5%, transparent) var(--tw-shadow-alpha), transparent);
+    }
+  }
+  .shadow-emerald-500\/10 {
+    --tw-shadow-color: color-mix(in srgb, oklch(69.6% 0.17 162.48) 10%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, var(--color-emerald-500) 10%, transparent) var(--tw-shadow-alpha), transparent);
+    }
+  }
+  .shadow-emerald-500\/20 {
+    --tw-shadow-color: color-mix(in srgb, oklch(69.6% 0.17 162.48) 20%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, var(--color-emerald-500) 20%, transparent) var(--tw-shadow-alpha), transparent);
+    }
+  }
   .shadow-emerald-500\/30 {
     --tw-shadow-color: color-mix(in srgb, oklch(69.6% 0.17 162.48) 30%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
@@ -3294,6 +3352,14 @@
         background-color: color-mix(in oklab, var(--color-blue-600) 50%, transparent);
       }
     }
+    .hover\:bg-emerald-500\/20:hover {
+      background-color: color-mix(in srgb, oklch(69.6% 0.17 162.48) 20%, transparent);
+    }
+    @supports (color: color-mix(in lab, red, red)) {
+      .hover\:bg-emerald-500\/20:hover {
+        background-color: color-mix(in oklab, var(--color-emerald-500) 20%, transparent);
+      }
+    }
     .hover\:bg-emerald-600\/50:hover {
       background-color: color-mix(in srgb, oklch(59.6% 0.145 163.225) 50%, transparent);
     }
@@ -3598,8 +3664,14 @@
     .sm\:inline {
       display: inline;
     }
+    .sm\:h-\[750px\] {
+      height: 750px;
+    }
     .sm\:min-h-\[480px\] {
       min-height: 480px;
+    }
+    .sm\:min-h-\[750px\] {
+      min-height: 750px;
     }
     .sm\:grid-cols-2 {
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -4311,9 +4383,9 @@
         </div>
     </header>
 
-    <!-- Top Section Navigation (Home / Games / Proxy) -->
+    <!-- Top Section Navigation (Home / Games / Proxy / Link Checking) -->
     <nav class="w-full bg-slate-950/50 border-b border-white/5 backdrop-blur-md z-20 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-center gap-2">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-center gap-2 flex-wrap">
             <button id="topTabHome" onclick="switchTab('home')" class="top-tab-btn px-4 py-1.5 rounded-full text-[13px] font-medium flex items-center gap-2 transition-all border">
                 <span>Home</span>
             </button>
@@ -4322,6 +4394,9 @@
             </button>
             <button id="topTabProxy" onclick="switchTab('proxy')" class="top-tab-btn px-4 py-1.5 rounded-full text-[13px] font-medium flex items-center gap-2 transition-all border">
                 <span>Proxy</span>
+            </button>
+            <button id="topTabLinkcheck" onclick="switchTab('linkcheck')" class="top-tab-btn px-4 py-1.5 rounded-full text-[13px] font-medium flex items-center gap-2 transition-all border">
+                <span>Link Checking</span>
             </button>
         </div>
     </nav>
@@ -4371,6 +4446,19 @@
                         </div>
                         <div class="hidden md:block opacity-0 group-hover:opacity-100 transition-opacity duration-200 overflow-hidden whitespace-nowrap">
                             <span class="text-xs font-semibold block">Ultraviolet Proxy</span>
+                        </div>
+                    </button>
+
+                    <button
+                        id="tabBtnLinkcheck"
+                        onclick="switchTab('linkcheck')"
+                        class="flex items-center gap-3.5 p-2.5 rounded-xl transition-all duration-200 cursor-pointer w-full text-left relative text-sky-300/70 hover:text-white hover:bg-slate-900 border border-transparent"
+                    >
+                        <div class="flex-shrink-0 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+                        </div>
+                        <div class="hidden md:block opacity-0 group-hover:opacity-100 transition-opacity duration-200 overflow-hidden whitespace-nowrap">
+                            <span class="text-xs font-semibold block">Link Checking</span>
                         </div>
                     </button>
                 </div>
@@ -4781,6 +4869,34 @@
                         <p><span class="text-purple-300">→ adblk</span> <span class="text-sky-300/70">blocklist loaded · 50 hosts</span></p>
                         <p><span class="text-sky-300/60 tn-caret">$ tn-proxy ready — awaiting request </span></p>
                     </div>
+                </div>
+            </main>
+
+            <!-- LINK CHECKING TAB CONTENT -->
+            <main id="viewLinkcheck" class="hidden flex-1 w-full mx-auto p-4 sm:p-6 lg:p-8 relative z-10 max-w-6xl">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-4 bg-slate-950/80 border border-emerald-500/30 p-4 rounded-2xl backdrop-blur-md shadow-lg shadow-emerald-500/5">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-400 p-0.5 flex-shrink-0 shadow-lg shadow-emerald-500/20">
+                            <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
+                                <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+                            </div>
+                        </div>
+                        <div>
+                            <h1 class="text-lg sm:text-xl font-bold text-white flex items-center gap-2">
+                                Link Checking
+                                <span class="text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2.5 py-0.5 rounded-full uppercase tracking-wider">glseries.net</span>
+                            </h1>
+                            <p class="text-xs text-sky-200/70">Live link verification &amp; status engine</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <a href="https://live.glseries.net/" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 text-xs font-bold text-emerald-300 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer">
+                            <span>Open Direct ↗</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="w-full bg-slate-950 border border-emerald-500/20 rounded-2xl overflow-hidden shadow-2xl relative min-h-[650px] sm:min-h-[750px]">
+                    <iframe src="https://live.glseries.net/" class="w-full h-[650px] sm:h-[750px] border-none" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
                 </div>
             </main>
 
@@ -5741,8 +5857,10 @@
                 });
             }
 
-            document.getElementById('favBadgeCount').innerText = favorites.length;
-            document.getElementById('heroTotalGames').innerText = gamesList.length;
+            const favBadge = document.getElementById('favBadgeCount');
+            if (favBadge) favBadge.innerText = favorites.length;
+            const heroTotal = document.getElementById('heroTotalGames');
+            if (heroTotal) heroTotal.innerText = gamesList.length;
             const homeStat = document.getElementById('homeStatGames');
             if (homeStat) homeStat.innerText = gamesList.length;
         }
@@ -5792,7 +5910,7 @@
         }
 
         function switchTab(tab) {
-            const views = { home: 'viewHome', games: 'viewGames', proxy: 'viewProxy' };
+            const views = { home: 'viewHome', games: 'viewGames', proxy: 'viewProxy', linkcheck: 'viewLinkcheck' };
             Object.entries(views).forEach(([key, id]) => {
                 const el = document.getElementById(id);
                 if (el) el.classList.toggle('hidden', key !== tab);
@@ -5804,21 +5922,26 @@
                 home:  " bg-white/10 text-white border-white/25",
                 games: " bg-white/10 text-white border-white/25",
                 proxy: " bg-white/10 text-white border-white/25",
+                linkcheck: " bg-emerald-500/20 text-emerald-200 border-emerald-400/50 shadow-md shadow-emerald-500/10",
             };
             const topIdle = " bg-transparent text-sky-100/60 border-white/10 hover:text-white hover:border-white/20";
-            ['home', 'games', 'proxy'].forEach(k => {
-                const btn = document.getElementById('topTab' + k[0].toUpperCase() + k.slice(1));
+            ['home', 'games', 'proxy', 'linkcheck'].forEach(k => {
+                const btnId = 'topTab' + k.charAt(0).toUpperCase() + k.slice(1);
+                const btn = document.getElementById(btnId);
                 if (btn) btn.className = topBase + (k === tab ? topActive[k] : topIdle);
             });
 
             // Sidebar navigation buttons styling
             const sideActiveGames = "flex items-center gap-3.5 p-2.5 rounded-xl transition-all duration-200 cursor-pointer w-full text-left relative bg-sky-500/20 text-sky-300 border border-sky-500/40 shadow-lg shadow-sky-500/10 font-bold";
             const sideActiveProxy = "flex items-center gap-3.5 p-2.5 rounded-xl transition-all duration-200 cursor-pointer w-full text-left relative bg-purple-500/20 text-purple-300 border border-purple-500/40 shadow-lg shadow-purple-500/10 font-bold";
+            const sideActiveLinkcheck = "flex items-center gap-3.5 p-2.5 rounded-xl transition-all duration-200 cursor-pointer w-full text-left relative bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 shadow-lg shadow-emerald-500/10 font-bold";
             const sideIdle = "flex items-center gap-3.5 p-2.5 rounded-xl transition-all duration-200 cursor-pointer w-full text-left relative text-sky-300/70 hover:text-white hover:bg-slate-900 border border-transparent";
             const g = document.getElementById('tabBtnGames');
             const p = document.getElementById('tabBtnProxy');
+            const l = document.getElementById('tabBtnLinkcheck');
             if (g) g.className = tab === 'games' ? sideActiveGames : sideIdle;
             if (p) p.className = tab === 'proxy' ? sideActiveProxy : sideIdle;
+            if (l) l.className = tab === 'linkcheck' ? sideActiveLinkcheck : sideIdle;
 
             // Show blue fire flares only on the games catalog view
             const showFlares = tab === 'games';
