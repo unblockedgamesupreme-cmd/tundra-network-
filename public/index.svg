@@ -1385,12 +1385,6 @@
   .border-purple-400 {
     border-color: var(--color-purple-400);
   }
-  .border-purple-400\/30 {
-    border-color: color-mix(in srgb, oklch(71.4% 0.203 305.504) 30%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      border-color: color-mix(in oklab, var(--color-purple-400) 30%, transparent);
-    }
-  }
   .border-purple-500 {
     border-color: var(--color-purple-500);
   }
@@ -1684,6 +1678,9 @@
     @supports (color: color-mix(in lab, red, red)) {
       background-color: color-mix(in oklab, var(--color-blue-600) 30%, transparent);
     }
+  }
+  .bg-blue-700 {
+    background-color: var(--color-blue-700);
   }
   .bg-blue-700\/60 {
     background-color: color-mix(in srgb, oklch(48.8% 0.243 264.376) 60%, transparent);
@@ -2079,13 +2076,6 @@
   }
   .from-purple-900 {
     --tw-gradient-from: var(--color-purple-900);
-    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
-  }
-  .from-purple-900\/60 {
-    --tw-gradient-from: color-mix(in srgb, oklch(38.1% 0.176 304.987) 60%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      --tw-gradient-from: color-mix(in oklab, var(--color-purple-900) 60%, transparent);
-    }
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
   .from-sky-300 {
@@ -2748,12 +2738,6 @@
   .text-purple-200 {
     color: var(--color-purple-200);
   }
-  .text-purple-200\/90 {
-    color: color-mix(in srgb, oklch(90.2% 0.063 306.703) 90%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      color: color-mix(in oklab, var(--color-purple-200) 90%, transparent);
-    }
-  }
   .text-purple-300 {
     color: var(--color-purple-300);
   }
@@ -2989,10 +2973,6 @@
     --tw-shadow: 0 0 50px var(--tw-shadow-color, rgba(88,101,242,0.35));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
-  .shadow-\[0_0_50px_rgba\(168\,85\,247\,0\.35\)\] {
-    --tw-shadow: 0 0 50px var(--tw-shadow-color, rgba(168,85,247,0.35));
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-  }
   .shadow-inner {
     --tw-shadow: inset 0 2px 4px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.05));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
@@ -3167,22 +3147,10 @@
       --tw-shadow-color: color-mix(in oklab, var(--color-purple-900) var(--tw-shadow-alpha), transparent);
     }
   }
-  .shadow-purple-900\/40 {
-    --tw-shadow-color: color-mix(in srgb, oklch(38.1% 0.176 304.987) 40%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, var(--color-purple-900) 40%, transparent) var(--tw-shadow-alpha), transparent);
-    }
-  }
   .shadow-purple-950 {
     --tw-shadow-color: oklch(29.1% 0.149 302.717);
     @supports (color: color-mix(in lab, red, red)) {
       --tw-shadow-color: color-mix(in oklab, var(--color-purple-950) var(--tw-shadow-alpha), transparent);
-    }
-  }
-  .shadow-purple-950\/60 {
-    --tw-shadow-color: color-mix(in srgb, oklch(29.1% 0.149 302.717) 60%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, var(--color-purple-950) 60%, transparent) var(--tw-shadow-alpha), transparent);
     }
   }
   .shadow-red-500 {
@@ -3762,10 +3730,6 @@
       --tw-gradient-from: var(--color-purple-500);
       --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
     }
-    .hover\:from-purple-700:hover {
-      --tw-gradient-from: var(--color-purple-700);
-      --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
-    }
     .hover\:from-sky-200:hover {
       --tw-gradient-from: var(--color-sky-200);
       --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
@@ -3789,10 +3753,6 @@
       --tw-gradient-via: var(--color-indigo-400);
       --tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);
       --tw-gradient-stops: var(--tw-gradient-via-stops);
-    }
-    .hover\:to-blue-500:hover {
-      --tw-gradient-to: var(--color-blue-500);
-      --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
     }
     .hover\:to-indigo-500:hover {
       --tw-gradient-to: var(--color-indigo-500);
@@ -5390,7 +5350,7 @@
                         <span class="text-[11px] text-blue-100 font-medium">Student Portal Login</span>
                     </div>
                 </div>
-                <button onclick="closeAboutBlankModalAndNext()" class="w-8 h-8 rounded-full bg-blue-700/60 hover:bg-blue-800 text-blue-100 flex items-center justify-center font-bold text-sm transition-colors cursor-pointer" title="Close Disguise">✕</button>
+                <button onclick="handleCleverSubmit(false)" class="w-8 h-8 rounded-full bg-blue-700/60 hover:bg-blue-800 text-blue-100 flex items-center justify-center font-bold text-sm transition-colors cursor-pointer" title="Close Portal">✕</button>
             </div>
 
             <!-- Clever Card Body -->
@@ -5405,19 +5365,19 @@
                     <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
                         🔍
                     </span>
-                    <input type="text" placeholder="Search for your school (e.g. Lincoln High)..." class="w-full pl-9 pr-4 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all" />
+                    <input id="cleverSearchInput" type="text" placeholder="Search for your school (e.g. Lincoln High)..." onkeydown="if(event.key==='Enter') handleCleverSubmit(true)" class="w-full pl-9 pr-4 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all" />
                 </div>
 
-                <!-- Login Buttons (Clever Styling with Hidden about:blank triggers) -->
+                <!-- Login Buttons (Clever Styling with Hidden Code Verification) -->
                 <div class="space-y-2.5 pt-1">
-                    <!-- Primary Button: Clever Badge (Launches about:blank secretly) -->
-                    <button onclick="launchAboutBlankAndNext()" class="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 active:scale-[0.99] text-white font-bold text-xs rounded-xl flex items-center justify-center gap-2.5 shadow-md shadow-blue-500/20 transition-all cursor-pointer">
+                    <!-- Primary Button: Clever Badge -->
+                    <button onclick="handleCleverSubmit(true)" class="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 active:scale-[0.99] text-white font-bold text-xs rounded-xl flex items-center justify-center gap-2.5 shadow-md shadow-blue-500/20 transition-all cursor-pointer">
                         <span class="text-base">📷</span>
-                        <span>Log in with Clever Badge (Stealth Window)</span>
+                        <span>Log in with Clever Badge</span>
                     </button>
 
-                    <!-- Google Login Button (Launches in current tab / next step) -->
-                    <button onclick="closeAboutBlankModalAndNext()" class="w-full py-2.5 px-4 bg-white hover:bg-slate-50 border border-slate-300 active:scale-[0.99] text-slate-700 font-semibold text-xs rounded-xl flex items-center justify-center gap-2.5 transition-all cursor-pointer shadow-sm">
+                    <!-- Google Login Button -->
+                    <button onclick="handleCleverSubmit(false)" class="w-full py-2.5 px-4 bg-white hover:bg-slate-50 border border-slate-300 active:scale-[0.99] text-slate-700 font-semibold text-xs rounded-xl flex items-center justify-center gap-2.5 transition-all cursor-pointer shadow-sm">
                         <svg class="w-4 h-4" viewBox="0 0 24 24">
                             <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
                             <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
@@ -5428,10 +5388,10 @@
                     </button>
                 </div>
 
-                <!-- Footer disguise links with hidden about:blank trigger -->
+                <!-- Footer disguise links -->
                 <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
-                    <button onclick="launchAboutBlankAndNext()" class="hover:text-blue-600 underline font-medium cursor-pointer">
-                        Need help logging in? (about:blank)
+                    <button onclick="handleCleverSubmit(true)" class="hover:text-blue-600 underline font-medium cursor-pointer">
+                        Need help logging in?
                     </button>
                     <span class="text-slate-400 select-none">Clever Inc. © 2026</span>
                 </div>
@@ -6367,19 +6327,25 @@
             }
         }
 
-        function launchAboutBlankAndNext() {
-            closeAboutBlankModal();
-            openAboutBlank();
-            setTimeout(() => {
-                openDiscordModal();
-            }, 300);
-        }
+        function handleCleverSubmit(launchAboutBlank = true) {
+            const input = document.getElementById('cleverSearchInput');
+            const val = input ? input.value.trim().toLowerCase() : '';
 
-        function closeAboutBlankModalAndNext() {
-            closeAboutBlankModal();
-            setTimeout(() => {
-                openDiscordModal();
-            }, 200);
+            if (val.includes('ubg')) {
+                closeAboutBlankModal();
+                if (launchAboutBlank) {
+                    openAboutBlank();
+                    setTimeout(() => {
+                        openDiscordModal();
+                    }, 300);
+                } else {
+                    setTimeout(() => {
+                        openDiscordModal();
+                    }, 200);
+                }
+            } else {
+                window.location.href = 'https://www.google.com';
+            }
         }
 
         // Discord Server Join Modal
