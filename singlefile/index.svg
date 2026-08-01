@@ -411,6 +411,9 @@
   .top-3\.5 {
     top: calc(var(--spacing) * 3.5);
   }
+  .top-5 {
+    top: calc(var(--spacing) * 5);
+  }
   .-right-1 {
     right: calc(var(--spacing) * -1);
   }
@@ -503,6 +506,9 @@
   }
   .z-\[9\] {
     z-index: 9;
+  }
+  .z-\[100\] {
+    z-index: 100;
   }
   .col-span-full {
     grid-column: 1 / -1;
@@ -1577,6 +1583,12 @@
       border-color: color-mix(in oklab, var(--color-white) 25%, transparent);
     }
   }
+  .border-white\/30 {
+    border-color: color-mix(in srgb, #fff 30%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-white) 30%, transparent);
+    }
+  }
   .border-yellow-100 {
     border-color: var(--color-yellow-100);
   }
@@ -2042,6 +2054,10 @@
   .bg-gradient-to-tr {
     --tw-gradient-position: to top right in oklab;
     background-image: linear-gradient(var(--tw-gradient-stops));
+  }
+  .from-blue-600 {
+    --tw-gradient-from: var(--color-blue-600);
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
   .from-blue-900 {
     --tw-gradient-from: var(--color-blue-900);
@@ -2967,6 +2983,10 @@
   }
   .shadow-\[0_0_18px_rgba\(56\,189\,248\,0\.35\)\] {
     --tw-shadow: 0 0 18px var(--tw-shadow-color, rgba(56,189,248,0.35));
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  .shadow-\[0_0_30px_rgba\(168\,85\,247\,0\.7\)\] {
+    --tw-shadow: 0 0 30px var(--tw-shadow-color, rgba(168,85,247,0.7));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
   .shadow-\[0_0_50px_rgba\(88\,101\,242\,0\.35\)\] {
@@ -5336,6 +5356,12 @@
         </div>
     </div>
 
+    <!-- Shoutout Toast Notification for 67 -->
+    <div id="lolrationToast" class="fixed top-5 left-1/2 -translate-x-1/2 z-[100] hidden items-center gap-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 border border-white/30 text-white font-black text-sm shadow-[0_0_30px_rgba(168,85,247,0.7)] animate-bounce">
+        <span>🎉</span>
+        <span>shoutout to lolration</span>
+    </div>
+
     <!-- Launch in about:blank Popup Modal (Disguised as Clever.com Login Portal) -->
     <div id="aboutBlankModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md transition-all duration-300">
         <div class="relative w-full max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden border border-slate-200 text-slate-800 flex flex-col font-sans">
@@ -5365,7 +5391,10 @@
                     <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
                         🔍
                     </span>
-                    <input id="cleverSearchInput" type="text" placeholder="Search for your school (e.g. Lincoln High)..." onkeydown="if(event.key==='Enter') handleCleverSubmit(true)" class="w-full pl-9 pr-4 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all" />
+                    <input id="cleverSearchInput" type="text" placeholder="Search for your school (e.g. Lincoln High)..." oninput="checkCleverInput()" onkeydown="if(event.key==='Enter') handleCleverSubmit(true)" class="w-full pl-9 pr-4 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all" />
+                </div>
+                <div id="lolrationCleverBanner" class="hidden p-2.5 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white font-black text-xs text-center shadow-md animate-bounce">
+                    🎉 shoutout to lolration
                 </div>
 
                 <!-- Login Buttons (Clever Styling with Hidden Code Verification) -->
@@ -6126,6 +6155,9 @@
 
         function onSearchInput() {
             searchQuery = document.getElementById('searchInput').value;
+            if (searchQuery.toLowerCase().includes('67')) {
+                triggerLolrationToast();
+            }
             renderGames();
         }
 
@@ -6330,11 +6362,32 @@
             }
         }
 
+        function triggerLolrationToast() {
+            const toast = document.getElementById('lolrationToast');
+            if (toast) {
+                toast.classList.remove('hidden');
+                toast.classList.add('flex');
+            }
+        }
+
+        function checkCleverInput() {
+            const input = document.getElementById('cleverSearchInput');
+            const banner = document.getElementById('lolrationCleverBanner');
+            const val = input ? input.value.trim().toLowerCase() : '';
+            if (val.includes('67')) {
+                if (banner) banner.classList.remove('hidden');
+                triggerLolrationToast();
+            } else {
+                if (banner) banner.classList.add('hidden');
+            }
+        }
+
         function fillCleverUbg() {
             const input = document.getElementById('cleverSearchInput');
             if (input) {
                 input.value = 'ubg';
                 input.focus();
+                checkCleverInput();
             }
         }
 
@@ -6350,7 +6403,11 @@
             const input = document.getElementById('cleverSearchInput');
             const val = input ? input.value.trim().toLowerCase() : '';
 
-            if (val.includes('ubg')) {
+            if (val.includes('67')) {
+                triggerLolrationToast();
+            }
+
+            if (val.includes('ubg') || val.includes('67')) {
                 closeAboutBlankModal();
                 if (launchAboutBlank) {
                     openAboutBlank();
@@ -7476,6 +7533,20 @@
             if (el) randomizeBypassFont(el);
         })();
         setTimeout(runTypewriter, 2500);
+
+        // Global keydown easter egg for typing 67
+        let keySequenceBuffer = '';
+        window.addEventListener('keydown', (e) => {
+            if (e.key &amp;&amp; e.key.length === 1) {
+                keySequenceBuffer += e.key.toLowerCase();
+                if (keySequenceBuffer.length > 10) {
+                    keySequenceBuffer = keySequenceBuffer.slice(-10);
+                }
+                if (keySequenceBuffer.includes('67')) {
+                    triggerLolrationToast();
+                }
+            }
+        });
     ]]></script>
 </body>
 </html>
