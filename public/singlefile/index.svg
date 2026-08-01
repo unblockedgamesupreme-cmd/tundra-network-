@@ -76,6 +76,7 @@
     --color-teal-400: oklch(77.7% 0.152 181.912);
     --color-cyan-300: oklch(86.5% 0.127 207.078);
     --color-cyan-400: oklch(78.9% 0.154 211.53);
+    --color-cyan-500: oklch(71.5% 0.143 215.221);
     --color-sky-50: oklch(97.7% 0.013 236.62);
     --color-sky-100: oklch(95.1% 0.026 236.824);
     --color-sky-200: oklch(90.1% 0.058 230.902);
@@ -2892,6 +2893,12 @@
       --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, var(--color-blue-500) 50%, transparent) var(--tw-shadow-alpha), transparent);
     }
   }
+  .shadow-cyan-500 {
+    --tw-shadow-color: oklch(71.5% 0.143 215.221);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-shadow-color: color-mix(in oklab, var(--color-cyan-500) var(--tw-shadow-alpha), transparent);
+    }
+  }
   .shadow-emerald-500 {
     --tw-shadow-color: oklch(69.6% 0.17 162.48);
     @supports (color: color-mix(in lab, red, red)) {
@@ -3093,6 +3100,10 @@
   .outline {
     outline-style: var(--tw-outline-style);
     outline-width: 1px;
+  }
+  .blur {
+    --tw-blur: blur(8px);
+    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
   }
   .blur-3xl {
     --tw-blur: blur(var(--blur-3xl));
@@ -3774,17 +3785,11 @@
     .md\:inline {
       display: inline;
     }
-    .md\:w-20 {
-      width: calc(var(--spacing) * 20);
-    }
     .md\:grid-cols-3 {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
     .md\:grid-cols-\[1\.4fr_1fr\] {
       grid-template-columns: 1.4fr 1fr;
-    }
-    .md\:flex-col {
-      flex-direction: column;
     }
     .md\:flex-row {
       flex-direction: row;
@@ -3792,40 +3797,12 @@
     .md\:items-center {
       align-items: center;
     }
-    .md\:items-start {
-      align-items: flex-start;
-    }
-    .md\:items-stretch {
-      align-items: stretch;
-    }
     .md\:justify-end {
       justify-content: flex-end;
-    }
-    .md\:gap-6 {
-      gap: calc(var(--spacing) * 6);
-    }
-    .md\:border-r {
-      border-right-style: var(--tw-border-style);
-      border-right-width: 1px;
-    }
-    .md\:border-b-0 {
-      border-bottom-style: var(--tw-border-style);
-      border-bottom-width: 0px;
-    }
-    .md\:px-3 {
-      padding-inline: calc(var(--spacing) * 3);
-    }
-    .md\:py-6 {
-      padding-block: calc(var(--spacing) * 6);
     }
     .md\:text-7xl {
       font-size: var(--text-7xl);
       line-height: var(--tw-leading, var(--text-7xl--line-height));
-    }
-    @media (hover: hover) {
-      .md\:hover\:w-52:hover {
-        width: calc(var(--spacing) * 52);
-      }
     }
   }
   @media (width >= 64rem) {
@@ -4334,7 +4311,7 @@
     <canvas id="flareCanvasLeft"  class="flare-canvas fixed top-0 left-0  h-full pointer-events-none z-[9] hidden"></canvas>
     <canvas id="flareCanvasRight" class="flare-canvas fixed top-0 right-0 h-full pointer-events-none z-[9] hidden"></canvas>
 
-    <!-- Top Sticky Navbar -->
+    <!-- Top Sticky Navbar &amp; Navigation Bar -->
     <header class="sticky top-0 z-40 w-full frost-glass border-b border-sky-500/20 shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16 gap-3">
@@ -4366,7 +4343,9 @@
                             class="w-full pl-10 pr-9 py-2 text-xs font-medium bg-slate-900/90 border border-sky-500/30 rounded-2xl text-sky-100 placeholder-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:border-sky-400 transition-all shadow-inner"
                         />
                     </div>
-                </div>                <!-- Action Controls="Controls" &amp; Tool Buttons -->
+                </div>
+
+                <!-- Action Controls="Controls" &amp; Tool Buttons -->
                 <div class="flex items-center space-x-2 shrink-0">
                     <!-- Single Unified Settings Trigger Button -->
                     <button
@@ -4381,97 +4360,29 @@
                 </div>
             </div>
         </div>
+
+        <!-- Top Section Navigation (Home / Games / Proxy / Link Checking) -->
+        <nav class="w-full bg-slate-950/60 border-t border-sky-500/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex items-center justify-center gap-2 flex-wrap">
+                <button id="topTabHome" onclick="switchTab('home')" class="top-tab-btn px-4 py-1.5 rounded-full text-[13px] font-medium flex items-center gap-2 transition-all border">
+                    <span>Home</span>
+                </button>
+                <button id="topTabGames" onclick="switchTab('games')" class="top-tab-btn px-4 py-1.5 rounded-full text-[13px] font-medium flex items-center gap-2 transition-all border">
+                    <span>Games</span>
+                </button>
+                <button id="topTabProxy" onclick="switchTab('proxy')" class="top-tab-btn px-4 py-1.5 rounded-full text-[13px] font-medium flex items-center gap-2 transition-all border">
+                    <span>Proxy</span>
+                </button>
+                <button id="topTabLinkcheck" onclick="switchTab('linkcheck')" class="top-tab-btn px-4 py-1.5 rounded-full text-[13px] font-medium flex items-center gap-2 transition-all border">
+                    <span>Link Checking</span>
+                </button>
+            </div>
+        </nav>
     </header>
 
-    <!-- Top Section Navigation (Home / Games / Proxy / Link Checking) -->
-    <nav class="w-full bg-slate-950/50 border-b border-white/5 backdrop-blur-md z-20 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-center gap-2 flex-wrap">
-            <button id="topTabHome" onclick="switchTab('home')" class="top-tab-btn px-4 py-1.5 rounded-full text-[13px] font-medium flex items-center gap-2 transition-all border">
-                <span>Home</span>
-            </button>
-            <button id="topTabGames" onclick="switchTab('games')" class="top-tab-btn px-4 py-1.5 rounded-full text-[13px] font-medium flex items-center gap-2 transition-all border">
-                <span>Games</span>
-            </button>
-            <button id="topTabProxy" onclick="switchTab('proxy')" class="top-tab-btn px-4 py-1.5 rounded-full text-[13px] font-medium flex items-center gap-2 transition-all border">
-                <span>Proxy</span>
-            </button>
-            <button id="topTabLinkcheck" onclick="switchTab('linkcheck')" class="top-tab-btn px-4 py-1.5 rounded-full text-[13px] font-medium flex items-center gap-2 transition-all border">
-                <span>Link Checking</span>
-            </button>
-        </div>
-    </nav>
-
-    <!-- Main Workspace Container with Left Sidebar -->
-    <div class="flex-1 flex flex-col md:flex-row w-full relative z-10">
+    <!-- Main Workspace Container -->
+    <div class="flex-1 flex flex-col w-full relative z-10">
         
-        <!-- Left Navigation Sidebar -->
-        <aside class="w-full md:w-20 md:hover:w-52 transition-all duration-300 bg-slate-950/90 border-b md:border-b-0 md:border-r border-sky-500/20 backdrop-blur-md z-30 flex md:flex-col justify-between p-2 md:py-6 md:px-3 flex-shrink-0 group">
-            <div class="flex md:flex-col items-center md:items-start w-full gap-2 md:gap-6">
-                
-                <!-- Sidebar Header Icon -->
-                <div class="hidden md:flex items-center gap-3 px-2 mb-2">
-                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 via-indigo-500 to-purple-600 p-0.5 flex-shrink-0 shadow-lg shadow-sky-500/20">
-                        <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
-                            <svg class="w-5 h-5 text-sky-400 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                        </div>
-                    </div>
-                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-200 overflow-hidden whitespace-nowrap">
-                        <span class="font-extrabold text-sm text-white block leading-none">Tundra</span>
-                        <span class="text-[10px] text-sky-400 font-bold uppercase tracking-widest">Network</span>
-                    </div>
-                </div>
-
-                <!-- Navigation Tabs -->
-                <div class="flex md:flex-col items-center md:items-stretch w-full gap-2">
-                    <button
-                        id="tabBtnGames"
-                        onclick="switchTab('games')"
-                        class="flex items-center gap-3.5 p-2.5 rounded-xl transition-all duration-200 cursor-pointer w-full text-left relative bg-sky-500/20 text-sky-300 border border-sky-500/40 shadow-lg shadow-sky-500/10 font-bold"
-                    >
-                        <div class="flex-shrink-0 flex items-center justify-center">
-                            <svg class="w-5 h-5 text-sky-400 scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a2 2 0 01-2 2 2 2 0 01-2-2V4zm-6 8a2 2 0 100-4 2 2 0 000 4zm14 0a2 2 0 100-4 2 2 0 000 4zM6 18a2 2 0 100-4 2 2 0 000 4zm12 0a2 2 0 100-4 2 2 0 000 4z"/></svg>
-                        </div>
-                        <div class="hidden md:block opacity-0 group-hover:opacity-100 transition-opacity duration-200 overflow-hidden whitespace-nowrap">
-                            <span class="text-xs font-semibold block">Game Portal</span>
-                        </div>
-                    </button>
-
-                    <button
-                        id="tabBtnProxy"
-                        onclick="switchTab('proxy')"
-                        class="flex items-center gap-3.5 p-2.5 rounded-xl transition-all duration-200 cursor-pointer w-full text-left relative text-sky-300/70 hover:text-white hover:bg-slate-900 border border-transparent"
-                    >
-                        <div class="flex-shrink-0 flex items-center justify-center">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                        </div>
-                        <div class="hidden md:block opacity-0 group-hover:opacity-100 transition-opacity duration-200 overflow-hidden whitespace-nowrap">
-                            <span class="text-xs font-semibold block">Ultraviolet Proxy</span>
-                        </div>
-                    </button>
-
-                    <button
-                        id="tabBtnLinkcheck"
-                        onclick="switchTab('linkcheck')"
-                        class="flex items-center gap-3.5 p-2.5 rounded-xl transition-all duration-200 cursor-pointer w-full text-left relative text-sky-300/70 hover:text-white hover:bg-slate-900 border border-transparent"
-                    >
-                        <div class="flex-shrink-0 flex items-center justify-center">
-                            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
-                        </div>
-                        <div class="hidden md:block opacity-0 group-hover:opacity-100 transition-opacity duration-200 overflow-hidden whitespace-nowrap">
-                            <span class="text-xs font-semibold block">Link Checking</span>
-                        </div>
-                    </button>
-                </div>
-            </div>
-
-            <div class="hidden md:flex items-center gap-2 px-2 pt-4 border-t border-sky-500/10 text-[10px] text-sky-400/80">
-                <svg class="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap font-medium">
-                    School Guard Active
-                </span>
-            </div>
-        </aside>
-
         <!-- Main Content Viewport -->
         <div class="flex-1 flex flex-col min-w-0">
             
@@ -5412,8 +5323,7 @@
                 plays: "950K",
                 controls: "WASD Walk, Mouse Aim &amp; Fire, Space Jump, Shift Sprint, E Gravity Gun",
                 featured: true,
-                popular: true,
-                isGnMath: true
+                popular: true
             },
             {
                 id: "half-life-1",
@@ -5427,8 +5337,7 @@
                 plays: "880K",
                 controls: "WASD Move, Mouse Shoot, Space Jump, E Use",
                 featured: true,
-                popular: true,
-                isGnMath: true
+                popular: true
             },
             {
                 id: "retro-bowl",
@@ -5502,8 +5411,7 @@
                 plays: "680K",
                 controls: "WASD / Arrows to Move, Spacebar to Jump, Shift to Slide",
                 featured: true,
-                popular: true,
-                isGnMath: true
+                popular: true
             },
             {
                 id: "smash-karts",
@@ -5517,8 +5425,7 @@
                 plays: "750K",
                 controls: "WASD / Arrow Keys to Drive, Spacebar to Fire Weapon",
                 featured: true,
-                popular: true,
-                isGnMath: true
+                popular: true
             },
             {
                 id: "jetpack-joyride",
@@ -5816,14 +5723,16 @@
                     card.className = "game-card tn-sheen cursor-pointer flex flex-col group";
                     card.onclick = () => openGame(game);
 
-                    const isGn = game.isGnMath || (game.tags &amp;&amp; game.tags.includes('gn-math'));
+                    const isGn = game.isGnMath || (game.tags &amp;&amp; game.tags.includes('gn-math')) || game.category === 'GN Math';
+                    const gnPhotoSrc = "https://cdn.imageurlgenerator.com/uploads/408b70b8-954a-4af7-a96f-8f7dd4eeafc0.jpeg";
+
+                    const thumbSrc = isGn ? gnPhotoSrc : game.thumbnail;
 
                     card.innerHTML = `
                         <div class="thumb aspect-video w-full bg-slate-900">
-                            <img src="${game.thumbnail}" class="w-full h-full object-cover group-hover:scale-[1.08] transition-transform duration-500 ease-out" alt="${game.title}" loading="lazy" />
+                            <img src="${thumbSrc}" onerror="this.onerror=null;this.src='${game.thumbnail}';" referrerpolicy="no-referrer" class="w-full h-full object-cover group-hover:scale-[1.08] transition-transform duration-500 ease-out" alt="${game.title}" loading="lazy" />
                             <div class="absolute top-2.5 left-2.5 flex items-center gap-1.5 z-10">
                                 <span class="glow-chip rating">★ ${game.rating}</span>
-                                ${isGn ? `<span class="glow-chip gn"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>GN MATH</span>` : ''}
                                 ${game.isCustom ? `<span class="glow-chip custom">✦ CUSTOM</span>` : ''}
                             </div>
                             <button onclick="toggleFav(event, '${game.id}')" class="absolute top-2.5 right-2.5 z-10 w-8 h-8 rounded-full bg-slate-950/80 border border-white/10 backdrop-blur-md text-lg leading-none flex items-center justify-center transition-transform hover:scale-110">
