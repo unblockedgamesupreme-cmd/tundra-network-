@@ -1176,12 +1176,6 @@
         </div>
     </div>
 
-    <!-- Shoutout Toast Notification for 67 -->
-    <div id="lolrationToast" class="fixed top-5 left-1/2 -translate-x-1/2 z-[100] hidden items-center gap-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 border border-white/30 text-white font-black text-sm shadow-[0_0_30px_rgba(168,85,247,0.7)] animate-bounce">
-        <span>🎉</span>
-        <span>shoutout to lolration</span>
-    </div>
-
     <!-- Launch in about:blank Popup Modal (Disguised as Clever.com Login Portal) -->
     <div id="aboutBlankModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md transition-all duration-300">
         <div class="relative w-full max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden border border-slate-200 text-slate-800 flex flex-col font-sans">
@@ -1975,9 +1969,6 @@
 
         function onSearchInput() {
             searchQuery = document.getElementById('searchInput').value;
-            if (searchQuery.toLowerCase().includes('67')) {
-                triggerLolrationToast();
-            }
             renderGames();
         }
 
@@ -2164,29 +2155,22 @@
 
         // Stealth Cloaking about:blank Modal
         function openAboutBlankModal() {
+            const isAlreadyAboutBlank = window.location.href === 'about:blank' || window.location.protocol === 'about:';
+            if (isAlreadyAboutBlank) {
+                closeAboutBlankModal();
+                const m = document.getElementById('aboutBlankModal');
+                if (m) m.remove();
+                return;
+            }
             const m = document.getElementById('aboutBlankModal');
             if (m) {
                 m.classList.remove('hidden');
                 m.classList.add('flex');
             }
             const closeBtn = document.getElementById('cleverModalCloseBtn');
-            const isAlreadyAboutBlank = window.location.href === 'about:blank' || window.location.protocol === 'about:';
             if (closeBtn) {
-                if (isAlreadyAboutBlank) {
-                    closeBtn.classList.remove('hidden');
-                    closeBtn.classList.add('flex');
-                } else {
-                    closeBtn.classList.add('hidden');
-                    closeBtn.classList.remove('flex');
-                }
-            }
-        }
-
-        function triggerLolrationToast() {
-            const toast = document.getElementById('lolrationToast');
-            if (toast) {
-                toast.classList.remove('hidden');
-                toast.classList.add('flex');
+                closeBtn.classList.add('hidden');
+                closeBtn.classList.remove('flex');
             }
         }
 
@@ -2196,7 +2180,6 @@
             const val = input ? input.value.trim().toLowerCase() : '';
             if (val.includes('67')) {
                 if (banner) banner.classList.remove('hidden');
-                triggerLolrationToast();
             } else {
                 if (banner) banner.classList.add('hidden');
             }
@@ -2222,10 +2205,6 @@
         function handleCleverSubmit(launchAboutBlank = true) {
             const input = document.getElementById('cleverSearchInput');
             const val = input ? input.value.trim().toLowerCase() : '';
-
-            if (val.includes('67')) {
-                triggerLolrationToast();
-            }
 
             if (val.includes('ubg') || val.includes('67')) {
                 closeAboutBlankModal();
@@ -3287,6 +3266,9 @@ h1{margin:0 0 12px;font-size:22px;color:#7dd3fc}p{margin:0;color:#bae6fd;line-he
 
         const isAlreadyAboutBlank = window.location.href === 'about:blank' || window.location.protocol === 'about:';
         if (isAlreadyAboutBlank) {
+            closeAboutBlankModal();
+            const m = document.getElementById('aboutBlankModal');
+            if (m) m.remove();
             openDiscordModal();
         } else {
             openAboutBlankModal();
@@ -3355,20 +3337,6 @@ h1{margin:0 0 12px;font-size:22px;color:#7dd3fc}p{margin:0;color:#bae6fd;line-he
             if (el) randomizeBypassFont(el);
         })();
         setTimeout(runTypewriter, 2500);
-
-        // Global keydown easter egg for typing 67
-        let keySequenceBuffer = '';
-        window.addEventListener('keydown', (e) => {
-            if (e.key && e.key.length === 1) {
-                keySequenceBuffer += e.key.toLowerCase();
-                if (keySequenceBuffer.length > 10) {
-                    keySequenceBuffer = keySequenceBuffer.slice(-10);
-                }
-                if (keySequenceBuffer.includes('67')) {
-                    triggerLolrationToast();
-                }
-            }
-        });
     </script>
 </body>
 </html>
