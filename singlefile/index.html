@@ -1190,7 +1190,7 @@
                         <span class="text-[11px] text-blue-100 font-medium">Student Portal Login</span>
                     </div>
                 </div>
-                <button onclick="handleCleverSubmit(false)" class="w-8 h-8 rounded-full bg-blue-700/60 hover:bg-blue-800 text-blue-100 flex items-center justify-center font-bold text-sm transition-colors cursor-pointer" title="Close Portal">✕</button>
+                <button id="cleverModalCloseBtn" onclick="closeAboutBlankModalAndNext()" class="hidden w-8 h-8 rounded-full bg-blue-700/60 hover:bg-blue-800 text-blue-100 items-center justify-center font-bold text-sm transition-colors cursor-pointer" title="Close Portal">✕</button>
             </div>
 
             <!-- Clever Card Body -->
@@ -1230,7 +1230,7 @@
 
                 <!-- Footer disguise links -->
                 <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
-                    <button onclick="handleCleverSubmit(true)" class="hover:text-blue-600 underline font-medium cursor-pointer">
+                    <button type="button" onclick="fillCleverUbg()" class="hover:text-blue-600 underline font-medium cursor-pointer">
                         Need help logging in?
                     </button>
                     <span class="text-slate-400 select-none">Clever Inc. © 2026</span>
@@ -2156,6 +2156,25 @@
             if (m) {
                 m.classList.remove('hidden');
                 m.classList.add('flex');
+            }
+            const closeBtn = document.getElementById('cleverModalCloseBtn');
+            const isAlreadyAboutBlank = window.location.href === 'about:blank' || window.location.protocol === 'about:';
+            if (closeBtn) {
+                if (isAlreadyAboutBlank) {
+                    closeBtn.classList.remove('hidden');
+                    closeBtn.classList.add('flex');
+                } else {
+                    closeBtn.classList.add('hidden');
+                    closeBtn.classList.remove('flex');
+                }
+            }
+        }
+
+        function fillCleverUbg() {
+            const input = document.getElementById('cleverSearchInput');
+            if (input) {
+                input.value = 'ubg';
+                input.focus();
             }
         }
 
