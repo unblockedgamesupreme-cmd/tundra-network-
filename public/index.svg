@@ -77,6 +77,7 @@
     --color-cyan-300: oklch(86.5% 0.127 207.078);
     --color-cyan-400: oklch(78.9% 0.154 211.53);
     --color-cyan-500: oklch(71.5% 0.143 215.221);
+    --color-cyan-600: oklch(60.9% 0.126 221.723);
     --color-sky-50: oklch(97.7% 0.013 236.62);
     --color-sky-100: oklch(95.1% 0.026 236.824);
     --color-sky-200: oklch(90.1% 0.058 230.902);
@@ -170,6 +171,7 @@
     --font-weight-bold: 700;
     --font-weight-extrabold: 800;
     --font-weight-black: 900;
+    --tracking-tighter: -0.05em;
     --tracking-tight: -0.025em;
     --tracking-wide: 0.025em;
     --tracking-wider: 0.05em;
@@ -1286,6 +1288,12 @@
   .border-blue-500 {
     border-color: var(--color-blue-500);
   }
+  .border-blue-500\/30 {
+    border-color: color-mix(in srgb, oklch(62.3% 0.214 259.815) 30%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-blue-500) 30%, transparent);
+    }
+  }
   .border-cyan-400 {
     border-color: var(--color-cyan-400);
   }
@@ -1673,6 +1681,12 @@
       background-color: color-mix(in oklab, var(--color-blue-500) 20%, transparent);
     }
   }
+  .bg-blue-500\/40 {
+    background-color: color-mix(in srgb, oklch(62.3% 0.214 259.815) 40%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-blue-500) 40%, transparent);
+    }
+  }
   .bg-blue-600 {
     background-color: var(--color-blue-600);
   }
@@ -1684,12 +1698,6 @@
   }
   .bg-blue-700 {
     background-color: var(--color-blue-700);
-  }
-  .bg-blue-700\/60 {
-    background-color: color-mix(in srgb, oklch(48.8% 0.243 264.376) 60%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      background-color: color-mix(in oklab, var(--color-blue-700) 60%, transparent);
-    }
   }
   .bg-cyan-300 {
     background-color: var(--color-cyan-300);
@@ -2050,6 +2058,10 @@
     --tw-gradient-from: var(--color-blue-600);
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
+  .from-blue-700 {
+    --tw-gradient-from: var(--color-blue-700);
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
   .from-blue-900 {
     --tw-gradient-from: var(--color-blue-900);
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
@@ -2130,6 +2142,11 @@
     }
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
+  .via-blue-600 {
+    --tw-gradient-via: var(--color-blue-600);
+    --tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-via-stops);
+  }
   .via-blue-700 {
     --tw-gradient-via: var(--color-blue-700);
     --tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);
@@ -2137,6 +2154,11 @@
   }
   .via-blue-950 {
     --tw-gradient-via: var(--color-blue-950);
+    --tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-via-stops);
+  }
+  .via-cyan-600 {
+    --tw-gradient-via: var(--color-cyan-600);
     --tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);
     --tw-gradient-stops: var(--tw-gradient-via-stops);
   }
@@ -2198,6 +2220,10 @@
   }
   .to-blue-600 {
     --tw-gradient-to: var(--color-blue-600);
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+  .to-blue-700 {
+    --tw-gradient-to: var(--color-blue-700);
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
   .to-cyan-400 {
@@ -2340,6 +2366,12 @@
   .p-12 {
     padding: calc(var(--spacing) * 12);
   }
+  .px-0 {
+    padding-inline: 0px;
+  }
+  .px-0\.5 {
+    padding-inline: calc(var(--spacing) * 0.5);
+  }
   .px-1 {
     padding-inline: var(--spacing);
   }
@@ -2393,6 +2425,9 @@
   }
   .py-3 {
     padding-block: calc(var(--spacing) * 3);
+  }
+  .py-3\.5 {
+    padding-block: calc(var(--spacing) * 3.5);
   }
   .py-4 {
     padding-block: calc(var(--spacing) * 4);
@@ -2474,6 +2509,9 @@
   }
   .pl-3 {
     padding-left: calc(var(--spacing) * 3);
+  }
+  .pl-3\.5 {
+    padding-left: calc(var(--spacing) * 3.5);
   }
   .pl-4 {
     padding-left: calc(var(--spacing) * 4);
@@ -2637,6 +2675,10 @@
     --tw-tracking: var(--tracking-tight);
     letter-spacing: var(--tracking-tight);
   }
+  .tracking-tighter {
+    --tw-tracking: var(--tracking-tighter);
+    letter-spacing: var(--tracking-tighter);
+  }
   .tracking-wide {
     --tw-tracking: var(--tracking-wide);
     letter-spacing: var(--tracking-wide);
@@ -2690,6 +2732,12 @@
   }
   .text-blue-100 {
     color: var(--color-blue-100);
+  }
+  .text-blue-100\/90 {
+    color: color-mix(in srgb, oklch(93.2% 0.032 255.585) 90%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      color: color-mix(in oklab, var(--color-blue-100) 90%, transparent);
+    }
   }
   .text-blue-200 {
     color: var(--color-blue-200);
@@ -3028,10 +3076,10 @@
       --tw-shadow-color: color-mix(in oklab, var(--color-blue-500) var(--tw-shadow-alpha), transparent);
     }
   }
-  .shadow-blue-500\/20 {
-    --tw-shadow-color: color-mix(in srgb, oklch(62.3% 0.214 259.815) 20%, transparent);
+  .shadow-blue-500\/25 {
+    --tw-shadow-color: color-mix(in srgb, oklch(62.3% 0.214 259.815) 25%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
-      --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, var(--color-blue-500) 20%, transparent) var(--tw-shadow-alpha), transparent);
+      --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, var(--color-blue-500) 25%, transparent) var(--tw-shadow-alpha), transparent);
     }
   }
   .shadow-blue-500\/50 {
@@ -3556,6 +3604,9 @@
         background-color: color-mix(in oklab, var(--color-black) 50%, transparent);
       }
     }
+    .hover\:bg-blue-100:hover {
+      background-color: var(--color-blue-100);
+    }
     .hover\:bg-blue-600\/50:hover {
       background-color: color-mix(in srgb, oklch(54.6% 0.245 262.881) 50%, transparent);
     }
@@ -3563,12 +3614,6 @@
       .hover\:bg-blue-600\/50:hover {
         background-color: color-mix(in oklab, var(--color-blue-600) 50%, transparent);
       }
-    }
-    .hover\:bg-blue-700:hover {
-      background-color: var(--color-blue-700);
-    }
-    .hover\:bg-blue-800:hover {
-      background-color: var(--color-blue-800);
     }
     .hover\:bg-emerald-500\/20:hover {
       background-color: color-mix(in srgb, oklch(69.6% 0.17 162.48) 20%, transparent);
@@ -3725,6 +3770,18 @@
         background-color: color-mix(in oklab, var(--color-white) 20%, transparent);
       }
     }
+    .hover\:bg-white\/25:hover {
+      background-color: color-mix(in srgb, #fff 25%, transparent);
+    }
+    @supports (color: color-mix(in lab, red, red)) {
+      .hover\:bg-white\/25:hover {
+        background-color: color-mix(in oklab, var(--color-white) 25%, transparent);
+      }
+    }
+    .hover\:from-blue-700:hover {
+      --tw-gradient-from: var(--color-blue-700);
+      --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+    }
     .hover\:from-blue-800:hover {
       --tw-gradient-from: var(--color-blue-800);
       --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
@@ -3774,6 +3831,10 @@
       }
     }
     .hover\:to-indigo-500\/40:hover {
+      --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+    }
+    .hover\:to-indigo-700:hover {
+      --tw-gradient-to: var(--color-indigo-700);
       --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
     }
     .hover\:to-sky-400:hover {
@@ -3827,6 +3888,9 @@
         --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, var(--color-sky-400) 40%, transparent) var(--tw-shadow-alpha), transparent);
       }
     }
+  }
+  .focus\:border-blue-500:focus {
+    border-color: var(--color-blue-500);
   }
   .focus\:border-purple-400:focus {
     border-color: var(--color-purple-400);
@@ -5344,66 +5408,81 @@
     </div>
 
     <!-- Launch in about:blank Popup Modal (Disguised as Clever.com Login Portal) -->
-    <div id="aboutBlankModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md transition-all duration-300">
+    <div id="aboutBlankModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md transition-all duration-300">
         <div class="relative w-full max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden border border-slate-200 text-slate-800 flex flex-col font-sans">
             <!-- Clever Header -->
-            <div class="bg-blue-600 px-6 py-5 text-white flex items-center justify-between">
-                <div class="flex items-center gap-2.5">
-                    <div class="w-9 h-9 rounded-xl bg-white text-blue-600 font-extrabold text-2xl flex items-center justify-center shadow-md select-none">
+            <div class="bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-600 px-6 py-4 text-white flex items-center justify-between border-b border-blue-500/30">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-white text-blue-600 font-black text-2xl flex items-center justify-center shadow-md select-none tracking-tighter">
                         C
                     </div>
                     <div>
-                        <h2 class="text-xl font-black tracking-tight leading-none text-white">Clever</h2>
-                        <span class="text-[11px] text-blue-100 font-medium">Student Portal Login</span>
+                        <div class="flex items-center gap-2">
+                            <h2 class="text-xl font-black tracking-tight leading-none text-white">Clever</h2>
+                            <span class="px-2 py-0.5 rounded-full bg-blue-500/40 text-[10px] font-bold text-blue-100 border border-white/20">Portal</span>
+                        </div>
+                        <span class="text-[11px] text-blue-100/90 font-medium">District Student &amp; SSO Login</span>
                     </div>
                 </div>
-                <button id="cleverModalCloseBtn" onclick="closeAboutBlankModalAndNext()" class="hidden w-8 h-8 rounded-full bg-blue-700/60 hover:bg-blue-800 text-blue-100 items-center justify-center font-bold text-sm transition-colors cursor-pointer" title="Close Portal">✕</button>
+                <button id="cleverModalCloseBtn" onclick="closeAboutBlankModalAndNext()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/25 text-white flex items-center justify-center font-bold text-sm transition-all cursor-pointer border border-white/10 active:scale-95 shadow-sm" title="Close Portal">✕</button>
             </div>
 
             <!-- Clever Card Body -->
             <div class="p-6 space-y-4">
                 <div class="text-center space-y-1">
-                    <h3 class="text-lg font-bold text-slate-900">Log in to your school</h3>
-                    <p class="text-xs text-slate-500">Search for your school or choose a login method below</p>
+                    <h3 class="text-xl font-extrabold text-slate-900 tracking-tight">Log in to your school</h3>
+                    <p class="text-xs text-slate-500 font-medium">Search for your school district or use your student badge</p>
                 </div>
 
                 <!-- Fake Search Input -->
-                <div class="relative">
-                    <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
-                        🔍
-                    </span>
-                    <input id="cleverSearchInput" type="text" placeholder="Search for your school (e.g. Lincoln High)..." oninput="checkCleverInput()" onkeydown="if(event.key==='Enter') handleCleverSubmit(true)" class="w-full pl-9 pr-4 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all" />
+                <div class="space-y-1.5">
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 text-sm">
+                            🔍
+                        </span>
+                        <input id="cleverSearchInput" type="text" placeholder="Search for your school (e.g. Lincoln High)..." oninput="checkCleverInput()" onkeydown="if(event.key==='Enter') handleCleverSubmit(true)" class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs text-slate-800 font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all shadow-inner" />
+                    </div>
+                    <div class="flex items-center gap-1.5 flex-wrap text-[11px] px-0.5">
+                        <span class="text-slate-400 font-medium">Quick links:</span>
+                        <button type="button" onclick="document.getElementById('cleverSearchInput').value='Lincoln High'; checkCleverInput();" class="px-2 py-0.5 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-600 font-medium transition-colors cursor-pointer">Lincoln High</button>
+                        <button type="button" onclick="fillCleverUbg()" class="px-2 py-0.5 rounded-md bg-blue-50 hover:bg-blue-100 text-blue-600 font-semibold transition-colors cursor-pointer">Student Login</button>
+                    </div>
                 </div>
-                <div id="lolrationCleverBanner" class="hidden p-2.5 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white font-black text-xs text-center shadow-md animate-bounce">
+
+                <!-- Shoutout Banners -->
+                <div id="lolrationCleverBanner" class="hidden p-3 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white font-black text-xs text-center shadow-md animate-bounce">
                     🎉 shoutout to lolration
+                </div>
+                <div id="frozenCleverBanner" class="hidden p-3 rounded-xl bg-gradient-to-r from-sky-500 via-cyan-600 to-blue-700 text-white font-black text-xs text-center shadow-md animate-bounce">
+                    ❄️ shoutout to frozen
                 </div>
 
                 <!-- Login Buttons (Clever Styling with Hidden Code Verification) -->
                 <div class="space-y-2.5 pt-1">
                     <!-- Primary Button: Clever Badge -->
-                    <button onclick="handleCleverSubmit(true)" class="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 active:scale-[0.99] text-white font-bold text-xs rounded-xl flex items-center justify-center gap-2.5 shadow-md shadow-blue-500/20 transition-all cursor-pointer">
+                    <button onclick="handleCleverSubmit(true)" class="w-full py-3.5 px-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 active:scale-[0.99] text-white font-bold text-xs rounded-xl flex items-center justify-center gap-2.5 shadow-lg shadow-blue-500/25 transition-all cursor-pointer">
                         <span class="text-base">📷</span>
                         <span>Log in with Clever Badge</span>
                     </button>
 
                     <!-- Google Login Button -->
-                    <button onclick="handleCleverSubmit(false)" class="w-full py-2.5 px-4 bg-white hover:bg-slate-50 border border-slate-300 active:scale-[0.99] text-slate-700 font-semibold text-xs rounded-xl flex items-center justify-center gap-2.5 transition-all cursor-pointer shadow-sm">
+                    <button onclick="handleCleverSubmit(false)" class="w-full py-2.5 px-4 bg-white hover:bg-slate-50 border border-slate-300 active:scale-[0.99] text-slate-700 font-bold text-xs rounded-xl flex items-center justify-center gap-2.5 transition-all cursor-pointer shadow-sm">
                         <svg class="w-4 h-4" viewBox="0 0 24 24">
                             <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
                             <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
                             <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
                             <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
                         </svg>
-                        <span>Log in with Google</span>
+                        <span>Log in with Google Account</span>
                     </button>
                 </div>
 
                 <!-- Footer disguise links -->
                 <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
-                    <button type="button" onclick="fillCleverUbg()" class="hover:text-blue-600 underline font-medium cursor-pointer">
+                    <button type="button" onclick="fillCleverUbg()" class="hover:text-blue-600 underline font-semibold transition-colors cursor-pointer">
                         Need help logging in?
                     </button>
-                    <span class="text-slate-400 select-none">Clever Inc. © 2026</span>
+                    <span class="text-slate-400 select-none font-medium">Clever Inc. © 2026</span>
                 </div>
             </div>
         </div>
@@ -5529,7 +5608,7 @@
                 description: "Futuristic 3D FPS arena shooter! Master double jumps, teleportation, grenades, and railguns in multiplayer combat.",
                 type: "url",
                 url: "https://ev.io/",
-                thumbnail: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                thumbnail: "https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg",
                 rating: 4.9,
                 plays: "1.1M",
                 controls: "WASD Move, Mouse Aim &amp; Shoot, Space Double Jump, Shift Teleport",
@@ -5544,7 +5623,7 @@
                 description: "Jump, fly, and flip your way through dangerous geometric passages in this rhythm platformer!",
                 type: "url",
                 url: "https://geometrydashlite.io/",
-                thumbnail: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                thumbnail: "https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg",
                 rating: 4.9,
                 plays: "1.4M",
                 controls: "Spacebar / Up Arrow to Jump",
@@ -5559,7 +5638,7 @@
                 description: "Dash as fast as you can through subway tracks! Dodge oncoming trains and leap over barriers.",
                 type: "url",
                 url: "https://subwaysurfersgame.io/",
-                thumbnail: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                thumbnail: "https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg",
                 rating: 4.9,
                 plays: "1.8M",
                 controls: "Left / Right Arrows Switch Lanes, Up Jump, Down Roll",
@@ -5574,7 +5653,7 @@
                 description: "3D building and shooting simulator! Fight in 1v1 duels, build ramps and walls in 1v1.LOL RELOADED.",
                 type: "url",
                 url: "https://1v1lolreloaded.com/",
-                thumbnail: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                thumbnail: "https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg",
                 rating: 4.9,
                 plays: "1.3M",
                 controls: "WASD Move, Mouse Shoot / Build",
@@ -5589,7 +5668,7 @@
                 description: "Drive a monster truck over crazy physics-based obstacle tracks without flipping!",
                 type: "url",
                 url: "https://drivemad.org/",
-                thumbnail: "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                thumbnail: "https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg",
                 rating: 4.9,
                 plays: "920K",
                 controls: "W / D Drive Forward, S / A Brake &amp; Reverse",
@@ -5604,7 +5683,7 @@
                 description: "Swing like Spider-Man as a bouncy stickman! Grapple onto pegs and soar to the finish line.",
                 type: "url",
                 url: "https://stickmanhookgame.org/",
-                thumbnail: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                thumbnail: "https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg",
                 rating: 4.8,
                 plays: "810K",
                 controls: "Spacebar / Mouse Click Hook &amp; Swing",
@@ -5619,7 +5698,7 @@
                 description: "Hardcore stickman parkour! Master deadly spikes, laser beams, and wall jumps.",
                 type: "url",
                 url: "https://vex7.io/",
-                thumbnail: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                thumbnail: "https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg",
                 rating: 4.9,
                 plays: "760K",
                 controls: "WASD / Arrow Keys Move &amp; Jump",
@@ -5634,7 +5713,7 @@
                 description: "Wacky ragdoll 2-player basketball with random physics and courts!",
                 type: "url",
                 url: "https://basketrandom.org/",
-                thumbnail: "https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                thumbnail: "https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg",
                 rating: 4.8,
                 plays: "890K",
                 controls: "P1: W Key Jump, P2: Up Arrow Jump",
@@ -5649,7 +5728,7 @@
                 description: "Hilarious single button ragdoll soccer! Play on random weather fields.",
                 type: "url",
                 url: "https://soccerrandom.org/",
-                thumbnail: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                thumbnail: "https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg",
                 rating: 4.8,
                 plays: "730K",
                 controls: "P1: W Key Kick, P2: Up Arrow Kick",
@@ -5664,7 +5743,7 @@
                 description: "Play Half-Life 2 directly in your browser! Experience Gordon Freeman's iconic sci-fi FPS journey through City 17 with realistic physics and gravity gun mechanics.",
                 type: "half-life",
                 url: "https://hl2.slqnt.dev/",
-                thumbnail: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                thumbnail: "https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg",
                 rating: 5.0,
                 plays: "950K",
                 controls: "WASD Walk, Mouse Aim &amp; Fire, Space Jump, Shift Sprint, E Gravity Gun",
@@ -5678,7 +5757,7 @@
                 description: "Play the original 1998 GoldSrc FPS classic in your browser! Survive Black Mesa as Dr. Gordon Freeman.",
                 type: "half-life",
                 url: "https://hl2.slqnt.dev/",
-                thumbnail: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                thumbnail: "https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg",
                 rating: 4.9,
                 plays: "880K",
                 controls: "WASD Move, Mouse Shoot, Space Jump, E Use",
@@ -5692,7 +5771,7 @@
                 description: "The ultimate 8-bit American football management game! Call plays, pass, run, and lead your team.",
                 type: "url",
                 url: "https://game316009.konggames.com/gamez/0031/6009/live/index.html",
-                thumbnail: "https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                thumbnail: "https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg",
                 rating: 4.9,
                 plays: "1.1M",
                 controls: "Mouse Drag &amp; Release to Pass, W/S Dodge",
@@ -5707,7 +5786,7 @@
                 description: "Blaze through a 3D neon tunnel at lightning speed! Dodge rotating hazard barriers.",
                 type: "url",
                 url: "https://tunnelrush.org/",
-                thumbnail: "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                thumbnail: "https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg",
                 rating: 4.8,
                 plays: "790K",
                 controls: "A / D or Left / Right Arrows to Rotate Tunnel",
@@ -5722,7 +5801,7 @@
                 description: "Jump across a swarm of frantic moving trucks! Vault, slide, and climb physics obstacles.",
                 type: "url",
                 url: "https://clusterrush.org/",
-                thumbnail: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                thumbnail: "https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg",
                 rating: 4.8,
                 plays: "630K",
                 controls: "A / D Steer, Spacebar Jump / Vault",
@@ -5737,7 +5816,7 @@
                 description: "Drive a fragile egg over steep hills without letting it drop or break!",
                 type: "url",
                 url: "https://eggycar.org/",
-                thumbnail: "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                thumbnail: "https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg",
                 rating: 4.8,
                 plays: "540K",
                 controls: "A / D or Arrow Keys Gas &amp; Brake",
@@ -5752,7 +5831,7 @@
                 description: "High-octane 3D parkour runner across city skyscrapers! Sprint, jump, slide, and perform acrobatic flips across rooftop ledges.",
                 type: "rooftop-run",
                 url: "https://rooftoprun.net/",
-                thumbnail: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                thumbnail: "https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg",
                 rating: 4.9,
                 plays: "680K",
                 controls: "WASD / Arrows to Move, Spacebar to Jump, Shift to Slide",
@@ -5766,7 +5845,7 @@
                 description: "3D multiplayer kart battle arena game! Drive karts, pick up weapons, and blow up other players to win the round.",
                 type: "smash-karts",
                 url: "https://smashkarts.io",
-                thumbnail: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                thumbnail: "https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg",
                 rating: 4.9,
                 plays: "750K",
                 controls: "WASD / Arrow Keys to Drive, Spacebar to Fire Weapon",
@@ -5780,7 +5859,7 @@
                 description: "Fly with high-tech jetpacks as Barry Steakfries! Dodge zappers, missiles, and laser beams while collecting coins.",
                 type: "jetpack",
                 url: "https://www.gamepix.com/play/jetpack-joyride",
-                thumbnail: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                thumbnail: "https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg",
                 rating: 4.9,
                 plays: "750K",
                 controls: "Spacebar / Up Arrow or Click to Fly",
@@ -5795,7 +5874,7 @@
                 type: "nes_n64_emulator",
                 emulatorType: "n64",
                 romUrl: "https://rawcdn.githack.com/a456pur/seraph/ae2fcc6d6a9cd051654fcc0519080db1f79cf2a7/games/supersmashbros/supersmashbros.zip",
-                thumbnail: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                thumbnail: "https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg",
                 rating: 5.0,
                 plays: "980K",
                 controls: "WASD Movement, Z/X/C/V Attacks, Enter Start",
@@ -5808,7 +5887,7 @@
                 category: "Arcade",
                 description: "Drive a ball down a steep neon 3D obstacle course at breakneck speed!",
                 type: "slope",
-                thumbnail: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                thumbnail: "https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg",
                 rating: 4.8,
                 plays: "500K",
                 controls: "A / D or Left / Right Arrows to Steer",
@@ -5821,7 +5900,7 @@
                 category: "Puzzle",
                 description: "Shift color frequencies to pass through matching energy barriers, activate light bridges, and solve 6 puzzle chambers.",
                 type: "color-puzzles",
-                thumbnail: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                thumbnail: "https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg",
                 rating: 5.0,
                 plays: "620K",
                 controls: "1,2,3 or C to Shift Color, Space/W Jump",
@@ -5832,10 +5911,10 @@
                 id: "the-chroma-incident",
                 title: "The Chroma Incident",
                 category: "Puzzle",
-                description: "Navigate through colored laser grids and energy fields in this official js13kGames puzzle adventure.",
-                type: "url",
-                url: "https://js13kgames.com/2018/games/the-chroma-incident#play",
-                thumbnail: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                description: "Navigate through colored laser grids and energy fields in this puzzle adventure.",
+                type: "chroma-incident",
+                url: "https://www.gamepix.com/play/the-chroma-incident",
+                thumbnail: "https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg",
                 rating: 4.8,
                 plays: "410K",
                 controls: "WASD / Mouse to play",
@@ -5848,7 +5927,7 @@
                 category: "Puzzle",
                 description: "Slide and merge matching ice tiles together to reach the 2048 tile!",
                 type: "2048",
-                thumbnail: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                thumbnail: "https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg",
                 rating: 4.9,
                 plays: "250K",
                 controls: "Arrow Keys or WASD to slide tiles",
@@ -5861,7 +5940,7 @@
                 category: "Skill",
                 description: "Guide the bird through dangerous pipe gaps with precise one-button timing!",
                 type: "flappy",
-                thumbnail: "https://images.unsplash.com/photo-1517849845537-4d257902454a?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                thumbnail: "https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg",
                 rating: 4.8,
                 plays: "620K",
                 controls: "Tap Spacebar or Click to flap wings",
@@ -5874,7 +5953,7 @@
                 category: "Arcade",
                 description: "Eat glowing ice apples, grow longer, and don't hit your tail!",
                 type: "snake",
-                thumbnail: "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                thumbnail: "https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg",
                 rating: 4.8,
                 plays: "195K",
                 controls: "Arrow keys or WASD to steer",
@@ -5888,7 +5967,7 @@
                 description: "Cross endless busy roads, train tracks, and rivers in voxel 3D!",
                 type: "url",
                 url: "https://www.gamepix.com/play/crossy-road",
-                thumbnail: "https://images.unsplash.com/photo-1579373903781-fd5c0c30c4cd?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                thumbnail: "https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg",
                 rating: 4.9,
                 plays: "820K",
                 controls: "Arrow Keys / Space to Hop",
@@ -5902,7 +5981,7 @@
                 description: "Claim as much 3D territory as possible in Paper.io 3D!",
                 type: "paperio",
                 url: "https://paperio.site/3d/",
-                thumbnail: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                thumbnail: "https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg",
                 rating: 4.8,
                 plays: "450K",
                 controls: "Arrow Keys, WASD or Mouse to steer",
@@ -5915,7 +5994,7 @@
                 category: "Puzzle",
                 description: "Clear full horizontal lines by rotating falling ice blocks!",
                 type: "tetris",
-                thumbnail: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                thumbnail: "https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg",
                 rating: 4.9,
                 plays: "320K",
                 controls: "Left/Right Move, Up Rotate, Down Fast, Space Drop, C Hold",
@@ -5928,7 +6007,7 @@
                 category: "Skill",
                 description: "Click the giant cookie, hire grandmas, and build your baking empire!",
                 type: "cookie",
-                thumbnail: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                thumbnail: "https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg",
                 rating: 4.9,
                 plays: "890K",
                 controls: "Left Click giant cookie to bake",
@@ -5942,7 +6021,7 @@
                 description: "Awesome motocross stunt racing with 25 intense levels!",
                 type: "moto-x3m",
                 url: "https://motox3m.org/",
-                thumbnail: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                thumbnail: "https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg",
                 rating: 4.9,
                 plays: "600K",
                 controls: "Up Accelerate, Down Brake, Left/Right Tilt",
@@ -5955,7 +6034,7 @@
                 category: "Strategy",
                 description: "Test your strategic skills against smart AI difficulty levels!",
                 type: "chess",
-                thumbnail: "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                thumbnail: "https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg",
                 rating: 4.8,
                 plays: "140K",
                 controls: "Click piece to move",
@@ -5969,7 +6048,7 @@
                 description: "Ultimate 3D car drifting simulator with realistic physics, fully customizable tuner cars, and huge track maps.",
                 type: "drift-hunters",
                 url: "https://drifthunters2.io/",
-                thumbnail: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                thumbnail: "https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg",
                 rating: 4.9,
                 plays: "450K",
                 controls: "WASD Drive, Space Handbrake",
@@ -5983,7 +6062,7 @@
                 description: "Experience next-level 3D drifting action with expanded tracks, realistic tuning, and high-performance cars.",
                 type: "drift-hunters-max",
                 url: "https://drifthuntersmax.io/",
-                thumbnail: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                thumbnail: "https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg",
                 rating: 5.0,
                 plays: "890K",
                 controls: "WASD Drive, Space Handbrake, C Camera",
@@ -5998,7 +6077,7 @@
                 type: "nes_n64_emulator",
                 emulatorType: "nes",
                 romUrl: "https://rawcdn.githack.com/bubbls/UGS-file-encryption/c99c02b28ea1531fb40611092887d0aa9db97712/Final%20Fantasy%20(USA).zip",
-                thumbnail: "https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                thumbnail: "https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg",
                 rating: 5.0,
                 plays: "640K",
                 controls: "Arrow keys Move, Z Confirm, X Back, Enter Start",
@@ -6007,15 +6086,42 @@
             },
             {
                 id: "roblox-experimental",
-                title: "Roblox EXPERIMENTAL",
-                category: "Sandbox",
-                description: "Experience infinite community 3D virtual worlds, games, and social experiences powered by cloud web player.",
+                title: "Roblox (now.gg Cloud)",
+                category: "Cloud Gaming",
+                description: "Play Roblox online in your browser via now.gg cloud web player with zero downloads!",
                 type: "roblox",
                 url: "https://now.gg/apps/a/19900/b.html",
-                thumbnail: "https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=600&amp;auto=format&amp;fit=crop&amp;q=80",
+                thumbnail: "https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg",
                 rating: 4.9,
                 plays: "1.2M",
                 controls: "WASD Move, Space Jump, Mouse Look",
+                featured: true,
+                popular: true
+            },
+            {
+                id: "rocket-goal",
+                title: "Rocket Goal",
+                category: "Sports",
+                description: "Fast-paced vehicular soccer and rocket-powered car goal battles!",
+                type: "rocket-goal",
+                url: "https://rocketgoal.io/",
+                thumbnail: "https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg",
+                rating: 4.9,
+                plays: "520K",
+                controls: "WASD Drive, Space Boost / Jump, Mouse Steering",
+                featured: true,
+                popular: true
+            },
+            {
+                id: "2d-rocket-league",
+                title: "2D Rocket League",
+                category: "Sports",
+                description: "2D vehicular soccer action created with GameMaker Studio! Drive, boost, and score goals.",
+                type: "2d-rocket-league",
+                thumbnail: "https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg",
+                rating: 4.8,
+                plays: "450K",
+                controls: "Arrow keys / WASD to drive, Click canvas if key input is lost",
                 featured: true,
                 popular: true
             }
@@ -6070,7 +6176,7 @@
                     card.onclick = () => openGame(game);
 
                     const isGn = game.isGnMath || (game.tags &amp;&amp; game.tags.includes('gn-math')) || game.category === 'GN Math';
-                    const gnPhotoSrc = "https://cdn.imageurlgenerator.com/uploads/408b70b8-954a-4af7-a96f-8f7dd4eeafc0.jpeg";
+                    const gnPhotoSrc = "https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg";
 
                     const thumbSrc = isGn ? gnPhotoSrc : game.thumbnail;
 
@@ -6230,7 +6336,7 @@
             } else if (game.id === 'drift-hunters' || game.type === 'drift-hunters') {
                 iframe.src = 'https://drifthunters2.io/';
             } else if (game.id === 'roblox-experimental' || game.type === 'roblox') {
-                iframe.srcdoc = `<html><head><meta charset="utf-8" /></head><body><iframe src="https://now.gg/apps/a/19900/b.html" width="100%" height="100%" frameborder="0" scrolling="no" allowfullscreen="allowfullscreen" allow="autoplay; payment; fullscreen; microphone; clipboard-read; clipboard-write; hidden-caption"></iframe></body></html>`;
+                iframe.srcdoc = `<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Roblox now.gg Cloud Gaming</title></head><body><div id="topbar"><span>☁️ Roblox now.gg Cloud Stream</span><a href="https://now.gg/apps/a/19900/b.html" target="_blank" rel="noopener">Open Fullscreen Direct ↗</a></div><iframe src="https://now.gg/apps/a/19900/b.html" width="100%" height="100%" frameborder="0" scrolling="no" allowfullscreen="allowfullscreen" allow="autoplay; payment; fullscreen; microphone; gamepad; clipboard-read; clipboard-write; pointer-lock"></iframe></body></html>`;
             } else if (game.id === 'jetpack-joyride' || game.type === 'jetpack') {
                 iframe.src = 'https://www.gamepix.com/play/jetpack-joyride';
             } else if (game.type === 'nes_n64_emulator') {
@@ -6243,6 +6349,12 @@
                 iframe.src = 'https://smashkarts.io';
             } else if (game.id === 'rooftop-run' || game.type === 'rooftop-run') {
                 iframe.src = 'https://rooftoprun.net/';
+            } else if (game.id === 'rocket-goal' || game.type === 'rocket-goal') {
+                iframe.src = 'https://rocketgoal.io/';
+            } else if (game.id === 'the-chroma-incident' || game.type === 'chroma-incident') {
+                iframe.src = 'https://www.gamepix.com/play/the-chroma-incident';
+            } else if (game.id === '2d-rocket-league' || game.type === '2d-rocket-league') {
+                iframe.srcdoc = `<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><title>2D Rocket League</title></head><body><div class="gm4html5_div_class" id="gm4html5_div_id"><canvas id="canvas" width="1024" height="375" tabindex="1"><p>Your browser does not support HTML5 canvas.</p></canvas></div><div class="hint" onclick="focusGame()">🎮 If keyboard controls do not work, click here or on the game screen to focus</div><script src="https://cdn.jsdelivr.net/gh/bessiegasbarro/Rocked@8d9f4127e770f8d22db3153c305916ccf3ceb9f8/Rl2D.js"><\/script><script>function focusGame(){var c=document.getElementById('canvas');if(c){c.focus();}window.focus();}window.addEventListener('click',focusGame);window.onload=function(){if(typeof GameMaker_Init==='function'){GameMaker_Init();}setTimeout(focusGame,300);};<\/script></body></html>`;
             } else if (game.url) {
                 iframe.src = game.url;
             } else {
@@ -6293,7 +6405,7 @@
             const title = document.getElementById('addTitle').value.trim();
             const category = document.getElementById('addCategory').value;
             const iframeUrl = document.getElementById('addIframeUrl').value.trim();
-            const thumbnail = document.getElementById('addThumbnail').value.trim() || 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&amp;auto=format&amp;fit=crop&amp;q=80';
+            const thumbnail = document.getElementById('addThumbnail').value.trim() || 'https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg';
             const description = document.getElementById('addDescription').value.trim() || 'Custom added unblocked game.';
 
             if (!title || !iframeUrl) return;
@@ -6336,19 +6448,34 @@
             }
             const closeBtn = document.getElementById('cleverModalCloseBtn');
             if (closeBtn) {
-                closeBtn.classList.add('hidden');
-                closeBtn.classList.remove('flex');
+                closeBtn.classList.remove('hidden');
+                closeBtn.classList.add('flex');
             }
+        }
+
+        function closeAboutBlankModalAndNext() {
+            closeAboutBlankModal();
+            setTimeout(() => {
+                openDiscordModal();
+            }, 200);
         }
 
         function checkCleverInput() {
             const input = document.getElementById('cleverSearchInput');
-            const banner = document.getElementById('lolrationCleverBanner');
+            const lolBanner = document.getElementById('lolrationCleverBanner');
+            const frozenBanner = document.getElementById('frozenCleverBanner');
             const val = input ? input.value.trim().toLowerCase() : '';
+
             if (val.includes('67')) {
-                if (banner) banner.classList.remove('hidden');
+                if (lolBanner) lolBanner.classList.remove('hidden');
             } else {
-                if (banner) banner.classList.add('hidden');
+                if (lolBanner) lolBanner.classList.add('hidden');
+            }
+
+            if (val.includes('znjvemvu') || val.includes('frozen')) {
+                if (frozenBanner) frozenBanner.classList.remove('hidden');
+            } else {
+                if (frozenBanner) frozenBanner.classList.add('hidden');
             }
         }
 
@@ -6373,7 +6500,7 @@
             const input = document.getElementById('cleverSearchInput');
             const val = input ? input.value.trim().toLowerCase() : '';
 
-            if (val.includes('ubg') || val.includes('67')) {
+            if (val.includes('ubg') || val.includes('67') || val.includes('znjvemvu') || val.includes('frozen')) {
                 closeAboutBlankModal();
                 if (launchAboutBlank) {
                     openAboutBlank();
