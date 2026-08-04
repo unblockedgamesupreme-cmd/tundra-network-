@@ -1415,18 +1415,32 @@
         // Full Games Catalog matching existing games
         const baseCatalog = [
             {
+                id: "eaglercraft-skyfactory",
+                title: "Minecraft (SkyFactory Mod)",
+                category: "Sandbox",
+                description: "Eaglercraft SkyFactory Mod! Survive on a floating island, automate resource gathering, build tech machines, and expand in the sky.",
+                type: "skyfactory",
+                thumbnail: "/minecraft_logo.jpg",
+                rating: 5.0,
+                plays: "1.8M",
+                controls: "WASD Move, Mouse Look & Mine/Place, Space Jump, Shift Sneak, E Inventory",
+                featured: true,
+                popular: true,
+                isGnMath: false
+            },
+            {
                 id: "minecraft-tuff",
                 title: "Minecraft (Tuff Client)",
                 category: "Sandbox",
                 description: "Full Minecraft WASM offline client featuring high FPS gameplay, multiplayer, custom skins, and singleplayer survival.",
                 type: "minecraft",
-                thumbnail: "https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg",
+                thumbnail: "/minecraft_logo.jpg",
                 rating: 5.0,
                 plays: "2.5M",
                 controls: "WASD Move, Mouse Look & Mine/Place, Space Jump, Shift Sneak, E Inventory",
                 featured: true,
                 popular: true,
-                isGnMath: true
+                isGnMath: false
             },
             {
                 id: "ev-io",
@@ -2002,10 +2016,12 @@
                     card.className = "game-card tn-sheen cursor-pointer flex flex-col group";
                     card.onclick = () => openGame(game);
 
-                    const isGn = game.isGnMath || (game.tags && game.tags.includes('gn-math')) || game.category === 'GN Math';
+                    const isMinecraft = (game.type === 'minecraft') || (game.type === 'skyfactory') || (game.id && (game.id.toLowerCase().includes('minecraft') || game.id.toLowerCase().includes('eaglercraft') || game.id.toLowerCase().includes('skyfactory'))) || (game.title && (game.title.toLowerCase().includes('minecraft') || game.title.toLowerCase().includes('eaglercraft') || game.title.toLowerCase().includes('skyfactory'))) || (game.category && game.category.toLowerCase().includes('minecraft'));
+                    const minecraftPhotoSrc = "/minecraft_logo.jpg";
+                    const isGn = !isMinecraft && (game.isGnMath || (game.tags && game.tags.includes('gn-math')) || game.category === 'GN Math');
                     const gnPhotoSrc = "https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg";
 
-                    const thumbSrc = isGn ? gnPhotoSrc : game.thumbnail;
+                    const thumbSrc = isMinecraft ? (game.thumbnail && game.thumbnail !== 'https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg' ? game.thumbnail : minecraftPhotoSrc) : (isGn ? gnPhotoSrc : game.thumbnail);
 
                     card.innerHTML = `
                         <div class="thumb aspect-video w-full bg-slate-900">
@@ -2154,7 +2170,41 @@
 
             const iframe = document.getElementById('gameIframe');
 
-            if (game.id === 'minecraft-tuff' || game.type === 'minecraft') {
+            if (game.id === 'eaglercraft-skyfactory' || game.type === 'skyfactory') {
+                iframe.srcdoc = `<!-- shxyder -->
+<!-- ultimate game stash file -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>skyfactory</title>
+  <style>html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#000;color:#fff;font-family:sans-serif;}</style>
+</head>
+<body>
+  <script>
+    async function loadAndRun() {
+      const urls = [
+        "https://cdn.jsdelivr.net/gh/shayderrr/eaglercraft@main/skyfactory/clskyfactory.html.part1",
+        "https://cdn.jsdelivr.net/gh/shayderrr/eaglercraft@main/skyfactory/clskyfactory.html.part2",
+        "https://cdn.jsdelivr.net/gh/shayderrr/eaglercraft@main/skyfactory/clskyfactory.html.part3"
+      ];
+
+      let fullHtml = "";
+      for (const u of urls) {
+        const res = await fetch(u);
+        fullHtml += await res.text();
+      }
+
+      document.open();
+      document.write(fullHtml);
+      document.close();
+    }
+
+    loadAndRun();
+  <\/script>
+</body>
+</html>`;
+            } else if (game.id === 'minecraft-tuff' || game.type === 'minecraft') {
                 iframe.srcdoc = `<!-- shxyder -->
 <!-- ugs file -->
 <!DOCTYPE html>
@@ -2264,7 +2314,9 @@
             const title = document.getElementById('addTitle').value.trim();
             const category = document.getElementById('addCategory').value;
             const iframeUrl = document.getElementById('addIframeUrl').value.trim();
-            const thumbnail = document.getElementById('addThumbnail').value.trim() || 'https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg';
+            const isMc = title.toLowerCase().includes('minecraft') || iframeUrl.toLowerCase().includes('minecraft') || category.toLowerCase().includes('minecraft');
+            const defaultThumb = isMc ? '/minecraft_logo.jpg' : 'https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg';
+            const thumbnail = document.getElementById('addThumbnail').value.trim() || defaultThumb;
             const description = document.getElementById('addDescription').value.trim() || 'Custom added unblocked game.';
 
             if (!title || !iframeUrl) return;
