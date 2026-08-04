@@ -5627,7 +5627,7 @@
                     </li>
                     <li class="flex items-center gap-2.5">
                         <span class="w-6 h-6 rounded-lg bg-blue-500/20 text-sky-400 flex items-center justify-center font-bold text-sm">💬</span>
-                        <span>Chat with gamers &amp; share high scores</span>
+                        <span>talk to random people who play unblocked!</span>
                     </li>
                 </ul>
 
@@ -5711,6 +5711,20 @@
     <script><![CDATA[
         // Full Games Catalog matching existing games
         const baseCatalog = [
+            {
+                id: "minecraft-tuff",
+                title: "Minecraft (Tuff Client)",
+                category: "Sandbox",
+                description: "Full Minecraft WASM offline client featuring high FPS gameplay, multiplayer, custom skins, and singleplayer survival.",
+                type: "minecraft",
+                thumbnail: "https://i.ibb.co/JF2kVVLZ/IMG-1638.jpg",
+                rating: 5.0,
+                plays: "2.5M",
+                controls: "WASD Move, Mouse Look &amp; Mine/Place, Space Jump, Shift Sneak, E Inventory",
+                featured: true,
+                popular: true,
+                isGnMath: true
+            },
             {
                 id: "ev-io",
                 title: "ev.io",
@@ -6437,7 +6451,39 @@
 
             const iframe = document.getElementById('gameIframe');
 
-            if (game.id === 'half-life-2' || game.id === 'half-life-1' || game.type === 'half-life') {
+            if (game.id === 'minecraft-tuff' || game.type === 'minecraft') {
+                iframe.srcdoc = `<!-- shxyder -->
+<!-- ugs file -->
+
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>tuff client</title>
+  
+</head>
+<body>
+  <script>
+    async function loadAndRun() {
+      const urls = [
+        "https://cdn.jsdelivr.net/gh/shayderrr/eaglercraft@main/tuff/clTuff_Client_Offline_WASM.html.part1",
+        "https://cdn.jsdelivr.net/gh/shayderrr/eaglercraft@main/tuff/clTuff_Client_Offline_WASM.html.part2"
+      ];
+      let fullHtml = "";
+      for (const u of urls) {
+        const res = await fetch(u);
+        fullHtml += await res.text();
+      }
+
+      document.open();
+      document.write(fullHtml);
+      document.close();
+    }
+
+    loadAndRun();
+  <\/script>
+</body>
+</html>`;
+            } else if (game.id === 'half-life-2' || game.id === 'half-life-1' || game.type === 'half-life') {
                 iframe.src = 'https://hl2.slqnt.dev/';
             } else if (game.id === 'drift-hunters-max' || game.type === 'drift-hunters-max') {
                 iframe.src = 'https://drifthuntersmax.io/';
