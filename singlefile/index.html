@@ -850,11 +850,12 @@
 
             <!-- LINK CHECKING TAB CONTENT -->
             <main id="viewLinkcheck" class="hidden flex-1 w-full mx-auto p-4 sm:p-6 lg:p-8 relative z-10 max-w-6xl">
-                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-4 bg-slate-950/80 border border-emerald-500/30 p-4 rounded-2xl backdrop-blur-md shadow-lg shadow-emerald-500/5">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-400 p-0.5 flex-shrink-0 shadow-lg shadow-emerald-500/20">
+                <!-- Top Header Card -->
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-4 bg-slate-950/80 border border-emerald-500/30 p-4 sm:p-5 rounded-2xl backdrop-blur-md shadow-lg shadow-emerald-500/5">
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-400 p-0.5 flex-shrink-0 shadow-lg shadow-emerald-500/20">
                             <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
-                                <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+                                <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
                             </div>
                         </div>
                         <div>
@@ -862,17 +863,60 @@
                                 Link Checking
                                 <span class="text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2.5 py-0.5 rounded-full uppercase tracking-wider">glseries.net</span>
                             </h1>
-                            <p class="text-xs text-sky-200/70">Live link verification & status engine</p>
+                            <p class="text-xs text-sky-200/70">Live link verification & unblocked stream engine</p>
                         </div>
                     </div>
-                    <div class="flex items-center gap-2">
-                        <a href="https://live.glseries.net/" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 text-xs font-bold text-emerald-300 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer">
+
+                    <!-- Top Action Buttons -->
+                    <div class="flex flex-wrap items-center gap-2 w-full md:w-auto">
+                        <button type="button" onclick="refreshLinkcheckIframe()" class="px-3.5 py-1.5 text-xs font-bold text-emerald-300 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer active:scale-95" title="Reload iframe">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                            <span>Refresh Frame</span>
+                        </button>
+                        <button type="button" onclick="openUrlInAboutBlank(document.getElementById('linkcheckUrlInput')?document.getElementById('linkcheckUrlInput').value:'https://live.glseries.net/')" class="px-3.5 py-1.5 text-xs font-bold text-purple-300 bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer active:scale-95">
+                            <span>about:blank Popout ↗</span>
+                        </button>
+                        <a id="linkcheckDirectAnchor" href="https://live.glseries.net/" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 text-xs font-bold text-sky-300 bg-sky-500/10 hover:bg-sky-500/20 border border-sky-500/30 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer">
                             <span>Open Direct ↗</span>
                         </a>
                     </div>
                 </div>
+
+                <!-- Interactive Control & Mode Switcher Bar -->
+                <div class="mb-4 p-3 bg-slate-950/90 border border-emerald-500/20 rounded-2xl flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 shadow-xl">
+                    <!-- URL Input & Test Ping -->
+                    <div class="flex-1 flex items-center gap-2 bg-slate-900/90 border border-slate-800 rounded-xl px-3 py-1.5 focus-within:border-emerald-500/50 transition-all">
+                        <svg class="w-4 h-4 text-emerald-400/80 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+                        <input id="linkcheckUrlInput" type="text" value="https://live.glseries.net/" onkeypress="if(event.key==='Enter') setLinkcheckMode('current')" class="w-full bg-transparent text-xs text-white placeholder-slate-500 focus:outline-none font-mono" placeholder="Enter target link URL..." />
+                        <button type="button" onclick="testLinkcheckStatus()" class="px-2.5 py-1 bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-500/40 text-emerald-300 rounded-lg text-[11px] font-bold transition-all flex-shrink-0 cursor-pointer">
+                            Test Ping
+                        </button>
+                    </div>
+
+                    <!-- Stream Mode Toggles -->
+                    <div class="flex items-center gap-1.5 flex-shrink-0">
+                        <button id="linkcheckBtnProxy" type="button" onclick="setLinkcheckMode('proxy')" class="px-3 py-1.5 text-xs font-bold text-emerald-200 bg-emerald-500/30 border border-emerald-400 rounded-lg shadow transition-all cursor-pointer flex items-center gap-1">
+                            <span>⚡ Proxy Mode (Unblocked)</span>
+                        </button>
+                        <button id="linkcheckBtnDirect" type="button" onclick="setLinkcheckMode('direct')" class="px-3 py-1.5 text-xs font-medium text-slate-400 bg-slate-900/60 border border-slate-800 rounded-lg hover:text-white transition-all cursor-pointer flex items-center gap-1">
+                            <span>🌐 Direct Mode</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Live Status & Ping Info -->
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 px-1 mb-3 text-xs text-slate-400">
+                    <div id="linkcheckStatusBadge" class="flex items-center gap-2 font-mono text-emerald-300">
+                        <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Mode: Proxy Stream (Unblocked)
+                    </div>
+                    <div id="linkcheckPingResult" class="font-mono text-[11px] text-slate-400">
+                        Click "Test Ping" to verify link response & latency
+                    </div>
+                </div>
+
+                <!-- Main Iframe Display -->
                 <div class="w-full bg-slate-950 border border-emerald-500/20 rounded-2xl overflow-hidden shadow-2xl relative min-h-[650px] sm:min-h-[750px]">
-                    <iframe src="https://live.glseries.net/" class="w-full h-[650px] sm:h-[750px] border-none" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                    <iframe id="glseriesIframe" src="/api/proxy?url=https%3A%2F%2Flive.glseries.net%2F" class="w-full h-[650px] sm:h-[750px] border-none bg-slate-950" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; gamepad; microphone; camera; display-capture; focus-without-user-activation; screen-wake-lock; pointer-lock" allowfullscreen></iframe>
                 </div>
             </main>
 
@@ -3302,6 +3346,88 @@ h1{margin:0 0 12px;font-size:22px;color:#7dd3fc}p{margin:0;color:#bae6fd;line-he
             const html = document.documentElement.outerHTML;
             doc.open();
             doc.write(html);
+            doc.close();
+        }
+
+        // Link Checking Controller Functions
+        window._linkcheckCurrentMode = 'proxy';
+        function setLinkcheckMode(mode) {
+            const iframe = document.getElementById('glseriesIframe');
+            const input = document.getElementById('linkcheckUrlInput');
+            const statusBadge = document.getElementById('linkcheckStatusBadge');
+            const modeProxyBtn = document.getElementById('linkcheckBtnProxy');
+            const modeDirectBtn = document.getElementById('linkcheckBtnDirect');
+            const directAnchor = document.getElementById('linkcheckDirectAnchor');
+            
+            let targetUrl = (input ? input.value.trim() : '') || 'https://live.glseries.net/';
+            if (!/^https?:\/\//i.test(targetUrl)) targetUrl = 'https://' + targetUrl;
+            if (input) input.value = targetUrl;
+            if (directAnchor) directAnchor.href = targetUrl;
+
+            let currentMode = mode;
+            if (currentMode === 'current') {
+                currentMode = window._linkcheckCurrentMode || 'proxy';
+            }
+            window._linkcheckCurrentMode = currentMode;
+
+            if (currentMode === 'proxy') {
+                if (iframe) iframe.src = '/api/proxy?url=' + encodeURIComponent(targetUrl);
+                if (statusBadge) statusBadge.innerHTML = '<span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Mode: Proxy Stream (Unblocked)';
+                if (modeProxyBtn) modeProxyBtn.className = "px-3 py-1.5 text-xs font-bold text-emerald-200 bg-emerald-500/30 border border-emerald-400 rounded-lg shadow transition-all cursor-pointer flex items-center gap-1";
+                if (modeDirectBtn) modeDirectBtn.className = "px-3 py-1.5 text-xs font-medium text-slate-400 bg-slate-900/60 border border-slate-800 rounded-lg hover:text-white transition-all cursor-pointer flex items-center gap-1";
+            } else if (currentMode === 'direct') {
+                if (iframe) iframe.src = targetUrl;
+                if (statusBadge) statusBadge.innerHTML = '<span class="inline-block w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span> Mode: Direct Stream';
+                if (modeDirectBtn) modeDirectBtn.className = "px-3 py-1.5 text-xs font-bold text-sky-200 bg-sky-500/30 border border-sky-400 rounded-lg shadow transition-all cursor-pointer flex items-center gap-1";
+                if (modeProxyBtn) modeProxyBtn.className = "px-3 py-1.5 text-xs font-medium text-slate-400 bg-slate-900/60 border border-slate-800 rounded-lg hover:text-white transition-all cursor-pointer flex items-center gap-1";
+            }
+        }
+
+        function refreshLinkcheckIframe() {
+            const iframe = document.getElementById('glseriesIframe');
+            if (iframe) {
+                const src = iframe.src;
+                iframe.src = 'about:blank';
+                setTimeout(() => { iframe.src = src; }, 50);
+            }
+        }
+
+        function testLinkcheckStatus() {
+            const input = document.getElementById('linkcheckUrlInput');
+            const pingResult = document.getElementById('linkcheckPingResult');
+            let targetUrl = (input ? input.value.trim() : '') || 'https://live.glseries.net/';
+            if (!/^https?:\/\//i.test(targetUrl)) targetUrl = 'https://' + targetUrl;
+            if (input) input.value = targetUrl;
+            
+            if (pingResult) pingResult.innerHTML = '<span class="text-sky-400 animate-pulse">Testing ping & status...</span>';
+            const start = Date.now();
+            fetch('/api/proxy?url=' + encodeURIComponent(targetUrl), { method: 'HEAD' })
+                .then(res => {
+                    const elapsed = Date.now() - start;
+                    if (pingResult) {
+                        if (res.ok || res.status < 400) {
+                            pingResult.innerHTML = `<span class="text-emerald-400 font-bold">✔ ${res.status || 200} OK</span> <span class="text-slate-400">(${elapsed}ms)</span>`;
+                        } else {
+                            pingResult.innerHTML = `<span class="text-amber-400 font-bold">⚠ Status ${res.status}</span> <span class="text-slate-400">(${elapsed}ms)</span>`;
+                        }
+                    }
+                })
+                .catch(() => {
+                    if (pingResult) pingResult.innerHTML = `<span class="text-red-400 font-bold">✖ Host unreachable</span>`;
+                });
+        }
+
+        function openUrlInAboutBlank(url) {
+            const target = url || 'https://live.glseries.net/';
+            const win = window.open('about:blank', '_blank');
+            if (!win) {
+                alert("Popup blocked! Please allow popups for this site to open in about:blank.");
+                return;
+            }
+            win.document.title = 'Google Classroom';
+            const doc = win.document;
+            doc.open();
+            doc.write(`<!DOCTYPE html><html><head><meta charset="utf-8"><title>Google Classroom</title><style>html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#000;}iframe{width:100%;height:100%;border:none;}</style></head><body><iframe src="${target}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; gamepad; microphone; camera; display-capture" allowfullscreen></iframe></body></html>`);
             doc.close();
         }
 
