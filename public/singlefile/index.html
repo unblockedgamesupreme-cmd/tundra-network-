@@ -368,6 +368,15 @@
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { scrollbar-width: none; }
     </style>
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 </head>
 <body class="relative flex flex-col min-h-screen selection:bg-sky-500 selection:text-white">
 
@@ -658,192 +667,54 @@
             </main>
 
             <!-- ULTRAVIOLET PROXY TAB CONTENT -->
-            <main id="viewProxy" class="hidden flex-1 w-full mx-auto p-4 sm:p-6 lg:p-8 relative z-10 max-w-5xl">
-                <div class="flex flex-col items-center text-center mb-8">
-                    <div class="flex items-center gap-3 mb-2">
-                        <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-600 via-indigo-500 to-sky-400 p-0.5 shadow-lg shadow-purple-500/30 flex items-center justify-center">
-                            <div class="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center">
-                                <svg class="w-6 h-6 text-purple-400 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        <main id="viewProxy" class="hidden flex-1 w-full mx-auto relative z-10 flex flex-col h-[calc(100vh-80px)] p-0 m-0 overflow-hidden">
+                <div id="proxyFrameContainer" class="w-full h-full flex flex-col bg-slate-900 relative transition-all duration-300">
+                                        <div id="proxyHeader" class="bg-slate-950 px-4 py-3 border-b border-purple-500/20 flex items-center justify-between gap-3 flex-shrink-0 z-20 shadow-md">
+                        <div class="flex items-center gap-3 shrink-0">
+                            <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-purple-600 via-indigo-500 to-sky-400 p-[1px] shadow-lg flex items-center justify-center">
+                                <div class="w-full h-full bg-slate-950 rounded-[11px] flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-purple-400 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                                </div>
+                            </div>
+                            <div class="hidden sm:block">
+                                <h2 class="text-[13px] font-bold text-white tracking-tight leading-tight animate-[fadeInDown_0.5s_ease-out]">Tundra Network</h2>
+                                <p class="text-[10px] text-sky-300/70 font-mono tracking-wider uppercase mt-0.5 animate-[fadeInUp_0.5s_ease-out_0.2s_both]">Proxy Mode</p>
                             </div>
                         </div>
-                        <div class="text-left">
-                            <div class="flex items-center gap-2">
-                                <h1 class="text-2xl sm:text-3xl font-black tracking-tight text-white">
-                                    Ultraviolet <span class="text-purple-400 text-lg font-bold">| TN</span>
-                                </h1>
-                                <span class="px-2 py-0.5 text-[10px] font-extrabold bg-purple-500/20 text-purple-300 border border-purple-500/30 rounded-full uppercase tracking-wider">
-                                    v2.0 Proxy
-                                </span>
-                            </div>
-                            <p class="text-xs text-sky-300/80 font-medium">Sophisticated Web Proxy & ServiceWorker Engine</p>
-                        </div>
-                    </div>
-                    <p class="text-xs sm:text-sm text-sky-200/90 mt-3 leading-relaxed max-w-xl">
-                        Ultraviolet is a highly sophisticated web proxy engine used for navigating the web in a controlled, unblocked sandbox environment.
-                    </p>
-                </div>
 
-                <!-- Proxy Address Bar -->
-                <form id="uvForm" onsubmit="handleProxySubmit(event)" class="w-full max-w-3xl mx-auto mb-8">
-                    <div class="flex items-center justify-between mb-2 px-1 text-[10px] font-mono uppercase tracking-[0.24em]">
-                        <div class="flex items-center gap-3 text-sky-300/70">
-                            <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>Encrypted TLS</span>
-                            <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>Bare v3</span>
-                            <span class="hidden sm:flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>SW Ready</span>
-                        </div>
-                        <span class="text-purple-300/80">TN-PROXY / v2.0</span>
-                    </div>
-                    <div class="tn-holo relative rounded-2xl">
-                    <div class="relative flex flex-col sm:flex-row items-stretch gap-2 p-2 bg-slate-950/90 border border-purple-500/25 rounded-2xl shadow-2xl backdrop-blur-md focus-within:border-purple-400 transition-all overflow-hidden">
-                        <div class="tn-scan"></div>
-                        <div class="flex items-center gap-2 pl-2 pr-1 relative z-10">
-                            <svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 11V7a4 4 0 118 0v4M5 11h14v10H5V11z"/></svg>
-                            <select id="proxyEngine" class="bg-slate-900 text-sky-200 text-xs font-bold py-2.5 px-3 rounded-xl border border-sky-500/20 focus:outline-none focus:border-purple-400 cursor-pointer">
-                                <option value="google">Google</option>
-                                <option value="duckduckgo">DuckDuckGo</option>
-                                <option value="bing">Bing</option>
-                                <option value="brave">Brave Search</option>
-                            </select>
-                        </div>
-                        <div class="flex-1 relative flex items-center z-10">
-                            <span class="absolute left-3 text-purple-300/70 font-mono text-xs pointer-events-none">tn://</span>
-                            <input id="proxyAddress" type="text" placeholder="search or paste a URL — wikipedia.org, youtube.com…" class="w-full pl-14 pr-4 py-2.5 bg-slate-900/80 border border-slate-800 rounded-xl text-xs sm:text-sm text-white placeholder-sky-400/40 focus:outline-none focus:border-purple-500 focus:shadow-[0_0_0_3px_rgba(139,92,246,0.15)] transition-all font-mono" />
-                        </div>
-                        <button type="submit" class="tn-sheen relative z-10 px-6 py-2.5 bg-gradient-to-r from-purple-500 via-indigo-500 to-sky-500 hover:from-purple-400 hover:via-indigo-400 hover:to-sky-400 text-white text-xs font-black tracking-wider rounded-xl shadow-lg shadow-purple-600/30 transition-all cursor-pointer flex items-center gap-2">
-                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                            UNBLOCK
-                        </button>
-                    </div>
-                    </div>
-                </form>
+                        <!-- Oval Address Bar -->
+                        <form onsubmit="handleProxyNav(event)" class="flex-1 max-w-xl mx-4 animate-[fadeInUp_0.5s_ease-out_0.3s_both]">
+                            <div class="relative flex items-center">
+                                <div class="absolute left-3 pointer-events-none">
+                                    <svg class="w-4 h-4 text-purple-400/80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                                </div>
+                                <input id="proxyUrlInput" type="text" value="" class="w-full bg-slate-900 border border-purple-500/30 text-sky-200 text-xs sm:text-sm py-2 pl-9 pr-4 rounded-full focus:outline-none focus:border-purple-400 focus:ring-1 focus:ring-purple-400/50 font-mono transition-all placeholder-sky-500/40 shadow-inner" placeholder="Enter URL or search term...">
+                            </div>
+                        </form>
 
-                <!-- Popular Unblocked Shortcuts -->
-                <div id="proxyShortcuts" class="w-full max-w-3xl mx-auto mb-8">
-                    <div class="flex items-center justify-between mb-3 px-1">
-                        <h2 class="text-[10px] font-mono uppercase tracking-[0.28em] text-purple-300">◆ Popular Unblocked Shortcuts</h2>
-                        <span class="text-[10px] font-mono uppercase tracking-[0.22em] text-sky-300/60">6 pinned</span>
-                    </div>
-                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                        <button onclick="navigateProxy('https://www.google.com')" class="prox-card tn-sheen text-left group">
-                            <div class="flex items-center gap-3 mb-2">
-                                <div class="prox-orb">🔍</div>
-                                <div>
-                                    <div class="font-black text-sm text-white group-hover:text-purple-200">Google</div>
-                                    <div class="text-[10px] font-mono uppercase tracking-[0.18em] text-sky-300/60">google.com</div>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between text-[10px] font-mono">
-                                <span class="text-sky-300/70">Search engine</span>
-                                <span class="text-purple-300 group-hover:translate-x-0.5 transition-transform">OPEN ▸</span>
-                            </div>
-                        </button>
-                        <button onclick="navigateProxy('https://duckduckgo.com')" class="prox-card tn-sheen text-left group">
-                            <div class="flex items-center gap-3 mb-2">
-                                <div class="prox-orb">🦆</div>
-                                <div>
-                                    <div class="font-black text-sm text-white group-hover:text-purple-200">DuckDuckGo</div>
-                                    <div class="text-[10px] font-mono uppercase tracking-[0.18em] text-sky-300/60">duckduckgo.com</div>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between text-[10px] font-mono">
-                                <span class="text-sky-300/70">Private search</span>
-                                <span class="text-purple-300 group-hover:translate-x-0.5 transition-transform">OPEN ▸</span>
-                            </div>
-                        </button>
-                        <button onclick="navigateProxy('https://www.wikipedia.org')" class="prox-card tn-sheen text-left group">
-                            <div class="flex items-center gap-3 mb-2">
-                                <div class="prox-orb">🌐</div>
-                                <div>
-                                    <div class="font-black text-sm text-white group-hover:text-purple-200">Wikipedia</div>
-                                    <div class="text-[10px] font-mono uppercase tracking-[0.18em] text-sky-300/60">wikipedia.org</div>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between text-[10px] font-mono">
-                                <span class="text-sky-300/70">Encyclopedia</span>
-                                <span class="text-purple-300 group-hover:translate-x-0.5 transition-transform">OPEN ▸</span>
-                            </div>
-                        </button>
-                        <button onclick="navigateProxy('https://archive.org')" class="prox-card tn-sheen text-left group">
-                            <div class="flex items-center gap-3 mb-2">
-                                <div class="prox-orb">🏛️</div>
-                                <div>
-                                    <div class="font-black text-sm text-white group-hover:text-purple-200">Archive.org</div>
-                                    <div class="text-[10px] font-mono uppercase tracking-[0.18em] text-sky-300/60">archive.org</div>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between text-[10px] font-mono">
-                                <span class="text-sky-300/70">Internet archive</span>
-                                <span class="text-purple-300 group-hover:translate-x-0.5 transition-transform">OPEN ▸</span>
-                            </div>
-                        </button>
-                        <button onclick="navigateProxy('https://github.com')" class="prox-card tn-sheen text-left group">
-                            <div class="flex items-center gap-3 mb-2">
-                                <div class="prox-orb">🐙</div>
-                                <div>
-                                    <div class="font-black text-sm text-white group-hover:text-purple-200">GitHub</div>
-                                    <div class="text-[10px] font-mono uppercase tracking-[0.18em] text-sky-300/60">github.com</div>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between text-[10px] font-mono">
-                                <span class="text-sky-300/70">Code repository</span>
-                                <span class="text-purple-300 group-hover:translate-x-0.5 transition-transform">OPEN ▸</span>
-                            </div>
-                        </button>
-                        <button onclick="navigateProxy('https://www.ecosia.org')" class="prox-card tn-sheen text-left group">
-                            <div class="flex items-center gap-3 mb-2">
-                                <div class="prox-orb">🌱</div>
-                                <div>
-                                    <div class="font-black text-sm text-white group-hover:text-purple-200">Ecosia</div>
-                                    <div class="text-[10px] font-mono uppercase tracking-[0.18em] text-sky-300/60">ecosia.org</div>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between text-[10px] font-mono">
-                                <span class="text-sky-300/70">Green search</span>
-                                <span class="text-purple-300 group-hover:translate-x-0.5 transition-transform">OPEN ▸</span>
-                            </div>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Active Proxy Viewport Frame -->
-                <div id="proxyFrameContainer" class="hidden w-full max-w-5xl mx-auto bg-slate-900 border border-purple-500/30 rounded-2xl overflow-hidden shadow-2xl mb-8 flex-col">
-                    <div class="bg-slate-950 px-4 py-2.5 border-b border-sky-500/20 flex items-center justify-between gap-3">
-                        <div class="flex-1 bg-slate-900 border border-slate-800 rounded-lg px-3 py-1 text-xs text-sky-200 truncate font-mono">
-                            <span id="proxyUrlDisplay">https://www.google.com</span>
-                        </div>
-                        <button onclick="closeProxyFrame()" class="px-3 py-1 bg-red-500/20 hover:bg-red-500/30 text-red-300 text-xs font-bold rounded-lg border border-red-500/40">
-                            Close Proxy
-                        </button>
-                    </div>
-                    <iframe id="proxyIframe" class="w-full h-[520px] border-none bg-white"></iframe>
-                </div>
-
-                <!-- Diagnostics Console -->
-                <div class="w-full max-w-3xl mx-auto bg-slate-950/90 border border-purple-500/20 rounded-2xl shadow-xl mb-8 overflow-hidden">
-                    <div class="flex items-center justify-between px-4 py-2 bg-slate-900/80 border-b border-purple-500/15">
-                        <div class="flex items-center gap-2">
-                            <span class="w-2.5 h-2.5 rounded-full bg-red-500/70"></span>
-                            <span class="w-2.5 h-2.5 rounded-full bg-amber-400/70"></span>
-                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400/70"></span>
-                            <span class="ml-2 text-[11px] font-mono text-sky-300/80">tn-proxy · diagnostics.log</span>
-                        </div>
-                        <div class="flex items-center gap-3 text-[10px] font-mono text-sky-300/70">
-                            <span class="flex items-end gap-0.5 h-3">
-                                <span class="tn-bar" style="height:40%"></span>
-                                <span class="tn-bar" style="height:70%"></span>
-                                <span class="tn-bar" style="height:55%"></span>
-                                <span class="tn-bar" style="height:90%"></span>
-                            </span>
-                            <span>UP 00:47:12</span>
+                        <div class="flex items-center gap-3 shrink-0">
+                            <button onclick="toggleProxyFullscreen()" id="btnProxyFullscreen" class="px-3 py-1.5 bg-sky-500/10 hover:bg-sky-500/20 text-sky-300 hover:text-white text-xs font-bold rounded-lg border border-sky-500/30 flex items-center gap-2 transition-all cursor-pointer shadow-sm animate-[fadeInUp_0.5s_ease-out_0.4s_both]">
+                                <svg id="iconEnterFs" class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+                                <svg id="iconExitFs" class="w-3.5 h-3.5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 15L3 21m0 0h6m-6 0v-6m12-6L21 3m0 0h-6m6 0v6M9 9L3 3m0 0h6m-6 0v6m12 6l6 6m0 0h-6m6 0v-6"/></svg>
+                                <span id="textFs" class="hidden sm:inline">Full Screen</span>
+                            </button>
                         </div>
                     </div>
-                    <div class="p-4 bg-slate-950 font-mono text-[11px] space-y-1.5">
-                        <p><span class="text-emerald-400">✔ status</span> <span class="text-sky-300/80">tn-proxy active · scope /api/proxy · engine bare-v3</span></p>
-                        <p><span class="text-purple-300">→ init</span> <span class="text-sky-300/70">initializing transport route (region GLC-01)</span></p>
-                        <p><span class="text-purple-300">→ swreg</span> <span class="text-sky-300/70">service worker registered</span> <span class="text-emerald-400">ok</span></p>
-                        <p><span class="text-purple-300">→ tls</span> <span class="text-sky-300/70">handshake complete · cipher TLS_AES_256_GCM_SHA384</span></p>
-                        <p><span class="text-purple-300">→ adblk</span> <span class="text-sky-300/70">blocklist loaded · 50 hosts</span></p>
-                        <p><span class="text-sky-300/60 tn-caret">$ tn-proxy ready — awaiting request </span></p>
+                    <iframe id="proxyIframe" src="about:blank" class="w-full h-full flex-1 border-none bg-white hidden"></iframe>
+                    <div id="proxyWelcome" class="flex-1 w-full flex flex-col items-center justify-center bg-slate-900 relative">
+                        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(139,92,246,0.1)_0%,transparent_60%)] pointer-events-none"></div>
+                        <div class="animate-pulse-slow">
+                            <h1 class="text-white text-5xl sm:text-7xl md:text-8xl relative z-10 animate-[fadeInDown_1s_ease-out]" style="font-family: 'Times New Roman', Times, serif; text-shadow: 0 4px 24px rgba(139, 92, 246, 0.3);">Tundra Network</h1>
+                            <p class="text-purple-300/80 mt-6 text-sm sm:text-base tracking-[0.3em] uppercase font-medium relative z-10 text-center animate-[fadeInUp_1s_ease-out_0.2s_both]">bypassing at its finest</p>
+                        </div>
+                        <form onsubmit="handleProxyNavHome(event)" class="w-full max-w-2xl mt-12 px-4 relative z-10 animate-[fadeInUp_1s_ease-out_0.4s_both]">
+                            <div class="relative flex items-center group">
+                                <div class="absolute left-6 pointer-events-none transition-transform group-focus-within:scale-110">
+                                    <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                                </div>
+                                <input id="proxyUrlInputHome" type="text" class="w-full bg-slate-900/80 backdrop-blur-md border border-purple-500/40 text-white text-base sm:text-lg py-4 pl-14 pr-6 rounded-full focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-400/50 focus:shadow-[0_0_30px_rgba(139,92,246,0.3)] transition-all placeholder-sky-300/50 shadow-2xl" placeholder="Search the web freely or enter a URL...">
+                            </div>
+                        </form>
                     </div>
                 </div>
             </main>
@@ -2831,6 +2702,69 @@ h1{margin:0 0 12px;font-size:22px;color:#7dd3fc}p{margin:0;color:#bae6fd;line-he
         }
 
         // Proxy Functions
+                                function handleProxyNavHome(e) {
+            e.preventDefault();
+            const input = document.getElementById('proxyUrlInputHome').value.trim();
+            executeProxySearch(input);
+        }
+
+        function handleProxyNav(e) {
+            e.preventDefault();
+            const input = document.getElementById('proxyUrlInput').value.trim();
+            executeProxySearch(input);
+        }
+
+        function executeProxySearch(input) {
+            if (!input) return;
+
+            let url = input;
+            if (!/^https?:\/\//i.test(url)) {
+                if (url.includes('.') && !url.includes(' ')) {
+                    url = 'https://' + url;
+                } else {
+                    const engine = localStorage.getItem('proxySearchEngine') || 'bing';
+                    if (engine === 'google') url = 'https://www.google.com/search?q=' + encodeURIComponent(input);
+                    else if (engine === 'yahoo') url = 'https://search.yahoo.com/search?p=' + encodeURIComponent(input);
+                    else if (engine === 'ddg') url = 'https://duckduckgo.com/?q=' + encodeURIComponent(input);
+                    else url = 'https://www.bing.com/search?q=' + encodeURIComponent(input);
+                }
+            }
+            
+            document.getElementById('proxyUrlInput').value = url;
+            if (document.getElementById('proxyUrlInputHome')) {
+                document.getElementById('proxyUrlInputHome').value = url;
+            }
+            const proxyEndpoint = '/api/proxy?url=' + encodeURIComponent(url);
+            
+            const welcome = document.getElementById('proxyWelcome');
+            const iframe = document.getElementById('proxyIframe');
+            if (welcome) welcome.classList.add('hidden');
+            if (iframe) {
+                iframe.classList.remove('hidden');
+                iframe.src = proxyEndpoint;
+            }
+        }
+
+function toggleProxyFullscreen() {
+            const container = document.getElementById('proxyFrameContainer');
+            const isFullscreen = container.classList.contains('fixed');
+            const iconEnter = document.getElementById('iconEnterFs');
+            const iconExit = document.getElementById('iconExitFs');
+            const textFs = document.getElementById('textFs');
+
+            if (isFullscreen) {
+                container.classList.remove('fixed', 'inset-0', 'z-[9999]');
+                iconEnter.classList.remove('hidden');
+                iconExit.classList.add('hidden');
+                textFs.innerText = 'Full Screen';
+            } else {
+                container.classList.add('fixed', 'inset-0', 'z-[9999]');
+                iconEnter.classList.add('hidden');
+                iconExit.classList.remove('hidden');
+                textFs.innerText = 'Exit Full Screen';
+            }
+        }
+
         function handleProxySubmit(e) {
             e.preventDefault();
             const input = document.getElementById('proxyAddress').value.trim();
@@ -2845,7 +2779,7 @@ h1{margin:0 0 12px;font-size:22px;color:#7dd3fc}p{margin:0;color:#bae6fd;line-he
                     if (engine === 'duckduckgo') url = 'https://duckduckgo.com/?q=' + encodeURIComponent(input);
                     else if (engine === 'bing') url = 'https://www.bing.com/search?q=' + encodeURIComponent(input);
                     else if (engine === 'brave') url = 'https://search.brave.com/search?q=' + encodeURIComponent(input);
-                    else url = 'https://www.google.com/search?q=' + encodeURIComponent(input);
+                    else url = 'https://www.bing.com/search?q=' + encodeURIComponent(input);
                 }
             }
             navigateProxy(url);
@@ -3672,6 +3606,82 @@ h1{margin:0 0 12px;font-size:22px;color:#7dd3fc}p{margin:0;color:#bae6fd;line-he
             if (el) randomizeBypassFont(el);
         })();
         setTimeout(runTypewriter, 2500);
+
+        // Proxy Engine
+        function setProxyEngine(engine) {
+            localStorage.setItem('proxySearchEngine', engine);
+            updateProxyEngineUI(engine);
+        }
+        function updateProxyEngineUI(engine) {
+            document.querySelectorAll('.engine-btn').forEach(btn => {
+                if (btn.dataset.engine === engine) {
+                    btn.classList.add('bg-sky-600', 'text-white', 'border-sky-500');
+                    btn.classList.remove('bg-slate-800', 'text-slate-300', 'border-slate-700');
+                } else {
+                    btn.classList.remove('bg-sky-600', 'text-white', 'border-sky-500');
+                    btn.classList.add('bg-slate-800', 'text-slate-300', 'border-slate-700');
+                }
+            });
+        }
+        
+
+        // Background Changer
+        function setSiteBackground(type) {
+            let bgValue = '';
+            if (type === 'custom') {
+                const url = prompt("Enter image URL:");
+                if (!url) return;
+                document.body.style.background = `url('${url}') no-repeat center center fixed`;
+                document.body.style.backgroundSize = 'cover';
+                bgValue = `url('${url}')`;
+                localStorage.setItem('siteBg', bgValue);
+                localStorage.setItem('siteBgType', 'custom');
+            } else {
+                document.body.style.backgroundImage = 'none';
+                if (type === 'midnight') {
+                    document.body.style.background = '#0b1120';
+                    bgValue = '#0b1120';
+                } else if (type === 'purple') {
+                    document.body.style.background = '#1a1025';
+                    bgValue = '#1a1025';
+                } else if (type === 'black') {
+                    document.body.style.background = '#000000';
+                    bgValue = '#000000';
+                } else {
+                    document.body.style.background = '#050914';
+                    bgValue = '#050914';
+                }
+                localStorage.setItem('siteBg', bgValue);
+                localStorage.setItem('siteBgType', type);
+            }
+            updateBgUI(type === 'custom' ? 'custom' : type);
+        }
+        function updateBgUI(type) {
+            document.querySelectorAll('.bg-btn').forEach(btn => {
+                if (btn.dataset.bg === type) {
+                    btn.classList.add('ring-2', 'ring-sky-500', 'ring-offset-2', 'ring-offset-slate-900');
+                } else {
+                    btn.classList.remove('ring-2', 'ring-sky-500', 'ring-offset-2', 'ring-offset-slate-900');
+                }
+            });
+        }
+        // Initialization for settings
+        (function() {
+            const engine = localStorage.getItem('proxySearchEngine') || 'bing';
+            updateProxyEngineUI(engine);
+            
+            const bg = localStorage.getItem('siteBg');
+            const bgType = localStorage.getItem('siteBgType') || 'default';
+            updateBgUI(bgType);
+            if (bg) {
+                if (bg.startsWith('url(')) {
+                    document.body.style.background = bg + ' no-repeat center center fixed';
+                    document.body.style.backgroundSize = 'cover';
+                } else {
+                    document.body.style.background = bg;
+                }
+            }
+        })();
     </script>
 </body>
 </html>

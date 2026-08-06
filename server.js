@@ -213,13 +213,18 @@ async function handleProxy(request) {
     return new Response(null, { status: 204, headers: { "access-control-allow-origin": "*", "x-proxy-adblock": "1" } });
   }
 
-  const fwdHeaders = {
-    "user-agent": request.headers.get("user-agent") || "Mozilla/5.0 (compatible; TundraProxy/1.0)",
-    accept: request.headers.get("accept") || "*/*",
-    "accept-language": request.headers.get("accept-language") || "en-US,en;q=0.9",
-  };
-  const range = request.headers.get("range");
-  if (range) fwdHeaders["range"] = range;
+  const fwdHeaders = {};
+  for (const [key, value] of request.headers.entries()) {
+    const lower = key.toLowerCase();
+    if (['host', 'origin', 'referer', 'x-forwarded-for', 'x-forwarded-host', 'x-forwarded-proto', 'connection', 'accept-encoding', 'upgrade'].includes(lower)) continue;
+    fwdHeaders[lower] = value;
+  }
+  if (!fwdHeaders['user-agent']) {
+    fwdHeaders['user-agent'] = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
+  }
+  if (!fwdHeaders['accept']) {
+    fwdHeaders['accept'] = 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8';
+  }
 
   let body;
   if (request.method !== "GET" && request.method !== "HEAD") {
@@ -237,7 +242,7 @@ async function handleProxy(request) {
       redirect: "manual",
     });
   } catch (e) {
-    return errorPage("Site unreachable", `Could not load <b>${targetUrl.hostname}</b>. It may be down, unresolvable, or blocking proxies.<br><br><small>${e.message}</small>`, 502);
+    return errorPage("Site unreachable", `Could not load <b>${targetUrl.hostname}</b>. It may be down, unresolvable, or blocking proxies.<br><br><small>${e.stack}</small>`, 502);
   }
 
   if (upstream.status >= 300 && upstream.status < 400) {
