@@ -1220,85 +1220,133 @@
         </div>
     </div>
 
-    <!-- Launch in about:blank Popup Modal (Disguised as Clever.com Login Portal) -->
-    <div id="aboutBlankModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md transition-all duration-300">
-        <div class="relative w-full max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden border border-slate-200 text-slate-800 flex flex-col font-sans">
-            <!-- Clever Header -->
-            <div class="bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-600 px-6 py-4 text-white flex items-center justify-between border-b border-blue-500/30">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-white text-blue-600 font-black text-2xl flex items-center justify-center shadow-md select-none tracking-tighter">
+    <!-- Launch in about:blank Popup Modal (Full Screen Clever.com Login Portal Disguise) -->
+    <div id="aboutBlankModal" class="fixed inset-0 z-[9999] hidden flex-col bg-[#F4F7FC] text-slate-800 font-sans w-screen h-screen min-h-screen max-w-full overflow-y-auto selection:bg-[#1D63ED] selection:text-white transition-all duration-300">
+        <!-- Official Clever Top Navigation Header Bar -->
+        <header class="w-full bg-[#1B2A4A] border-b border-slate-800/60 text-white px-4 sm:px-8 py-3.5 flex items-center justify-between shadow-md flex-shrink-0 z-20">
+            <div class="flex items-center gap-3">
+                <!-- Clever Blue Logo Badge -->
+                <div class="w-9 h-9 rounded-xl bg-[#1D63ED] text-white font-black text-2xl flex items-center justify-center shadow-md select-none tracking-tighter">
+                    C
+                </div>
+                <div class="flex items-center gap-2.5">
+                    <span class="text-xl font-extrabold tracking-tight text-white">Clever</span>
+                    <span class="hidden sm:inline-block px-2.5 py-0.5 rounded-full bg-white/10 text-[11px] font-semibold text-slate-200 border border-white/10">Portal</span>
+                </div>
+            </div>
+            <div class="flex items-center gap-3 sm:gap-6 text-xs font-semibold text-slate-200">
+                <a href="https://clever.com/about" target="_blank" rel="noopener noreferrer" class="hidden md:inline hover:text-white transition-colors">School Staff</a>
+                <a href="https://clever.com/about" target="_blank" rel="noopener noreferrer" class="hidden md:inline hover:text-white transition-colors">Parents & Guardians</a>
+                <a href="https://support.clever.com" target="_blank" rel="noopener noreferrer" class="hidden sm:inline hover:text-white transition-colors">Help Center</a>
+                <button id="cleverModalCloseBtn" onclick="closeAboutBlankModalAndNext()" class="px-3.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition-all flex items-center gap-1.5 cursor-pointer border border-white/15 active:scale-95 shadow-sm" title="Exit Disguise Portal">
+                    <span>Exit Portal</span>
+                    <span>✕</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Center Login Portal Canvas -->
+        <main class="flex-1 w-full max-w-7xl mx-auto px-4 py-8 sm:py-12 flex flex-col items-center justify-center relative">
+            <div class="w-full max-w-md bg-white rounded-2xl shadow-xl border border-slate-200/90 overflow-hidden text-slate-800 flex flex-col font-sans transition-all my-auto">
+                <!-- Top Card Header Accent -->
+                <div class="bg-gradient-to-r from-[#1D63ED] via-[#1652C7] to-[#0F3FA0] p-6 text-white text-center relative overflow-hidden">
+                    <div class="absolute -right-6 -top-6 w-24 h-24 rounded-full bg-white/10 pointer-events-none blur-xl"></div>
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-2xl bg-white text-[#1D63ED] font-black text-3xl flex items-center justify-center shadow-lg tracking-tighter select-none">
                         C
                     </div>
-                    <div>
-                        <div class="flex items-center gap-2">
-                            <h2 class="text-xl font-black tracking-tight leading-none text-white">Clever</h2>
-                            <span class="px-2 py-0.5 rounded-full bg-blue-500/40 text-[10px] font-bold text-blue-100 border border-white/20">Portal</span>
+                    <h1 class="text-2xl font-black tracking-tight mb-1 text-white">Log in to Clever</h1>
+                    <p class="text-xs text-blue-100/90 font-medium max-w-xs mx-auto">Search for your school district or use your student badge to get started</p>
+                </div>
+
+                <!-- Card Body -->
+                <div class="p-6 sm:p-8 space-y-5">
+                    <!-- Search Input Section -->
+                    <div class="space-y-2">
+                        <label for="cleverSearchInput" class="block text-[11px] font-extrabold text-slate-600 uppercase tracking-wider">
+                            Search for your school
+                        </label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 text-sm">
+                                🔍
+                            </span>
+                            <input id="cleverSearchInput" type="text" placeholder="Type school name or district (e.g. Lincoln High)..." oninput="checkCleverInput()" onkeydown="if(event.key==='Enter') handleCleverSubmit(true)" class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-800 font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1D63ED] focus:border-[#1D63ED] transition-all shadow-inner" />
                         </div>
-                        <span class="text-[11px] text-blue-100/90 font-medium">District Student & SSO Login</span>
+                        <div class="flex items-center gap-1.5 flex-wrap text-[11px] pt-1">
+                            <span class="text-slate-400 font-medium">Suggestions:</span>
+                            <button type="button" onclick="document.getElementById('cleverSearchInput').value='Lincoln High'; checkCleverInput();" class="px-2.5 py-1 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-600 font-medium transition-colors cursor-pointer">Lincoln High</button>
+                            <button type="button" onclick="fillCleverUbg()" class="px-2.5 py-1 rounded-md bg-blue-50 hover:bg-blue-100 text-[#1D63ED] font-semibold transition-colors cursor-pointer">Student Login</button>
+                        </div>
                     </div>
-                </div>
-                <button id="cleverModalCloseBtn" onclick="closeAboutBlankModalAndNext()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/25 text-white flex items-center justify-center font-bold text-sm transition-all cursor-pointer border border-white/10 active:scale-95 shadow-sm" title="Close Portal">✕</button>
-            </div>
 
-            <!-- Clever Card Body -->
-            <div class="p-6 space-y-4">
-                <div class="text-center space-y-1">
-                    <h3 class="text-xl font-extrabold text-slate-900 tracking-tight">Log in to your school</h3>
-                    <p class="text-xs text-slate-500 font-medium">Search for your school district or use your student badge</p>
-                </div>
-
-                <!-- Fake Search Input -->
-                <div class="space-y-1.5">
-                    <div class="relative">
-                        <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 text-sm">
-                            🔍
-                        </span>
-                        <input id="cleverSearchInput" type="text" placeholder="Search for your school (e.g. Lincoln High)..." oninput="checkCleverInput()" onkeydown="if(event.key==='Enter') handleCleverSubmit(true)" class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs text-slate-800 font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all shadow-inner" />
+                    <!-- Easter Egg Shoutout Banners -->
+                    <div id="lolrationCleverBanner" class="hidden p-3 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white font-black text-xs text-center shadow-md animate-bounce">
+                        🎉 shoutout to lolration
                     </div>
-                    <div class="flex items-center gap-1.5 flex-wrap text-[11px] px-0.5">
-                        <span class="text-slate-400 font-medium">Quick links:</span>
-                        <button type="button" onclick="document.getElementById('cleverSearchInput').value='Lincoln High'; checkCleverInput();" class="px-2 py-0.5 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-600 font-medium transition-colors cursor-pointer">Lincoln High</button>
-                        <button type="button" onclick="fillCleverUbg()" class="px-2 py-0.5 rounded-md bg-blue-50 hover:bg-blue-100 text-blue-600 font-semibold transition-colors cursor-pointer">Student Login</button>
+                    <div id="frozenCleverBanner" class="hidden p-3 rounded-xl bg-gradient-to-r from-sky-500 via-cyan-600 to-blue-700 text-white font-black text-xs text-center shadow-md animate-bounce">
+                        ❄️ shoutout to frozen
                     </div>
-                </div>
 
-                <!-- Shoutout Banners -->
-                <div id="lolrationCleverBanner" class="hidden p-3 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white font-black text-xs text-center shadow-md animate-bounce">
-                    🎉 shoutout to lolration
-                </div>
-                <div id="frozenCleverBanner" class="hidden p-3 rounded-xl bg-gradient-to-r from-sky-500 via-cyan-600 to-blue-700 text-white font-black text-xs text-center shadow-md animate-bounce">
-                    ❄️ shoutout to frozen
-                </div>
+                    <!-- Divider -->
+                    <div class="relative flex items-center my-2">
+                        <div class="flex-grow border-t border-slate-200"></div>
+                        <span class="flex-shrink mx-3 text-[10px] font-bold text-slate-400 uppercase tracking-wider">Login Options</span>
+                        <div class="flex-grow border-t border-slate-200"></div>
+                    </div>
 
-                <!-- Login Buttons (Clever Styling with Hidden Code Verification) -->
-                <div class="space-y-2.5 pt-1">
-                    <!-- Primary Button: Clever Badge -->
-                    <button onclick="handleCleverSubmit(true)" class="w-full py-3.5 px-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 active:scale-[0.99] text-white font-bold text-xs rounded-xl flex items-center justify-center gap-2.5 shadow-lg shadow-blue-500/25 transition-all cursor-pointer">
-                        <span class="text-base">📷</span>
-                        <span>Log in with Clever Badge</span>
-                    </button>
+                    <!-- Action Buttons -->
+                    <div class="space-y-3">
+                        <!-- Clever Badge Login Button -->
+                        <button onclick="handleCleverSubmit(true)" class="w-full py-3.5 px-4 bg-[#1D63ED] hover:bg-[#1652C7] active:scale-[0.99] text-white font-bold text-xs sm:text-sm rounded-xl flex items-center justify-center gap-3 shadow-md shadow-blue-500/20 transition-all cursor-pointer">
+                            <span class="text-lg">📷</span>
+                            <span>Log in with Clever Badge</span>
+                        </button>
 
-                    <!-- Google Login Button -->
-                    <button onclick="handleCleverSubmit(false)" class="w-full py-2.5 px-4 bg-white hover:bg-slate-50 border border-slate-300 active:scale-[0.99] text-slate-700 font-bold text-xs rounded-xl flex items-center justify-center gap-2.5 transition-all cursor-pointer shadow-sm">
-                        <svg class="w-4 h-4" viewBox="0 0 24 24">
-                            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
-                            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
-                        </svg>
-                        <span>Log in with Google Account</span>
-                    </button>
-                </div>
+                        <!-- Google Login Button -->
+                        <button onclick="handleCleverSubmit(false)" class="w-full py-3 px-4 bg-white hover:bg-slate-50 border border-slate-300 active:scale-[0.99] text-slate-700 font-bold text-xs sm:text-sm rounded-xl flex items-center justify-center gap-3 transition-all cursor-pointer shadow-sm">
+                            <svg class="w-4 h-4" viewBox="0 0 24 24">
+                                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                            </svg>
+                            <span>Log in with Google Account</span>
+                        </button>
 
-                <!-- Footer disguise links -->
-                <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
-                    <button type="button" onclick="fillCleverUbg()" class="hover:text-blue-600 underline font-semibold transition-colors cursor-pointer">
-                        Need help logging in?
-                    </button>
-                    <span class="text-slate-400 select-none font-medium">Clever Inc. © 2026</span>
+                        <!-- Active Directory LDAP -->
+                        <button onclick="handleCleverSubmit(false)" class="w-full py-2.5 px-4 bg-slate-50 hover:bg-slate-100 border border-slate-200 active:scale-[0.99] text-slate-600 font-semibold text-xs rounded-xl flex items-center justify-center gap-2 transition-all cursor-pointer">
+                            <span>🏫</span>
+                            <span>Log in with Active Directory / LDAP</span>
+                        </button>
+                    </div>
+
+                    <!-- Sub-links -->
+                    <div class="pt-2 flex flex-col items-center gap-2 text-xs text-slate-500 text-center">
+                        <button type="button" onclick="fillCleverUbg()" class="text-[#1D63ED] hover:underline font-semibold cursor-pointer">
+                            Need help logging in?
+                        </button>
+                        <div class="flex items-center gap-2 text-[11px] text-slate-400">
+                            <a href="https://clever.com/about" target="_blank" rel="noopener noreferrer" class="hover:underline">Parent/guardian log in</a>
+                            <span>•</span>
+                            <a href="https://clever.com/about" target="_blank" rel="noopener noreferrer" class="hover:underline">District admin log in</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </main>
+
+        <!-- Full-screen Footer -->
+        <footer class="w-full bg-white border-t border-slate-200 text-slate-500 py-4 px-6 text-xs flex flex-col sm:flex-row items-center justify-between gap-3 flex-shrink-0 z-20">
+            <div class="flex items-center gap-2 font-medium">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span>Clever SSO Portal • All Systems Operational</span>
+            </div>
+            <div class="flex items-center gap-4 text-slate-500 text-[11px]">
+                <span class="font-medium text-slate-400">Clever Inc. © 2026</span>
+                <a href="https://clever.com/privacy" target="_blank" rel="noopener noreferrer" class="hover:underline">Privacy Policy</a>
+                <a href="https://clever.com/terms" target="_blank" rel="noopener noreferrer" class="hover:underline">Terms of Service</a>
+                <a href="https://support.clever.com" target="_blank" rel="noopener noreferrer" class="hover:underline">Help Center</a>
+            </div>
+        </footer>
     </div>
 
     <!-- Discord Join Server Modal (Shows on Page Load) -->
