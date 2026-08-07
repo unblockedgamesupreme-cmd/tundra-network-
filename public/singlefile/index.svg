@@ -5432,6 +5432,7 @@
                         <button onclick="setProxyEngine('ecosia')" class="engine-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all border border-slate-700 bg-slate-800 text-slate-300 hover:bg-slate-700" data-engine="ecosia">Ecosia</button>
                         <button onclick="setProxyEngine('ddg')" class="engine-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all border border-slate-700 bg-slate-800 text-slate-300 hover:bg-slate-700" data-engine="ddg">DuckDuckGo</button>
                         <button onclick="setProxyEngine('brave')" class="engine-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all border border-slate-700 bg-slate-800 text-slate-300 hover:bg-slate-700" data-engine="brave">Brave</button>
+                        <button onclick="setProxyEngine('ultiblank')" class="engine-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all border border-slate-700 bg-slate-800 text-slate-300 hover:bg-slate-700" data-engine="ultiblank">Ulti-Blank</button>
                     </div>
                 </div>
 
