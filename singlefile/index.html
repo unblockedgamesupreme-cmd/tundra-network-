@@ -367,8 +367,6 @@
 
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { scrollbar-width: none; }
-    </style>
-
         @keyframes fadeInDown {
             from { opacity: 0; transform: translateY(-30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -377,6 +375,7 @@
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
+    </style>
 </head>
 <body class="relative flex flex-col min-h-screen selection:bg-sky-500 selection:text-white">
 
@@ -967,8 +966,39 @@
                     </button>
                 </div>
 
-            </div>
+                <!-- 6. PROXY SEARCH ENGINE -->
+                <div class="p-4 bg-slate-950/70 rounded-xl border border-sky-500/20 space-y-3">
+                    <div>
+                        <h4 class="font-bold text-xs text-white flex items-center gap-1.5">
+                            <span>🔍</span> Default Proxy Search Engine
+                        </h4>
+                        <p class="text-[11px] text-sky-300/70 mt-0.5">Choose the engine used when you type a query instead of a URL in the Proxy tab</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-1" id="proxyEngineSelector">
+                        <button onclick="setProxyEngine('bing')" class="engine-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all border border-slate-700 bg-slate-800 text-slate-300 hover:bg-slate-700" data-engine="bing">Bing</button>
+                        <button onclick="setProxyEngine('ecosia')" class="engine-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all border border-slate-700 bg-slate-800 text-slate-300 hover:bg-slate-700" data-engine="ecosia">Ecosia</button>
+                        <button onclick="setProxyEngine('ddg')" class="engine-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all border border-slate-700 bg-slate-800 text-slate-300 hover:bg-slate-700" data-engine="ddg">DuckDuckGo</button>
+                        <button onclick="setProxyEngine('brave')" class="engine-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all border border-slate-700 bg-slate-800 text-slate-300 hover:bg-slate-700" data-engine="brave">Brave</button>
+                    </div>
+                </div>
 
+                <!-- 7. BACKGROUND CHANGER -->
+                <div class="p-4 bg-slate-950/70 rounded-xl border border-sky-500/20 space-y-3">
+                    <div>
+                        <h4 class="font-bold text-xs text-white flex items-center gap-1.5">
+                            <span>🖼️</span> Site Background
+                        </h4>
+                        <p class="text-[11px] text-sky-300/70 mt-0.5">Customize the visual theme of the portal</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-1" id="bgSelector">
+                        <button onclick="setSiteBackground('default')" class="bg-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all border border-slate-700 bg-slate-800 text-slate-300 hover:bg-slate-700" data-bg="default">Default Dark</button>
+                        <button onclick="setSiteBackground('midnight')" class="bg-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all border border-slate-700 bg-[#0b1120] text-sky-200 hover:border-sky-500" data-bg="midnight">Midnight Blue</button>
+                        <button onclick="setSiteBackground('purple')" class="bg-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all border border-slate-700 bg-[#1a1025] text-purple-200 hover:border-purple-500" data-bg="purple">Deep Purple</button>
+                        <button onclick="setSiteBackground('black')" class="bg-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all border border-slate-700 bg-black text-slate-300 hover:border-slate-500" data-bg="black">Pure Black</button>
+                        <button onclick="setSiteBackground('custom')" class="bg-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all border border-slate-700 bg-slate-800 text-slate-300 hover:bg-slate-700" data-bg="custom">Custom Image (URL)</button>
+                    </div>
+                </div>
+            </div>
             <!-- Modal Footer -->
             <div class="p-4 bg-slate-950 border-t border-sky-500/20 flex justify-end shrink-0">
                 <button onclick="closeSettingsModal()" class="px-5 py-2 bg-slate-800 hover:bg-slate-700 text-sky-200 rounded-xl font-bold text-xs transition-all cursor-pointer">
@@ -2723,9 +2753,9 @@ h1{margin:0 0 12px;font-size:22px;color:#7dd3fc}p{margin:0;color:#bae6fd;line-he
                     url = 'https://' + url;
                 } else {
                     const engine = localStorage.getItem('proxySearchEngine') || 'bing';
-                    if (engine === 'google') url = 'https://www.google.com/search?q=' + encodeURIComponent(input);
-                    else if (engine === 'yahoo') url = 'https://search.yahoo.com/search?p=' + encodeURIComponent(input);
-                    else if (engine === 'ddg') url = 'https://duckduckgo.com/?q=' + encodeURIComponent(input);
+                    if (engine === 'ecosia') url = 'https://www.ecosia.org/search?q=' + encodeURIComponent(input);
+                    else if (engine === 'brave') url = 'https://search.brave.com/search?q=' + encodeURIComponent(input);
+                    else if (engine === 'ddg') url = 'https://lite.duckduckgo.com/lite/?q=' + encodeURIComponent(input);
                     else url = 'https://www.bing.com/search?q=' + encodeURIComponent(input);
                 }
             }
