@@ -5233,7 +5233,7 @@
 
                 <!-- Main Iframe Display -->
                 <div class="w-full bg-slate-950 border border-emerald-500/20 rounded-2xl overflow-hidden shadow-2xl relative min-h-[650px] sm:min-h-[750px]">
-                    <iframe id="glseriesIframe" src="/api/proxy?url=https%3A%2F%2Flive.glseries.net%2F" class="w-full h-[650px] sm:h-[750px] border-none bg-slate-950" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; gamepad; microphone; camera; display-capture; focus-without-user-activation; screen-wake-lock; pointer-lock" allowfullscreen="allowfullscreen"></iframe>
+                    <iframe id="glseriesIframe" src="./api/proxy?url=https%3A%2F%2Flive.glseries.net%2F" class="w-full h-[650px] sm:h-[750px] border-none bg-slate-950" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; gamepad; microphone; camera; display-capture; focus-without-user-activation; screen-wake-lock; pointer-lock" allowfullscreen="allowfullscreen"></iframe>
                 </div>
             </main>
 
@@ -6861,7 +6861,7 @@
         }
 
         // Proxy Engine JS Utilities
-        const PROXY_PATH = "/api/proxy";
+        const PROXY_PATH = "./api/proxy";
 
         const AD_HOSTS = new Set([
           "doubleclick.net",
@@ -7178,7 +7178,7 @@
             if (document.getElementById('proxyUrlInputHome')) {
                 document.getElementById('proxyUrlInputHome').value = url;
             }
-            const proxyEndpoint = '/api/proxy?url=' + encodeURIComponent(url);
+            const proxyEndpoint = './api/proxy?url=' + encodeURIComponent(url);
             
             const welcome = document.getElementById('proxyWelcome');
             const iframe = document.getElementById('proxyIframe');
@@ -7231,7 +7231,7 @@ function toggleProxyFullscreen() {
 
         function navigateProxy(url) {
             document.getElementById('proxyUrlDisplay').innerText = url;
-            const proxyEndpoint = '/api/proxy?url=' + encodeURIComponent(url);
+            const proxyEndpoint = './api/proxy?url=' + encodeURIComponent(url);
             document.getElementById('proxyIframe').src = proxyEndpoint;
             document.getElementById('proxyFrameContainer').classList.remove('hidden');
             document.getElementById('proxyFrameContainer').classList.add('flex');
@@ -7895,7 +7895,7 @@ function toggleProxyFullscreen() {
             window._linkcheckCurrentMode = currentMode;
 
             if (currentMode === 'proxy') {
-                if (iframe) iframe.src = '/api/proxy?url=' + encodeURIComponent(targetUrl);
+                if (iframe) iframe.src = './api/proxy?url=' + encodeURIComponent(targetUrl);
                 if (statusBadge) statusBadge.innerHTML = '<span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Mode: Proxy Stream (Unblocked)';
                 if (modeProxyBtn) modeProxyBtn.className = "px-3 py-1.5 text-xs font-bold text-emerald-200 bg-emerald-500/30 border border-emerald-400 rounded-lg shadow transition-all cursor-pointer flex items-center gap-1";
                 if (modeDirectBtn) modeDirectBtn.className = "px-3 py-1.5 text-xs font-medium text-slate-400 bg-slate-900/60 border border-slate-800 rounded-lg hover:text-white transition-all cursor-pointer flex items-center gap-1";
@@ -7925,7 +7925,7 @@ function toggleProxyFullscreen() {
             
             if (pingResult) pingResult.innerHTML = '<span class="text-sky-400 animate-pulse">Testing ping &amp; status...</span>';
             const start = Date.now();
-            fetch('/api/proxy?url=' + encodeURIComponent(targetUrl), { method: 'HEAD' })
+            fetch('./api/proxy?url=' + encodeURIComponent(targetUrl), { method: 'HEAD' })
                 .then(res => {
                     const elapsed = Date.now() - start;
                     if (pingResult) {
