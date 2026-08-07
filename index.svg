@@ -5452,6 +5452,20 @@
                         <button onclick="setSiteBackground('custom')" class="bg-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all border border-slate-700 bg-slate-800 text-slate-300 hover:bg-slate-700" data-bg="custom">Custom Image (URL)</button>
                     </div>
                 </div>
+
+                <!-- 8. PROXY SERVER BACKEND -->
+                <div class="p-4 bg-slate-950/70 rounded-xl border border-sky-500/20 space-y-3">
+                    <div>
+                        <h4 class="font-bold text-xs text-white flex items-center gap-1.5">
+                            <span>🚀</span> Proxy Server Backend
+                        </h4>
+                        <p class="text-[11px] text-sky-300/70 mt-0.5">Choose the proxy server that powers the proxy tab.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-1" id="proxyBackendSelector">
+                        <button onclick="setProxyBackend('xenorio')" class="backend-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all border border-slate-700 bg-slate-800 text-slate-300 hover:bg-slate-700" data-backend="xenorio">SearX</button>
+                        <button onclick="setProxyBackend('local')" class="backend-btn px-3 py-1.5 rounded-lg text-xs font-bold transition-all border border-slate-700 bg-slate-800 text-slate-300 hover:bg-slate-700" data-backend="local">Built-in Local Proxy</button>
+                    </div>
+                </div>
             </div>
             <!-- Modal Footer -->
             <div class="p-4 bg-slate-950 border-t border-sky-500/20 flex justify-end shrink-0">
@@ -6898,6 +6912,22 @@
             reader.readAsText(file);
         }
 
+
+        // Proxy Server Backend
+        function setProxyBackend(backend) {
+            localStorage.setItem('proxyBackend', backend);
+            updateProxyBackendUI(backend);
+        }
+        function updateProxyBackendUI(backend) {
+            document.querySelectorAll('.backend-btn').forEach(btn => {
+                if (btn.dataset.backend === backend) {
+                    btn.classList.add('ring-2', 'ring-sky-500', 'ring-offset-2', 'ring-offset-slate-900');
+                } else {
+                    btn.classList.remove('ring-2', 'ring-sky-500', 'ring-offset-2', 'ring-offset-slate-900');
+                }
+            });
+        }
+
         // Proxy Engine JS Utilities
         const PROXY_PATH = "./api/proxy";
 
@@ -7207,7 +7237,9 @@
                 if (url.includes('.') &amp;&amp; !url.includes(' ')) {
                     url = 'https://' + url;
                 } else {
-                    const engine = localStorage.getItem('proxySearchEngine') || 'bing';
+                    const backend = localStorage.getItem('proxyBackend') || 'xenorio';
+            updateProxyBackendUI(backend);
+            const engine = localStorage.getItem('proxySearchEngine') || 'bing';
                     if (engine === 'ecosia') url = 'https://www.ecosia.org/search?q=' + encodeURIComponent(input);
                     else if (engine === 'brave') url = 'https://search.brave.com/search?q=' + encodeURIComponent(input);
                     else if (engine === 'ddg') url = 'https://lite.duckduckgo.com/lite/?q=' + encodeURIComponent(input);
@@ -7219,7 +7251,11 @@
             if (document.getElementById('proxyUrlInputHome')) {
                 document.getElementById('proxyUrlInputHome').value = url;
             }
-            const proxyEndpoint = './api/proxy?url=' + encodeURIComponent(url);
+            const backend = localStorage.getItem('proxyBackend') || 'xenorio';
+            let proxyEndpoint = './api/proxy?url=' + encodeURIComponent(url);
+            if (backend === 'xenorio') {
+                proxyEndpoint = 'https://find.xenorio.xyz/';
+            }
             
             const welcome = document.getElementById('proxyWelcome');
             const iframe = document.getElementById('proxyIframe');
