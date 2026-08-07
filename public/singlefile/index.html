@@ -743,10 +743,10 @@
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
                             <span>Refresh Frame</span>
                         </button>
-                        <button type="button" onclick="openUrlInAboutBlank(document.getElementById('linkcheckUrlInput')?document.getElementById('linkcheckUrlInput').value:'https://live.glseries.net/')" class="px-3.5 py-1.5 text-xs font-bold text-purple-300 bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer active:scale-95">
+                        <button type="button" onclick="openUrlInAboutBlank(document.getElementById('linkcheckUrlInput')?document.getElementById('linkcheckUrlInput').value:'https://find.xenorio.xyz/')" class="px-3.5 py-1.5 text-xs font-bold text-purple-300 bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer active:scale-95">
                             <span>about:blank Popout ↗</span>
                         </button>
-                        <a id="linkcheckDirectAnchor" href="https://live.glseries.net/" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 text-xs font-bold text-sky-300 bg-sky-500/10 hover:bg-sky-500/20 border border-sky-500/30 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer">
+                        <a id="linkcheckDirectAnchor" href="https://find.xenorio.xyz/" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 text-xs font-bold text-sky-300 bg-sky-500/10 hover:bg-sky-500/20 border border-sky-500/30 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer">
                             <span>Open Direct ↗</span>
                         </a>
                     </div>
@@ -757,7 +757,7 @@
                     <!-- URL Input & Test Ping -->
                     <div class="flex-1 flex items-center gap-2 bg-slate-900/90 border border-slate-800 rounded-xl px-3 py-1.5 focus-within:border-emerald-500/50 transition-all">
                         <svg class="w-4 h-4 text-emerald-400/80 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
-                        <input id="linkcheckUrlInput" type="text" value="https://live.glseries.net/" onkeypress="if(event.key==='Enter') setLinkcheckMode('current')" class="w-full bg-transparent text-xs text-white placeholder-slate-500 focus:outline-none font-mono" placeholder="Enter target link URL..." />
+                        <input id="linkcheckUrlInput" type="text" value="https://find.xenorio.xyz/" onkeypress="if(event.key==='Enter') setLinkcheckMode('current')" class="w-full bg-transparent text-xs text-white placeholder-slate-500 focus:outline-none font-mono" placeholder="Enter target link URL..." />
                         <button type="button" onclick="testLinkcheckStatus()" class="px-2.5 py-1 bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-500/40 text-emerald-300 rounded-lg text-[11px] font-bold transition-all flex-shrink-0 cursor-pointer">
                             Test Ping
                         </button>
@@ -786,7 +786,7 @@
 
                 <!-- Main Iframe Display -->
                 <div class="w-full bg-slate-950 border border-emerald-500/20 rounded-2xl overflow-hidden shadow-2xl relative min-h-[650px] sm:min-h-[750px]">
-                    <iframe id="glseriesIframe" src="./api/proxy?url=https%3A%2F%2Flive.glseries.net%2F" class="w-full h-[650px] sm:h-[750px] border-none bg-slate-950" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; gamepad; microphone; camera; display-capture; focus-without-user-activation; screen-wake-lock; pointer-lock" allowfullscreen></iframe>
+                    <iframe id="glseriesIframe" src="./api/proxy?url=https%3A%2F%2Ffind.xenorio.xyz%2F" class="w-full h-[650px] sm:h-[750px] border-none bg-slate-950" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; gamepad; microphone; camera; display-capture; focus-without-user-activation; screen-wake-lock; pointer-lock" allowfullscreen></iframe>
                 </div>
             </main>
 
@@ -2544,6 +2544,7 @@ h1{margin:0 0 12px;font-size:22px;color:#7dd3fc}p{margin:0;color:#bae6fd;line-he
         function rewriteAttr(html, attr, base) {
           const re = new RegExp(`(\\s${attr}\\s*=\\s*)(["'])([\\s\\S]*?)\\2`, "gi");
           return html.replace(re, (_m, pre, q, val) => {
+            if (val.includes('/api/proxy?url=')) return `${pre}${q}${val}${q}`;
             const abs = resolveUrl(base, val);
             if (!abs) return `${pre}${q}${val}${q}`;
             return `${pre}${q}${proxied(abs)}${q}`;
@@ -2554,6 +2555,7 @@ h1{margin:0 0 12px;font-size:22px;color:#7dd3fc}p{margin:0;color:#bae6fd;line-he
           return html.replace(/(\ssrcset\s*=\s*)(["'])([\s\S]*?)\2/gi, (_m, pre, q, val) => {
             const parts = val.split(",").map((p) => {
               const seg = p.trim().split(/\s+/);
+              if (seg[0] && seg[0].includes('/api/proxy?url=')) return p;
               const abs = resolveUrl(base, seg[0]);
               if (!abs) return p;
               seg[0] = proxied(abs);
@@ -2565,6 +2567,7 @@ h1{margin:0 0 12px;font-size:22px;color:#7dd3fc}p{margin:0;color:#bae6fd;line-he
 
         function rewriteCss(css, base) {
           css = css.replace(/url\(\s*(['"]?)([^'")]+)\1\s*\)/gi, (_m, q, val) => {
+            if (val.includes('/api/proxy?url=')) return `url(${q}${val}${q})`;
             const abs = resolveUrl(base, val);
             if (!abs) return `url(${q}${val}${q})`;
             return `url(${q}${proxied(abs)}${q})`;
@@ -2596,7 +2599,7 @@ h1{margin:0 0 12px;font-size:22px;color:#7dd3fc}p{margin:0;color:#bae6fd;line-he
   var PROXY = ${JSON.stringify(PROXY_PATH)};
   var BASE = ${JSON.stringify(base)};
   function abs(u){ try { return new URL(u, BASE).toString(); } catch(e){ return null; } }
-  function wrap(u){ if(!u||typeof u!=='string') return u; if(u.indexOf(PROXY+'?')===0) return u; if(/^(data:|blob:|javascript:|mailto:|tel:|#)/i.test(u)) return u; var a = abs(u); return a ? PROXY+'?url='+encodeURIComponent(a) : u; }
+  function wrap(u){ if(!u||typeof u!=='string') return u; if(u.indexOf(PROXY+'?')===0 || u.includes(PROXY+'?url=')) return u; if(/^(data:|blob:|javascript:|mailto:|tel:|#)/i.test(u)) return u; var a = abs(u); return a ? PROXY+'?url='+encodeURIComponent(a) : u; }
   var _fetch = window.fetch;
   window.fetch = function(input, init){
     try {
@@ -3470,7 +3473,7 @@ function toggleProxyFullscreen() {
             const modeDirectBtn = document.getElementById('linkcheckBtnDirect');
             const directAnchor = document.getElementById('linkcheckDirectAnchor');
             
-            let targetUrl = (input ? input.value.trim() : '') || 'https://live.glseries.net/';
+            let targetUrl = (input ? input.value.trim() : '') || 'https://find.xenorio.xyz/';
             if (!/^https?:\/\//i.test(targetUrl)) targetUrl = 'https://' + targetUrl;
             if (input) input.value = targetUrl;
             if (directAnchor) directAnchor.href = targetUrl;
@@ -3506,7 +3509,7 @@ function toggleProxyFullscreen() {
         function testLinkcheckStatus() {
             const input = document.getElementById('linkcheckUrlInput');
             const pingResult = document.getElementById('linkcheckPingResult');
-            let targetUrl = (input ? input.value.trim() : '') || 'https://live.glseries.net/';
+            let targetUrl = (input ? input.value.trim() : '') || 'https://find.xenorio.xyz/';
             if (!/^https?:\/\//i.test(targetUrl)) targetUrl = 'https://' + targetUrl;
             if (input) input.value = targetUrl;
             
@@ -3529,7 +3532,7 @@ function toggleProxyFullscreen() {
         }
 
         function openUrlInAboutBlank(url) {
-            const target = url || 'https://live.glseries.net/';
+            const target = url || 'https://find.xenorio.xyz/';
             const win = window.open('about:blank', '_blank');
             if (!win) {
                 alert("Popup blocked! Please allow popups for this site to open in about:blank.");

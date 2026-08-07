@@ -101,6 +101,7 @@ function resolveUrl(base, ref) {
 function rewriteAttr(html, attr, base) {
   const re = new RegExp(`(\\s${attr}\\s*=\\s*)(["'])([\\s\\S]*?)\\2`, "gi");
   return html.replace(re, (_m, pre, q, val) => {
+    if (val.includes('/api/proxy?url=')) return `${pre}${q}${val}${q}`;
     const abs = resolveUrl(base, val);
     if (!abs) return `${pre}${q}${val}${q}`;
     return `${pre}${q}${proxied(abs)}${q}`;
@@ -111,6 +112,7 @@ function rewriteSrcset(html, base) {
   return html.replace(/(\ssrcset\s*=\s*)(["'])([\s\S]*?)\2/gi, (_m, pre, q, val) => {
     const parts = val.split(",").map((p) => {
       const seg = p.trim().split(/\s+/);
+      if (seg[0] && seg[0].includes('/api/proxy?url=')) return p;
       const abs = resolveUrl(base, seg[0]);
       if (!abs) return p;
       seg[0] = proxied(abs);
@@ -122,6 +124,7 @@ function rewriteSrcset(html, base) {
 
 function rewriteCss(css, base) {
   css = css.replace(/url\(\s*(['"]?)([^'")]+)\1\s*\)/gi, (_m, q, val) => {
+    if (val.includes('/api/proxy?url=')) return `url(${q}${val}${q})`;
     const abs = resolveUrl(base, val);
     if (!abs) return `url(${q}${val}${q})`;
     return `url(${q}${proxied(abs)}${q})`;
@@ -153,7 +156,7 @@ function rewriteHtml(html, base) {
   var PROXY = ${JSON.stringify(PROXY_PATH)};
   var BASE = ${JSON.stringify(base)};
   function abs(u){ try { return new URL(u, BASE).toString(); } catch(e){ return null; } }
-  function wrap(u){ if(!u||typeof u!=='string') return u; if(u.indexOf(PROXY+'?')===0) return u; if(/^(data:|blob:|javascript:|mailto:|tel:|#)/i.test(u)) return u; var a = abs(u); return a ? PROXY+'?url='+encodeURIComponent(a) : u; }
+  function wrap(u){ if(!u||typeof u!=='string') return u; if(u.indexOf(PROXY+'?')===0 || u.includes(PROXY+'?url=')) return u; if(/^(data:|blob:|javascript:|mailto:|tel:|#)/i.test(u)) return u; var a = abs(u); return a ? PROXY+'?url='+encodeURIComponent(a) : u; }
   var _fetch = window.fetch;
   window.fetch = function(input, init){
     try {
